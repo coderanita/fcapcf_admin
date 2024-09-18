@@ -19,3 +19,5 @@ yarn-error.log
 /.idea
 /.vscode
 *.zip
+
+resources/views/mockup
