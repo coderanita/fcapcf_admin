@@ -7,7 +7,12 @@
     'class' => 'modal-dialog-vertical',
 ])
 @if ($isOpenModal)
-  <div class="modal fade show d-block" id="{{ $id }}" name="{{ $id }}-modal" tabindex="-1"
+  @script
+    <script>
+      document.body.className += ' modal-open';
+    </script>
+  @endscript
+  <div class="modal fade show d-block modal-backdrop" id="{{ $id }}" name="{{ $id }}-modal" tabindex="-1"
     aria-labelledby="exampleModalLabel" aria-modal="true" role="dialog">
   @else
     <div class="modal fade d-none" id="{{ $id }}" name="{{ $id }}-modal" tabindex="-1"
@@ -16,20 +21,18 @@
 
 
 <div class="modal-dialog {{ $class }}" wire:click.outside='closeModal()'>
-  <div class="modal-content" style="padding: 35px">
-    <div class="offcanvas-header">
-      <h5 class="offcanvas-title">{{ $title }}</h5>
+  <div class="modal-content p-2">
+    <div class="modal-header">
+      <h5 class="modal-title">{{ $title }}</h5>
       <button type="button" class="btn-close text-reset" data-bs-dismiss="modal" aria-label="Close"
         wire:click="closeModal()"></button>
     </div>
-    <div class="offcanvas-body">
-      <form class="row g-3" style="margin-top: 60px" wire:submit="{{ $submit }}">
-        @csrf
-
-
-
+    <form class="row g-3" wire:submit="{{ $submit }}">
+      @csrf
+      <div class="modal-body">
         {{ $body }}
-        <div class="col-12" style="margin-top: 45px;">
+
+        <div class="col-12 text-end" style="margin-top: 45px;">
           @isset($footer)
             {{ $footer }}
           @else
@@ -38,9 +41,9 @@
               @if ($name) wire:target='{{ $name }}' @endif>Save</button>
           @endisset
         </div>
-
-      </form>
-    </div>
+      </div>
+   
+    </form>
   </div>
 </div>
 </div>

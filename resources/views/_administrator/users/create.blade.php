@@ -1,5 +1,5 @@
 <div>
-  <x-breadcrumb title="System Users" sub_title="Users list">
+  <x-breadcrumb title="System Users" sub_title="User list">
     <x-slot name="page_action">
       <div class="page-action">
         <a wire:click='create'>
@@ -52,7 +52,7 @@
     </x-slot>
 
   </x-breadcrumb>
-  <x-custom-modal isOpenModal="{{ $isOpenModal }}" title="Create New User" id="createUser" submit="save" class>
+  <x-custom-modal isOpenModal="{{ $isOpenModal }}" title="Create New User" id="createUser" submit="save">
     <x-slot name="body">
       <div class="col-md-6">
         <label class="form-label">First Name</label>
@@ -104,7 +104,7 @@
     </x-slot>
     <x-slot name='footer'>
 
-      <button type="submit" class="btn btn-primary">Save User</button>
+      <button type="submit" class="btn btn-primary">Save</button>
       <button type="reset" class="btn btn-dark" wire:click="closeModal()">Cancel</button>
 
     </x-slot>
