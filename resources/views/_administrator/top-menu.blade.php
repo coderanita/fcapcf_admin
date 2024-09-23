@@ -159,7 +159,7 @@
                       </div>
                     </a>
                   </li>
-                  <li>
+                  {{-- <li>
                     <a href="add-user.html" class="d-flex align-items-center py-2 rounded">
                       <div class="avatar rounded no-thumbnail bg-light">
                         <svg xmlns="http://www.w3.org/2000/svg" width="18" fill="currentColor"
@@ -180,7 +180,7 @@
                         <small class="text-muted">Create and manage system users</small>
                       </div>
                     </a>
-                  </li>
+                  </li> --}}
 
                   <li>
                     <a href="user-roles.html" class="d-flex align-items-center py-2 rounded">
