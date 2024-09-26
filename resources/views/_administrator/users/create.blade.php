@@ -88,18 +88,34 @@
 
         <button type="button" class="btn  btn-success" wire:click.prevent='randomPassword'>Generate</button>
       </div>
-      <div class="col-md-6">
-        <label class="form-label">Access Level</label>
+      <div class="col-md-12">
+        <label class="form-label">Role</label>
         <select class="form-select" wire:model.live='role'>
           <option selected>Choose...</option>
           @foreach ($roles as $role)
-            <option value="{{ $role->id }}">{{ ucwords($role->name) }}</option>
+            <option value="{{ $role->id }}">{{ ucwords($role->name) }} - {{ ucwords($role->access_level) }} Access
+            </option>
           @endforeach
 
         </select>
         <x-input-error for="role" />
-
       </div>
+
+      {{-- <div class="col-md-12">
+        <label class="form-label">Select Permission(s)</label>
+        <div class="col-12 fs-6">
+          @foreach ($permissions as $permission)
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="checkbox" wire:model='{{ 'permission.' . $permission->code }}'
+                id="{{ $permission->code }}">
+              <label class="form-check-label" for="{{ $permission->code }}">{{ ucwords($permission->name) }}</label>
+            </div>
+          @endforeach
+
+
+        </div>
+
+      </div> --}}
 
     </x-slot>
     <x-slot name='footer'>
@@ -108,12 +124,7 @@
       <button type="reset" class="btn btn-dark" wire:click="closeModal()">Cancel</button>
 
     </x-slot>
-    {{-- 
-              </form>
-            </div>
-          </div>
-        </div>
-      </div> --}}
+
 
 
   </x-custom-modal>

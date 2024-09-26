@@ -18,9 +18,12 @@ class ManageUser extends Component
 {
   use WithPagination, HasModalElement;
   #[Validate]
-  public $fname, $lname, $email, $password, $role, $userId, $counter;
+  public $fname, $lname, $email, $password, $role, $userId, $counter, $roleName;
 
-
+  public function mount(?string $roleName = null)
+  {
+    $this->roleName = $roleName;
+  }
 
   public function setUser(User $user, string $modal)
   {
@@ -135,6 +138,22 @@ class ManageUser extends Component
 
   public function render()
   {
-    return view('_administrator.users.manage')->with(['roles' => Role::all(), 'users' => User::with(['role'])->whereNot('id', auth()->id())->paginate()]);
+    $this->authorize('viewany', User::class);
+
+    $this->resetExceptModal(['roleName']);
+
+
+    $users = User::with(['role']);
+
+    if ($this->roleName) {
+      $users->whereRelation('role', 'name', $this->roleName);
+    }
+
+
+
+    return view('_administrator.users.manage')->with([
+      'roles' => Role::all(),
+      'users' => $users->whereNot('id', auth()->id())->paginate()
+    ]);
   }
 }

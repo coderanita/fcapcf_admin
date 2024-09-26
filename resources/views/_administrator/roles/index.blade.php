@@ -1,5 +1,5 @@
-<x-app-layout title="System Users" sub_title="Users list">
-  @livewire('administrator.users.create-user')
+<x-app-layout title="Capacity for which users will operate" sub_title="User Roles">
+  @livewire('administrator.roles.create-role')
   <!-- start: page body -->
   <div class="page-body">
     <div class="container-fluid">
@@ -15,13 +15,8 @@
             <div class="card-header">
             </div>
             <div class="card-body">
-
-              @isset($roleName)
-                @livewire('administrator.users.manage-user', ['roleName' => $roleName])
-              @else
-                @livewire('administrator.users.manage-user')
-              @endisset
-
+              {{-- <livewire:administrator.roles.manage-role @saved="$refresh"> --}}
+              @livewire('administrator.roles.manage-role')
             </div>
           </div>
         </div>

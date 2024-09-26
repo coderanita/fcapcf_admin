@@ -2,13 +2,13 @@
 
 use App\Models\Role;
 
-// if (!function_exists('userRoles')) {
-//   function userRoles()
-//   {
-//     // return  ["administrator", "manager", "staff", "volunteer"];
-//     return Role::all();
-//   }
-// }
+if (!function_exists('getAccessLevels')) {
+  function getAccessLevels()
+  {
+    return  ["administrator", "manager", "staff", "volunteer"];
+    // return Role::all();
+  }
+}
 
 
 // redirect()->intended($role['name'] . '/dashboard') : 

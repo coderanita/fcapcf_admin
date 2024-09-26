@@ -11,6 +11,7 @@ use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 
 class User extends Authenticatable
 {
@@ -77,11 +78,26 @@ class User extends Authenticatable
   {
     return $this->belongsTo(Role::class);
   }
+  /**
+   * Get all of the permissions for the user.
+   */
+  public function permissions()
+  {
+    return $this->role->permissions;
+  }
+  public function hasPermissions(string $permission)
+  {
+    return $this->role->permissions()->where('code', $permission)->count();
+  }
 
+  // public function permissions()
+  // {
+  //   return $this->through(Role::class)->has(Permission::class);
+  // }
 
   public function hasRole(string $role): bool
   {
-    return $this->role->name === $role;
+    return $this->role->access_level === $role;
   }
 
   public function fullName()

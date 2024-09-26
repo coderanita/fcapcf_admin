@@ -13,7 +13,7 @@ class HomeController extends Controller
   {
     if (auth()->check() && auth()->user()->role) {
       // dd('admin');
-      return to_route(auth()->user()->role->name . '.dashboard');
+      return to_route(auth()->user()->role->access_level . '.dashboard');
     }
 
     auth()->logout();

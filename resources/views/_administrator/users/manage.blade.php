@@ -14,12 +14,12 @@
     <tbody>
 
       @php
-        $counter = $users->firstItem();
+        // $counter = $users->firstItem();
       @endphp
 
       @foreach ($users as $user)
         <tr>
-          <td> {{ $counter++ }}</td>
+          <td> {{ $loop->iteration }}</td>
           <td>{{ $user->fullName() }} <br> <span class="text-info">{{ $user->email }}</span></td>
           <td>{{ ucwords($user->role->name) }}</td>
           <td><span class="badge bg-primary">MCA - Nasarawa</span></td>
@@ -64,7 +64,7 @@
   </table>
 
   <div class="mt-5">
-    {{ $users->links() }}
+    {{-- {{ $users->links() }} --}}
   </div>
   <x-custom-modal isOpenModal="{{ $isOpenModal['updateUser'] ?? false }}" title="Update {{ $fname . ' ' . $lname }}"
     id="updateUser" submit="update({{ $userId }})">
@@ -103,7 +103,7 @@
 
         <button type="button" class="btn  btn-success" wire:click.prevent='randomPassword'>Generate</button>
       </div>
-      <div class="col-md-6">
+      {{-- <div class="col-md-6">
         <label class="form-label">Access Level</label>
         <select class="form-select" wire:model.live='role'>
           <option selected>Choose...</option>
@@ -114,6 +114,19 @@
         </select>
         <x-input-error for="role" />
 
+      </div> --}}
+
+      <div class="col-md-12">
+        <label class="form-label">Role</label>
+        <select class="form-select" wire:model.live='role'>
+          <option selected>Choose...</option>
+          @foreach ($roles as $role)
+            <option value="{{ $role->id }}">{{ ucwords($role->name) }} - {{ ucwords($role->access_level) }} Access
+            </option>
+          @endforeach
+
+        </select>
+        <x-input-error for="role" />
       </div>
 
     </x-slot>
