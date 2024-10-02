@@ -57,7 +57,7 @@
     <script type='text/javascript' src="{{ asset('js/toastify-js.js') }}"></script>
     <script>
       window.addEventListener('alert', (event) => {
-        let data = event.detail;
+        let data = event.detail[0]; 
         Toastify({
           text: data.msg,
           duration: 3000,

@@ -227,7 +227,7 @@
               <div class="col-lg-7">
                 <ul class="list-unstyled mb-0 animation_delay">
                   <li>
-                    <a href="beneficiaries.html" class="d-flex align-items-center py-2 rounded">
+                    <a href="{{route('administrator.beneficiaries')}}" class="d-flex align-items-center py-2 rounded">
                       <div class="avatar rounded no-thumbnail bg-light">
                         <svg xmlns="http://www.w3.org/2000/svg" width="18" fill="currentColor"
                           viewBox="0 0 16 16">
@@ -250,7 +250,7 @@
                   </li>
 
                   <li>
-                    <a href="add-beneficiary.html" class="d-flex align-items-center py-2 rounded">
+                    <a href="{{route('administrator.beneficiaries.create')}}" class="d-flex align-items-center py-2 rounded">
                       <div class="avatar rounded no-thumbnail bg-light">
                         <svg xmlns="http://www.w3.org/2000/svg" width="18" fill="currentColor"
                           viewBox="0 0 16 16">

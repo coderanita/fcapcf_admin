@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Administrator\StaffController;
+use App\Livewire\Administrator\Beneficiaries\Create;
 use App\Livewire\Administrator\Dashboard;
 use App\Livewire\Administrator\Roles\ShowRole;
 use Illuminate\Support\Facades\Route;
@@ -44,6 +45,10 @@ Route::middleware([
   Route::view('/users', '_administrator.users.index')->name('users');
   Route::view('/roles', '_administrator.roles.index')->name('roles');
   Route::view('/roles/{roleName}/show','_administrator.users.index')->name('roles.show');
+
+  Route::view('/beneficiaries', '_administrator.beneficiaries.index')->name('beneficiaries');
+  Route::get('/beneficiaries/create', Create::class)->name('beneficiaries.create');
+
 
 
 });
