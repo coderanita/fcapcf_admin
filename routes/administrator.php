@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Administrator\StaffController;
 use App\Livewire\Administrator\Beneficiaries\Create;
+use App\Livewire\Administrator\Beneficiaries\Edit;
 use App\Livewire\Administrator\Dashboard;
 use App\Livewire\Administrator\Roles\ShowRole;
 use Illuminate\Support\Facades\Route;
@@ -48,6 +49,7 @@ Route::middleware([
 
   Route::view('/beneficiaries', '_administrator.beneficiaries.index')->name('beneficiaries');
   Route::get('/beneficiaries/create', Create::class)->name('beneficiaries.create');
+  Route::get('/beneficiaries/edit/{beneficiaryId}', Edit::class)->name('beneficiaries.edit');
 
 
 

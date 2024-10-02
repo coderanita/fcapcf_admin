@@ -12,7 +12,7 @@ use Livewire\Attributes\Validate;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
-class Create extends Component
+class Edit extends Component
 {
     use WithFileUploads;
 
@@ -42,6 +42,7 @@ class Create extends Component
     // Assistance
     public $type_of_assistance, $previous_assistance, $health_status, $skills_or_training, $geographical_location, $ethnicity_tribe, $religion, $referring_organization;
 
+    public $savedImage;
 
     protected $messages = [
         'required' => 'This field is required.',
@@ -59,7 +60,7 @@ class Create extends Component
             $this->validate([
                 'first_name' => 'required|string|max:255',
                 'last_name' => 'required|string|max:255',
-                'profile_photo_path' => 'required|image', // Validate image size
+                // 'profile_photo_path' => 'required|image',
                 'gender' => 'required|string',
                 'phone_number' => 'required|string|max:15',
                 'email' => 'required|email|max:255',
@@ -103,6 +104,52 @@ class Create extends Component
         }
     }
 
+    public function mount($beneficiaryId)
+    {
+        $beneficiary = Beneficiary::with('emergencyContact', 'assistance', 'socialEconomic')
+            ->findOrFail($beneficiaryId);
+
+        // Set beneficiary data to form inputs
+        $this->beneficiary_id = $beneficiary->id;
+        $this->first_name = $beneficiary->first_name;
+        $this->last_name = $beneficiary->last_name;
+        $this->gender = $beneficiary->gender;
+        $this->phone_number = $beneficiary->phone_number;
+        $this->email = $beneficiary->email;
+        $this->marital_status = $beneficiary->marital_status;
+        $this->date_of_birth = $beneficiary->date_of_birth;
+        $this->nationality_id = $beneficiary->nationality_id;
+        $this->disability_status = $beneficiary->disability_status;
+        $this->type_of_disability = $beneficiary->type_of_disability;
+        $this->language_id = $beneficiary->language_id;
+        $this->savedImage = $beneficiary->profile_photo_path;
+
+        // Emergency Contact
+        $this->full_name = $beneficiary->emergencyContact->first()->full_name ?? '';
+        $this->telephone = $beneficiary->emergencyContact->first()->telephone ?? '';
+        $this->relationship_id = $beneficiary->emergencyContact->first()->relationship_id ?? '';
+        $this->home_address = $beneficiary->emergencyContact->first()->home_address ?? '';
+
+        // Social Economics
+        $this->occupation = $beneficiary->socialEconomic->first()->occupation ?? '';
+        $this->household_size = $beneficiary->socialEconomic->first()->household_size ?? '';
+        $this->education_level = $beneficiary->socialEconomic->first()->education_level ?? '';
+        $this->income = $beneficiary->socialEconomic->first()->income ?? '';
+        $this->housing_status = $beneficiary->socialEconomic->first()->housing_status ?? '';
+        $this->vulnerabilities = $beneficiary->socialEconomic->first()->vulnerabilities ?? '';
+
+        // Assistance
+        $this->type_of_assistance = $beneficiary->assistance->first()->type_of_assistance ?? '';
+        $this->previous_assistance = $beneficiary->assistance->first()->previous_assistance ?? '';
+        $this->health_status = $beneficiary->assistance->first()->health_status ?? '';
+        $this->skills_or_training = $beneficiary->assistance->first()->skills_or_training ?? '';
+        $this->geographical_location = $beneficiary->assistance->first()->geographical_location ?? '';
+        $this->ethnicity_tribe = $beneficiary->assistance->first()->ethnicity_tribe ?? '';
+        $this->religion = $beneficiary->assistance->first()->religion ?? '';
+        $this->referring_organization = $beneficiary->assistance->first()->referring_organization ?? '';
+    }
+
+
 
 
     public function setCurrentStep($step)
@@ -130,10 +177,19 @@ class Create extends Component
 
     public function save()
     {
-        $beneficiary = Beneficiary::create([
+        $beneficiary = Beneficiary::findOrFail($this->beneficiary_id);
+
+        // Check if a new profile photo has been uploaded
+        $profilePic = $this->savedImage;
+        if ($this->profile_photo_path) {
+            $profilePic = $this->profile_photo_path->store('beneficiaries/profile_photos', 'public');
+        }
+
+        // Update Beneficiary data
+        $beneficiary->update([
             'first_name' => $this->first_name,
             'last_name' => $this->last_name,
-            'profile_photo_path' => $this->profile_photo_path->store('beneficiaries/profile_photos', 'public'), // Store image
+            'profile_photo_path' => $profilePic,
             'gender' => $this->gender,
             'phone_number' => $this->phone_number,
             'email' => $this->email,
@@ -145,47 +201,49 @@ class Create extends Component
             'language_id' => $this->language_id,
         ]);
 
-        $this->beneficiary_id = $beneficiary->id;
+        $emergencyContact = BeneficiaryEmergencyContact::where('beneficiary_id', $this->beneficiary_id)->first();
 
-        // Save Emergency Contact and associate it with the Beneficiary
-        BeneficiaryEmergencyContact::create([
-            'beneficiary_id' =>  $this->beneficiary_id, // Associate with beneficiary
-            'full_name' => $this->full_name,
-            'telephone' => $this->telephone,
-            'relationship_id' => $this->relationship_id,
-            'home_address' => $this->home_address,
-        ]);
+        if ($emergencyContact) {
+            $emergencyContact->update([
+                'full_name' => $this->full_name,
+                'telephone' => $this->telephone,
+                'relationship_id' => $this->relationship_id,
+                'home_address' => $this->home_address,
+            ]);
+        }
 
-        // Social Economic and associate it with the Beneficiary
-        BeneficiarySocialEconomic::create([
-            'beneficiary_id' =>  $this->beneficiary_id,
-            'occupation' => $this->occupation,
-            'household_size' => $this->household_size,
-            'education_level' => $this->education_level,
-            'income' => $this->income,
-            'housing_status' => $this->housing_status,
-            'vulnerabilities' => $this->vulnerabilities,
-        ]);
+        $socialEconomic = BeneficiarySocialEconomic::where('beneficiary_id', $this->beneficiary_id)->first();
+        if ($socialEconomic) {
+            $socialEconomic->update([
+                'occupation' => $this->occupation,
+                'household_size' => $this->household_size,
+                'education_level' => $this->education_level,
+                'income' => $this->income,
+                'housing_status' => $this->housing_status,
+                'vulnerabilities' => $this->vulnerabilities,
+            ]);
+        }
 
-        // Insert data into the 'beneficiary_assistances' table
-        BeneficiaryAssistance::create([
-            'beneficiary_id' => $this->beneficiary_id,
-            'type_of_assistance' => $this->type_of_assistance,
-            'previous_assistance' => $this->previous_assistance,
-            'health_status' => $this->health_status,
-            'skills_or_training' => $this->skills_or_training,
-            'geographical_location' => $this->geographical_location,
-            'ethnicity_tribe' => $this->ethnicity_tribe,
-            'religion' => $this->religion,
-            'referring_organization' => $this->referring_organization,
-        ]);
+        $assistance = BeneficiaryAssistance::where('beneficiary_id', $this->beneficiary_id)->first();
+        if ($assistance) {
+            $assistance->update([
+                'type_of_assistance' => $this->type_of_assistance,
+                'previous_assistance' => $this->previous_assistance,
+                'health_status' => $this->health_status,
+                'skills_or_training' => $this->skills_or_training,
+                'geographical_location' => $this->geographical_location,
+                'ethnicity_tribe' => $this->ethnicity_tribe,
+                'religion' => $this->religion,
+                'referring_organization' => $this->referring_organization,
+            ]);
+        }
 
         $this->dispatch('alert', [
-            'msg' => 'New Beneficiary Added!',
+            'msg' => 'Beneficiary Updated Successfully!',
             'type' => 'success'
         ]);
 
-        $this->reset();
+        $this->currentStep = 1;
     }
 
     public function getNationalityName($nationalityId)
@@ -211,7 +269,7 @@ class Create extends Component
         $this->languages = $dataSource->languages();
         $this->beneficiaryRelationships = $dataSource->beneficiaryRelationships();
 
-        return view('_administrator.beneficiaries.create', [
+        return view('_administrator.beneficiaries.edit', [
             'nationalities' => $this->nationalities,
             'languages' => $this->languages,
             'beneficiaryRelationships' => $this->beneficiaryRelationships

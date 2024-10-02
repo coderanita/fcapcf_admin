@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Beneficiary extends Model
 {
@@ -12,8 +13,18 @@ class Beneficiary extends Model
 
     protected $guarded = [];
 
-    public function emergencyContacts(): HasMany
+    public function emergencyContact(): HasOne
     {
-        return $this->hasMany(BeneficiaryEmergencyContact::class);
+        return $this->hasOne(BeneficiaryEmergencyContact::class);
+    }
+
+    public function assistance(): HasOne
+    {
+        return $this->hasOne(BeneficiaryAssistance::class);
+    }
+
+    public function socialEconomic(): HasOne
+    {
+        return $this->hasOne(BeneficiarySocialEconomic::class);
     }
 }
