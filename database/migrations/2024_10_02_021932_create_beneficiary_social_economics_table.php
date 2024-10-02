@@ -11,13 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('beneficiary_emergency_contacts', function (Blueprint $table) {
+        Schema::create('beneficiary_social_economics', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('beneficiary_id');
-            $table->string('full_name');
-            $table->string('telephone');
-            $table->unsignedBigInteger('relationship_id');
-            $table->text('home_address');
+            $table->string('occupation');
+            $table->string('household_size');
+            $table->string('education_level');
+            $table->string('income');
+            $table->string('housing_status');
+            $table->string('vulnerabilities');
             $table->timestamps();
 
             // $table->foreign('beneficiary_id')->references('id')->on('beneficiaries')->onDelete('cascade');
@@ -29,6 +31,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('beneficiary_emergency_contacts');
+        Schema::dropIfExists('beneficiary_social_economics');
     }
 };

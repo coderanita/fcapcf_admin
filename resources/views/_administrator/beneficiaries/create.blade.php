@@ -59,7 +59,7 @@
                                                     @if ($currentStep == 1)
                                                         <!-- start: project type -->
                                                         <div class="tab-pane fade show active" id="step1">
-                                                            <form wire:submit.prevent="submit">
+                                                            <form wire:submit.prevent="submitPersonalInfo">
                                                                 <div class="card bg-body mb-2">
                                                                     <div class="card-body">
                                                                         <h6 class="card-title mb-1">
@@ -113,7 +113,8 @@
                                                                                 <select
                                                                                     class="form-select @error('gender') is-invalid @enderror"
                                                                                     wire:model="gender">
-                                                                                    <option selected>Open this select
+                                                                                    <option value="" selected>Open
+                                                                                        this select
                                                                                         menu</option>
                                                                                     <option value="male">Male</option>
                                                                                     <option value="female">Female
@@ -322,15 +323,7 @@
 
                                                                     </div>
                                                                 </div>
-                                                                <div class="text-end">
-                                                                    <button type="button" class="btn btn-secondary">
-                                                                        Close
-                                                                    </button>
-                                                                    <button type="submit"
-                                                                        class="btn bg-secondary text-light next text-uppercase">
-                                                                        Save Record
-                                                                    </button>
-                                                                </div>
+
                                                             </form>
                                                         </div>
                                                     @endif
@@ -339,92 +332,116 @@
                                                         <!-- start: Employment detail -->
                                                         <div class="tab-pane @if ($currentStep == 2) show active @endif"
                                                             id="step2">
-                                                            <div class="card bg-body mb-2">
-                                                                <div class="card-body">
-                                                                    <h6 class="card-title mb-1">
-                                                                        Social Economic Information
-                                                                    </h6>
-                                                                    <p class="text-muted small">
-                                                                        It is a long established fact that a
-                                                                        reader will be distracted by Avio.
-                                                                    </p>
+                                                            <form wire:submit.prevent="submitSocialEconomic">
+                                                                <div class="card bg-body mb-2">
+                                                                    <div class="card-body">
+                                                                        <h6 class="card-title mb-1">Social Economic
+                                                                            Information</h6>
+                                                                        <p class="text-muted small">It is a long
+                                                                            established fact that a reader will be
+                                                                            distracted by Avio.</p>
 
+                                                                        <div class="row g-2 mt-3">
+                                                                            <div class="form-floating mb-2 col-md-4">
+                                                                                <input type="text"
+                                                                                    class="form-control @error('occupation') is-invalid @enderror"
+                                                                                    placeholder="Occupation"
+                                                                                    wire:model="occupation" />
+                                                                                <label>Occupation/Source of
+                                                                                    Income</label>
+                                                                                @error('occupation')
+                                                                                    <div class="invalid-feedback d-block">
+                                                                                        {{ $message }}</div>
+                                                                                @enderror
+                                                                            </div>
 
+                                                                            <div class="form-floating mb-2 col-md-4">
+                                                                                <input type="number"
+                                                                                    class="form-control @error('household_size') is-invalid @enderror"
+                                                                                    placeholder="household-size"
+                                                                                    wire:model="household_size" />
+                                                                                <label>Household Size *</label>
+                                                                                @error('household_size')
+                                                                                    <div class="invalid-feedback d-block">
+                                                                                        {{ $message }}</div>
+                                                                                @enderror
+                                                                            </div>
 
-                                                                    <div class="row g-2 mt-3">
-                                                                        <div class="form-floating mb-2 col-md-4">
-                                                                            <input type="text" class="form-control"
-                                                                                placeholder="Occupation" />
-                                                                            <label>Occupation/Source of Income</label>
+                                                                            <div class="form-floating mb-2 col-md-4">
+                                                                                <select
+                                                                                    class="form-select @error('education_level') is-invalid @enderror"
+                                                                                    wire:model="education_level">
+                                                                                    <option value="" selected>
+                                                                                        Select Education Level
+                                                                                    </option>
+                                                                                    <option value="PhD">PhD</option>
+                                                                                    <option value="BSc">BSc</option>
+                                                                                    <option value="Primary">Primary
+                                                                                    </option>
+                                                                                    <option value="Secondary">Secondary
+                                                                                    </option>
+                                                                                </select>
+                                                                                <label>Education Level *</label>
+                                                                                @error('education_level')
+                                                                                    <div class="invalid-feedback d-block">
+                                                                                        {{ $message }}</div>
+                                                                                @enderror
+                                                                            </div>
+
+                                                                            <div class="form-floating mb-2 col-md-4">
+                                                                                <input type="number"
+                                                                                    class="form-control @error('income') is-invalid @enderror"
+                                                                                    placeholder="Income"
+                                                                                    wire:model="income" />
+                                                                                <label>Income</label>
+                                                                                @error('income')
+                                                                                    <div class="invalid-feedback d-block">
+                                                                                        {{ $message }}</div>
+                                                                                @enderror
+                                                                            </div>
+
+                                                                            <div class="form-floating mb-2 col-md-4">
+                                                                                <select
+                                                                                    class="form-select @error('housing_status') is-invalid @enderror"
+                                                                                    wire:model="housing_status">
+                                                                                    <option value="" selected>
+                                                                                        Select Housing Status
+                                                                                    </option>
+                                                                                    <option value="Owned">Owned
+                                                                                    </option>
+                                                                                    <option value="Rented">Rented
+                                                                                    </option>
+                                                                                </select>
+                                                                                <label>Housing Status *</label>
+                                                                                @error('housing_status')
+                                                                                    <div class="invalid-feedback d-block">
+                                                                                        {{ $message }}</div>
+                                                                                @enderror
+                                                                            </div>
+
+                                                                            <div class="form-floating mb-2 col-md-4">
+                                                                                <select
+                                                                                    class="form-select @error('vulnerabilities') is-invalid @enderror"
+                                                                                    wire:model="vulnerabilities">
+                                                                                    <option value="" selected>
+                                                                                        Select Vulnerabilities
+                                                                                    </option>
+                                                                                    <option value="Orphan">Orphan
+                                                                                    </option>
+                                                                                    <option value="Single Parent">
+                                                                                        Single Parent</option>
+                                                                                </select>
+                                                                                <label>Vulnerabilities *</label>
+                                                                                @error('vulnerabilities')
+                                                                                    <div class="invalid-feedback d-block">
+                                                                                        {{ $message }}</div>
+                                                                                @enderror
+                                                                            </div>
                                                                         </div>
-
-                                                                        <div class="form-floating mb-2 col-md-4">
-                                                                            <input type="number" class="form-control"
-                                                                                placeholder="household-size" />
-                                                                            <label>Household Size *</label>
-                                                                        </div>
-
-                                                                        <div class="form-floating mb-2 col-md-4">
-                                                                            <select class="form-select">
-                                                                                <option selected>
-                                                                                    PhD
-                                                                                </option>
-                                                                                <option value="BSc">
-                                                                                    BSc
-                                                                                </option>
-                                                                                <option value="Primary">
-                                                                                    Primary
-                                                                                </option>
-                                                                                <option value="Secondary">
-                                                                                    Secondary
-                                                                                </option>
-                                                                            </select>
-                                                                            <label>Education Level *</label>
-                                                                        </div>
-
-                                                                        <div class="form-floating mb-2 col-md-4">
-                                                                            <input type="number" class="form-control"
-                                                                                placeholder="income" />
-                                                                            <label>Income</label>
-                                                                        </div>
-
-                                                                        <div class="form-floating mb-2 col-md-4">
-                                                                            <select class="form-select">
-                                                                                <option selected>
-                                                                                    Owned
-                                                                                </option>
-                                                                                <option value="Rented">
-                                                                                    Rented
-                                                                                </option>
-                                                                            </select>
-                                                                            <label>Housing Status *</label>
-                                                                        </div>
-                                                                        <div class="form-floating mb-2 col-md-4">
-                                                                            <select class="form-select">
-                                                                                <option selected>
-                                                                                    Orphan
-                                                                                </option>
-                                                                                <option value="Single Parent">
-                                                                                    Single Parent
-                                                                                </option>
-                                                                            </select>
-                                                                            <label>Vulnerabilities *</label>
-                                                                        </div>
-
-
                                                                     </div>
                                                                 </div>
-                                                            </div>
-                                                            <div class="text-end">
-                                                                <button type="button" class="btn btn-secondary">
-                                                                    Close
-                                                                </button>
-                                                                <button
-                                                                    class="btn bg-secondary text-light next text-uppercase"
-                                                                    wire:click.prevent="increaseStep()">
-                                                                    Save Record
-                                                                </button>
-                                                            </div>
+
+                                                            </form>
                                                         </div>
                                                     @endif
 
@@ -443,83 +460,125 @@
 
                                                                     <div class="row g-2 mt-3">
                                                                         <div class="form-floating mb-2 col-md-4">
-                                                                            <select class="form-select">
-                                                                                <option selected>
-                                                                                    Open this select menu
-                                                                                </option>
+                                                                            <select
+                                                                                class="form-select @error('type_of_assistance') is-invalid @enderror"
+                                                                                wire:model="type_of_assistance">
+                                                                                <option value="" selected>Open
+                                                                                    this
+                                                                                    select menu</option>
                                                                                 <option value="Medical">Medical
                                                                                 </option>
                                                                                 <option value="Educational">Educational
                                                                                 </option>
                                                                                 <option value="Financial">Financial
                                                                                 </option>
-                                                                                <option value="Primary">
-                                                                                    Primary
+                                                                                <option value="Primary">Primary
                                                                                 </option>
                                                                             </select>
                                                                             <label>Type of Assistance Required *</label>
+                                                                            @error('type_of_assistance')
+                                                                                <div class="invalid-feedback d-block">
+                                                                                    {{ $message }}</div>
+                                                                            @enderror
                                                                         </div>
 
                                                                         <div class="form-floating mb-2 col-md-4">
-                                                                            <input type="text" class="form-control"
-                                                                                placeholder="Previous Assistance Received" />
+                                                                            <input type="text"
+                                                                                class="form-control @error('previous_assistance') is-invalid @enderror"
+                                                                                placeholder="Previous Assistance Received"
+                                                                                wire:model="previous_assistance" />
                                                                             <label>Previous Assistance Received (If
                                                                                 any)</label>
+                                                                            @error('previous_assistance')
+                                                                                <div class="invalid-feedback d-block">
+                                                                                    {{ $message }}</div>
+                                                                            @enderror
                                                                         </div>
 
                                                                         <div class="form-floating mb-2 col-md-4">
-                                                                            <select class="form-select">
-                                                                                <option selected>
-                                                                                    Open this select menu
-                                                                                </option>
-                                                                                <option value="chronic illness">chronic
-                                                                                    illness</option>
+                                                                            <select
+                                                                                class="form-select @error('health_status') is-invalid @enderror"
+                                                                                wire:model="health_status">
+                                                                                <option value="" selected>Open
+                                                                                    this
+                                                                                    select menu</option>
+                                                                                <option value="chronic illness">Chronic
+                                                                                    Illness</option>
                                                                                 <option value="Health">Health</option>
-                                                                                Primary
+                                                                                <option value="Primary">Primary
                                                                                 </option>
                                                                             </select>
                                                                             <label>Health Status *</label>
+                                                                            @error('health_status')
+                                                                                <div class="invalid-feedback d-block">
+                                                                                    {{ $message }}</div>
+                                                                            @enderror
                                                                         </div>
+
                                                                         <div class="form-floating mb-2 col-md-4">
-                                                                            <input type="text" class="form-control"
-                                                                                placeholder="Skills or Training Needed" />
+                                                                            <input type="text"
+                                                                                class="form-control @error('skills_or_training') is-invalid @enderror"
+                                                                                placeholder="Skills or Training Needed"
+                                                                                wire:model="skills_or_training" />
                                                                             <label>Skills or Training Needed *</label>
+                                                                            @error('skills_or_training')
+                                                                                <div class="invalid-feedback d-block">
+                                                                                    {{ $message }}</div>
+                                                                            @enderror
                                                                         </div>
 
                                                                         <div class="form-floating mb-2 col-md-4">
-                                                                            <input type="text" class="form-control"
-                                                                                placeholder="Geographical Location" />
-                                                                            <label>Geographical Location*</label>
+                                                                            <input type="text"
+                                                                                class="form-control @error('geographical_location') is-invalid @enderror"
+                                                                                placeholder="Geographical Location"
+                                                                                wire:model="geographical_location" />
+                                                                            <label>Geographical Location *</label>
+                                                                            @error('geographical_location')
+                                                                                <div class="invalid-feedback d-block">
+                                                                                    {{ $message }}</div>
+                                                                            @enderror
                                                                         </div>
+
                                                                         <div class="form-floating mb-2 col-md-4">
-                                                                            <input type="text" class="form-control"
-                                                                                placeholder="Ethnicity/Tribe" />
-                                                                            <label>Ethnicity/Tribe </label>
+                                                                            <input type="text"
+                                                                                class="form-control @error('ethnicity_tribe') is-invalid @enderror"
+                                                                                placeholder="Ethnicity/Tribe"
+                                                                                wire:model="ethnicity_tribe" />
+                                                                            <label>Ethnicity/Tribe</label>
+                                                                            @error('ethnicity_tribe')
+                                                                                <div class="invalid-feedback d-block">
+                                                                                    {{ $message }}</div>
+                                                                            @enderror
                                                                         </div>
+
                                                                         <div class="form-floating mb-2 col-md-4">
-                                                                            <input type="text" class="form-control"
-                                                                                placeholder="Religion" />
+                                                                            <input type="text"
+                                                                                class="form-control @error('religion') is-invalid @enderror"
+                                                                                placeholder="Religion"
+                                                                                wire:model="religion" />
                                                                             <label>Religion</label>
-                                                                        </div>
-                                                                        <div class="form-floating mb-2 col-md-8">
-                                                                            <input type="text" class="form-control"
-                                                                                placeholder="Referring Organization" />
-                                                                            <label>Referring Organization</label>
+                                                                            @error('religion')
+                                                                                <div class="invalid-feedback d-block">
+                                                                                    {{ $message }}</div>
+                                                                            @enderror
                                                                         </div>
 
+                                                                        <div class="form-floating mb-2 col-md-8">
+                                                                            <input type="text"
+                                                                                class="form-control @error('referring_organization') is-invalid @enderror"
+                                                                                placeholder="Referring Organization"
+                                                                                wire:model="referring_organization" />
+                                                                            <label>Referring Organization</label>
+                                                                            @error('referring_organization')
+                                                                                <div class="invalid-feedback d-block">
+                                                                                    {{ $message }}</div>
+                                                                            @enderror
+                                                                        </div>
                                                                     </div>
+
                                                                 </div>
                                                             </div>
-                                                            <div class="text-end">
-                                                                <button type="button" class="btn btn-secondary">
-                                                                    Close
-                                                                </button>
-                                                                <button
-                                                                    class="btn bg-secondary text-light next text-uppercase"
-                                                                    wire:click.prevent="increaseStep()">
-                                                                    Save Record
-                                                                </button>
-                                                            </div>
+
                                                         </div>
                                                     @endif
 
@@ -529,41 +588,39 @@
                                                             id="step4">
                                                             <div class="card bg-body mb-2">
                                                                 <div class="card-body">
-                                                                    <h6 class="card-title mb-1">
-                                                                        Data Review
-                                                                    </h6>
+                                                                    <h6 class="card-title mb-1">Data Review</h6>
                                                                     <div class="row g-2 mt-3">
-
                                                                         <div class="card-body border-bottom">
                                                                             <div
                                                                                 class="d-flex align-items-md-start align-items-center flex-column flex-md-row">
-                                                                                <img src="{{ asset('img/profile_av.png') }}"
-                                                                                    alt="" class="rounded-4">
+                                                                                <img src="{{ $profile_photo_path ? $profile_photo_path->temporaryUrl() : asset('img/profile_av.png') }}"
+                                                                                    alt="" class="rounded-4"
+                                                                                    width="250" height="250">
                                                                                 <div
                                                                                     class="media-body ms-md-5 m-0 mt-4 mt-md-0 text-md-start text-center">
-                                                                                    <h4 class="mb-1 fw-light">Godsent
-                                                                                        Maxwell</h4>
-                                                                                    <p>beneficiary@email.com</p>
-                                                                                    <span class="text-muted">100 main
-                                                                                        street, Gwarinpa Estate, Gimbya
-                                                                                        Street, Phase 4 Madalla.</span>
+                                                                                    <h4 class="mb-1 fw-light">
+                                                                                        {{ $first_name }}
+                                                                                        {{ $last_name }}</h4>
+                                                                                    <p>{{ $email }}</p>
+                                                                                    <span
+                                                                                        class="text-muted">{{ $home_address }}</span>
                                                                                     <div
                                                                                         class="d-flex flex-row flex-wrap align-items-center justify-content-center justify-content-md-start">
                                                                                         <div
-                                                                                            class=" py-2 px-3 me-2 mt-2">
+                                                                                            class="py-2 px-3 me-2 mt-2">
                                                                                             <small
                                                                                                 class="text-muted">Date
                                                                                                 of Birth</small>
-                                                                                            <div class="fs-5">22
-                                                                                                Sept,
-                                                                                                2004</div>
+                                                                                            <div class="fs-5">
+                                                                                                {{ \Carbon\Carbon::parse($date_of_birth)->format('d M, Y') }}
+                                                                                            </div>
                                                                                         </div>
                                                                                         <div
                                                                                             class="py-2 px-3 me-2 mt-2">
                                                                                             <small
                                                                                                 class="text-muted">Phone</small>
                                                                                             <div class="fs-5">
-                                                                                                345676245
+                                                                                                {{ $phone_number }}
                                                                                             </div>
                                                                                         </div>
                                                                                         <div
@@ -571,21 +628,24 @@
                                                                                             <small
                                                                                                 class="text-muted">Marital
                                                                                                 Status</small>
-                                                                                            <div class="fs-5">Married
+                                                                                            <div class="fs-5">
+                                                                                                {{ $marital_status }}
                                                                                             </div>
                                                                                         </div>
                                                                                         <div
                                                                                             class="py-2 px-3 me-2 mt-2">
                                                                                             <small
                                                                                                 class="text-muted">Nationality</small>
-                                                                                            <div class="fs-5">Nigeria
+                                                                                            <div class="fs-5">
+                                                                                                {{ $this->getNationalityName($nationality_id) }}
                                                                                             </div>
                                                                                         </div>
                                                                                         <div
                                                                                             class="py-2 px-3 me-2 mt-2">
                                                                                             <small
                                                                                                 class="text-muted">Tribe/Ethnicity</small>
-                                                                                            <div class="fs-5">Hausa
+                                                                                            <div class="fs-5">
+                                                                                                {{ $ethnicity_tribe }}
                                                                                             </div>
                                                                                         </div>
                                                                                         <div
@@ -593,128 +653,121 @@
                                                                                             <small
                                                                                                 class="text-muted">Primary
                                                                                                 Language</small>
-                                                                                            <div class="fs-5">Yoruba,
-                                                                                                english</div>
+                                                                                            <div class="fs-5">
+                                                                                                {{ $this->getLanguageName($language_id) }}
+                                                                                            </div>
                                                                                         </div>
+                                                                                    </div>
 
-
-                                                                                        <div
-                                                                                            class="card-body table-responsive p-0">
-                                                                                            <br>
-                                                                                            <br>
-                                                                                            <table
-                                                                                                class="table card-table mb-0">
-
-                                                                                                <tbody>
-                                                                                                    <tr>
-                                                                                                        <td>Disability?
-                                                                                                        </td>
-                                                                                                        <td>No</td>
-                                                                                                    </tr>
-                                                                                                    <tr>
-                                                                                                        <td>Disability
-                                                                                                            Type
-                                                                                                        </td>
-                                                                                                        <td>N/A</td>
-                                                                                                    </tr>
-                                                                                                    <tr>
-                                                                                                        <td>Emergency
-                                                                                                            Contact</td>
-                                                                                                        <td>Daniella
-                                                                                                            Musa
-                                                                                                        </td>
-                                                                                                    </tr>
-                                                                                                    <tr>
-                                                                                                        <td>Emergency
-                                                                                                            Phone
-                                                                                                        </td>
-                                                                                                        <td>234657865
-                                                                                                        </td>
-                                                                                                    </tr>
-                                                                                                    <tr>
-                                                                                                        <td>Relationship:
-                                                                                                        </td>
-                                                                                                        <td>Uncle</td>
-                                                                                                    </tr>
-                                                                                                    <tr>
-                                                                                                        <td>Housing
-                                                                                                            Status
-                                                                                                        </td>
-                                                                                                        <td>Rented</td>
-                                                                                                    </tr>
-                                                                                                    <tr>
-                                                                                                        <td>Occupation/Source
-                                                                                                            of Income:
-                                                                                                        </td>
-                                                                                                        <td>Trader</td>
-                                                                                                    </tr>
-                                                                                                    <tr>
-                                                                                                        <td>Income </td>
-                                                                                                        <td>6,000</td>
-                                                                                                    </tr>
-                                                                                                    <tr>
-                                                                                                        <td>Household
-                                                                                                            Size:
-                                                                                                        </td>
-                                                                                                        <td>21</td>
-                                                                                                    </tr>
-                                                                                                    <tr>
-                                                                                                        <td>Education
-                                                                                                            Level
-                                                                                                        </td>
-                                                                                                        <td>Primary</td>
-                                                                                                    </tr>
-                                                                                                    <tr>
-                                                                                                        <td>Vulnerability
-                                                                                                        </td>
-                                                                                                        <td>Single
-                                                                                                            Parent
-                                                                                                        </td>
-                                                                                                    </tr>
-                                                                                                    <tr>
-                                                                                                        <td>Assistance
-                                                                                                            Required:
-                                                                                                        </td>
-                                                                                                        <td>Financial
-                                                                                                        </td>
-                                                                                                    </tr>
-                                                                                                    <tr>
-                                                                                                        <td>Previous
-                                                                                                            Assistance
-                                                                                                            Received:
-                                                                                                        </td>
-                                                                                                        <td>Medical</td>
-                                                                                                    </tr>
-                                                                                                    <tr>
-                                                                                                        <td>Health
-                                                                                                            Status:
-                                                                                                        </td>
-                                                                                                        <td>Diabetic
-                                                                                                        </td>
-                                                                                                    </tr>
-                                                                                                    <tr>
-                                                                                                        <td>Skills/Training
-                                                                                                            Needed </td>
-                                                                                                        <td>N/A</td>
-                                                                                                    </tr>
-                                                                                                    <tr>
-                                                                                                        <td>Geographic
-                                                                                                            Location
-                                                                                                        </td>
-                                                                                                        <td>Diabetic
-                                                                                                        </td>
-                                                                                                    </tr>
-                                                                                                    <tr>
-                                                                                                        <td>Referring
-                                                                                                            Organization
-                                                                                                        </td>
-                                                                                                        <td>T & T Global
-                                                                                                            Concepts
-                                                                                                        </td>
-                                                                                                    </tr>
-                                                                                                </tbody>
-                                                                                            </table>
-                                                                                        </div>
+                                                                                    <div
+                                                                                        class="card-body table-responsive p-0">
+                                                                                        <table
+                                                                                            class="table card-table mb-0">
+                                                                                            <tbody>
+                                                                                                <tr>
+                                                                                                    <td>Disability?</td>
+                                                                                                    <td>{{ $disability_status === 'yes' ? 'Yes' : 'No' }}
+                                                                                                    </td>
+                                                                                                </tr>
+                                                                                                <tr>
+                                                                                                    <td>Disability Type
+                                                                                                    </td>
+                                                                                                    <td>{{ $disability_status === 'yes' ? $type_of_disability : 'N/A' }}
+                                                                                                    </td>
+                                                                                                </tr>
+                                                                                                <tr>
+                                                                                                    <td>Emergency
+                                                                                                        Contact</td>
+                                                                                                    <td>{{ $full_name }}
+                                                                                                    </td>
+                                                                                                </tr>
+                                                                                                <tr>
+                                                                                                    <td>Emergency Phone
+                                                                                                    </td>
+                                                                                                    <td>{{ $telephone }}
+                                                                                                    </td>
+                                                                                                </tr>
+                                                                                                <tr>
+                                                                                                    <td>Relationship
+                                                                                                    </td>
+                                                                                                    <td>{{ $this->getRelationshipName($relationship_id) }}
+                                                                                                    </td>
+                                                                                                </tr>
+                                                                                                <tr>
+                                                                                                    <td>Housing Status
+                                                                                                    </td>
+                                                                                                    <td>{{ $housing_status }}
+                                                                                                    </td>
+                                                                                                </tr>
+                                                                                                <tr>
+                                                                                                    <td>Occupation/Source
+                                                                                                        of Income</td>
+                                                                                                    <td>{{ $occupation }}
+                                                                                                    </td>
+                                                                                                </tr>
+                                                                                                <tr>
+                                                                                                    <td>Income</td>
+                                                                                                    <td>{{ $income }}
+                                                                                                    </td>
+                                                                                                </tr>
+                                                                                                <tr>
+                                                                                                    <td>Household Size
+                                                                                                    </td>
+                                                                                                    <td>{{ $household_size }}
+                                                                                                    </td>
+                                                                                                </tr>
+                                                                                                <tr>
+                                                                                                    <td>Education Level
+                                                                                                    </td>
+                                                                                                    <td>{{ $education_level }}
+                                                                                                    </td>
+                                                                                                </tr>
+                                                                                                <tr>
+                                                                                                    <td>Vulnerability
+                                                                                                    </td>
+                                                                                                    <td>{{ $vulnerabilities }}
+                                                                                                    </td>
+                                                                                                </tr>
+                                                                                                <tr>
+                                                                                                    <td>Assistance
+                                                                                                        Required</td>
+                                                                                                    <td>{{ $type_of_assistance }}
+                                                                                                    </td>
+                                                                                                </tr>
+                                                                                                <tr>
+                                                                                                    <td>Previous
+                                                                                                        Assistance
+                                                                                                        Received</td>
+                                                                                                    <td>{{ $previous_assistance }}
+                                                                                                    </td>
+                                                                                                </tr>
+                                                                                                <tr>
+                                                                                                    <td>Health Status
+                                                                                                    </td>
+                                                                                                    <td>{{ $health_status }}
+                                                                                                    </td>
+                                                                                                </tr>
+                                                                                                <tr>
+                                                                                                    <td>Skills/Training
+                                                                                                        Needed</td>
+                                                                                                    <td>{{ $skills_or_training }}
+                                                                                                    </td>
+                                                                                                </tr>
+                                                                                                <tr>
+                                                                                                    <td>Geographic
+                                                                                                        Location</td>
+                                                                                                    <td>{{ $geographical_location }}
+                                                                                                    </td>
+                                                                                                </tr>
+                                                                                                <tr>
+                                                                                                    <td>Referring
+                                                                                                        Organization
+                                                                                                    </td>
+                                                                                                    <td>{{ $referring_organization }}
+                                                                                                    </td>
+                                                                                                </tr>
+                                                                                            </tbody>
+                                                                                        </table>
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
@@ -722,19 +775,36 @@
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                            <div class="text-end">
-                                                                <button type="button" class="btn btn-secondary">
-                                                                    Print
-                                                                </button>
-                                                                <button
-                                                                    class="btn bg-secondary text-light next text-uppercase"
-                                                                    wire:click.prevent="increaseStep()">
-                                                                    Save Record
-                                                                </button>
-                                                            </div>
+
+
                                                         </div>
                                                     @endif
 
+                                                    <div class="text-end">
+                                                        @if ($currentStep == 2 || $currentStep == 3 || $currentStep == 4)
+                                                            <button type="button" class="btn btn-secondary"
+                                                                wire:click.prevent="decreaseStep()">
+                                                                Prev
+                                                            </button>
+                                                        @endif
+
+                                                        @if ($currentStep == 1 || $currentStep == 2 || $currentStep == 3)
+                                                            <button
+                                                                class="btn bg-secondary text-light next text-uppercase"
+                                                                wire:click.prevent="increaseStep()">
+                                                                Next
+                                                            </button>
+                                                        @endif
+
+                                                        @if ($currentStep == 4)
+                                                            <button
+                                                                class="btn bg-secondary text-light next text-uppercase"
+                                                                wire:click.prevent="save()">
+                                                                Save Record
+                                                            </button>
+                                                        @endif
+
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
