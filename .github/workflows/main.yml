@@ -14,18 +14,9 @@ jobs:
           php-version: "8.2"
           extensions: mbstring, pdo, mysql
 
-      - name: Run database migrations
-        env:
-          DB_CONNECTION: mysql
-          DB_HOST: ${{ secrets.DB_HOST }}
-          DB_DATABASE: ${{ secrets.DB_DATABASE }}
-          DB_USERNAME: ${{ secrets.DB_USERNAME }}
-          DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
-        run: php artisan migrate --force
-
       - name: 📂 Sync files
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
           server: 194.163.139.142
           username: testing_fcap
-          password: ${{ secrets.auto_deploy }} # Use GitHub secret for FTP password
+          password: ${{ secrets.auto_deploy }}
