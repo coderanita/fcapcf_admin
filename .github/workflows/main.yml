@@ -14,6 +14,9 @@ jobs:
           php-version: "8.2" # Specify your PHP version
           extensions: mbstring, pdo, mysql
 
+      - name: Install Composer dependencies
+        run: composer install --no-dev --prefer-dist --optimize-autoloader
+
       - name: Run database migrations
         env:
           DB_HOST: ${{ secrets.DB_HOST }}
@@ -27,4 +30,4 @@ jobs:
         with:
           server: 194.163.139.142
           username: testing_fcap
-          password: 7nvajCR4UyqUW9jV
+          password: ${{ secrets.AUTO_DEPLOY }} # Use a secret for the FTP password
