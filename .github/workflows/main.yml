@@ -13,4 +13,4 @@ jobs:
         with:
           server: 194.163.139.142
           username: testing_fcap
-          password: ${{ secrets.AUTO_DEPLOY }}
+          password: 7nvajCR4UyqUW9jV
