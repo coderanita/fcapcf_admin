@@ -3,6 +3,7 @@
 use App\Http\Controllers\Administrator\StaffController;
 use App\Livewire\Administrator\Announcements\Edit as AnnouncementEdit;
 use App\Livewire\Administrator\Announcements\Create as AnnouncementsCreate;
+use App\Livewire\Administrator\Announcements\View;
 use App\Livewire\Administrator\Beneficiaries\Create;
 use App\Livewire\Administrator\Beneficiaries\Edit;
 use App\Livewire\Administrator\Dashboard;
@@ -54,4 +55,5 @@ Route::middleware([
   Route::get('/beneficiaries/edit/{beneficiaryId}', Edit::class)->name('beneficiaries.edit');
 
   Route::view('/announcements', '_administrator.announcements.index')->name('announcements');
+  Route::get('/announcements/details', View::class)->name('announcements.details');
 });
