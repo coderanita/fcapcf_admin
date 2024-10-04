@@ -11,11 +11,16 @@ jobs:
       - name: 🔧 Set up PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: '8.2'  # Specify your PHP version
+          php-version: "8.2" # Specify your PHP version
           extensions: mbstring, pdo, mysql
 
-      - name: Install dependencies via Composers
-        run: composer install
+      - name: Run database migrations
+        env:
+          DB_HOST: ${{ secrets.DB_HOST }}
+          DB_DATABASE: ${{ secrets.DB_DATABASE }}
+          DB_USERNAME: ${{ secrets.DB_USERNAME }}
+          DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
+        run: php artisan migrate --force
 
       - name: 📂 Sync files
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
