@@ -14,7 +14,7 @@ jobs:
           php-version: '8.2'  # Specify your PHP version
           extensions: mbstring, pdo, mysql
 
-      - name: Install dependencies via Composer
+      - name: Install dependencies via Composers
         run: composer install
 
       - name: 📂 Sync files
