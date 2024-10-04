@@ -11,7 +11,7 @@ jobs:
       - name: 🔧 Set up PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: '8.2'  # Specify your PHP version
+          php-version: "8.2" # Specify your PHP version
           extensions: mbstring, pdo, mysql
 
       - name: 📂 Sync files
@@ -19,4 +19,4 @@ jobs:
         with:
           server: 194.163.139.142
           username: testing_fcap
-          password: 7nvajCR4UyqUW9jV
+          password: ${{ secrets.AUTO_DEPLOY }}
