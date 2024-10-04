@@ -180,10 +180,11 @@ class Create extends Component
             'referring_organization' => $this->referring_organization,
         ]);
 
-        $this->dispatch('alert', [
-            'msg' => 'New Beneficiary Added!',
-            'type' => 'success'
-        ]);
+        $this->dispatch(
+            'alert',
+            msg: 'New Beneficiary Added!',
+            type: 'success'
+        );
 
         $this->reset();
     }

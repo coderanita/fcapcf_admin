@@ -238,10 +238,11 @@ class Edit extends Component
             ]);
         }
 
-        $this->dispatch('alert', [
-            'msg' => 'Beneficiary Updated Successfully!',
-            'type' => 'success'
-        ]);
+        $this->dispatch(
+            'alert',
+            msg: 'Beneficiary Updated Successfully!',
+            type: 'success'
+        );
 
         $this->currentStep = 1;
     }

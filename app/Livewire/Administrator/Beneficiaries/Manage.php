@@ -13,10 +13,11 @@ class Manage extends Component
         $beneficiary = Beneficiary::findOrFail($beneficiaryId);
         $beneficiary->delete();
 
-        $this->dispatch('alert', [
-            'msg' => 'Beneficiary deleted successfully!',
-            'type' => 'success'
-        ]);
+        $this->dispatch(
+            'alert',
+            msg: 'Beneficiary deleted successfully!',
+            type: 'success'
+        );
     }
 
     public function render()
