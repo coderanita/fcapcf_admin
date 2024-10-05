@@ -8,6 +8,6 @@ class Manage extends Component
 {
     public function render()
     {
-        return view('administrator.projects.manage');
+        return view('_administrator.projects.manage');
     }
 }

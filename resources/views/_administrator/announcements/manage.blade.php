@@ -27,14 +27,15 @@
                         <div class="form-check mb-0">
                             <input class="form-check-input" type="checkbox" value="">
                         </div>
-                        <a href="{{route('administrator.announcements.details')}}" class="ms-2 me-3"><i class="fa fa-star"></i></a>
+                        <a href="{{ route('administrator.announcements.details', $announcement) }}" class="ms-2 me-3"><i
+                                class="fa fa-star"></i></a>
                     </div>
                 </div>
                 <div class="col col-md-9 col-xxl-10">
                     <div class="row">
                         <div class="col-md-4 col-xl-4 col-xxl-3 mb-1 mb-md-0">
-                            <a href="{{route('administrator.announcements.details')}}" class="d-flex text-primary text-truncate"
-                                title="">
+                            <a href="{{ route('administrator.announcements.details', $announcement) }}"
+                                class="d-flex text-primary text-truncate" title="">
                                 <div class="ms-2 mb-0">{{ $announcement->to }}</div>
                             </a>
                         </div>

@@ -2,12 +2,17 @@
 
 namespace App\Livewire\Administrator\AuditLogs;
 
+use App\Models\AuditLog;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class Index extends Component
 {
+    use WithPagination;
+
     public function render()
     {
-        return view('administrator.audit-logs.index');
+        $logs = AuditLog::with('user')->paginate(10);
+        return view('_administrator.audit-logs.index', ['logs' => $logs]);
     }
 }
