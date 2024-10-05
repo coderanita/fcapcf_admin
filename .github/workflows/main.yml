@@ -14,11 +14,11 @@ jobs:
           php-version: "8.2"
           extensions: mbstring, pdo, mysql
 
-      - name: Install Composer dependencies
-        run: composer install --no-dev --prefer-dist --optimize-autoloader
+      # - name: Install Composer dependencies
+      #   run: composer install --no-dev --prefer-dist --optimize-autoloader
 
-      - name: Run database migrations
-        run: php artisan migrate --force
+      # - name: Run database migrations
+      #   run: php artisan migrate --force
 
       #- name: Run Storage Link
       #  run: php artisan storage:link
@@ -27,5 +27,5 @@ jobs:
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
           server: 194.163.139.142
-          username: testing_fcap
+          username: console_fcap #testing_fcap
           password: ${{ secrets.auto_deploy }}

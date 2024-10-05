@@ -2,7 +2,9 @@
 
 namespace App\Observers;
 
+use App\Models\AuditLog;
 use App\Models\Beneficiary;
+use Illuminate\Support\Facades\Auth;
 
 class BeneficiaryObserver
 {
@@ -11,7 +13,12 @@ class BeneficiaryObserver
      */
     public function created(Beneficiary $beneficiary): void
     {
-        //
+        AuditLog::create([
+            'user_id' =>  Auth::user()->id,
+            'module' =>  'Beneficiary',
+            'description' =>  'Added new beneficiary ' . $beneficiary->first_name . ' ' . $beneficiary->last_name,
+            'action' =>  'New',
+        ]);
     }
 
     /**
@@ -19,7 +26,12 @@ class BeneficiaryObserver
      */
     public function updated(Beneficiary $beneficiary): void
     {
-        //
+        AuditLog::create([
+            'user_id' =>  Auth::user()->id,
+            'module' =>  'Beneficiary',
+            'description' =>  'Update beneficiary details of ' . $beneficiary->first_name . ' ' . $beneficiary->last_name,
+            'action' =>  'Update',
+        ]);
     }
 
     /**
@@ -27,7 +39,13 @@ class BeneficiaryObserver
      */
     public function deleted(Beneficiary $beneficiary): void
     {
-        //
+        AuditLog::create([
+            'user_id' =>  Auth::user()->id,
+            'module' =>  'Beneficiary',
+            'description' =>  'Delete beneficiary ' . $beneficiary->first_name . ' ' . $beneficiary->last_name,
+            'action' =>  'Delete',
+        ]);
+    
     }
 
     /**

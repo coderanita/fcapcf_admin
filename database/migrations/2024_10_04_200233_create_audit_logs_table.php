@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('audit_logs', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('user_id');
+            $table->string('module');
+            $table->string('description');
+            $table->string('action');
             $table->timestamps();
         });
     }
