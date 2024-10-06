@@ -13,7 +13,8 @@
                                 <li class="nav-item"><a class="nav-link active" href="app-project.html#"
                                         data-bs-toggle="tab" data-bs-target="#project_all" role="tab"><i
                                             class="fa fa-tasks"></i><span>All Project</span><span
-                                            class="badge bg-light text-dark ms-2 ms-auto">18</span></a></li>
+                                            class="badge bg-light text-dark ms-2 ms-auto">{{ count($projects) }}</span></a>
+                                </li>
                                 {{-- <li class="nav-item"><a class="nav-link" href="app-project.html#" data-bs-toggle="tab"
                                         data-bs-target="#project_progress" role="tab"><i
                                             class="fa fa-product-hunt"></i><span>In Progress</span><span
@@ -99,8 +100,8 @@
                                                             </li>
                                                             <li
                                                                 class="list-inline-item card py-2 px-xxl-3 px-xl-2 px-3">
-                                                                <h6 class="mb-0">{{ $project->region->name }},
-                                                                    {{ $project->state->name }}</h6>
+                                                                <h6 class="mb-0">{{ $project->region->name ?? '' }},
+                                                                    {{ $project->state->name ?? '' }}</h6>
                                                                 <small
                                                                     class="text-uppercase text-muted">Region/State</small>
                                                             </li>
@@ -171,8 +172,9 @@
                                                                 </li>
                                                                 <li
                                                                     class="list-inline-item card py-2 px-xxl-3 px-xl-2 px-3">
-                                                                    <h6 class="mb-0">{{ $project->region->name }}
-                                                                    </h6>
+                                                                    <h6 class="mb-0">
+                                                                        {{ $project->region->name ?? '' }},
+                                                                        {{ $project->state->name ?? '' }}</h6>
                                                                     <small
                                                                         class="text-uppercase text-muted">Region/State</small>
                                                                 </li>

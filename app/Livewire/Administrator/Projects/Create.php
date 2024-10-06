@@ -18,6 +18,7 @@ class Create extends Component
 
     use WithFileUploads;
 
+    public $project;
     public $totalStep = 5;
     public $currentStep = 1;
     public $users = [];
@@ -72,7 +73,7 @@ class Create extends Component
         'required' => 'This field is required.',
     ];
 
-    public function validateData()
+    public function validateData($step = null)
     {
         if ($this->currentStep == 1) {
             $this->validate([
@@ -123,10 +124,14 @@ class Create extends Component
 
     public function decreaseStep()
     {
-        $this->currentStep--;
-        if ($this->currentStep < 1) {
-            $this->currentStep = 1;
-        }
+        // $this->currentStep--;
+        // if ($this->currentStep < 1) {
+        //     $this->currentStep = 1;
+        // }
+
+        $this->dispatch('modalClosed');
+
+        $this->reset();
     }
 
     public function updatedInviteTeam()
@@ -190,21 +195,16 @@ class Create extends Component
 
     public function create()
     {
+        $this->reset();
+
         $this->dispatch('modalOpened');
     }
 
     public function save()
     {
-        // $filePaths = [];
+        $this->validateStepTwo();
 
-        // // Check if files are uploaded
-        // if ($this->files) {
-        //     foreach ($this->files as $file) {
-        //         // Store the file in the 'projects' folder and get the stored path
-        //         $path = $file->store('projects', 'public');
-        //         $filePaths[] = $path; // Add the file path to the array
-        //     }
-        // }
+        $this->currentStep = 5;
 
         $teamMemberIds = [];
         if ($this->teamMembers) {
@@ -214,7 +214,7 @@ class Create extends Component
         }
 
         // Create the project with all fields
-        Project::create([
+        $this->project = Project::create([
             'plan' => $this->selectedPlan,
             'region_id' => $this->selectedRegion,
             'country_id' => $this->selectedCountry,
@@ -232,10 +232,44 @@ class Create extends Component
             'files' => json_encode($this->uploadedFiles), // Convert the file paths array to JSON
         ]);
 
-        $this->dispatch('modalClosed');
         $this->dispatch('re-render-projects');
+    }
 
-        $this->reset();
+    public function viewProject()
+    {
+        if (empty($this->project->id)) {
+            $this->validateStepTwo();
+        }
+
+        return $this->redirect('/administrator/projects/details/' . $this->project->id, navigate: true);
+    }
+
+    public function validateStepTwo()
+    {
+        if (
+            empty($this->selectedRegion) || empty($this->selectedCountry)
+            || empty($this->selectedState) || empty($this->projectName) || empty($this->projectDetail) || empty($this->start_date)
+            || empty($this->end_date) || empty($this->projectCost) || empty($this->projectTarget) || empty($this->projectStatus)
+        ) {
+            $this->currentStep = 2;
+            $this->validate([
+                'selectedRegion' => 'required',
+                'selectedCountry' => 'required',
+                'selectedState' => 'required',
+                'projectName' => 'required',
+                'projectDetail' => 'required',
+                'start_date' => 'required',
+                'end_date' => 'required',
+                'projectCost' => 'required',
+                'projectTarget' => 'required',
+                'projectStatus' => 'required',
+            ], [
+                'selectedRegion.required' => 'Please select a region.',
+                'selectedCountry.required' => 'Please select a country.',
+                'selectedState.required' => 'Please select a state.',
+            ]);
+            return true;
+        }
     }
 
     public function render()

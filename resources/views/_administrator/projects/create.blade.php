@@ -443,13 +443,16 @@
                                             project</span>
                                     </div>
                                     <div class="card-body">
-                                        <button class="btn btn-lg btn-primary first text-uppercase">Cretae new
+                                        <button class="btn btn-lg btn-primary first text-uppercase"
+                                            wire:click="create">Create new
                                             project</button>
-                                        <button class="btn btn-lg bg-secondary text-light text-uppercase">View
+                                        <button class="btn btn-lg bg-secondary text-light text-uppercase"
+                                            wire:click="viewProject">View
                                             project</button>
                                     </div>
                                     <div class="card-body">
-                                        <img class="img-fluid" src="assets/img/project-team.svg" alt="" />
+                                        <img class="img-fluid" src="{{ asset('img/project-team.svg') }}"
+                                            alt="" />
                                     </div>
                                 </div>
                             </div>
@@ -457,24 +460,35 @@
 
                         @if ($currentStep < 5)
                             <div class="text-end">
-                                @if ($currentStep == 2 || $currentStep == 3 || $currentStep == 4)
-                                    <button type="button" class="btn btn-secondary"
-                                        wire:click.prevent="decreaseStep()">
-                                        Prev
+                                <button type="button" class="btn btn-secondary" wire:click.prevent="decreaseStep()">
+                                    CLOSE
+                                </button>
+
+                                @if ($currentStep == 1)
+                                    <button class="btn bg-secondary text-light next text-uppercase"
+                                        wire:click.prevent="increaseStep()">
+                                        ADD PROJECT DETAILS
                                     </button>
                                 @endif
 
-                                @if ($currentStep == 1 || $currentStep == 2 || $currentStep == 3)
+                                @if ($currentStep == 2)
                                     <button class="btn bg-secondary text-light next text-uppercase"
                                         wire:click.prevent="increaseStep()">
-                                        Next
+                                        SELECT PROJECT TEAM
+                                    </button>
+                                @endif
+
+                                @if ($currentStep == 3)
+                                    <button class="btn bg-secondary text-light next text-uppercase"
+                                        wire:click.prevent="increaseStep()">
+                                        UPLOAD FILES
                                     </button>
                                 @endif
 
                                 @if ($currentStep == 4)
                                     <button class="btn bg-secondary text-light next text-uppercase"
                                         wire:click.prevent="save()">
-                                        Save Record
+                                        FINISH
                                     </button>
                                 @endif
 
