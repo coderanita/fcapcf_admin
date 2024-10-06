@@ -22,6 +22,10 @@ class Create extends Component
     public $currentStep = 1;
     public $users = [];
 
+    public $title;
+    public $sub_title;
+    public $details;
+
     // Step 1
     public $selectedPlan = 'Personal';
 
@@ -47,8 +51,9 @@ class Create extends Component
     public $searchResults = [];
 
     public $files = [];
+    public $uploadedFiles = [];
 
-    public function mount()
+    public function mount($title = null, $sub_title = null, $details = false)
     {
         // Load all users initially
         $this->users = User::select(
@@ -57,6 +62,10 @@ class Create extends Component
             'profile_photo_path AS avatar',
             'id'
         )->get()->toArray();
+
+        $this->title = $title ?? '';
+        $this->sub_title = $sub_title ?? 'FCAPCF Projects';
+        $this->details = $details ?? '';
     }
 
     protected $messages = [
@@ -166,6 +175,18 @@ class Create extends Component
         }
     }
 
+    public function updatedFiles()
+    {
+        foreach ($this->files as $file) {
+            $filePath = $file->store('uploads'); // Store file in the 'uploads' directory
+            $this->uploadedFiles[] = [
+                'name' => $file->getClientOriginalName(),
+                'size' => number_format($file->getSize() / 1048576, 2),
+                'path' => $filePath,
+                'created_at' => NOW(),
+            ];
+        }
+    }
 
     public function create()
     {
@@ -174,16 +195,16 @@ class Create extends Component
 
     public function save()
     {
-        $filePaths = [];
+        // $filePaths = [];
 
-        // Check if files are uploaded
-        if ($this->files) {
-            foreach ($this->files as $file) {
-                // Store the file in the 'projects' folder and get the stored path
-                $path = $file->store('projects', 'public');
-                $filePaths[] = $path; // Add the file path to the array
-            }
-        }
+        // // Check if files are uploaded
+        // if ($this->files) {
+        //     foreach ($this->files as $file) {
+        //         // Store the file in the 'projects' folder and get the stored path
+        //         $path = $file->store('projects', 'public');
+        //         $filePaths[] = $path; // Add the file path to the array
+        //     }
+        // }
 
         $teamMemberIds = [];
         if ($this->teamMembers) {
@@ -208,11 +229,13 @@ class Create extends Component
             'allow_phone' => $this->allowPhone ?? false,
             'allow_email' => $this->allowEmail ?? false,
             'invited_teams' => json_encode($teamMemberIds), // Convert array to JSON if needed
-            'files' => json_encode($filePaths), // Convert the file paths array to JSON
+            'files' => json_encode($this->uploadedFiles), // Convert the file paths array to JSON
         ]);
 
         $this->dispatch('modalClosed');
         $this->dispatch('re-render-projects');
+
+        $this->reset();
     }
 
     public function render()

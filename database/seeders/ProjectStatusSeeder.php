@@ -15,18 +15,26 @@ class ProjectStatusSeeder extends Seeder
     {
         ProjectStatus::create([
             'name' => "Pending",
+            'icon' => "fa fa-clock-o",
+            'target' => "pending",
         ]);
 
         ProjectStatus::create([
             'name' => "In-Progress",
+            'icon' => "fa fa-product-hunt",
+            'target' => "in_progress",
         ]);
 
         ProjectStatus::create([
             'name' => "Suspended",
+            'icon' => "fa fa-ban",
+            'target' => "suspended",
         ]);
 
         ProjectStatus::create([
             'name' => "Completed",
+            'icon' => "fa fa-check-circle",
+            'target' => "completed",
         ]);
     }
 }

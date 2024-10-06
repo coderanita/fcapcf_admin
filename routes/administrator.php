@@ -9,6 +9,7 @@ use App\Livewire\Administrator\Beneficiaries\Create;
 use App\Livewire\Administrator\Beneficiaries\Edit;
 use App\Livewire\Administrator\Dashboard;
 use App\Livewire\Administrator\Projects\Manage;
+use App\Livewire\Administrator\Projects\View as ProjectsView;
 use App\Livewire\Administrator\Roles\ShowRole;
 use Illuminate\Support\Facades\Route;
 use App\Livewire\Administrator\Users\ShowUsers;
@@ -62,5 +63,5 @@ Route::middleware([
   Route::get('/audit-logs', Index::class)->name('audit.logs');
 
   Route::get('/projects', Manage::class)->name('projects');
-  Route::get('/projects/details', Manage::class)->name('project');
+  Route::get('/projects/details/{project}', ProjectsView::class)->name('project.details');
 });

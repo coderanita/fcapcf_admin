@@ -1,5 +1,15 @@
 <div>
-    <x-breadcrumb title="" sub_title="FCAPCF Projects">
+    <x-breadcrumb :title="$title" :sub_title="$sub_title">
+
+        @if ($details)
+            <x-slot name="ol_breadcrumbs">
+                <ol class="breadcrumb mb-2">
+                    <li class="breadcrumb-item"><a href="app-project.html">Project</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Detail</li>
+                </ol>
+            </x-slot>
+        @endif
+
         <x-slot name="page_action">
             <div class="page-action">
                 <!-- btn:: create new project -->
@@ -396,23 +406,28 @@
                                             <label class="form-label small">Upload up to 10 files</label>
                                             <input class="form-control" type="file" wire:model="files" multiple>
                                         </div>
-                                        <span>Already Uploaded File</span>
+
+                                        <span>Already Uploaded Files</span>
                                         <ul class="list-group list-group-flush list-group-custom custom_scroll mb-0 mt-4"
                                             style="height: 300px;">
-                                            <li class="list-group-item py-3">
-                                                <div class="d-flex align-items-center">
-                                                    <div class="avatar rounded no-thumbnail"><i
-                                                            class="fa fa-file-pdf-o text-danger"></i></div>
-                                                    <div class="flex-fill ms-3 text-truncate">
-                                                        <p class="mb-0 color-800">Annual Sales Report 2018-19</p>
-                                                        <small class="text-muted">.pdf, 5.3 MB</small>
+                                            @foreach ($uploadedFiles as $file)
+                                                <li class="list-group-item py-3">
+                                                    <div class="d-flex align-items-center">
+                                                        <div class="avatar rounded no-thumbnail">
+                                                            <i class="fa fa-file text-danger"></i>
+                                                        </div>
+                                                        <div class="flex-fill ms-3 text-truncate">
+                                                            <p class="mb-0 color-800">{{ $file['name'] }}</p>
+                                                            <small class="text-muted">{{ $file['size'] }} MB</small>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                            </li>
+                                                </li>
+                                            @endforeach
                                         </ul>
                                     </div>
                                 </div>
                             </div>
+
                         @endif
 
 
