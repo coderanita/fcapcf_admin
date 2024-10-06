@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Permission;
+use App\Models\ProjectStatus;
 use App\Models\Role;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -24,6 +25,7 @@ class DatabaseSeeder extends Seeder
       RegionSeeder::class,
       CountrySeeder::class,
       StateSeeder::class,
+      ProjectStatusSeeder::class
     ]);
 
     // User::factory(10)->create();

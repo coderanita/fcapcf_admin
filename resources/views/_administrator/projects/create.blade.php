@@ -199,9 +199,9 @@
                                                 wire:model="selectedState">
                                                 <option selected value="">Open this select menu</option>
                                                 @foreach ($states as $state)
-                                                        <option value="{{ $state->id }}">{{ $state->name }}
-                                                        </option>
-                                                    @endforeach
+                                                    <option value="{{ $state->id }}">{{ $state->name }}
+                                                    </option>
+                                                @endforeach
                                             </select>
                                             <label>Add State(s) *</label>
 
@@ -263,7 +263,7 @@
 
                                         <div style="display: flex;">
                                             <div class="form-floating mb-2 floating-col-4 m-r-10">
-                                                <input type="text"
+                                                <input type="number"
                                                     class="form-control @error('projectCost') is-invalid @enderror"
                                                     wire:model="projectCost">
                                                 <label>Project Cost *</label>
@@ -290,11 +290,11 @@
                                                 <select
                                                     class="form-select @error('projectStatus') is-invalid @enderror"
                                                     wire:model="projectStatus">
-                                                    <option selected>Open this select menu</option>
-                                                    <option value="1">Pending</option>
-                                                    <option value="2">In-Progress</option>
-                                                    <option value="2">Suspended</option>
-                                                    <option value="3">Completed</option>
+                                                    <option selected value="1">Open this select menu</option>
+                                                    @foreach ($statuses as $status)
+                                                        <option value="{{ $status->id }}">{{ $status->name }}
+                                                        </option>
+                                                    @endforeach
                                                 </select>
                                                 <label>Project Status</label>
 

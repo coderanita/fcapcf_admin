@@ -4,10 +4,12 @@ namespace App\Livewire\Administrator\Projects;
 
 use App\Models\Country;
 use App\Models\Project;
+use App\Models\ProjectStatus;
 use App\Models\ProjectTeam;
 use App\Models\Region;
 use App\Models\State;
 use App\Models\User;
+use Illuminate\Support\Facades\DB;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
@@ -18,6 +20,7 @@ class Create extends Component
 
     public $totalStep = 5;
     public $currentStep = 1;
+    public $users = [];
 
     // Step 1
     public $selectedPlan = 'Personal';
@@ -45,12 +48,16 @@ class Create extends Component
 
     public $files = [];
 
-    protected $users = [
-        ['id' => 1, 'name' => 'Chris Fox', 'email' => 'test@example.com', 'avatar' => 'img/xs/avatar1.jpg.png'],
-        ['id' => 2, 'name' => 'Jane Doe', 'email' => 'test_1@example.com', 'avatar' => 'img/xs/avatar2.jpg.png'],
-        ['id' => 3, 'name' => 'John Smith', 'email' => 'test_2@example.com', 'avatar' => 'img/xs/avatar3.jpg.png'],
-        // Add more users here
-    ];
+    public function mount()
+    {
+        // Load all users initially
+        $this->users = User::select(
+            DB::raw("CONCAT(fname, ' ', lname) AS name"),
+            'email',
+            'profile_photo_path AS avatar',
+            'id'
+        )->get()->toArray();
+    }
 
     protected $messages = [
         'required' => 'This field is required.',
@@ -197,12 +204,15 @@ class Create extends Component
             'end_date' => $this->end_date,
             'project_cost' => $this->projectCost,
             'project_target' => $this->projectTarget,
-            'status' => $this->projectStatus,
+            'project_status_id' => $this->projectStatus,
             'allow_phone' => $this->allowPhone ?? false,
             'allow_email' => $this->allowEmail ?? false,
             'invited_teams' => json_encode($teamMemberIds), // Convert array to JSON if needed
             'files' => json_encode($filePaths), // Convert the file paths array to JSON
         ]);
+
+        $this->dispatch('modalClosed');
+        $this->dispatch('re-render-projects');
     }
 
     public function render()
@@ -211,12 +221,15 @@ class Create extends Component
         $countries = Country::get();
         $states = State::get();
 
+        $statuses = ProjectStatus::get();
+
         return view(
             '_administrator.projects.create',
             [
                 'regions' => $regions,
                 'countries' => $countries,
-                'states' => $states
+                'states' => $states,
+                'statuses' => $statuses
             ]
         );
     }

@@ -26,7 +26,7 @@ return new class extends Migration
             $table->string('project_target')->nullable();
             $table->boolean('allow_phone')->default(false);
             $table->boolean('allow_email')->default(false);
-            $table->string('status')->default('In Progress')->nullable();
+            $table->string('project_status_id')->nullable();
 
             $table->json('invited_teams')->nullable();
             

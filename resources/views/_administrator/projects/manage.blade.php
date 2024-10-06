@@ -87,9 +87,9 @@
                                                 <div class="card">
                                                     <div class="card-body">
                                                         <h5 class="mb-1"><a href="project-detail.html"
-                                                                class="color-600">{{ $project->name }}</a>
+                                                                class="color-600">{{ $project->project_name }}</a>
                                                         </h5>
-                                                        <p class="text-muted">{{ $project->details }}
+                                                        <p class="text-muted">{{ $project->project_details }}
 
                                                             <a href="project-detail.html"><span
                                                                     class="text-secondary">
@@ -106,33 +106,22 @@
                                                             </li>
                                                             <li
                                                                 class="list-inline-item card py-2 px-xxl-3 px-xl-2 px-3">
-                                                                <h6 class="mb-0">Plateau, Sokoto, Adamawa</h6>
+                                                                <h6 class="mb-0">{{ $project->region->name }},
+                                                                    {{ $project->state->name }}</h6>
                                                                 <small
                                                                     class="text-uppercase text-muted">Region/State</small>
                                                             </li>
                                                         </ul>
                                                         <div class="project-members mb-4 d-flex">
                                                             <label class="me-2">Team :</label>
-                                                            <a href="app-project.html#" title=""><img
-                                                                    class="avatar sm rounded-circle"
-                                                                    src="assets/img/xs/avatar3.jpg.png"
-                                                                    data-bs-toggle="tooltip" data-bs-placement="top"
-                                                                    title="Team Lead" alt="friend"> </a>
-                                                            <a href="app-project.html#" title=""><img
-                                                                    class="avatar sm rounded-circle"
-                                                                    src="assets/img/xs/avatar1.jpg.png"
-                                                                    data-bs-toggle="tooltip" data-bs-placement="top"
-                                                                    title="Designer" alt="friend"> </a>
-                                                            <a href="app-project.html#" title=""><img
-                                                                    class="avatar sm rounded-circle"
-                                                                    src="assets/img/xs/avatar7.jpg.png"
-                                                                    data-bs-toggle="tooltip" data-bs-placement="top"
-                                                                    title="Developer" alt="friend"> </a>
-                                                            <a href="app-project.html#" title=""><img
-                                                                    class="avatar sm rounded-circle"
-                                                                    src="assets/img/xs/avatar9.jpg.png"
-                                                                    data-bs-toggle="tooltip" data-bs-placement="top"
-                                                                    title="Developer" alt="friend"> </a>
+                                                            @foreach ($project->invited_members as $member)
+                                                                <a href="app-project.html#" title=""><img
+                                                                        class="avatar sm rounded-circle"
+                                                                        src="{{ $member->profile_photo_path ? $member->profile_photo_path : 'img/xs/avatar4.jpg.png' }}"
+                                                                        data-bs-toggle="tooltip"
+                                                                        data-bs-placement="top" title="Team Lead"
+                                                                        alt="friend"> </a>
+                                                            @endforeach
                                                         </div>
                                                         <label class="small d-flex justify-content-between">95% <span
                                                                 class="text-custom">Done</span></label>
@@ -143,9 +132,11 @@
                                                         </div>
                                                     </div>
                                                     <div class="card-footer py-3">
-                                                        <span>Date <strong>{{dateToWord($project->release_date)}}</strong></span>
+                                                        <span>Date
+                                                            <strong>{{ dateToWord($project->start_date) }}</strong></span>
                                                         <span class="px-3">|</span>
-                                                        <span>Budget: <strong>&#x20A6; 12,050</strong></span>
+                                                        <span>Budget: <strong>&#x20A6;
+                                                                {{ number_format($project->project_cost) }}</strong></span>
                                                         <span class="px-3">|</span>
                                                         <span>Share <i class="fa fa-share-alt"></i></span>
                                                     </div>
