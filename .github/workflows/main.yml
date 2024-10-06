@@ -21,7 +21,7 @@ jobs:
         run: php artisan migrate --force
 
       - name: Run Storage Link
-       run: php artisan storage:link
+        run: php artisan storage:link
 
       - name: 📂 Sync files
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
