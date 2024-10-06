@@ -36,7 +36,7 @@
 
                                                 </div>
                                                 <div class="col-auto d-none d-md-inline-block">
-                                                    <span>{{ dateToWord($announcement->date) }}</span>
+                                                    <span>{{ dateToWordWithTime($announcement->date) }}</span>
                                                 </div>
 
                                             </div>

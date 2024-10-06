@@ -153,48 +153,175 @@
                                 <div class="card bg-body mb-2">
                                     <div class="card-body">
                                         <h6 class="card-title mb-1">Project Details</h6>
-                                        <p class="text-muted small">It is a long established fact that a reader will be
-                                            distracted by Avio.</p>
+                                        <p class="text-muted small">Provide comprehensive information about this
+                                            project</p>
+                                        <div style="display: flex;">
+                                            <div class="form-floating mb-2 floating-col-6 m-r-10">
+                                                <select
+                                                    class="form-select @error('selectedRegion') is-invalid @enderror"
+                                                    wire:model="selectedRegion">
+                                                    <option selected value="">Open this select menu</option>
+                                                    @foreach ($regions as $region)
+                                                        <option value="{{ $region->id }}">{{ $region->name }}
+                                                        </option>
+                                                    @endforeach
+                                                </select>
+                                                <label>Choose a Region *</label>
+
+                                                @error('selectedRegion')
+                                                    <div class="invalid-feedback">
+                                                        {{ $message }}
+                                                    </div>
+                                                @enderror
+                                            </div>
+
+                                            <div class="form-floating mb-2 floating-col-6">
+                                                <select
+                                                    class="form-select @error('selectedCountry') is-invalid @enderror"
+                                                    wire:model="selectedCountry">
+                                                    <option selected value="">Open this select menu</option>
+                                                    @foreach ($countries as $country)
+                                                        <option value="{{ $country->id }}">{{ $country->name }}
+                                                        </option>
+                                                    @endforeach
+                                                </select>
+                                                <label>Country</label>
+
+                                                @error('selectedCountry')
+                                                    <div class="invalid-feedback">
+                                                        {{ $message }}
+                                                    </div>
+                                                @enderror
+                                            </div>
+                                        </div>
                                         <div class="form-floating mb-2">
-                                            <select class="form-select" wire:model="selectedCustomer">
-                                                <option selected>Open this select menu</option>
-                                                <option value="1">Lucid</option>
-                                                <option value="2">AVIO</option>
-                                                <option value="3">Avio</option>
+                                            <select class="form-select @error('selectedState') is-invalid @enderror"
+                                                wire:model="selectedState">
+                                                <option selected value="">Open this select menu</option>
+                                                @foreach ($states as $state)
+                                                        <option value="{{ $state->id }}">{{ $state->name }}
+                                                        </option>
+                                                    @endforeach
                                             </select>
-                                            <label>Choose a Customer *</label>
+                                            <label>Add State(s) *</label>
+
+                                            @error('selectedState')
+                                                <div class="invalid-feedback">
+                                                    {{ $message }}
+                                                </div>
+                                            @enderror
                                         </div>
                                         <div class="form-floating mb-2">
-                                            <input type="text" class="form-control" placeholder="Project name"
-                                                wire:model="projectName">
+                                            <input type="text"
+                                                class="form-control @error('projectName') is-invalid @enderror"
+                                                placeholder="Project name" wire:model="projectName">
                                             <label>Project name *</label>
+
+                                            @error('projectName')
+                                                <div class="invalid-feedback">
+                                                    {{ $message }}
+                                                </div>
+                                            @enderror
                                         </div>
                                         <div class="form-floating mb-2">
-                                            <textarea class="form-control" placeholder="Add project details" style="height: 100px" wire:model="projectDetail"></textarea>
+                                            <textarea class="form-control @error('projectDetail') is-invalid @enderror" placeholder="Add project details"
+                                                style="height: 100px" wire:model="projectDetail"></textarea>
                                             <label>Add project details</label>
+
+                                            @error('projectDetail')
+                                                <div class="invalid-feedback">
+                                                    {{ $message }}
+                                                </div>
+                                            @enderror
                                         </div>
-                                        <div class="form-floating mb-4">
-                                            <input type="date" class="form-control" wire:model="date">
-                                            <label>Enter release Date *</label>
+                                        <div style="display: flex;">
+                                            <div class="form-floating mb-4 floating-col-6 m-r-10">
+                                                <input type="date"
+                                                    class="form-control @error('start_date') is-invalid @enderror"
+                                                    wire:model="start_date">
+                                                <label>Enter Start Date *</label>
+
+                                                @error('start_date')
+                                                    <div class="invalid-feedback">
+                                                        {{ $message }}
+                                                    </div>
+                                                @enderror
+                                            </div>
+                                            <div class="form-floating mb-4 floating-col-6">
+                                                <input type="date"
+                                                    class="form-control @error('end_date') is-invalid @enderror"
+                                                    wire:model="end_date">
+                                                <label>Enter End Date *</label>
+
+                                                @error('end_date')
+                                                    <div class="invalid-feedback">
+                                                        {{ $message }}
+                                                    </div>
+                                                @enderror
+                                            </div>
                                         </div>
-                                        <div class="d-flex justify-content-between">
+
+                                        <div style="display: flex;">
+                                            <div class="form-floating mb-2 floating-col-4 m-r-10">
+                                                <input type="text"
+                                                    class="form-control @error('projectCost') is-invalid @enderror"
+                                                    wire:model="projectCost">
+                                                <label>Project Cost *</label>
+
+                                                @error('projectCost')
+                                                    <div class="invalid-feedback">
+                                                        {{ $message }}
+                                                    </div>
+                                                @enderror
+                                            </div>
+                                            <div class="form-floating mb-2 floating-col-4 m-r-10">
+                                                <input type="number"
+                                                    class="form-control @error('projectTarget') is-invalid @enderror"
+                                                    wire:model="projectTarget">
+                                                <label>Project Target *</label>
+
+                                                @error('projectTarget')
+                                                    <div class="invalid-feedback">
+                                                        {{ $message }}
+                                                    </div>
+                                                @enderror
+                                            </div>
+                                            <div class="form-floating mb-2 floating-col-4 m-l-10">
+                                                <select
+                                                    class="form-select @error('projectStatus') is-invalid @enderror"
+                                                    wire:model="projectStatus">
+                                                    <option selected>Open this select menu</option>
+                                                    <option value="1">Pending</option>
+                                                    <option value="2">In-Progress</option>
+                                                    <option value="2">Suspended</option>
+                                                    <option value="3">Completed</option>
+                                                </select>
+                                                <label>Project Status</label>
+
+                                                @error('projectStatus')
+                                                    <div class="invalid-feedback">
+                                                        {{ $message }}
+                                                    </div>
+                                                @enderror
+                                            </div>
+                                        </div>
+                                        <div class="d-flex justify-content-between" style="margin-top: 20px">
                                             <div class="text-muted">Allow Notifications *</div>
                                             <div>
                                                 <div class="form-check form-check-inline">
                                                     <input class="form-check-input" type="checkbox" id="allow_phone"
-                                                        value="option1" wire:model="allowPhone">
+                                                        wire:model="allowPhone">
                                                     <label class="form-check-label" for="allow_phone">Phone</label>
                                                 </div>
                                                 <div class="form-check form-check-inline">
                                                     <input class="form-check-input" type="checkbox" id="allow_email"
-                                                        value="option2" wire:model="allowEmail">
+                                                        wire:model="allowEmail">
                                                     <label class="form-check-label" for="allow_email">Email</label>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-
                             </div>
                         @endif
 
@@ -216,8 +343,8 @@
                                                     <li class="list-group-item d-flex align-items-center"
                                                         wire:click="addTeamMember({{ $user['id'] }})"
                                                         style="cursor: pointer;">
-                                                        <img class="avatar rounded" src="{{ asset($user['avatar']) }}"
-                                                            alt="">
+                                                        <img class="avatar rounded"
+                                                            src="{{ asset($user['avatar']) }}" alt="">
                                                         <div class="flex-fill ms-2">
                                                             <div class="h6 mb-0">{{ $user['name'] }}</div>
                                                             <small class="text-muted">{{ $user['email'] }}</small>
@@ -244,11 +371,13 @@
                                                     <div class="h6 mb-0">{{ $member['name'] }}</div>
                                                     <small class="text-muted">{{ $member['email'] }}</small>
                                                 </div>
-                                                <select class="form-select  form-select-sm w120">
-                                                    <option value="1">Action</option>
-                                                    <option value="1">Remove</option>
-                                                    <option value="2">Make Project Lead</option>
+                                                <select class="form-select form-select-sm w120"
+                                                    wire:change="handleTeamAction($event.target.value, {{ $member['id'] }})">
+                                                    <option value="">Action</option>
+                                                    <option value="remove">Remove</option>
+                                                    <option value="lead">Make Project Lead</option>
                                                 </select>
+
                                             </li>
                                         @endforeach
                                     </ul>

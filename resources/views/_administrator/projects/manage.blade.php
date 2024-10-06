@@ -143,7 +143,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="card-footer py-3">
-                                                        <span>Date <strong>21 Aug, 2022</strong></span>
+                                                        <span>Date <strong>{{dateToWord($project->release_date)}}</strong></span>
                                                         <span class="px-3">|</span>
                                                         <span>Budget: <strong>&#x20A6; 12,050</strong></span>
                                                         <span class="px-3">|</span>

@@ -62,4 +62,5 @@ Route::middleware([
   Route::get('/audit-logs', Index::class)->name('audit.logs');
 
   Route::get('/projects', Manage::class)->name('projects');
+  Route::get('/projects/details', Manage::class)->name('project');
 });

@@ -44,7 +44,7 @@
                                             </div>
                                             <div
                                                 class="col-auto ms-auto d-flex flex-column justify-content-between small">
-                                                {{ dateToWord($log->created_at) }}</div>
+                                                {{ dateToWordWithTime($log->created_at) }}</div>
                                         </li>
                                     @endforeach
 

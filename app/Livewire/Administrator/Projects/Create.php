@@ -2,8 +2,11 @@
 
 namespace App\Livewire\Administrator\Projects;
 
+use App\Models\Country;
 use App\Models\Project;
 use App\Models\ProjectTeam;
+use App\Models\Region;
+use App\Models\State;
 use App\Models\User;
 use Livewire\Component;
 use Livewire\WithFileUploads;
@@ -16,17 +19,28 @@ class Create extends Component
     public $totalStep = 5;
     public $currentStep = 1;
 
+    // Step 1
     public $selectedPlan = 'Personal';
 
-    public $selectedCustomer;
+    // Step 2
+    public $selectedRegion;
+    public $selectedCountry;
+    public $selectedState;
     public $projectName;
     public $projectDetail;
-    public $date;
+    public $start_date;
+    public $end_date;
+    public $projectCost;
+    public $projectTarget;
+    public $projectStatus;
     public $allowPhone;
     public $allowEmail;
 
+    // Step 3
     public $inviteTeam;
     public $teamMembers = [];
+
+    // Step 4
     public $searchResults = [];
 
     public $files = [];
@@ -38,6 +52,44 @@ class Create extends Component
         // Add more users here
     ];
 
+    protected $messages = [
+        'required' => 'This field is required.',
+    ];
+
+    public function validateData()
+    {
+        if ($this->currentStep == 1) {
+            $this->validate([
+                'selectedPlan' => 'required',
+            ]);
+        }
+
+        if ($this->currentStep == 2) {
+            $this->validate([
+                'selectedRegion' => 'required',
+                'selectedCountry' => 'required',
+                'selectedState' => 'required',
+                'projectName' => 'required',
+                'projectDetail' => 'required',
+                'start_date' => 'required',
+                'end_date' => 'required',
+                'projectCost' => 'required',
+                'projectTarget' => 'required',
+                'projectStatus' => 'required',
+            ], [
+                'selectedRegion.required' => 'Please select a region.',
+                'selectedCountry.required' => 'Please select a country.',
+                'selectedState.required' => 'Please select a state.',
+            ]);
+        }
+
+        if ($this->currentStep == 3) {
+        }
+
+        if ($this->currentStep == 4) {
+        }
+    }
+
     public function setCurrentStep($step)
     {
         $this->currentStep = $step;
@@ -45,7 +97,7 @@ class Create extends Component
 
     public function increaseStep()
     {
-        // $this->validateData();
+        $this->validateData();
 
         $this->currentStep++;
         if ($this->currentStep > $this->totalStep) {
@@ -90,16 +142,23 @@ class Create extends Component
         $this->searchResults = []; // Clear search results
     }
 
-    public function removeTeamMember($memberId)
+    public function handleTeamAction($action, $memberId)
     {
-        // Find the member by ID and remove from the array
-        $this->teamMembers = array_filter($this->teamMembers, function ($member) use ($memberId) {
-            return $member['id'] != $memberId;
-        });
+        if ($action === 'remove') {
+            // Remove the member
+            $this->teamMembers = array_filter($this->teamMembers, function ($member) use ($memberId) {
+                return $member['id'] != $memberId;
+            });
 
-        // Reindex the array
-        $this->teamMembers = array_values($this->teamMembers);
+            // Reindex the array
+            $this->teamMembers = array_values($this->teamMembers);
+        } elseif ($action === 'lead') {
+            // Logic for making the member a project lead
+            // You can add your logic for making the project lead here
+            // For example, setting a flag on the member or updating the lead information
+        }
     }
+
 
     public function create()
     {
@@ -129,10 +188,16 @@ class Create extends Component
         // Create the project with all fields
         Project::create([
             'plan' => $this->selectedPlan,
-            'customer_id' => $this->selectedCustomer,
-            'name' => $this->projectName,
-            'details' => $this->projectDetail,
-            'date' => $this->date,
+            'region_id' => $this->selectedRegion,
+            'country_id' => $this->selectedCountry,
+            'state_id' => $this->selectedState,
+            'project_name' => $this->projectName,
+            'project_details' => $this->projectDetail,
+            'start_date' => $this->start_date,
+            'end_date' => $this->end_date,
+            'project_cost' => $this->projectCost,
+            'project_target' => $this->projectTarget,
+            'status' => $this->projectStatus,
             'allow_phone' => $this->allowPhone ?? false,
             'allow_email' => $this->allowEmail ?? false,
             'invited_teams' => json_encode($teamMemberIds), // Convert array to JSON if needed
@@ -142,6 +207,17 @@ class Create extends Component
 
     public function render()
     {
-        return view('_administrator.projects.create');
+        $regions = Region::get();
+        $countries = Country::get();
+        $states = State::get();
+
+        return view(
+            '_administrator.projects.create',
+            [
+                'regions' => $regions,
+                'countries' => $countries,
+                'states' => $states
+            ]
+        );
     }
 }

@@ -14,18 +14,24 @@ return new class extends Migration
         Schema::create('projects', function (Blueprint $table) {
             $table->id();
             $table->string('plan')->nullable();
-            $table->unsignedBigInteger('customer_id')->nullable();
-            $table->string('name')->nullable();
-            $table->text('details')->nullable();
-            $table->date('date')->nullable();
 
+            $table->unsignedBigInteger('region_id')->nullable();
+            $table->unsignedBigInteger('country_id')->nullable();
+            $table->unsignedBigInteger('state_id')->nullable();
+            $table->string('project_name')->nullable();
+            $table->text('project_details')->nullable();
+            $table->date('start_date')->nullable();
+            $table->date('end_date')->nullable();
+            $table->decimal('project_cost', 15, 2)->nullable();
+            $table->string('project_target')->nullable();
             $table->boolean('allow_phone')->default(false);
             $table->boolean('allow_email')->default(false);
+            $table->string('status')->default('In Progress')->nullable();
 
             $table->json('invited_teams')->nullable();
+            
             $table->json('files')->nullable();
 
-            $table->string('status')->default('In Progress')->nullable();
             $table->timestamps();
         });
     }

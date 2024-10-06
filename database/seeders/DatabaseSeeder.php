@@ -20,7 +20,10 @@ class DatabaseSeeder extends Seeder
       PermissionSeeder::class,
       LanguageSeeder::class,
       NationalitySeeder::class,
-      RelationshipSeeder::class
+      RelationshipSeeder::class,
+      RegionSeeder::class,
+      CountrySeeder::class,
+      StateSeeder::class,
     ]);
 
     // User::factory(10)->create();

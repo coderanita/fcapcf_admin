@@ -20,10 +20,17 @@ if (!function_exists('roleViewPath')) {
   }
 }
 
+if (!function_exists('dateToWordWithTime')) {
+  function dateToWordWithTime($date)
+  {
+    return Carbon::parse($date)->format('F j, Y, g:i A');
+  }
+}
+
 if (!function_exists('dateToWord')) {
   function dateToWord($date)
   {
-    return Carbon::parse($date)->format('F j, Y, g:i A');
+    return Carbon::parse($date)->format('F j, Y');
   }
 }
 
