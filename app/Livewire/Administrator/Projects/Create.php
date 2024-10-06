@@ -56,14 +56,6 @@ class Create extends Component
 
     public function mount($title = null, $sub_title = null, $details = false)
     {
-        // Load all users initially
-        $this->users = User::select(
-            DB::raw("CONCAT(fname, ' ', lname) AS name"),
-            'email',
-            'profile_photo_path AS avatar',
-            'id'
-        )->get()->toArray();
-
         $this->title = $title ?? '';
         $this->sub_title = $sub_title ?? 'FCAPCF Projects';
         $this->details = $details ?? '';
@@ -241,7 +233,7 @@ class Create extends Component
             $this->validateStepTwo();
         }
 
-        return $this->redirect('/administrator/projects/details/' . $this->project->id, navigate: true);
+        return redirect()->route('administrator.project.details', ['project' => $this->project->id]);
     }
 
     public function validateStepTwo()
@@ -280,13 +272,21 @@ class Create extends Component
 
         $statuses = ProjectStatus::get();
 
+        $this->users = User::select(
+            DB::raw("CONCAT(fname, ' ', lname) AS name"),
+            'email',
+            'profile_photo_path AS avatar',
+            'id'
+        )->get()->toArray();
+
         return view(
             '_administrator.projects.create',
             [
                 'regions' => $regions,
                 'countries' => $countries,
                 'states' => $states,
-                'statuses' => $statuses
+                'statuses' => $statuses,
+                'users' => $this->users
             ]
         );
     }
