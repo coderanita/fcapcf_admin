@@ -157,7 +157,4 @@ return [
     */
 
     'pagination_theme' => 'bootstrap',
-
-    'asset_url' => env('ASSET_URL', 'https://console.fcapcf.org'),
-
 ];
