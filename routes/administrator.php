@@ -11,6 +11,7 @@ use App\Livewire\Administrator\Dashboard;
 use App\Livewire\Administrator\ProjectCategory\Manage as ProjectCategoryManage;
 use App\Livewire\Administrator\Projects\Manage;
 use App\Livewire\Administrator\Projects\View as ProjectsView;
+use App\Livewire\Administrator\Regions\Manage as RegionManage;
 use App\Livewire\Administrator\Roles\ShowRole;
 use Illuminate\Support\Facades\Route;
 use App\Livewire\Administrator\Users\ShowUsers;
@@ -67,4 +68,6 @@ Route::middleware([
   Route::get('/projects/details/{project}', ProjectsView::class)->name('project.details');
 
   Route::get('/project-caterogories', ProjectCategoryManage::class)->name('project.categories');
+
+  Route::get('/regions', RegionManage::class)->name('regions');
 });

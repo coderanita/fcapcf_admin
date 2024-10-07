@@ -61,7 +61,8 @@
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="{{route('administrator.project.categories')}}" class="d-flex align-items-center py-2 rounded">
+                                        <a href="{{ route('administrator.project.categories') }}"
+                                            class="d-flex align-items-center py-2 rounded">
                                             <div class="avatar rounded no-thumbnail bg-light">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="18"
                                                     fill="currentColor" viewBox="0 0 16 16">
@@ -79,7 +80,7 @@
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="regions.html" class="d-flex align-items-center py-2 rounded">
+                                        <a href="{{route('administrator.regions')}}" class="d-flex align-items-center py-2 rounded">
                                             <div class="avatar rounded no-thumbnail bg-light">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="18"
                                                     fill="currentColor" viewBox="0 0 16 16">
