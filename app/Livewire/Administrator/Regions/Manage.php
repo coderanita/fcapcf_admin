@@ -3,12 +3,24 @@
 namespace App\Livewire\Administrator\Regions;
 
 use App\Models\Region;
+use App\Models\State;
 use Livewire\Attributes\On;
 use Livewire\Component;
 
 class Manage extends Component
 {
-    public $region, $name, $description, $states;
+    public $region, $name, $description, $selectedStates = [];
+
+    protected $rules = [
+        'name' => 'required',
+        'description' => 'required',
+    ];
+
+    public function updatedSelectedStates()
+    {
+        // This is optional but useful to make sure Livewire reacts properly
+        $this->selectedStates = array_filter($this->selectedStates);
+    }
 
     public function edit(Region $region)
     {
@@ -21,7 +33,14 @@ class Manage extends Component
 
     public function update()
     {
+        $this->validate();
+
         $this->region->update(['name' => $this->name, 'description' => $this->description]);
+
+        foreach ($this->selectedStates as $state) {
+            State::where('id', $state)->update(['region_id' => $this->region->id]);
+        }
+
         $this->dispatch('modalClosed');
 
         $this->dispatch(
@@ -55,7 +74,8 @@ class Manage extends Component
     public function render()
     {
         $regions = Region::get();
+        $states = State::get();
 
-        return view('_administrator.regions.manage', ['regions' => $regions]);
+        return view('_administrator.regions.manage', ['regions' => $regions, 'states' => $states]);
     }
 }

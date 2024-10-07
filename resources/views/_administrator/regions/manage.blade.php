@@ -1,3 +1,20 @@
+@push('scripts')
+    <style>
+        .dropdown-menu {
+            max-height: 200px;
+            overflow-y: auto;
+            width: 100%;
+            /* Make the dropdown span full width of the input */
+
+            padding-left: 15px;
+        }
+
+        .input-group-text {
+            cursor: pointer;
+        }
+    </style>
+@endpush
+
 <div>
 
     @livewire('administrator.regions.create')
@@ -67,7 +84,7 @@
 
 
     <!-- New user modal -->
-    <div class="modal fade" id="edit_project_regions" tabindex="-1">
+    <div class="modal fade" id="edit_project_regions" tabindex="-1" wire:ignore.self>
         <div class="modal-dialog modal-dialog-vertical modal-dialog-scrollable">
             <div class="modal-content" style="padding: 35px">
                 <div class="offcanvas-header">
@@ -87,11 +104,28 @@
                         </div>
                         <div class="col-md-12">
                             <label class="form-label">Select States</label>
-                            <select class="form-select">
-                                <option selected>Multiple select...</option>
-                                <option>...</option>
-                            </select>
+                            <div class="input-group">
+                                <input type="text" class="form-control" readonly
+                                    value="{{ count($selectedStates) ? count($selectedStates) . ' States Selected' : 'Select States' }}"
+                                    aria-label="Selected States" aria-describedby="states-selection"
+                                    data-bs-toggle="dropdown">
+                                <span class="input-group-text" id="states-selection"><i
+                                        class="fa fa-chevron-down"></i></span>
+
+                                <div class="dropdown-menu w-100">
+                                    @foreach ($states as $state)
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value="{{ $state->id }}"
+                                                wire:model.live="selectedStates" id="state-{{ $state->id }}">
+                                            <label class="form-check-label" for="state-{{ $state->id }}">
+                                                {{ $state->name }}
+                                            </label>
+                                        </div>
+                                    @endforeach
+                                </div>
+                            </div>
                         </div>
+
                         <div class="col-12">
                             <label class="form-label">Describe </label>
                             <textarea class="form-control @error('description') is-invalid @enderror" placeholder="*********"
@@ -138,7 +172,8 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <h5 class="text-danger"><i class="bi bi-info-circle-fill text-danger"></i> Deleting role will remove
+                    <h5 class="text-danger"><i class="bi bi-info-circle-fill text-danger"></i> Deleting role will
+                        remove
                         all of
                         information from our database. </h5>
                 </div>
