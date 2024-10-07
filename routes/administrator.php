@@ -8,6 +8,7 @@ use App\Livewire\Administrator\AuditLogs\Index;
 use App\Livewire\Administrator\Beneficiaries\Create;
 use App\Livewire\Administrator\Beneficiaries\Edit;
 use App\Livewire\Administrator\Dashboard;
+use App\Livewire\Administrator\ProjectCategory\Manage as ProjectCategoryManage;
 use App\Livewire\Administrator\Projects\Manage;
 use App\Livewire\Administrator\Projects\View as ProjectsView;
 use App\Livewire\Administrator\Roles\ShowRole;
@@ -64,4 +65,6 @@ Route::middleware([
 
   Route::get('/projects', Manage::class)->name('projects');
   Route::get('/projects/details/{project}', ProjectsView::class)->name('project.details');
+
+  Route::get('/project-caterogories', ProjectCategoryManage::class)->name('project.categories');
 });
