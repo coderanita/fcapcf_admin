@@ -14,11 +14,11 @@ jobs:
           php-version: "8.2"
           extensions: mbstring, pdo, mysql
 
-      # - name: Install Composer dependencies
-      #   run: composer install --no-dev --prefer-dist --optimize-autoloader
+      - name: Install Composer dependencies
+        run: composer install --no-dev --prefer-dist --optimize-autoloader
 
-      # - name: Run database migrations
-      #   run: php artisan migrate --force
+      - name: Run database migrations
+        run: php artisan migrate --force
 
       - name: Run Storage Link
         run: php artisan storage:link
