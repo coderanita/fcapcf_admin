@@ -73,7 +73,7 @@ class Manage extends Component
     #[On('re-render-region')]
     public function render()
     {
-        $regions = Region::get();
+        $regions = Region::with('states')->get();
         $states = State::get();
 
         return view('_administrator.regions.manage', ['regions' => $regions, 'states' => $states]);

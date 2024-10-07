@@ -53,8 +53,10 @@
                                             <td>{{ $count++ }}</td>
                                             <td>{{ $region->name }}</td>
                                             <td>
-                                                <span class="badge bg-dark">Maiduguri</span>
-                                                <span class="badge bg-info">Adamawa</span>
+                                                @foreach ($region->states as $state)
+                                                    <span class="badge bg-info">{{ $state->name }}</span>
+                                                @endforeach
+
                                             </td>
                                             <td>{{ $region->description }}</td>
                                             <td>
