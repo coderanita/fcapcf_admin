@@ -59,7 +59,7 @@ class Create extends Component
             $this->validate([
                 'first_name' => 'required|string|max:255',
                 'last_name' => 'required|string|max:255',
-                'profile_photo_path' => 'required|image', // Validate image size
+                // 'profile_photo_path' => 'required|image',
                 'gender' => 'required|string',
                 'phone_number' => 'required|string|max:15',
                 'email' => 'required|email|max:255',
@@ -130,10 +130,15 @@ class Create extends Component
 
     public function save()
     {
+        $savedImage = '';
+        if ($this->profile_photo_path) {
+            $savedImage = $this->profile_photo_path->store('beneficiaries/profile_photos', 'public');
+        }
+
         $beneficiary = Beneficiary::create([
             'first_name' => $this->first_name,
             'last_name' => $this->last_name,
-            'profile_photo_path' => $this->profile_photo_path->store('beneficiaries/profile_photos', 'public'), // Store image
+            'profile_photo_path' => $savedImage,
             'gender' => $this->gender,
             'phone_number' => $this->phone_number,
             'email' => $this->email,
