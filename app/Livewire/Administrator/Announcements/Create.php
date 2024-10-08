@@ -17,8 +17,19 @@ class Create extends Component
     public $date;
     public $time;
 
+    protected $rules = [
+        'to' => 'required',
+        'title' => 'required',
+        'description' => 'required',
+        'date' => 'required|date',
+        'time' => 'required',
+    ];
+
+
     public function save()
     {
+        $this->validate();
+
         Announcement::create([
             'to' =>  $this->to,
             'title' =>  $this->title,
