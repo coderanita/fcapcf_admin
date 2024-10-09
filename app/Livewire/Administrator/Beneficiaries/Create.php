@@ -20,7 +20,8 @@ class Create extends Component
 
     public $languages;
     public $nationalities;
-    public $beneficiaryRelationships;
+    public $beneficiaries;
+    public $countries;
 
     public $totalStep = 4;
     public $currentStep = 1;
@@ -207,7 +208,7 @@ class Create extends Component
 
     public function getRelationshipName($relationshipId)
     {
-        return $this->beneficiaryRelationships->firstWhere('id', $relationshipId)->name ?? 'Unknown';
+        return $this->beneficiaries->firstWhere('id', $relationshipId)->name ?? 'Unknown';
     }
 
     public function render()
@@ -216,12 +217,14 @@ class Create extends Component
 
         $this->nationalities = $dataSource->nationalities();
         $this->languages = $dataSource->languages();
-        $this->beneficiaryRelationships = $dataSource->beneficiaryRelationships();
+        $this->beneficiaries = $dataSource->beneficiaries();
+        $this->countries = $dataSource->countries();
 
         return view('_administrator.beneficiaries.create', [
             'nationalities' => $this->nationalities,
             'languages' => $this->languages,
-            'beneficiaryRelationships' => $this->beneficiaryRelationships
+            'beneficiaries' => $this->beneficiaries,
+            'countries' => $this->countries
         ]);
     }
 }

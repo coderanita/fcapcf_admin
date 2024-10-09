@@ -133,10 +133,13 @@
                                                                                         class="form-select @error('phone_number') is-invalid @enderror"
                                                                                         style="height: 58px; width: 150px;"
                                                                                         wire:model="countryCode">
-                                                                                        <option value="+233">Ghana
-                                                                                            (+233)</option>
-                                                                                        <option value="+55">Brazil
-                                                                                            (+55)</option>
+                                                                                        @foreach ($countries as $country)
+                                                                                            <option
+                                                                                                value="{{ $country->code }}">
+                                                                                                {{ $country->name }}
+                                                                                                ({{ $country->code }})
+                                                                                            </option>
+                                                                                        @endforeach
                                                                                     </select>
                                                                                     <input type="number" id="phone"
                                                                                         class="form-control @error('phone_number') is-invalid @enderror"
@@ -305,7 +308,7 @@
                                                                                     <option value="" selected>
                                                                                         Open this select
                                                                                         menu</option>
-                                                                                    @foreach ($beneficiaryRelationships as $beneficiaryRelationship)
+                                                                                    @foreach ($beneficiaries as $beneficiaryRelationship)
                                                                                         <option
                                                                                             value="{{ $beneficiaryRelationship->id }}">
                                                                                             {{ $beneficiaryRelationship->name }}

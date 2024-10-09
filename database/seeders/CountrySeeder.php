@@ -15,14 +15,17 @@ class CountrySeeder extends Seeder
     {
         Country::create([
             'name' => "Nigeria",
+            'code' => "+234",
         ]);
 
         Country::create([
             'name' => "Brazil",
+            'code' => "+55",
         ]);
 
         Country::create([
             'name' => "Ghana",
+            'code' => "+233",
         ]);
     }
 }

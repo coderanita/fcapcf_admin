@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Models\Country;
 use App\Models\Language;
 use App\Models\Nationality;
 use App\Models\Relationship;
@@ -18,8 +19,13 @@ class DataSourceService
         return Nationality::get();
     }
 
-    public function beneficiaryRelationships()
+    public function beneficiaries()
     {
         return Relationship::get();
+    }
+
+    public function countries()
+    {
+        return Country::get();
     }
 }
