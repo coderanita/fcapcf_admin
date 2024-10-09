@@ -128,11 +128,22 @@
                                                                             </div>
 
                                                                             <div class="form-floating mb-2 col-md-4">
-                                                                                <input type="number"
-                                                                                    class="form-control @error('phone_number') is-invalid @enderror"
-                                                                                    placeholder="Add telephone number"
-                                                                                    wire:model="phone_number" />
-                                                                                <label>Phone Number *</label>
+                                                                                <div class="input-group">
+                                                                                    <select id="countryCode"
+                                                                                        class="form-select @error('phone_number') is-invalid @enderror"
+                                                                                        style="height: 58px; width: 150px;"
+                                                                                        wire:model="countryCode">
+                                                                                        <option value="+233">Ghana
+                                                                                            (+233)</option>
+                                                                                        <option value="+55">Brazil
+                                                                                            (+55)</option>
+                                                                                    </select>
+                                                                                    <input type="number" id="phone"
+                                                                                        class="form-control @error('phone_number') is-invalid @enderror"
+                                                                                        placeholder="Add telephone number"
+                                                                                        wire:model="phone_number"
+                                                                                        style="height: 58px; padding: 10px; width: 200px;" />
+                                                                                </div>
                                                                                 @error('phone_number')
                                                                                     <div class="invalid-feedback">
                                                                                         {{ $message }}</div>
@@ -620,7 +631,7 @@
                                                                                             <small
                                                                                                 class="text-muted">Phone</small>
                                                                                             <div class="fs-5">
-                                                                                                {{ $phone_number }}
+                                                                                                {{ $countryCode . $phone_number }}
                                                                                             </div>
                                                                                         </div>
                                                                                         <div
@@ -818,3 +829,21 @@
                 </div>
             </div>
         </div>
+
+        @push('scripts')
+            <script>
+                const phoneInputField = document.querySelector("#phonesss");
+                const phoneInput = window.intlTelInput(phoneInputField, {
+                    onlyCountries: ["gh", "br"], // Only allow Ghana and Brazil
+                    initialCountry: "gh", // Default to Ghana, change to "br" for Brazil
+                    utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js", // Required for formatting
+                });
+
+                // Handle the form submission
+                document.querySelector("form").addEventListener("submit", function(event) {
+                    event.preventDefault(); // Prevent default form submission
+                    const number = phoneInput.getNumber(); // Get the full international number
+                    console.log("Full number:", number); // This is where you'd send the number to Livewire
+                });
+            </script>
+        @endpush

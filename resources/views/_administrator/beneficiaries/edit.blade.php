@@ -128,11 +128,22 @@
                                                                             </div>
 
                                                                             <div class="form-floating mb-2 col-md-4">
-                                                                                <input type="number"
-                                                                                    class="form-control @error('phone_number') is-invalid @enderror"
-                                                                                    placeholder="Add telephone number"
-                                                                                    wire:model="phone_number" />
-                                                                                <label>Phone Number *</label>
+                                                                                <div class="input-group">
+                                                                                    <select id="countryCode"
+                                                                                        class="form-select @error('phone_number') is-invalid @enderror"
+                                                                                        style="height: 58px; width: 150px;"
+                                                                                        wire:model="countryCode">
+                                                                                        <option value="+233">Ghana
+                                                                                            (+233)</option>
+                                                                                        <option value="+55">Brazil
+                                                                                            (+55)</option>
+                                                                                    </select>
+                                                                                    <input type="number" id="phone"
+                                                                                        class="form-control @error('phone_number') is-invalid @enderror"
+                                                                                        placeholder="Add telephone number"
+                                                                                        wire:model="phone_number"
+                                                                                        style="height: 58px; padding: 10px; width: 200px;" />
+                                                                                </div>
                                                                                 @error('phone_number')
                                                                                     <div class="invalid-feedback">
                                                                                         {{ $message }}</div>
@@ -629,7 +640,7 @@
                                                                                             <small
                                                                                                 class="text-muted">Phone</small>
                                                                                             <div class="fs-5">
-                                                                                                {{ $phone_number }}
+                                                                                                {{ $countryCode . $phone_number }}
                                                                                             </div>
                                                                                         </div>
                                                                                         <div

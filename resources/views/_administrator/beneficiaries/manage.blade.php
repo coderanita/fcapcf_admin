@@ -18,7 +18,7 @@
                     <td>{{ $beneficiary->first_name }} {{ $beneficiary->last_name }}</td>
                     <td>{{ \Carbon\Carbon::parse($beneficiary->date_of_birth)->age }} Years</td> <!-- Calculate age -->
                     <td>{{ $beneficiary->assistance->type_of_assistance }}</td>
-                    <td>{{ $beneficiary->phone_number }}</td>
+                    <td>{{ $beneficiary->country_code . $beneficiary->phone_number }}</td>
                     <td>{{ $beneficiary->marital_status }}</td>
                     <td>
                         <a href="{{ route('administrator.beneficiaries.edit', $beneficiary->id) }}">

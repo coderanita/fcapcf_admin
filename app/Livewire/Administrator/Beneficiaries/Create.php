@@ -27,7 +27,7 @@ class Create extends Component
 
 
     // Personal Information
-    public $first_name, $last_name, $gender, $phone_number, $email, $marital_status;
+    public $first_name, $last_name, $gender, $phone_number, $email, $marital_status, $countryCode;
     public $profile_photo_path;
     public $nationality_id, $disability_status, $language_id;
     public $type_of_disability;
@@ -141,6 +141,7 @@ class Create extends Component
             'profile_photo_path' => $savedImage,
             'gender' => $this->gender,
             'phone_number' => $this->phone_number,
+            'country_code' => $this->countryCode,
             'email' => $this->email,
             'date_of_birth' => $this->date_of_birth,
             'marital_status' => $this->marital_status,
