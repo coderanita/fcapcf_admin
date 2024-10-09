@@ -19,7 +19,7 @@
             <div class="d-flex justify-content-between align-items-center">
               <h1 class="h2 mb-md-0 text-white fw-light">{{auth()->user()->role->name}}</h1>
               <div class="page-action">
-                <a href="projects.html">
+                <a href="{{route('administrator.projects')}}">
                   <button class="btn d-none d-sm-inline-flex bg-secondary rounded-pill" type="button">
                     <span class="me-1 d-none d-lg-inline-block">Create Project</span>
                     <svg width="14" height="14" viewBox="0 0 14 14" fill="none"

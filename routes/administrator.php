@@ -13,10 +13,14 @@ use App\Livewire\Administrator\Projects\Manage;
 use App\Livewire\Administrator\Projects\View as ProjectsView;
 use App\Livewire\Administrator\Regions\Manage as RegionManage;
 use App\Livewire\Administrator\Roles\ShowRole;
+use App\Livewire\Administrator\Staff\Create as StaffCreate;
+use App\Livewire\Administrator\Supports\Create as SupportsCreate;
+use App\Livewire\Administrator\Supports\View as SupportView;
 use Illuminate\Support\Facades\Route;
 use App\Livewire\Administrator\Users\ShowUsers;
 use App\Livewire\Administrator\Users\CreateUser;
 use App\Models\Permission;
+use App\Models\Support;
 use App\Models\User;
 
 Route::middleware([
@@ -70,4 +74,13 @@ Route::middleware([
   Route::get('/project-caterogories', ProjectCategoryManage::class)->name('project.categories');
 
   Route::get('/regions', RegionManage::class)->name('regions');
+
+  Route::get('/staffs/create', StaffCreate::class)->name('staffs.create');
+
+  Route::get('/supports', function () {
+    $supportCount = Support::count(); // Get the count of support tickets
+    return view('_administrator.supports.index', compact('supportCount'));
+  })->name('supports');
+  Route::get('/supports/details/{support}', SupportView::class)->name('supports.details');
+  Route::get('/supports/create', SupportsCreate::class)->name('support.create');
 });

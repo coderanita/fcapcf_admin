@@ -20,6 +20,8 @@
   <!-- project css file  -->
   <link rel="stylesheet" href="{{ asset('css/avio-style.css') }}">
   <link rel="stylesheet" href="{{ asset('css/toastify.min.css') }}">
+
+  <link rel="stylesheet" href="{{asset('cssbundle/summernote.min.css')}}">
 <style>
 
 
@@ -46,9 +48,9 @@
           <p class="col-md-5 mb-0 text-muted">© 2024 <a href="javascript:void(0)">First Child & Prisoner Care
               Foundation</a>. <span class="fa fa-heart text-danger"></span> </p>
           <ul class="nav col-md-7 justify-content-end">
-            <li class="nav-item"><a href="dashboard.html#" class="nav-link px-2 text-muted">About</a></li>
-            <li class="nav-item"><a href="dashboard.html#" class="nav-link px-2 text-muted">Support</a></li>
-            <li class="nav-item"><a href="dashboard.html#" class="nav-link px-2 text-muted">Purchase</a></li>
+            <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">About</a></li>
+            <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Support</a></li>
+            <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Purchase</a></li>
           </ul>
         </footer>
       </div>

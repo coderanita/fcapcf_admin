@@ -22,18 +22,17 @@
                                 </div>
                                 <ul class="list-group list-group-flush list-group-custom px-2 mb-2">
 
-                                    @foreach ($logs as $log)
+                                    @forelse ($logs as $log)
                                         <li class="row g-0 list-group-item d-flex align-items-start">
                                             <div class="col col-md-10 col-xxl-11">
                                                 <div class="row">
                                                     <div class="col-md-12 col-lg-5 col-xxl-4 mb-1 mb-md-0">
-
                                                         <div>
                                                             <span
                                                                 class="small text-muted text-uppercase me-2">{{ $log->user->fname }}
                                                                 {{ $log->user->lname }}</span>
                                                             <span
-                                                                class="border border-success text-success px-1 rounded small">{{ $log->action }}</span>
+                                                                class="border border-{{ $log->action == 'New' ? 'success' : 'danger' }} text-{{ $log->action == 'New' ? 'success' : 'danger' }} px-1 rounded small">{{ $log->action }}</span>
                                                         </div>
                                                         <span class="fs-6 me-2">{{ $log->user->email }}</span>
                                                     </div>
@@ -44,9 +43,12 @@
                                             </div>
                                             <div
                                                 class="col-auto ms-auto d-flex flex-column justify-content-between small">
-                                                {{ dateToWordWithTime($log->created_at) }}</div>
+                                                {{ dateToWordWithTime($log->created_at) }}
+                                            </div>
                                         </li>
-                                    @endforeach
+                                    @empty
+                                        <li class="list-group-item text-center">No logs available.</li>
+                                    @endforelse
 
 
                                 </ul>

@@ -80,7 +80,8 @@
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="{{route('administrator.regions')}}" class="d-flex align-items-center py-2 rounded">
+                                        <a href="{{ route('administrator.regions') }}"
+                                            class="d-flex align-items-center py-2 rounded">
                                             <div class="avatar rounded no-thumbnail bg-light">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="18"
                                                     fill="currentColor" viewBox="0 0 16 16">
@@ -178,7 +179,7 @@
                             d="M2.5 4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5H3a.5.5 0 0 1-.5-.5V4z">
                           </path>
                         </svg>
-                      </div>
+                      </div> 
                       <div class="flex-fill ms-3 text-truncate">
                         <h6 class="mb-0">Create a New Staff User</h6>
                         <small class="text-muted">Create and manage system users</small>
@@ -330,7 +331,7 @@
                                     </li>
 
                                     <li>
-                                        <a href="support.html" class="d-flex align-items-center py-2 rounded">
+                                        <a href="{{route('administrator.supports')}}" class="d-flex align-items-center py-2 rounded">
                                             <div class="avatar rounded no-thumbnail bg-light">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="18"
                                                     fill="currentColor" viewBox="0 0 16 16">
