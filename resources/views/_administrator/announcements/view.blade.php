@@ -18,11 +18,10 @@
                                 <div class="col-12">
                                     <div class="card">
                                         <div class="card-header bg-body p-3">
-                                            <a class="nav-link color-600" href="#"><i
-                                                    class="fa fa-trash"></i></a>
+                                            <a class="nav-link color-600" href="#"><i class="fa fa-trash"></i></a>
                                         </div>
                                         <div class="card-body">
-                                            <h5 class="mb-0"><a href="{{route('administrator.announcements')}}"><i
+                                            <h5 class="mb-0"><a href="{{ route('administrator.announcements') }}"><i
                                                         class="fa fa-arrow-left me-3"></i></a>{{ $announcement->title }}
                                             </h5>
                                         </div>
