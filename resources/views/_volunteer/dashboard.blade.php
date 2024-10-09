@@ -220,7 +220,7 @@
           <div class="col-xxl-8 col-xl-12 col-lg-12">
             <div class="card shadow-sm">
               <div class="card-header">
-                <h6 class="card-title m-0">FCPCF Chart</h6>
+                <h6 class="card-title m-0">FCAPCF Chart</h6>
                 <div class="dropdown morphing scale-left">
                   <a href="#" class="card-fullscreen" data-bs-toggle="tooltip" title="Card Full-Screen"><i
                       class="icon-size-fullscreen"></i></a>

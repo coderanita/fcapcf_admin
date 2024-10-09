@@ -220,7 +220,7 @@
           <div class="col-xxl-8 col-xl-12 col-lg-12">
             <div class="card shadow-sm">
               <div class="card-header">
-                <h6 class="card-title m-0">FCPCF Chart</h6>
+                <h6 class="card-title m-0">FCAPCF Chart</h6>
                 <div class="dropdown morphing scale-left">
                   <a href="#" class="card-fullscreen" data-bs-toggle="tooltip" title="Card Full-Screen"><i
                       class="icon-size-fullscreen"></i></a>
@@ -369,20 +369,7 @@
         </div> <!-- .row end -->
       </div>
     </div>
-    <!-- Start:: footer link and more -->
-    <div class="page-footer bg-card mt-4">
-      <div class="container-fluid">
-        <footer class="d-flex flex-wrap justify-content-between align-items-center py-2">
-          <p class="col-md-5 mb-0 text-muted">© 2024 <a href="javascript:void(0)">First Child & Prisoner Care
-              Foundation</a>. <span class="fa fa-heart text-danger"></span> </p>
-          <ul class="nav col-md-7 justify-content-end">
-            <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">About</a></li>
-            <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Support</a></li>
-            <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Purchase</a></li>
-          </ul>
-        </footer>
-      </div>
-    </div>
+    
   </div>
 
 </div>
