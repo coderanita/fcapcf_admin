@@ -12,7 +12,7 @@ class Index extends Component
 
     public function render()
     {
-        $logs = AuditLog::with('user')->paginate(10);
+        $logs = AuditLog::with('user')->orderBy('id', 'desc')->paginate(10);
         return view('_administrator.audit-logs.index', ['logs' => $logs]);
     }
 }

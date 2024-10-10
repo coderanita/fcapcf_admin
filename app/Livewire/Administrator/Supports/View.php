@@ -14,14 +14,20 @@ class View extends Component
         $this->support = $support;
     }
 
-    public function delete(Support $support)
+    public function delete()
     {
-        $support->delete();
+        $this->dispatch('modalOpenedDelete');
+    }
 
-        $this->dispatch('showAlert', [
-            'msg' => 'Deleted successfully!',
-            'type' => 'success',
-        ]);
+    public function confirmDelete()
+    {
+        $this->support->delete();
+
+        $this->dispatch(
+            'alert',
+            msg: 'Deleted Successfully!',
+            type: 'success'
+        );
 
         return redirect()->route('administrator.supports');
         // return $this->redirect('/administrator/supports', navigate:true);

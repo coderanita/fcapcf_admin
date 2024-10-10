@@ -26,8 +26,7 @@
                                 <div class="col-12">
                                     <div class="card">
                                         <div class="card-header bg-body p-3">
-                                            <button class="nav-link color-600"
-                                                wire:click="delete({{ $support }})"><i
+                                            <button class="nav-link color-600" wire:click="delete()"><i
                                                     class="fa fa-trash"></i></button>
                                         </div>
                                         <div class="card-body">
@@ -68,23 +67,42 @@
             </div>
         </div>
     </div>
-</div>
 
+    {{-- Delete Modal --}}
+    <div class="modal fade" id="delete_support" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Confirem Delete?</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <h5 class="text-danger"><i class="bi bi-info-circle-fill text-danger"></i> Deleting support will
+                        remove
+                        all of
+                        information from our database. </h5>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-danger" type="submit" id="delete-record" wire:click="confirmDelete">Yes,
+                        Delete It!!</button>
+                    <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 @push('scripts')
     <script>
-        window.addEventListener('showAlert', event => {
-            let data = event.detail;
-            Toastify({
-                text: data.msg,
-                duration: 3000,
-                newWindow: true,
-                close: true,
-                gravity: "top", // `top` or `bottom`
-                position: "right", // `left`, `center` or `right`
-                stopOnFocus: true, // Prevents dismissing of toast on hover
-                className: "bg-" + data.type,
-            }).showToast();
+        window.addEventListener('modalOpenedDelete', event => {
+            $('#delete_support').modal('show');
+        })
+
+        window.addEventListener('modalClosedDelete', event => {
+            $('#delete_support').modal('hide');
         })
     </script>
 @endpush

@@ -45,7 +45,6 @@ class BeneficiaryObserver
             'description' =>  'Delete beneficiary ' . $beneficiary->first_name . ' ' . $beneficiary->last_name,
             'action' =>  'Delete',
         ]);
-    
     }
 
     /**
