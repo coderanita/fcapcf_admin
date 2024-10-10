@@ -15,7 +15,7 @@ class AnnouncementObserver
     {
         AuditLog::create([
             'user_id' =>  Auth::user()->id,
-            'module' =>  'Project',
+            'module' =>  'Announcement',
             'description' =>  'Added new announcement ' . $announcement->title,
             'action' =>  'New',
         ]);
@@ -26,7 +26,12 @@ class AnnouncementObserver
      */
     public function updated(Announcement $announcement): void
     {
-        //
+        AuditLog::create([
+            'user_id' =>  Auth::user()->id,
+            'module' =>  'Announcement',
+            'description' =>  'Update announcement ' . $announcement->title,
+            'action' =>  'Update',
+        ]);
     }
 
     /**
@@ -34,7 +39,12 @@ class AnnouncementObserver
      */
     public function deleted(Announcement $announcement): void
     {
-        //
+        AuditLog::create([
+            'user_id' =>  Auth::user()->id,
+            'module' =>  'Announcement',
+            'description' =>  'Delete announcement ' . $announcement->title,
+            'action' =>  'Delete',
+        ]);
     }
 
     /**

@@ -26,7 +26,12 @@ class ProjectObsever
      */
     public function updated(Project $project): void
     {
-        //
+        AuditLog::create([
+            'user_id' =>  Auth::user()->id,
+            'module' =>  'Project',
+            'description' =>  'Update project ' . $project->project_name,
+            'action' =>  'Update',
+        ]);
     }
 
     /**
@@ -34,7 +39,12 @@ class ProjectObsever
      */
     public function deleted(Project $project): void
     {
-        //
+        AuditLog::create([
+            'user_id' =>  Auth::user()->id,
+            'module' =>  'Project',
+            'description' =>  'Delete project ' . $project->project_name,
+            'action' =>  'Delete',
+        ]);
     }
 
     /**
