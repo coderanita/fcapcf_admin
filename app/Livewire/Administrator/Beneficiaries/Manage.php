@@ -8,10 +8,19 @@ use Livewire\Component;
 class Manage extends Component
 {
 
+    public $beneficiary;
+
     public function deleteBeneficiary($beneficiaryId)
     {
-        $beneficiary = Beneficiary::findOrFail($beneficiaryId);
-        $beneficiary->delete();
+        $this->beneficiary = Beneficiary::findOrFail($beneficiaryId);
+        $this->dispatch('modalOpenedDelete');
+    }
+
+    public function confirmDelete()
+    {
+        $this->beneficiary->delete();
+
+        $this->dispatch('modalClosedDelete');
 
         $this->dispatch(
             'alert',
