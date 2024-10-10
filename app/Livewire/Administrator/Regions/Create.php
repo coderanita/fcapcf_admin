@@ -3,16 +3,23 @@
 namespace App\Livewire\Administrator\Regions;
 
 use App\Models\Region;
+use App\Models\State;
 use Livewire\Component;
 
 class Create extends Component
 {
-    public $name, $description;
+    public $name, $description, $selectedStates = [];
 
     protected $rules = [
         'name' => 'required',
         'description' => 'required',
     ];
+
+    public function updatedSelectedStates()
+    {
+        // This is optional but useful to make sure Livewire reacts properly
+        $this->selectedStates = array_filter($this->selectedStates);
+    }
 
     public function create()
     {
@@ -24,11 +31,14 @@ class Create extends Component
         // Validate form fields
         $this->validate();
 
-        Region::create([
+        $region = Region::create([
             'name' => $this->name,
             'description' => $this->description
         ]);
 
+        foreach ($this->selectedStates as $state) {
+            State::where('id', $state)->update(['region_id' => $region->id]);
+        }
 
         $this->dispatch('modalClosedRegion');
         $this->dispatch('re-render-region');
@@ -42,6 +52,7 @@ class Create extends Component
 
     public function render()
     {
-        return view('_administrator.regions.create');
+        $states = State::get();
+        return view('_administrator.regions.create', ['states' => $states]);
     }
 }

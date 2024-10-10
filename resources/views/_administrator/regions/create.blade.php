@@ -39,10 +39,26 @@
                         </div>
                         <div class="col-md-12">
                             <label class="form-label">Select States</label>
-                            <select class="form-select">
-                                <option selected>Multiple select...</option>
-                                <option>...</option>
-                            </select>
+                            <div class="input-group">
+                                <input type="text" class="form-control" readonly
+                                    value="{{ count($selectedStates) ? count($selectedStates) . ' States Selected' : 'Select States' }}"
+                                    aria-label="Selected States" aria-describedby="states-selection"
+                                    data-bs-toggle="dropdown">
+                                <span class="input-group-text" id="states-selection"><i
+                                        class="fa fa-chevron-down"></i></span>
+
+                                <div class="dropdown-menu w-100">
+                                    @foreach ($states as $state)
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value="{{ $state->id }}"
+                                                wire:model.live="selectedStates" id="state-{{ $state->id }}">
+                                            <label class="form-check-label" for="state-{{ $state->id }}">
+                                                {{ $state->name }}
+                                            </label>
+                                        </div>
+                                    @endforeach
+                                </div>
+                            </div>
                         </div>
                         <div class="col-12">
                             <label class="form-label">Describe </label>
