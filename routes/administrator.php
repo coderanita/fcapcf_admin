@@ -9,6 +9,7 @@ use App\Livewire\Administrator\Beneficiaries\Create;
 use App\Livewire\Administrator\Beneficiaries\Edit;
 use App\Livewire\Administrator\Dashboard;
 use App\Livewire\Administrator\ProjectCategory\Manage as ProjectCategoryManage;
+use App\Livewire\Administrator\ProjectDocument\Manage as ProjectDocumentManage;
 use App\Livewire\Administrator\Projects\Manage;
 use App\Livewire\Administrator\Projects\View as ProjectsView;
 use App\Livewire\Administrator\Regions\Manage as RegionManage;
@@ -83,4 +84,6 @@ Route::middleware([
   })->name('supports');
   Route::get('/supports/details/{support}', SupportView::class)->name('supports.details');
   Route::get('/supports/create', SupportsCreate::class)->name('support.create');
+
+  Route::get('/file-managers', ProjectDocumentManage::class)->name('file-managers');
 });

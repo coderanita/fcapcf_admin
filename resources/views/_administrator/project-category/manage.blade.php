@@ -16,7 +16,7 @@
                         </div>
                         <div class="card-body">
                             <table class="myDataTable table table-hover mb-0">
-                                <thead>
+                                <thead>∑∑
                                     <tr>
                                         <th>S/N</th>
                                         <th>Category</th>
