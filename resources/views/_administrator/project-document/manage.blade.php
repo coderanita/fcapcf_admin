@@ -9,12 +9,13 @@
                         <div class="order-1 sticky-lg-top shadow-sm">
 
 
-                            <button type="button" class="btn bg-secondary text-light mb-3 w-100" data-bs-toggle="modal"
-                                data-bs-target="#add_document">Create New</button>
-                            <ul class="nav nav-tabs menu-list list-unstyled mb-0 border-0" role="tablist">
+                            <button type="button" class="btn bg-secondary text-light mb-3 w-100"
+                                wire:click="create">Create New</button>
 
+                            <ul class="nav nav-tabs menu-list list-unstyled mb-0 border-0" role="tablist">
                                 <li class="divider mt-4 py-2 border-top text-uppercase text-muted">
-                                    <small>FOLDERS</small></li>
+                                    <small>FOLDERS</small>
+                                </li>
                                 <li><a class="m-link" href="file-mamager#"><i
                                             class="fa fa-folder"></i><span>Images</span></a></li>
                                 <li><a class="m-link" href="file-mamager#"><i
@@ -96,83 +97,44 @@
                                         </div>
                                     </div> <!-- .row end -->
                                 </div>
-                                <div class="tab-pane fade" id="drive_withme" role="tabpanel">
-                                    <div class="card mb-4">
-                                        <div class="card-header bg-transparent">
-                                            <h4 class="mb-0">Shared with Me</h4>
-                                            <button class="btn btn-sm d-block d-lg-none btn-primary file-list-toggle"
-                                                type="button"><i class="fa fa-bars"></i></button>
-                                        </div>
-                                    </div>
-                                    <div class="row g-2 row-deck">
-                                        <div class="col-lg-3 col-md-6 col-sm-12">
-                                            <div class="card p-3">
-                                                <i class="fa fa-folder fa-2x chart-text-color2"></i>
-                                                <div class="mt-3">
-                                                    <h5>Birthday Party</h5>
-                                                    <div
-                                                        class="d-flex text-muted flex-wrap justify-content-between small text-uppercase">
-                                                        Files: <span>648</span></div>
-                                                    <div
-                                                        class="d-flex text-muted flex-wrap justify-content-between small text-uppercase">
-                                                        Size: <span>850MB</span></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-3 col-md-6 col-sm-12">
-                                            <div class="card p-3">
-                                                <i class="fa fa-folder fa-2x chart-text-color3"></i>
-                                                <div class="mt-3">
-                                                    <h5>1 Day Outing</h5>
-                                                    <div
-                                                        class="d-flex text-muted flex-wrap justify-content-between small text-uppercase">
-                                                        Files: <span>172</span></div>
-                                                    <div
-                                                        class="d-flex text-muted flex-wrap justify-content-between small text-uppercase">
-                                                        Size: <span>790MB</span></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-3 col-md-6 col-sm-12">
-                                            <div class="card p-3">
-                                                <i class="fa fa-folder fa-2x chart-text-color5"></i>
-                                                <div class="mt-3">
-                                                    <h5>Templates</h5>
-                                                    <div
-                                                        class="d-flex text-muted flex-wrap justify-content-between small text-uppercase">
-                                                        Files: <span>890</span></div>
-                                                    <div
-                                                        class="d-flex text-muted flex-wrap justify-content-between small text-uppercase">
-                                                        Size: <span>506MB</span></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div> <!-- .row end -->
-                                </div>
-
-
                             </div>
                         </div>
                     </div>
-                    <script src="assets/js/bundle/dataTables.bundle.js"></script>
-                    <!-- Jquery Page Js -->
-                    <script>
-                        $('.file-manager .file-list-toggle').on('click', function() {
-                            $('.file-manager .order-1').toggleClass('open');
-                        });
-                        $('.myDataTable').addClass('nowrap').dataTable({
-                            responsive: true,
-                            searching: false,
-                            paging: false,
-                            ordering: true,
-                            info: false,
-                        });
-                        $('a[data-bs-toggle="tab"]').on('shown.bs.tab', function(e) {
-                            $($.fn.dataTable.tables(true)).DataTable().columns.adjust().responsive.recalc();
-                        });
-                    </script>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="add_document" tabindex="-1" wire:ignore.self>
+        <div class="modal-dialog modal-dialog-vertical modal-dialog-scrollable">
+            <div class="modal-content" style="padding: 35px">
+                <div class="offcanvas-header">
+                    <h5 class="offcanvas-title">Upload Document</h5>
+                    <button type="button" class="btn-close text-reset" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body">
+                    <form class="row g-3" style="margin-top: 60px">
+                        <div>
+                            <div class="mb-2 col-md-8">
+                                <input type="file" class="form-control" wire:model="file"/>
+                            </div>
+                            <p>Select a file and it will be uploaded automatically</p>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+@push('scripts')
+    <script>
+        window.addEventListener('modalClosed', event => {
+            $('#add_document').modal('hide');
+        })
+
+        window.addEventListener('modalOpened', event => {
+            $('#add_document').modal('show');
+        })
+    </script>
+@endpush
