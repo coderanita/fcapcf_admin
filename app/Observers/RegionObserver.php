@@ -15,7 +15,7 @@ class RegionObserver
     public function created(Region $region): void
     {
         AuditLog::create([
-            'user_id' =>  FacadesAuth::user()->id,
+            'user_id' =>  FacadesAuth::user()->id ?? 1,
             'module' =>  'Region',
             'description' =>  'Added new region ' . $region->name,
             'action' =>  'New',
@@ -28,7 +28,7 @@ class RegionObserver
     public function updated(Region $region): void
     {
         AuditLog::create([
-            'user_id' =>  FacadesAuth::user()->id,
+            'user_id' =>  FacadesAuth::user()->id ?? 1,
             'module' =>  'Region',
             'description' =>  'Update region ' . $region->name,
             'action' =>  'Update',
@@ -41,7 +41,7 @@ class RegionObserver
     public function deleted(Region $region): void
     {
         AuditLog::create([
-            'user_id' =>  FacadesAuth::user()->id,
+            'user_id' =>  FacadesAuth::user()->id ?? 1,
             'module' =>  'Region',
             'description' =>  'Delete region ' . $region->name,
             'action' =>  'Delete',

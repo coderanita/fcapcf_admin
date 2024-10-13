@@ -8,7 +8,7 @@
 ])
 @if ($isOpenModal)
   <div class="modal fade show d-block" id="{{ $id }}" name="{{ $id }}-modal" tabindex="-1"
-    aria-labelledby="exampleModalLabel" aria-modal="true" role="dialog">
+    aria-labelledby="exampleModalLabel" aria-modal="true" role="dialog" wire:igore.self>
   @else
     <div class="modal fade d-none" id="{{ $id }}" name="{{ $id }}-modal" tabindex="-1"
       aria-labelledby="exampleModalLabel" aria-hidden="true">
