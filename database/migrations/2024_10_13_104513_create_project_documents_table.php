@@ -13,9 +13,12 @@ return new class extends Migration
     {
         Schema::create('project_documents', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('user_id')->nullable();
             $table->unsignedBigInteger('project_id')->nullable();
             $table->string('file_name')->nullable();
             $table->string('file_path')->nullable();
+            $table->string('file_size')->nullable();
+            $table->string('file_type')->nullable();
             $table->timestamps();
         });
     }

@@ -7,8 +7,6 @@
                 <div class="col-12">
                     <div class="file-manager d-flex flex-nowrap align-items-start">
                         <div class="order-1 sticky-lg-top shadow-sm">
-
-
                             <button type="button" class="btn bg-secondary text-light mb-3 w-100"
                                 wire:click="create">Create New</button>
 
@@ -16,12 +14,13 @@
                                 <li class="divider mt-4 py-2 border-top text-uppercase text-muted">
                                     <small>FOLDERS</small>
                                 </li>
-                                <li><a class="m-link" href="file-mamager#"><i
-                                            class="fa fa-folder"></i><span>Images</span></a></li>
-                                <li><a class="m-link" href="file-mamager#"><i
+                                <li><a class="m-link" href="#" wire:click="fileType('Image')"><i
+                                            class="fa fa-folder"></i><span>Images</span></a>
+                                </li>
+                                <li><a class="m-link" href="#" wire:click="fileType('Document')"><i
                                             class="fa fa-folder"></i><span>Documents</span></a></li>
-                                <li><a class="m-link" href="file-mamager#"><i
-                                            class="fa fa-folder"></i><span>Videos</span></a></li>
+                                <li><a class="m-link" href="#"><i class="fa fa-folder"></i><span>Videos</span></a>
+                                </li>
                             </ul>
                         </div>
                         <div class="order-2 flex-grow-1 ps-lg-3 ps-0">
@@ -48,50 +47,35 @@
                                                     <tr>
                                                         <th>Name</th>
                                                         <th>Date Uploaded</th>
-                                                        <th>Location</th>
+                                                        {{-- <th>Location</th> --}}
                                                         <th>Uploaded By</th>
                                                         <th>Size</th>
                                                         <th>Action</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    <tr>
-                                                        <td>
-                                                            <span class="me-4 ms-2">Web Design</span>
-                                                        </td>
-                                                        <td>12 April 2021</td>
-                                                        <td>Kwara, Ijeilasha South</td>
-                                                        <td>
-                                                            Rachael Blessing
-                                                        </td>
-                                                        <td>40MB</td>
-                                                        <td>
-                                                            <button type="button"
-                                                                class="btn btn-link btn-sm text-danger"
-                                                                data-bs-toggle="tooltip" data-bs-placement="top"
-                                                                title="Delete"><i class="fa fa-trash"></i></button>
-                                                        </td>
-                                                    </tr>
-
-                                                    <tr>
-                                                        <td>
-                                                            <i class="fa fa-file-excel-o"></i>
-                                                            <span class="me-4 ms-2">Marketing Strategy</span>
-                                                        </td>
-                                                        <td>Today</td>
-                                                        <td>Abuja, benind Dominos Pizza</td>
-                                                        <td>
-                                                            Damian Philip
-                                                        </td>
-                                                        <td>12MB</td>
-                                                        <td>
-                                                            <button type="button"
-                                                                class="btn btn-link btn-sm text-danger"
-                                                                data-bs-toggle="tooltip" data-bs-placement="top"
-                                                                title="Delete"><i class="fa fa-trash"></i></button>
-                                                        </td>
-                                                    </tr>
-
+                                                    @foreach ($documents as $document)
+                                                        <tr>
+                                                            <td>
+                                                                <span
+                                                                    class="me-4 ms-2">{{ $document->file_name }}</span>
+                                                            </td>
+                                                            <td>{{ dateToWord($document->created_at) }}</td>
+                                                            {{-- <td>Kwara, Ijeilasha South</td> --}}
+                                                            <td>
+                                                                {{ $document->user->fname }}
+                                                                {{ $document->user->lname }}
+                                                            </td>
+                                                            <td>{{ $document->file_size }}
+                                                                MB</td>
+                                                            <td>
+                                                                <button type="button"
+                                                                    class="btn btn-link btn-sm text-danger"
+                                                                    data-bs-toggle="tooltip" data-bs-placement="top"
+                                                                    title="Delete"><i class="fa fa-trash"></i></button>
+                                                            </td>
+                                                        </tr>
+                                                    @endforeach
                                                 </tbody>
                                             </table>
                                         </div>
@@ -117,8 +101,14 @@
                     <form class="row g-3" style="margin-top: 60px">
                         <div>
                             <div class="mb-2 col-md-8">
-                                <input type="file" class="form-control" wire:model="file"/>
+                                <input type="file" class="form-control @error('file') is-invalid @enderror"
+                                    wire:model="file" />
+                                @error('file')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}</div>
+                                @enderror
                             </div>
+
                             <p>Select a file and it will be uploaded automatically</p>
                     </form>
                 </div>
