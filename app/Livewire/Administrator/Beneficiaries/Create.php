@@ -60,7 +60,7 @@ class Create extends Component
             $this->validate([
                 'first_name' => 'required|string|max:255',
                 'last_name' => 'required|string|max:255',
-                // 'profile_photo_path' => 'required|image',
+                'profile_photo_path' => 'required|image',
                 'gender' => 'required|string',
                 'phone_number' => 'required|string|max:15',
                 'email' => 'required|email|max:255',
