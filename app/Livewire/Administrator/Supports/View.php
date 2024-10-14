@@ -8,6 +8,7 @@ use Livewire\Component;
 class View extends Component
 {
     public $support;
+    public $name;
 
     public function mount(Support $support)
     {

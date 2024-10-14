@@ -16,7 +16,7 @@
                         </div>
                         <div class="card-body">
                             <table class="myDataTable table table-hover mb-0">
-                                <thead>∑∑
+                                <thead>
                                     <tr>
                                         <th>S/N</th>
                                         <th>Category</th>
@@ -113,30 +113,9 @@
         </div>
     </div>
 
-    {{-- Delete Modal --}}
-    <div class="modal fade" id="delete_project_category" tabindex="-1" role="dialog"
-        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle">Confirem Delete {{ $this->name }}?</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <h5 class="text-danger"><i class="bi bi-info-circle-fill text-danger"></i> Deleting role will remove
-                        all of
-                        information from our database. </h5>
-                </div>
-                <div class="modal-footer">
-                    <button class="btn btn-danger" type="submit" id="delete-record" wire:click="confirmDelete">Yes, Delete It!!</button>
-                    <button type="button" class="btn btn-dark" 
-                        data-bs-dismiss="modal">Close</button>
-                </div>
-            </div>
-        </div>
-    </div>
+    {{-- Modal Delete --}}
+    <x-modal-delete></x-modal-delete>
+    {{-- Modal Delete --}}
 
 </div>
 
@@ -148,14 +127,6 @@
 
         window.addEventListener('modalOpenedEdit', event => {
             $('#edit_project_category_modal').modal('show');
-        })
-
-        window.addEventListener('modalOpenedDelete', event => {
-            $('#delete_project_category').modal('show');
-        })
-
-        window.addEventListener('modalClosedDelete', event => {
-            $('#delete_project_category').modal('hide');
         })
     </script>
 @endpush

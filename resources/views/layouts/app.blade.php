@@ -1,6 +1,5 @@
 @props(['title'])
 <!DOCTYPE html>
-{{-- <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" /> --}}
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 
@@ -56,6 +55,7 @@
         </div>
 
         <script type='text/javascript' src="{{ asset('js/toastify-js.js') }}"></script>
+        <script src="{{ asset('js/custom.js') }}"></script>
         <script>
             window.addEventListener('alert', (event) => {
                 let data = event.detail;

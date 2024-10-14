@@ -19,7 +19,8 @@
                                 </li>
                                 <li><a class="m-link" href="#" wire:click="fileType('Document')"><i
                                             class="fa fa-folder"></i><span>Documents</span></a></li>
-                                <li><a class="m-link" href="#"><i class="fa fa-folder"></i><span>Videos</span></a>
+                                <li><a class="m-link" href="#" wire:click="fileType('Video')"><i
+                                            class="fa fa-folder"></i><span>Videos</span></a>
                                 </li>
                             </ul>
                         </div>
@@ -54,7 +55,7 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    @foreach ($documents as $document)
+                                                    @forelse ($documents as $document)
                                                         <tr>
                                                             <td>
                                                                 <span
@@ -71,11 +72,17 @@
                                                             <td>
                                                                 <button type="button"
                                                                     class="btn btn-link btn-sm text-danger"
-                                                                    data-bs-toggle="tooltip" data-bs-placement="top"
+                                                                    wire:click="delete({{ $document }})"
                                                                     title="Delete"><i class="fa fa-trash"></i></button>
                                                             </td>
                                                         </tr>
-                                                    @endforeach
+                                                    @empty
+                                                        <tr>
+                                                            <td colspan="5" class="text-center">
+                                                                No File Found!
+                                                            </td>
+                                                        </tr>
+                                                    @endforelse
                                                 </tbody>
                                             </table>
                                         </div>
@@ -88,6 +95,10 @@
             </div>
         </div>
     </div>
+
+    {{-- Modal Delete --}}
+    <x-modal-delete></x-modal-delete>
+    {{-- Modal Delete --}}
 
     <div class="modal fade" id="add_document" tabindex="-1" wire:ignore.self>
         <div class="modal-dialog modal-dialog-vertical modal-dialog-scrollable">
@@ -115,6 +126,8 @@
             </div>
         </div>
     </div>
+
+
 </div>
 
 @push('scripts')

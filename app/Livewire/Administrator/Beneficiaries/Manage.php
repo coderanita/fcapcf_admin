@@ -9,10 +9,12 @@ class Manage extends Component
 {
 
     public $beneficiary;
+    public $name;
 
     public function deleteBeneficiary($beneficiaryId)
     {
         $this->beneficiary = Beneficiary::findOrFail($beneficiaryId);
+        $this->name = $this->beneficiary->first_name;
         $this->dispatch('modalOpenedDelete');
     }
 

@@ -175,7 +175,7 @@ class Create extends Component
     public function updatedFiles()
     {
         foreach ($this->files as $file) {
-            $filePath = $file->store('uploads'); // Store file in the 'uploads' directory
+            $filePath = $file->store('project-documents', 'public');
             $this->uploadedFiles[] = [
                 'name' => $file->getClientOriginalName(),
                 'size' => number_format($file->getSize() / 1048576, 2),

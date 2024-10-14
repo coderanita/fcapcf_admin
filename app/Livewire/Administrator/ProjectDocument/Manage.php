@@ -12,6 +12,8 @@ class Manage extends Component
     use WithFileUploads;
 
     public $file;
+    public $name;
+    public $document;
 
     public $documents = [];
 
@@ -23,6 +25,28 @@ class Manage extends Component
     public function create()
     {
         $this->dispatch('modalOpened');
+    }
+
+    public function delete(ProjectDocument $document)
+    {
+        $this->document = $document;
+        $this->name = $document->file_name;
+        $this->dispatch('modalOpenedDelete');
+    }
+
+    public function confirmDelete()
+    {
+        $this->document->delete();
+
+        $this->dispatch(
+            'alert',
+            msg: 'Deleted Successfully!',
+            type: 'success'
+        );
+
+        $this->dispatch('modalClosedDelete');
+
+        $this->documents = ProjectDocument::get();
     }
 
     public function updatedFile()
@@ -67,7 +91,9 @@ class Manage extends Component
             msg: "{$file_name}  uploaded successfully"
         );
 
-        $this->reset();
+        $this->reset('file');
+
+        $this->documents = ProjectDocument::get();
     }
 
     public function fileType($fileType)
