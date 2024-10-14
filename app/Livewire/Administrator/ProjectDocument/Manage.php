@@ -4,6 +4,7 @@ namespace App\Livewire\Administrator\ProjectDocument;
 
 use App\Models\ProjectDocument;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
@@ -99,6 +100,17 @@ class Manage extends Component
     public function fileType($fileType)
     {
         $this->documents = ProjectDocument::where('file_type', $fileType)->get();
+    }
+
+    public function viewFile(ProjectDocument $document)
+    {
+        if (Storage::exists('public/' . $document->file_path)) {
+            $fileSize = Storage::size('public/' . $document->file_path);
+            return Storage::download('public/' . $document->file_path, $document->file_name);
+            info("File size: $fileSize bytes");
+        } else {
+            info("File does not exist at location: " . 'public/' . $document->file_path);
+        }
     }
 
 

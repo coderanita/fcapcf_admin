@@ -58,8 +58,12 @@
                                                     @forelse ($documents as $document)
                                                         <tr>
                                                             <td>
-                                                                <span
-                                                                    class="me-4 ms-2">{{ $document->file_name }}</span>
+                                                                <a href="#"
+                                                                    wire:click="viewFile({{ $document }})"
+                                                                    target="_blank">
+                                                                    <span
+                                                                        class="me-4 ms-2">{{ $document->file_name }}</span>
+                                                                </a>
                                                             </td>
                                                             <td>{{ dateToWord($document->created_at) }}</td>
                                                             {{-- <td>Kwara, Ijeilasha South</td> --}}
