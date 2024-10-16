@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire\Administrator\ProjectDocument;
+namespace App\Livewire\Staff\ProjectDocument;
 
 use App\Models\ProjectDocument;
 use Illuminate\Support\Facades\Auth;
@@ -112,6 +112,6 @@ class Manage extends Component
 
     public function render()
     {
-        return view('_administrator.project-document.manage');
+        return view('_staff.project-document.manage');
     }
 }
