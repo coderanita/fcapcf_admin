@@ -22,10 +22,18 @@ class BeneficiaryReports extends Component
     {
         $beneficiaries = Beneficiary::paginate(10);
 
+        $totalBeneficiaries = Beneficiary::count();
+
+        $totalBeneficiaryMale = Beneficiary::where('gender', 'male')->count();
+        $totalBeneficiaryFemale = Beneficiary::where('gender', 'female')->count();
+
         return view(
             '_administrator.reports.beneficiary-reports',
             [
-                'beneficiaries' => $beneficiaries
+                'beneficiaries' => $beneficiaries,
+                'totalBeneficiaries' => $totalBeneficiaries,
+                'totalBeneficiaryMale' => $totalBeneficiaryMale,
+                'totalBeneficiaryFemale' => $totalBeneficiaryFemale,
             ]
         );
     }

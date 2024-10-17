@@ -82,10 +82,10 @@
                                                 </div>
                                                 <div class="card-body">
                                                     <div class="avatar lg rounded-circle no-thumbnail mb-3 fs-5">
-                                                        CP
+                                                        TU
                                                     </div>
-                                                    <small class="text-muted">Total Completed Projects</small>
-                                                    <h4>29</h4>
+                                                    <small class="text-muted">Total Beneficiaries</small>
+                                                    <h4>{{ $totalBeneficiaries }}</h4>
                                                 </div>
                                             </div>
                                         </div>
@@ -93,10 +93,10 @@
                                             <div class="item card bg-body">
                                                 <div class="card-body">
                                                     <div class="avatar lg rounded-circle no-thumbnail mb-3 fs-5">
-                                                        TP
+                                                        TM
                                                     </div>
-                                                    <small class="text-muted">Total Projects</small>
-                                                    <h4>85</h4>
+                                                    <small class="text-muted">Total Male</small>
+                                                    <h4>{{ $totalBeneficiaryMale }}</h4>
                                                 </div>
                                             </div>
                                         </div>
@@ -104,35 +104,14 @@
                                             <div class="item card bg-body">
                                                 <div class="card-body">
                                                     <div class="avatar lg rounded-circle no-thumbnail mb-3 fs-5">
-                                                        PC
+                                                        TF
                                                     </div>
-                                                    <small class="text-muted">Total Project Cost</small>
-                                                    <h4>USD 88,000</h4>
+                                                    <small class="text-muted">Total Female</small>
+                                                    <h4>{{ $totalBeneficiaryFemale }}</h4>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="owl-item active" style="width: 251.4px; margin-right: 10px">
-                                            <div class="item card bg-body">
-                                                <div class="card-body">
-                                                    <div class="avatar lg rounded-circle no-thumbnail mb-3 fs-5">
-                                                        PR
-                                                    </div>
-                                                    <small class="text-muted">Project Regions</small>
-                                                    <h4>08</h4>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="owl-item active" style="width: 251.4px; margin-right: 10px">
-                                            <div class="item card bg-body">
-                                                <div class="card-body">
-                                                    <div class="avatar lg rounded-circle no-thumbnail mb-3 fs-5">
-                                                        PP
-                                                    </div>
-                                                    <small class="text-muted">Total Incomplete Projects</small>
-                                                    <h4>400</h4>
-                                                </div>
-                                            </div>
-                                        </div>
+
                                     </div>
                                 </div>
                                 <div class="owl-nav disabled">
@@ -308,7 +287,8 @@
                                                         <td> {{ $beneficiary->disability_status === 'no' ? 'N/A' : $beneficiary->type_of_disability }}
                                                         </td>
                                                         <td>{{ $beneficiary->socialEconomic->education_level }} <br>
-                                                        <td>{{ $this->getLanguageName($beneficiary->language_id) }}</td>
+                                                        <td>{{ $this->getLanguageName($beneficiary->language_id) }}
+                                                        </td>
                                                         <td> {{ $beneficiary->socialEconomic->occupation }} </td>
                                                         <td> {{ $beneficiary->socialEconomic->income }}</td>
                                                         <td> {{ $beneficiary->socialEconomic->household_size }} </td>
