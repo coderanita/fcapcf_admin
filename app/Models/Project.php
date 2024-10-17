@@ -35,7 +35,7 @@ class Project extends Model
         return $this->belongsTo(State::class);
     }
 
-    public function status(): BelongsTo
+    public function projectStatus(): BelongsTo
     {
         return $this->belongsTo(ProjectStatus::class);
     }

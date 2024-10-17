@@ -98,7 +98,8 @@
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="{{route('administrator.file-managers')}}" class="d-flex align-items-center py-2 rounded">
+                                        <a href="{{ route('administrator.file-managers') }}"
+                                            class="d-flex align-items-center py-2 rounded">
                                             <div class="avatar rounded no-thumbnail bg-light">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="18"
                                                     fill="currentColor" viewBox="0 0 16 16">
@@ -121,7 +122,7 @@
                     </div>
                 </div>
                 <!-- Start:: extra pages link -->
-                <div class="dropdown menu-pages active">
+                <div class="dropdown menu-pages">
                     <a href="#" class="btn btn-link dropdown-toggle after-none" data-bs-toggle="dropdown">
                         <svg class="mx-1" xmlns="http://www.w3.org/2000/svg" width="18" fill="currentColor"
                             viewBox="0 0 16 16">
@@ -214,7 +215,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="dropdown menu-pages active">
+                <div class="dropdown menu-pages">
                     <a href="" class="btn btn-link dropdown-toggle after-none" data-bs-toggle="dropdown">
                         <svg class="mx-1" xmlns="http://www.w3.org/2000/svg" width="18" fill="currentColor"
                             viewBox="0 0 16 16">
@@ -331,7 +332,8 @@
                                     </li>
 
                                     <li>
-                                        <a href="{{route('administrator.supports')}}" class="d-flex align-items-center py-2 rounded">
+                                        <a href="{{ route('administrator.supports') }}"
+                                            class="d-flex align-items-center py-2 rounded">
                                             <div class="avatar rounded no-thumbnail bg-light">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="18"
                                                     fill="currentColor" viewBox="0 0 16 16">
@@ -370,6 +372,89 @@
                                 </ul>
                             </div>
 
+                        </div>
+                    </div>
+                </div>
+                <div class="dropdown menu-resources">
+                    <a href="#" class="btn btn-link dropdown-toggle after-none" data-bs-toggle="dropdown">
+                        <svg class="mx-1" xmlns="http://www.w3.org/2000/svg" width="18" fill="currentColor"
+                            viewBox="0 0 16 16">
+                            <path class="fill-secondary"
+                                d="M5 10.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5zm0-2a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm0-2a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm0-2a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z">
+                            </path>
+                            <path class="fill-muted"
+                                d="M3 0h10a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-1h1v1a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v1H1V2a2 2 0 0 1 2-2z">
+                            </path>
+                            <path class="fill-muted"
+                                d="M1 5v-.5a.5.5 0 0 1 1 0V5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0V8h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0v.5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1z">
+                            </path>
+                        </svg>
+                        <span>Reports</span>
+                    </a>
+                    <div class="dropdown-menu mega-dropdown p-4 shadow">
+                        <div class="row g-3">
+                            <div class="col-lg-7">
+                                <ul class="list-unstyled mb-0 animation_delay">
+                                    <li>
+                                        <a href="{{ route('administrator.report.projects') }}"
+                                            class="d-flex align-items-center py-2 rounded">
+                                            <div class="avatar rounded no-thumbnail bg-light">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="18"
+                                                    fill="currentColor" viewBox="0 0 16 16">
+                                                    <path class="fill-secondary"
+                                                        d="M10.854 8.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 0 1 .708-.708L7.5 10.793l2.646-2.647a.5.5 0 0 1 .708 0z">
+                                                    </path>
+                                                    <path
+                                                        d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM2 2a1 1 0 0 0-1 1v11a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1H2z">
+                                                    </path>
+                                                    <path class="fill-secondary"
+                                                        d="M2.5 4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5H3a.5.5 0 0 1-.5-.5V4z">
+                                                    </path>
+                                                </svg>
+                                            </div>
+                                            <div class="flex-fill ms-3 text-truncate">
+                                                <h6 class="mb-0">Project Reports</h6>
+                                            </div>
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a href="{{ route('administrator.report.users') }}"
+                                            class="d-flex align-items-center py-2 rounded">
+                                            <div class="avatar rounded no-thumbnail bg-light">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="18"
+                                                    fill="currentColor" viewBox="0 0 16 16">
+                                                    <path
+                                                        d="M13 1a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h10zM3 0a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V3a3 3 0 0 0-3-3H3z" />
+                                                    <path class="fill-secondary"
+                                                        d="M5.5 4a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm8 8a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm-4-4a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
+                                                </svg>
+                                            </div>
+                                            <div class="flex-fill ms-3 text-truncate">
+                                                <h6 class="mb-0">User Reports</h6>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ route('administrator.report.beneficiaries') }}"
+                                            class="d-flex align-items-center py-2 rounded">
+                                            <div class="avatar rounded no-thumbnail bg-light">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="18"
+                                                    fill="currentColor" viewBox="0 0 16 16">
+                                                    <path
+                                                        d="M5.5 2A3.5 3.5 0 0 0 2 5.5v5A3.5 3.5 0 0 0 5.5 14h5a3.5 3.5 0 0 0 3.5-3.5V8a.5.5 0 0 1 1 0v2.5a4.5 4.5 0 0 1-4.5 4.5h-5A4.5 4.5 0 0 1 1 10.5v-5A4.5 4.5 0 0 1 5.5 1H8a.5.5 0 0 1 0 1H5.5z">
+                                                    </path>
+                                                    <path class="fill-secondary"
+                                                        d="M16 3a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"></path>
+                                                </svg>
+                                            </div>
+                                            <div class="flex-fill ms-3 text-truncate">
+                                                <h6 class="mb-0">Beneficiaries Reports</h6>
+                                            </div>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>

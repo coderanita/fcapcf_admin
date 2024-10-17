@@ -13,6 +13,9 @@ use App\Livewire\Administrator\ProjectDocument\Manage as ProjectDocumentManage;
 use App\Livewire\Administrator\Projects\Manage;
 use App\Livewire\Administrator\Projects\View as ProjectsView;
 use App\Livewire\Administrator\Regions\Manage as RegionManage;
+use App\Livewire\Administrator\Reports\BeneficiaryReports;
+use App\Livewire\Administrator\Reports\ProjectReports;
+use App\Livewire\Administrator\Reports\UserReports;
 use App\Livewire\Administrator\Roles\ShowRole;
 use App\Livewire\Administrator\Staff\Create as StaffCreate;
 use App\Livewire\Administrator\Supports\Create as SupportsCreate;
@@ -86,4 +89,8 @@ Route::middleware([
   Route::get('/supports/create', SupportsCreate::class)->name('support.create');
 
   Route::get('/file-managers', ProjectDocumentManage::class)->name('file-managers');
+
+  Route::get('/project-reports', ProjectReports::class)->name('report.projects');
+  Route::get('/user-reports', UserReports::class)->name('report.users');
+  Route::get('/beneficiary-reports', BeneficiaryReports::class)->name('report.beneficiaries');
 });
