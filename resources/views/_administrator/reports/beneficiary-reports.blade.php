@@ -228,10 +228,10 @@
                         <div class="card-body">
                             <div id="DataTables_Table_0_wrapper" class="dataTables_wrapper dt-bootstrap5 no-footer">
                                 <div class="row dt-row">
-                                    <div class="col-sm-12">
+                                    <div class="col-sm-12 table-responsive">
                                         <table
                                             class="myDataTable table table-hover align-middle mb-0 nowrap dataTable no-footer dtr-inline"
-                                            id="DataTables_Table_0" style="width: 1050px;">
+                                            id="DataTables_Table_0" style="width: 100%;">
                                             <thead>
                                                 <tr>
                                                     <th class="sorting sorting_asc" tabindex="0"
@@ -254,6 +254,11 @@
                                                         colspan="1" style="width: 40px"
                                                         aria-label="Beneficiaries: activate to sort column ascending">
                                                         Disability</th>
+                                                    <th class="sorting" tabindex="0"
+                                                        aria-controls="DataTables_Table_0" rowspan="1"
+                                                        colspan="1" style="width: 40px"
+                                                        aria-label="Beneficiaries: activate to sort column ascending">
+                                                        Education</th>
                                                     <th class="sorting" tabindex="0"
                                                         aria-controls="DataTables_Table_0" rowspan="1"
                                                         colspan="1" style="width: 60px;"
@@ -302,6 +307,7 @@
                                                         </td>
                                                         <td> {{ $beneficiary->disability_status === 'no' ? 'N/A' : $beneficiary->type_of_disability }}
                                                         </td>
+                                                        <td>{{ $beneficiary->socialEconomic->education_level }} <br>
                                                         <td>{{ $this->getLanguageName($beneficiary->language_id) }}</td>
                                                         <td> {{ $beneficiary->socialEconomic->occupation }} </td>
                                                         <td> {{ $beneficiary->socialEconomic->income }}</td>

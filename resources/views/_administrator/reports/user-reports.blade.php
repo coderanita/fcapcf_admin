@@ -228,10 +228,10 @@
                         <div class="card-body">
                             <div id="DataTables_Table_0_wrapper" class="dataTables_wrapper dt-bootstrap5 no-footer">
                                 <div class="row dt-row">
-                                    <div class="col-sm-12">
+                                    <div class="col-sm-12 table-responsive">
                                         <table
                                             class="myDataTable table table-hover align-middle mb-0 nowrap dataTable no-footer dtr-inline"
-                                            id="DataTables_Table_0" style="width: 1050px">
+                                            id="DataTables_Table_0" style="width: 100%;">
                                             <thead>
                                                 <tr>
                                                     <th class="sorting sorting_asc" tabindex="0"
