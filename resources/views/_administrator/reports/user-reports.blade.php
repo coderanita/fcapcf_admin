@@ -83,10 +83,10 @@
                                                 </div>
                                                 <div class="card-body">
                                                     <div class="avatar lg rounded-circle no-thumbnail mb-3 fs-5">
-                                                        CP
+                                                        TU
                                                     </div>
-                                                    <small class="text-muted">Total Completed Projects</small>
-                                                    <h4>29</h4>
+                                                    <small class="text-muted">Total Users</small>
+                                                    <h4>{{ $totalUsers }}</h4>
                                                 </div>
                                             </div>
                                         </div>
@@ -94,10 +94,10 @@
                                             <div class="item card bg-body">
                                                 <div class="card-body">
                                                     <div class="avatar lg rounded-circle no-thumbnail mb-3 fs-5">
-                                                        TP
+                                                        TA
                                                     </div>
-                                                    <small class="text-muted">Total Projects</small>
-                                                    <h4>85</h4>
+                                                    <small class="text-muted">Total Administrator</small>
+                                                    <h4>{{ $totalAdministrators }}</h4>
                                                 </div>
                                             </div>
                                         </div>
@@ -105,10 +105,10 @@
                                             <div class="item card bg-body">
                                                 <div class="card-body">
                                                     <div class="avatar lg rounded-circle no-thumbnail mb-3 fs-5">
-                                                        PC
+                                                        TM
                                                     </div>
-                                                    <small class="text-muted">Total Project Cost</small>
-                                                    <h4>USD 88,000</h4>
+                                                    <small class="text-muted">Total Manager</small>
+                                                    <h4>{{ $totalManagers }}</h4>
                                                 </div>
                                             </div>
                                         </div>
@@ -116,10 +116,10 @@
                                             <div class="item card bg-body">
                                                 <div class="card-body">
                                                     <div class="avatar lg rounded-circle no-thumbnail mb-3 fs-5">
-                                                        PR
+                                                        TS
                                                     </div>
-                                                    <small class="text-muted">Project Regions</small>
-                                                    <h4>08</h4>
+                                                    <small class="text-muted">Total Staff</small>
+                                                    <h4>{{ $totalStaffs }}</h4>
                                                 </div>
                                             </div>
                                         </div>
@@ -127,10 +127,10 @@
                                             <div class="item card bg-body">
                                                 <div class="card-body">
                                                     <div class="avatar lg rounded-circle no-thumbnail mb-3 fs-5">
-                                                        PP
+                                                        TV
                                                     </div>
-                                                    <small class="text-muted">Total Incomplete Projects</small>
-                                                    <h4>400</h4>
+                                                    <small class="text-muted">Total Volunteers</small>
+                                                    <h4>{{ $totalVolunteers }}</h4>
                                                 </div>
                                             </div>
                                         </div>
@@ -234,7 +234,7 @@
                                             id="DataTables_Table_0" style="width: 100%;">
                                             <thead>
                                                 <tr>
-                                                    <th class="sorting sorting_asc" tabindex="0"
+                                                    {{-- <th class="sorting sorting_asc" tabindex="0"
                                                         aria-controls="DataTables_Table_0" rowspan="1"
                                                         colspan="1" style="width: 88px" aria-sort="ascending"
                                                         aria-label="Project: activate to sort column descending">
@@ -294,11 +294,40 @@
                                                         colspan="1" style="width: 75px"
                                                         aria-label="Status: activate to sort column ascending">
                                                         Type
+                                                    </th> --}}
+
+
+                                                    <th class="sorting sorting_asc" tabindex="0"
+                                                        aria-controls="DataTables_Table_0" rowspan="1"
+                                                        colspan="1" style="width: 88px" aria-sort="ascending"
+                                                        aria-label="Project: activate to sort column descending">
+                                                        Full Name
+                                                    </th>
+
+                                                    <th class="sorting sorting_asc" tabindex="0"
+                                                        aria-controls="DataTables_Table_0" rowspan="1"
+                                                        colspan="1" style="width: 88px" aria-sort="ascending"
+                                                        aria-label="Project: activate to sort column descending">
+                                                        Contact
+                                                    </th>
+
+                                                    <th class="sorting" tabindex="0"
+                                                        aria-controls="DataTables_Table_0" rowspan="1"
+                                                        colspan="1" style="width: 75px"
+                                                        aria-label="Status: activate to sort column ascending">
+                                                        Type
+                                                    </th>
+
+                                                    <th class="sorting" tabindex="0"
+                                                        aria-controls="DataTables_Table_0" rowspan="1"
+                                                        colspan="1" style="width: 75px"
+                                                        aria-label="Status: activate to sort column ascending">
+                                                        Status
                                                     </th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr class="odd">
+                                                {{-- <tr class="odd">
                                                     <td class="dtr-control sorting_1" tabindex="0">
                                                         <span>Funmi Yusuf Ifeanyi (M)</span>
                                                     </td>
@@ -318,72 +347,22 @@
                                                         <span>damian@faker.com</span>
                                                     </td>
                                                     <td><span class="badge bg-info">Staff</span></td>
-                                                </tr>
-                                                <tr class="even">
-                                                    <td class="dtr-control sorting_1" tabindex="0">
-                                                        <span>Funmi Yusuf Ifeanyi (M)</span>
-                                                    </td>
-                                                    <td>Married</td>
-                                                    <td>
-                                                        080 123 456 789 <br />
-                                                        <span>email@faker.com</span>
-                                                    </td>
-                                                    <td>Ghana</td>
-                                                    <td>43 years</td>
+                                                </tr> --}}
 
-                                                    <td>PhD</td>
-                                                    <td>13 years</td>
-                                                    <td>Sept 13, 2020</td>
-                                                    <td>
-                                                        Damian Godswill <br />
-                                                        <span>damian@faker.com</span>
-                                                    </td>
-                                                    <td>
-                                                        <span class="badge bg-info">Volunteer</span>
-                                                    </td>
-                                                </tr>
-                                                <tr class="odd">
-                                                    <td class="dtr-control sorting_1" tabindex="0">
-                                                        <span>Funmi Yusuf Ifeanyi (M)</span>
-                                                    </td>
-                                                    <td>Divorced</td>
-                                                    <td>
-                                                        080 123 456 789 <br />
-                                                        <span>email@faker.com</span>
-                                                    </td>
-                                                    <td>Ghana</td>
-                                                    <td>43 years</td>
-
-                                                    <td>PhD</td>
-                                                    <td>13 years</td>
-                                                    <td>Sept 13, 2020</td>
-                                                    <td>
-                                                        Damian Godswill <br />
-                                                        <span>damian@faker.com</span>
-                                                    </td>
-                                                    <td><span class="badge bg-info">Staff</span></td>
-                                                </tr>
-                                                <tr class="even">
-                                                    <td class="dtr-control sorting_1" tabindex="0">
-                                                        <span>Funmi Yusuf Ifeanyi (M)</span>
-                                                    </td>
-                                                    <td>Single</td>
-                                                    <td>
-                                                        080 123 456 789 <br />
-                                                        <span>email@faker.com</span>
-                                                    </td>
-                                                    <td>Ghana</td>
-                                                    <td>43 years</td>
-
-                                                    <td>PhD</td>
-                                                    <td>13 years</td>
-                                                    <td>Sept 13, 2020</td>
-                                                    <td>
-                                                        Damian Godswill <br />
-                                                        <span>damian@faker.com</span>
-                                                    </td>
-                                                    <td><span class="badge bg-info">Admin</span></td>
-                                                </tr>
+                                                @foreach ($users as $user)
+                                                    <tr class="odd">
+                                                        <td class="dtr-control sorting_1" tabindex="0">
+                                                            <span>{{ $user->fname }} {{ $user->lname }}</span>
+                                                        </td>
+                                                        <td>{{ $user->email }}</td>
+                                                        <td>
+                                                            {{ $user->role->name }}
+                                                        </td>
+                                                        <td><span
+                                                                class="badge {{ $user->active == 1 ? 'bg-success' : 'bg-danger' }}">{{ $user->active == 1 ? 'Active' : 'Inactive' }}</span>
+                                                        </td>
+                                                    </tr>
+                                                @endforeach
                                             </tbody>
                                         </table>
                                     </div>
