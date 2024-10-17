@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Observers\BeneficiaryObserver;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Attributes\ObservedBy;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -29,5 +30,10 @@ class Beneficiary extends Model
     public function socialEconomic(): HasOne
     {
         return $this->hasOne(BeneficiarySocialEconomic::class);
+    }
+
+    public function getAgeAttribute()
+    {
+        return Carbon::parse($this->date_of_birth)->age;
     }
 }

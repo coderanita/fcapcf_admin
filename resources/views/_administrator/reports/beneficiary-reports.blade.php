@@ -251,19 +251,9 @@
                                                     </th>
                                                     <th class="sorting" tabindex="0"
                                                         aria-controls="DataTables_Table_0" rowspan="1"
-                                                        colspan="1" style="width: 50px;"
-                                                        aria-label="Amount: activate to sort column ascending">Region
-                                                    </th>
-                                                    <th class="sorting" tabindex="0"
-                                                        aria-controls="DataTables_Table_0" rowspan="1"
                                                         colspan="1" style="width: 40px"
                                                         aria-label="Beneficiaries: activate to sort column ascending">
                                                         Disability</th>
-                                                    <th class="sorting" tabindex="0"
-                                                        aria-controls="DataTables_Table_0" rowspan="1"
-                                                        colspan="1" style="width: 88px;"
-                                                        aria-label="End Date: activate to sort column ascending">
-                                                        Education</th>
                                                     <th class="sorting" tabindex="0"
                                                         aria-controls="DataTables_Table_0" rowspan="1"
                                                         colspan="1" style="width: 60px;"
@@ -297,239 +287,31 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr class="odd">
-                                                    <td class="dtr-control sorting_1" tabindex="0">
-                                                        <span>Firstname LastName (F)</span>
-                                                    </td>
-                                                    <td>Single - 69 </td>
-                                                    <td>080 123 456 789 <br>
-                                                        <span>N/A</span>
-                                                    </td>
-                                                    <td> North West </td>
-                                                    <td> Blind </td>
 
-                                                    <td>Primary</td>
-                                                    <td>Hausa</td>
-                                                    <td> Shoe Shine</td>
-                                                    <td> USD 8</td>
-                                                    <td> 17 </td>
-                                                    <td>Sept 13, 2020 </td>
-                                                    <td>Damian Godswill <br>
-                                                        <span>damian@faker.com</span>
-                                                    </td>
-                                                </tr>
-                                                <tr class="even">
-                                                    <td class="dtr-control sorting_1" tabindex="0">
-                                                        <span>Firstname LastName (F)</span>
-                                                    </td>
-                                                    <td>Single - 69 </td>
-                                                    <td>080 123 456 789 <br>
-                                                        <span>N/A</span>
-                                                    </td>
-                                                    <td> North West </td>
-                                                    <td> Blind </td>
-
-                                                    <td>Primary</td>
-                                                    <td>Hausa</td>
-                                                    <td> Shoe Shine</td>
-                                                    <td> USD 8</td>
-                                                    <td> 17 </td>
-                                                    <td>Sept 13, 2020 </td>
-                                                    <td>Damian Godswill <br>
-                                                        <span>damian@faker.com</span>
-                                                    </td>
-                                                </tr>
-                                                <tr class="odd">
-                                                    <td class="dtr-control sorting_1" tabindex="0">
-                                                        <span>Firstname LastName (F)</span>
-                                                    </td>
-                                                    <td>Single - 69 </td>
-                                                    <td>080 123 456 789 <br>
-                                                        <span>N/A</span>
-                                                    </td>
-                                                    <td> North West </td>
-                                                    <td> Blind </td>
-
-                                                    <td>Primary</td>
-                                                    <td>Hausa</td>
-                                                    <td> Shoe Shine</td>
-                                                    <td> USD 8</td>
-                                                    <td> 17 </td>
-                                                    <td>Sept 13, 2020 </td>
-                                                    <td>Damian Godswill <br>
-                                                        <span>damian@faker.com</span>
-                                                    </td>
-                                                </tr>
-                                                <tr class="even">
-                                                    <td class="dtr-control sorting_1" tabindex="0">
-                                                        <span>Firstname LastName (F)</span>
-                                                    </td>
-                                                    <td>Single - 69 </td>
-                                                    <td>080 123 456 789 <br>
-                                                        <span>N/A</span>
-                                                    </td>
-                                                    <td> North West </td>
-                                                    <td> Blind </td>
-
-                                                    <td>Primary</td>
-                                                    <td>Hausa</td>
-                                                    <td> Shoe Shine</td>
-                                                    <td> USD 8</td>
-                                                    <td> 17 </td>
-                                                    <td>Sept 13, 2020 </td>
-                                                    <td>Damian Godswill <br>
-                                                        <span>damian@faker.com</span>
-                                                    </td>
-                                                </tr>
-                                                <tr class="odd">
-                                                    <td class="dtr-control sorting_1" tabindex="0">
-                                                        <span>Firstname LastName (F)</span>
-                                                    </td>
-                                                    <td>Single - 69 </td>
-                                                    <td>080 123 456 789 <br>
-                                                        <span>N/A</span>
-                                                    </td>
-                                                    <td> North West </td>
-                                                    <td> Blind </td>
-
-                                                    <td>Primary</td>
-                                                    <td>Hausa</td>
-                                                    <td> Shoe Shine</td>
-                                                    <td> USD 8</td>
-                                                    <td> 17 </td>
-                                                    <td>Sept 13, 2020 </td>
-                                                    <td>Damian Godswill <br>
-                                                        <span>damian@faker.com</span>
-                                                    </td>
-                                                </tr>
-                                                <tr class="even">
-                                                    <td class="dtr-control sorting_1" tabindex="0">
-                                                        <span>Firstname LastName (F)</span>
-                                                    </td>
-                                                    <td>Single - 69 </td>
-                                                    <td>080 123 456 789 <br>
-                                                        <span>N/A</span>
-                                                    </td>
-                                                    <td> North West </td>
-                                                    <td> Blind </td>
-
-                                                    <td>Primary</td>
-                                                    <td>Hausa</td>
-                                                    <td> Shoe Shine</td>
-                                                    <td> USD 8</td>
-                                                    <td> 17 </td>
-                                                    <td>Sept 13, 2020 </td>
-                                                    <td>Damian Godswill <br>
-                                                        <span>damian@faker.com</span>
-                                                    </td>
-                                                </tr>
-                                                <tr class="odd">
-                                                    <td class="dtr-control sorting_1" tabindex="0">
-                                                        <span>Firstname LastName (F)</span>
-                                                    </td>
-                                                    <td>Single - 69 </td>
-                                                    <td>080 123 456 789 <br>
-                                                        <span>N/A</span>
-                                                    </td>
-                                                    <td> North West </td>
-                                                    <td> Blind </td>
-
-                                                    <td>Primary</td>
-                                                    <td>Hausa</td>
-                                                    <td> Shoe Shine</td>
-                                                    <td> USD 8</td>
-                                                    <td> 17 </td>
-                                                    <td>Sept 13, 2020 </td>
-                                                    <td>Damian Godswill <br>
-                                                        <span>damian@faker.com</span>
-                                                    </td>
-                                                </tr>
-                                                <tr class="even">
-                                                    <td class="dtr-control sorting_1" tabindex="0">
-                                                        <span>Firstname LastName (F)</span>
-                                                    </td>
-                                                    <td>Single - 69 </td>
-                                                    <td>080 123 456 789 <br>
-                                                        <span>N/A</span>
-                                                    </td>
-                                                    <td> North West </td>
-                                                    <td> Blind </td>
-
-                                                    <td>Primary</td>
-                                                    <td>Hausa</td>
-                                                    <td> Shoe Shine</td>
-                                                    <td> USD 8</td>
-                                                    <td> 17 </td>
-                                                    <td>Sept 13, 2020 </td>
-                                                    <td>Damian Godswill <br>
-                                                        <span>damian@faker.com</span>
-                                                    </td>
-                                                </tr>
-                                                <tr class="odd">
-                                                    <td class="dtr-control sorting_1" tabindex="0">
-                                                        <span>Firstname LastName (F)</span>
-                                                    </td>
-                                                    <td>Single - 69 </td>
-                                                    <td>080 123 456 789 <br>
-                                                        <span>N/A</span>
-                                                    </td>
-                                                    <td> North West </td>
-                                                    <td> Blind </td>
-
-                                                    <td>Primary</td>
-                                                    <td>Hausa</td>
-                                                    <td> Shoe Shine</td>
-                                                    <td> USD 8</td>
-                                                    <td> 17 </td>
-                                                    <td>Sept 13, 2020 </td>
-                                                    <td>Damian Godswill <br>
-                                                        <span>damian@faker.com</span>
-                                                    </td>
-                                                </tr>
-                                                <tr class="even">
-                                                    <td class="dtr-control sorting_1" tabindex="0">
-                                                        <span>Firstname LastName (F)</span>
-                                                    </td>
-                                                    <td>Single - 69 </td>
-                                                    <td>080 123 456 789 <br>
-                                                        <span>N/A</span>
-                                                    </td>
-                                                    <td> North West </td>
-                                                    <td> Blind </td>
-
-                                                    <td>Primary</td>
-                                                    <td>Hausa</td>
-                                                    <td> Shoe Shine</td>
-                                                    <td> USD 8</td>
-                                                    <td> 17 </td>
-                                                    <td>Sept 13, 2020 </td>
-                                                    <td>Damian Godswill <br>
-                                                        <span>damian@faker.com</span>
-                                                    </td>
-                                                </tr>
-                                                <tr class="odd">
-                                                    <td class="dtr-control sorting_1" tabindex="0">
-                                                        <span>Firstname LastName (F)</span>
-                                                    </td>
-                                                    <td>Single - 69 </td>
-                                                    <td>080 123 456 789 <br>
-                                                        <span>N/A</span>
-                                                    </td>
-                                                    <td> North West </td>
-                                                    <td> Blind </td>
-
-                                                    <td>Primary</td>
-                                                    <td>Hausa</td>
-                                                    <td> Shoe Shine</td>
-                                                    <td> USD 8</td>
-                                                    <td> 17 </td>
-                                                    <td>Sept 13, 2020 </td>
-                                                    <td>Damian Godswill <br>
-                                                        <span>damian@faker.com</span>
-                                                    </td>
-                                                </tr>
-
-
+                                                @foreach ($beneficiaries as $beneficiary)
+                                                    <tr class="odd">
+                                                        <td class="dtr-control sorting_1" tabindex="0">
+                                                            <span>{{ $beneficiary->first_name }}
+                                                                {{ $beneficiary->last_name }}
+                                                                ({{ $beneficiary->gender === 'female' ? 'F' : 'M' }})
+                                                            </span>
+                                                        </td>
+                                                        <td>{{ $beneficiary->marital_status }}/
+                                                            {{ $beneficiary->age }}</td>
+                                                        <td>{{ $beneficiary->phone_number }} <br>
+                                                        </td>
+                                                        <td> {{ $beneficiary->disability_status === 'no' ? 'N/A' : $beneficiary->type_of_disability }}
+                                                        </td>
+                                                        <td>{{ $this->getLanguageName($beneficiary->language_id) }}</td>
+                                                        <td> {{ $beneficiary->socialEconomic->occupation }} </td>
+                                                        <td> {{ $beneficiary->socialEconomic->income }}</td>
+                                                        <td> {{ $beneficiary->socialEconomic->household_size }} </td>
+                                                        <td>{{ dateToWord($beneficiary->created_at) }}</td>
+                                                        <td>{{ $beneficiary->emergencyContact->full_name }} <br>
+                                                            <span>{{ $beneficiary->emergencyContact->telephone }}</span>
+                                                        </td>
+                                                    </tr>
+                                                @endforeach
 
                                             </tbody>
                                         </table>
