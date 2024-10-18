@@ -15,7 +15,7 @@ class Manage extends Component
     {
         $projects = Project::with('region', 'country', 'state')->get()->map(function ($project) {
             // Decode the invited_teams JSON into an array
-            $invitedTeamIds = json_decode($project->invited_teams, true);
+            $invitedTeamIds = collect($project->invited_teams)->pluck('id');
 
             // Fetch users based on the invited team IDs
             $invitedMembers = User::whereIn('id', $invitedTeamIds)->get();

@@ -166,11 +166,14 @@ class Create extends Component
             // Reindex the array
             $this->teamMembers = array_values($this->teamMembers);
         } elseif ($action === 'lead') {
-            // Logic for making the member a project lead
-            // You can add your logic for making the project lead here
-            // For example, setting a flag on the member or updating the lead information
+            // Loop through the team members and update the 'is_lead' flag
+            foreach ($this->teamMembers as &$member) {
+                // Set 'is_lead' to true for the selected member and false for others
+                $member['is_lead'] = $member['id'] == $memberId ? true : false;
+            }
         }
     }
+
 
     public function updatedFiles()
     {
@@ -194,6 +197,7 @@ class Create extends Component
 
     public function save()
     {
+        info($this->teamMembers);
         $this->validateStepTwo();
 
         $this->currentStep = 5;
@@ -201,7 +205,10 @@ class Create extends Component
         $teamMemberIds = [];
         if ($this->teamMembers) {
             $teamMemberIds = array_map(function ($member) {
-                return $member['id'];
+                return [
+                    'id' => $member['id'],
+                    'is_lead' => $member['is_lead'],
+                ];
             }, $this->teamMembers);
         }
 
@@ -220,7 +227,7 @@ class Create extends Component
             'project_status_id' => $this->projectStatus,
             'allow_phone' => $this->allowPhone ?? false,
             'allow_email' => $this->allowEmail ?? false,
-            'invited_teams' => json_encode($teamMemberIds), // Convert array to JSON if needed
+            'invited_teams' => $teamMemberIds, // Convert array to JSON if needed
             'files' => json_encode($this->uploadedFiles), // Convert the file paths array to JSON
         ]);
 

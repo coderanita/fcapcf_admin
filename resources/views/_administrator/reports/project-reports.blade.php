@@ -268,7 +268,9 @@
                                                         <td>{{ $project->region->name }}</td>
                                                         <td>N{{ formatMoney($project->project_cost) }}</td>
                                                         <td></td>
-                                                        <td>Ahmed Ciraq</td>
+                                                        <td>
+                                                            {{ $project->lead_name ?? 'No Lead Assigned' }}
+                                                        </td>
                                                         <td>{{ dateToWord($project->start_date) }}</td>
                                                         <td>{{ dateToWord($project->end_date) }}</td>
                                                         <td>

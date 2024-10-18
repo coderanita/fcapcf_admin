@@ -3,6 +3,7 @@
 namespace App\Livewire\Administrator\Reports;
 
 use App\Models\Project;
+use App\Models\User;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -24,10 +25,30 @@ class ProjectReports extends Component
         }
     }
 
+    public function getLeadName($teamMembers)
+    {
+        $lead = collect($teamMembers)->firstWhere('is_lead', true);
+
+        if ($lead) {
+            info('1232131');
+            // Fetch the user from the database by ID.
+            $user = User::find($lead['id']);
+            return $user ? $user->fname . ' ' . $user->lname : null;
+        }
+
+        return null;
+    }
+
+
+
     public function render()
     {
         $projects = Project::orderBy($this->sortField, $this->sortDirection)
             ->paginate(10);
+
+        foreach ($projects as $project) {
+            $project->lead_name = $this->getLeadName($project->invited_teams);
+        }
 
         // Fetch total projects
         $totalProjects = Project::count();
