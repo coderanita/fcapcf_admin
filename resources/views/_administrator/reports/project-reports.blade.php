@@ -29,18 +29,22 @@
                                     </svg>
                                 </button>
                                 <ul class="dropdown-menu border-0 shadow">
-                                    <li><a class="dropdown-item" href="#">By Region</a></li>
-                                    <li>
-                                        <a class="dropdown-item" href="#">By Supervisor</a>
-                                    </li>
-                                    <li><a class="dropdown-item" href="#">By Status</a></li>
-                                    <li>
-                                        <a class="dropdown-item" href="#">By Year</a>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item" href="#">Custom Range</a>
-                                    </li>
+                                    <li><a class="dropdown-item" href="#"
+                                            wire:click.prevent="sortBy('created_at')">By Created Date</a></li>
+                                    <li><a class="dropdown-item" href="#"
+                                            wire:click.prevent="sortBy('region_id')">By Region</a></li>
+                                    {{-- <li><a class="dropdown-item" href="#"
+                                            wire:click.prevent="sortBy('supervisor_id')">By Supervisor</a></li> --}}
+                                    <li><a class="dropdown-item" href="#"
+                                            wire:click.prevent="sortBy('project_status_id')">By Status</a></li>
+                                    {{-- <li><a class="dropdown-item" href="#" wire:click.prevent="sortBy('year')">By
+                                            Year</a></li> --}}
+                                    {{-- <li><a class="dropdown-item" href="#"
+                                            wire:click.prevent="sortBy('created_at')">Custom Range</a></li> --}}
+                                    <li><a class="dropdown-item" href="#"
+                                            wire:click.prevent="sortBy('project_cost')">By Amount</a></li>
                                 </ul>
+
                             </div>
 
                             <button class="btn d-none d-sm-inline-flex bg-secondary rounded-pill" type="button">

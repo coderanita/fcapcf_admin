@@ -10,22 +10,30 @@ class ProjectReports extends Component
 {
     use WithPagination;
 
+    public $sortField = 'created_at'; // Default sort field
+    public $sortDirection = 'asc'; // Default sort direction
+
+    // Function to handle the sorting
+    public function sortBy($field)
+    {
+        if ($this->sortField === $field) {
+            $this->sortDirection = $this->sortDirection === 'asc' ? 'desc' : 'asc';
+        } else {
+            $this->sortField = $field;
+            $this->sortDirection = 'asc';
+        }
+    }
+
     public function render()
     {
-        $projects = Project::paginate(10);
+        $projects = Project::orderBy($this->sortField, $this->sortDirection)
+            ->paginate(10);
+
         // Fetch total projects
         $totalProjects = Project::count();
-
-        // Assuming 'completed' projects have a specific project_status_id, e.g., 'completed'
         $completedProjects = Project::where('project_status_id', '4')->count();
-
-        // Total incomplete projects assuming incomplete status is 'incomplete'
         $incompleteProjects = $totalProjects - $completedProjects;
-
-        // Total project cost (sum of project costs)
         $totalProjectCost = Project::sum('project_cost');
-
-        // Total unique regions
         $totalRegions = Project::distinct('region_id')->count('region_id');
 
         return view('_administrator.reports.project-reports', [
