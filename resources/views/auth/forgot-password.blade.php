@@ -24,6 +24,8 @@
         <label class="form-label">Email address</label>
         <input type="email" class="form-control form-control-lg" placeholder="name@example.com" name="email" :value="old('email')" required
         autofocus autocomplete="username">
+        <x-input-error for='email' class="text-danger"/>
+
       </div>
     </div>
     <div class="col-12 text-center mt-4">
