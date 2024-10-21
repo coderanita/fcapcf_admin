@@ -28,26 +28,32 @@
         </button></td>
           <td>
 
-            <a href="user-profile.html">
+            <a href="{{ route('administrator.users.show', $user->id) }}">
               <button type="button" class="btn btn-link btn-sm" data-bs-toggle="tooltip" data-bs-placement="top"
-                title="View"><i class="fa fa-eye"></i></button>
+                title="View User"><i class="fa fa-eye"></i></button>
               </a>
 
-           
+              <a href="{{ route('administrator.users.profile', $user->id) }}">
+                <button type="button" class="btn btn-link btn-sm" data-bs-toggle="tooltip" data-bs-placement="top"
+                  title="Edit User's  Profile"><i class="fa fa-user"></i></button>
+              </a>
+
+
+
 
               {{-- <button wire:click='loginAs({{ $user->id }})' type="button" class="btn btn-link btn-sm"                
                 title="Login As {{ $user->name }}">
                 <i class="fa fa-sign-in"></i>
               </button> --}}
-           
+
               <button wire:click='setUser({{ $user->id }},"updateUser")' type="button" class="btn btn-link btn-sm"
-                title="Update User">
+                title="Edit User's Account">
                 <i class="fa fa-pencil"></i>
               </button>
 
 
               <button wire:click="setUser({{ $user->id }},'deleteUser')" type="button" class="btn btn-link btn-sm"
-                data-bs-toggle="tooltip" data-bs-placement="top" title="Delete"><i class="fa fa-trash"></i>
+                data-bs-toggle="tooltip" data-bs-placement="top" title="Delete User"><i class="fa fa-trash"></i>
               </button>
 
 
@@ -103,25 +109,15 @@
 
         <button type="button" class="btn  btn-success" wire:click.prevent='randomPassword'>Generate</button>
       </div>
-      {{-- <div class="col-md-6">
-        <label class="form-label">Access Level</label>
-        <select class="form-select" wire:model.live='role'>
-          <option selected>Choose...</option>
-          @foreach ($roles ?? [] as $role)
-            <option value="{{ $role->id }}">{{ ucwords($role->name) }}</option>
-          @endforeach
 
-        </select>
-        <x-input-error for="role" />
-
-      </div> --}}
 
       <div class="col-md-12">
         <label class="form-label">Role</label>
         <select class="form-select" wire:model.live='role'>
           <option selected>Choose...</option>
           @foreach ($roles as $role)
-            <option value="{{ $role->id }}">{{ ucwords($role->name) }} - {{ ucwords($role->access_level) }} Access
+            <option value="{{ $role->id }}">{{ ucwords($role->name) }} - {{ ucwords($role->access_level) }}
+              Access
             </option>
           @endforeach
 
@@ -145,7 +141,8 @@
     title="Confirm Delete  {{ $fname . ' ' . $lname }}?" id="deleteUser" class="modal-md modal-dialog-centered"
     submit="delete({{ $userId }})">
     <x-slot name="body">
-      <h5 class="text-danger"><i class="bi bi-info-circle-fill text-danger"></i> Deleting user will remove all of information from our database. </h5>
+      <h5 class="text-danger"><i class="bi bi-info-circle-fill text-danger"></i> Deleting user will remove all of
+        information from our database. </h5>
     </x-slot>
     <x-slot name="footer">
       <button class="btn btn-danger" type="submit" id="delete-record">Yes, Delete It!!</button>

@@ -24,6 +24,7 @@
         <label class="form-label">Email address</label>
         <input type="email" class="form-control form-control-lg" name="email" :value="old('email')" required
           autofocus autocomplete="username">
+          <x-input-error for='email' class="text-danger"/>
       </div>
     </div>
     <div class="col-12">
@@ -37,12 +38,15 @@
         </div>
         <input type="password" class="form-control form-control-lg" name="password" required
           autocomplete="current-password">
+          <x-input-error for='password' class="text-danger"/>
+
       </div>
     </div>
     <div class="col-12">
       <div class="form-check">
         <input class="form-check-input" type="checkbox" name="remember" id="flexCheckDefault">
         <label class="form-check-label" for="flexCheckDefault"> Remember me </label>
+        
       </div>
     </div>
     <div class="col-12 text-center mt-4">

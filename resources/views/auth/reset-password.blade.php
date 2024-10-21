@@ -16,7 +16,7 @@
     </div>
     <div class="col-12 text-center mb-4">
       <!-- <img src="assets/img/auth-password-reset.svg" class="w240 mb-4" alt="" /> -->
-      <img src="{{asset('img/firstchild.png')}}" alt="" width="100px">
+      <img src="{{ asset('img/firstchild.png') }}" alt="" width="100px">
       <h1>Forgot password?</h1>
       <span>Enter the email address and we'll send you instructions to reset your password.</span>
     </div>
@@ -25,6 +25,8 @@
         <label class="form-label">Email address</label>
         <input type="email" class="form-control form-control-lg" name="email" :value="old('email')" required
           autofocus autocomplete="username">
+        <x-input-error for='email' class="text-danger" />
+
       </div>
     </div>
     <div class="col-12">
@@ -34,6 +36,8 @@
         </div>
         <input type="password" class="form-control form-control-lg" name="password" required
           autocomplete="new-password">
+        <x-input-error for='password' class="text-danger" />
+
       </div>
     </div>
 
@@ -44,6 +48,8 @@
         </div>
         <input type="password" class="form-control form-control-lg" name="password_confirmation" required
           autocomplete="new-password">
+        <x-input-error for='password_confirmation' class="text-danger" />
+
       </div>
     </div>
     <div class="col-12 text-center mt-4">

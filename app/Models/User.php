@@ -12,6 +12,7 @@ use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasManyThrough;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class User extends Authenticatable
 {
@@ -70,6 +71,17 @@ class User extends Authenticatable
     ];
   }
   /**
+   * Get the profile associated with the User
+   *
+   * @return \Illuminate\Database\Eloquent\Relations\HasOne
+   */
+  public function profile(): HasOne
+  {
+    return $this->hasOne(Profile::class);
+  }
+
+
+  /**
    * The roles that belong to the User
    *
    * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
@@ -90,10 +102,7 @@ class User extends Authenticatable
     return $this->role->permissions()->where('code', $permission)->count();
   }
 
-  // public function permissions()
-  // {
-  //   return $this->through(Role::class)->has(Permission::class);
-  // }
+
 
   public function hasRole(string $role): bool
   {
