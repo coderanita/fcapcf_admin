@@ -19,7 +19,7 @@ Route::get('/', HomeController::class);
 
 Route::middleware(['auth', 'verified'])->group(function () {
   Route::get('/user/profile', function () {
-    return  auth()->user()->role ? to_route(auth()->user()->role->name . '.account.show') : abort(404);
+    return  auth()->user()->role ? to_route(strtolower(auth()->user()->role->name) . '.account.show') : abort(404);
   })->name('profile.show');
 });
 
