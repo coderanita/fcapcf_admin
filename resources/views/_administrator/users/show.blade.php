@@ -36,7 +36,7 @@
             </div>
             <ul class="nav nav-tabs tab-card border-bottom-0 pt-2 fs-6 justify-content-center justify-content-md-start"
               role="tablist">
-              <li class="nav-item"><a class="nav-link active" data-bs-toggle="tab" href="page-profile.html#profile_post"
+              <li class="nav-item"><a class="nav-link active" data-bs-toggle="tab" href="#profile_post"
                   role="tab"><span>Overview</span></a></li>
 
             </ul>
@@ -152,16 +152,16 @@
                           </ul>
                           <div class="project-members mb-4">
                             <label class="me-2">Team:</label>
-                            <a href="page-profile.html#" title=""><img class="avatar sm rounded-circle"
+                            <a href="#" title=""><img class="avatar sm rounded-circle"
                                 src="assets/img/xs/avatar3.jpg.png" data-bs-toggle="tooltip" data-bs-placement="top"
                                 title="Team Lead" alt="friend"> </a>
-                            <a href="page-profile.html#" title=""><img class="avatar sm rounded-circle"
+                            <a href="#" title=""><img class="avatar sm rounded-circle"
                                 src="assets/img/xs/avatar1.jpg.png" data-bs-toggle="tooltip" data-bs-placement="top"
                                 title="Designer" alt="friend"> </a>
-                            <a href="page-profile.html#" title=""><img class="avatar sm rounded-circle"
+                            <a href="#" title=""><img class="avatar sm rounded-circle"
                                 src="assets/img/xs/avatar7.jpg.png" data-bs-toggle="tooltip" data-bs-placement="top"
                                 title="Developer" alt="friend"> </a>
-                            <a href="page-profile.html#" title=""><img class="avatar sm rounded-circle"
+                            <a href="#" title=""><img class="avatar sm rounded-circle"
                                 src="assets/img/xs/avatar9.jpg.png" data-bs-toggle="tooltip" data-bs-placement="top"
                                 title="Developer" alt="friend"> </a>
                           </div>
@@ -198,16 +198,16 @@
                           </ul>
                           <div class="project-members mb-4">
                             <label class="me-2">Team:</label>
-                            <a href="page-profile.html#" title=""><img class="avatar sm rounded-circle"
+                            <a href="#" title=""><img class="avatar sm rounded-circle"
                                 src="assets/img/xs/avatar3.jpg.png" data-bs-toggle="tooltip" data-bs-placement="top"
                                 title="Team Lead" alt="friend"> </a>
-                            <a href="page-profile.html#" title=""><img class="avatar sm rounded-circle"
+                            <a href="#" title=""><img class="avatar sm rounded-circle"
                                 src="assets/img/xs/avatar1.jpg.png" data-bs-toggle="tooltip" data-bs-placement="top"
                                 title="Designer" alt="friend"> </a>
-                            <a href="page-profile.html#" title=""><img class="avatar sm rounded-circle"
+                            <a href="#" title=""><img class="avatar sm rounded-circle"
                                 src="assets/img/xs/avatar7.jpg.png" data-bs-toggle="tooltip" data-bs-placement="top"
                                 title="Developer" alt="friend"> </a>
-                            <a href="page-profile.html#" title=""><img class="avatar sm rounded-circle"
+                            <a href="#" title=""><img class="avatar sm rounded-circle"
                                 src="assets/img/xs/avatar9.jpg.png" data-bs-toggle="tooltip" data-bs-placement="top"
                                 title="Developer" alt="friend"> </a>
                           </div>
