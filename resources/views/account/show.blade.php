@@ -33,13 +33,13 @@
               @livewire('account.logout-other-browser-sessions-form')
           </div>
 
-          @if (Laravel\Jetstream\Jetstream::hasAccountDeletionFeatures())
+          {{-- @if (Laravel\Jetstream\Jetstream::hasAccountDeletionFeatures())
               <x-section-border />
 
               <div class="mt-10 sm:mt-0">
                   @livewire('account.delete-user-form')
               </div>
-          @endif
+          @endif --}}
       </div>
   </div>
 </x-app-layout>
