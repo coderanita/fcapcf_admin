@@ -7,10 +7,10 @@
     <x-meta-tags />
     <!-- Scripts -->
 
-    @livewireStyles
-
+    
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    @livewireStyles
 
     <!-- Jquery Core Js -->
     <script src="{{ asset('js/plugins.js') }}"></script>
@@ -53,7 +53,7 @@
                 </footer>
             </div>
         </div>
-
+        @livewireScripts
         <script type='text/javascript' src="{{ asset('js/toastify-js.js') }}"></script>
         <script src="{{ asset('js/custom.js') }}"></script>
         <script>
@@ -88,7 +88,7 @@
             }
         </script>
         @stack('scripts')
-        @livewireScripts
+       
 
 </body>
 

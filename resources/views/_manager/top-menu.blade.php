@@ -314,42 +314,6 @@
                       </div>
                     </a>
                   </li>
-
-                  {{-- <li>
-                    <a href="support.html" class="d-flex align-items-center py-2 rounded">
-                      <div class="avatar rounded no-thumbnail bg-light">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="18" fill="currentColor"
-                          viewBox="0 0 16 16">
-                          <path
-                            d="M13 1a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h10zM3 0a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V3a3 3 0 0 0-3-3H3z" />
-                          <path class="fill-secondary"
-                            d="M5.5 4a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm8 8a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm-4-4a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
-                        </svg>
-                      </div>
-                      <div class="flex-fill ms-3 text-truncate">
-                        <h6 class="mb-0">Support</h6>
-                        <small class="text-muted">Create and manage supports</small>
-                      </div>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="audit-log.html" class="d-flex align-items-center py-2 rounded">
-                      <div class="avatar rounded no-thumbnail bg-light">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="18" fill="currentColor"
-                          viewBox="0 0 16 16">
-                          <path
-                            d="M5.5 2A3.5 3.5 0 0 0 2 5.5v5A3.5 3.5 0 0 0 5.5 14h5a3.5 3.5 0 0 0 3.5-3.5V8a.5.5 0 0 1 1 0v2.5a4.5 4.5 0 0 1-4.5 4.5h-5A4.5 4.5 0 0 1 1 10.5v-5A4.5 4.5 0 0 1 5.5 1H8a.5.5 0 0 1 0 1H5.5z">
-                          </path>
-                          <path class="fill-secondary" d="M16 3a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"></path>
-                        </svg>
-                      </div>
-                      <div class="flex-fill ms-3 text-truncate">
-                        <h6 class="mb-0">Audit Log</h6>
-                        <small class="text-muted">See System Log</small>
-                      </div>
-                    </a>
-                  </li> --}}
-
                 </ul>
               </div>
 

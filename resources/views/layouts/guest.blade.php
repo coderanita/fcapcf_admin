@@ -18,7 +18,7 @@
         <div class="row">
           <div class="col-lg-6 m-auto">
             <div class="card shadow p-4 p-md-5 m-auto" style="max-width: 32rem;">
-              <x-validation-errors class="mb-4" />
+              {{-- <x-validation-errors class="mb-4" /> --}}
 
               @session('status')
                 <div class="mb-4 font-medium text-sm text-success">
