@@ -2,10 +2,12 @@
 
 namespace App\Livewire\Administrator\Reports;
 
+use App\Exports\ProjectsExport;
 use App\Models\Project;
 use App\Models\User;
 use Livewire\Component;
 use Livewire\WithPagination;
+use Maatwebsite\Excel\Facades\Excel;
 
 class ProjectReports extends Component
 {
@@ -30,8 +32,6 @@ class ProjectReports extends Component
         $lead = collect($teamMembers)->firstWhere('is_lead', true);
 
         if ($lead) {
-            info('1232131');
-            // Fetch the user from the database by ID.
             $user = User::find($lead['id']);
             return $user ? $user->fname . ' ' . $user->lname : null;
         }
@@ -39,6 +39,12 @@ class ProjectReports extends Component
         return null;
     }
 
+    public function export()
+    {
+        $currentDate = date('mdY');
+
+        return Excel::download(new ProjectsExport, 'projects' . $currentDate . '.xlsx');
+    }
 
 
     public function render()

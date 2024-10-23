@@ -2,12 +2,14 @@
 
 namespace App\Livewire\Administrator\Reports;
 
+use App\Exports\BeneficiariesExport;
 use App\Models\Beneficiary;
 use App\Models\Language;
 use App\Models\Nationality;
 use App\Models\Relationship;
 use Livewire\Component;
 use Livewire\WithPagination;
+use Maatwebsite\Excel\Facades\Excel;
 
 class BeneficiaryReports extends Component
 {
@@ -16,6 +18,13 @@ class BeneficiaryReports extends Component
     public function getLanguageName($languageId)
     {
         return Language::firstWhere('id', $languageId)->name ?? 'Unknown';
+    }
+
+    public function export()
+    {
+        $currentDate = date('mdY');
+
+        return Excel::download(new BeneficiariesExport, 'beneficiaries' . $currentDate . '.xlsx');
     }
 
     public function render()

@@ -17,7 +17,7 @@
                             <!-- btn:: create new project -->
 
                             <!-- btn:: Filter -->
-                            <div class="btn-group">
+                            {{-- <div class="btn-group">
                                 <button type="button" class="btn dropdown-toggle after-none rounded-pill"
                                     data-bs-toggle="dropdown">
                                     <span class="me-1 d-none d-lg-inline-block">Filter</span>
@@ -43,9 +43,10 @@
                                         <a class="dropdown-item" href="#">By Registration Date</a>
                                     </li>
                                 </ul>
-                            </div>
+                            </div> --}}
 
-                            <button class="btn d-none d-sm-inline-flex bg-secondary rounded-pill" type="button">
+                            <button wire:click="export" class="btn d-none d-sm-inline-flex bg-secondary rounded-pill"
+                                type="button">
                                 <span class="me-1 d-none d-lg-inline-block">Download</span>
                                 <svg width="16" height="12" viewBox="0 0 16 12" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
