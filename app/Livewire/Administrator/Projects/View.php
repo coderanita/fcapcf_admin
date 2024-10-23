@@ -15,7 +15,7 @@ class View extends Component
     {
         $this->project = $project;
 
-        $invitedTeamIds = json_decode($this->project->invited_teams, true);
+        $invitedTeamIds = collect($project->invited_teams)->pluck('id');
 
         // Fetch users based on the invited team IDs
         $this->invitedMembers = User::whereIn('id', $invitedTeamIds)->get();
