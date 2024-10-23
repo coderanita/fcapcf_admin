@@ -14,8 +14,8 @@ jobs:
           php-version: "8.2"
           extensions: mbstring, pdo, mysql
 
-      # - name: Install Composer dependencies
-      #   run: composer install --no-dev --prefer-dist --optimize-autoloader
+      - name: Install Composer dependencies
+        run: composer require maatwebsite/excel
 
       # - name: Run database migrations
       #   run: php artisan migrate --force
