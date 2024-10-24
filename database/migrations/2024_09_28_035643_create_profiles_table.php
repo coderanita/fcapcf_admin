@@ -51,6 +51,10 @@ return new class extends Migration
 
       //experience
       $table->longText('work_experience')->nullable();
+      $table->longText('prev_emp')->nullable();
+      $table->longText('exp_start_date')->nullable();
+      $table->longText('exp_end_date')->nullable();
+      $table->longText('reason_leaving')->nullable();
 
       //banking
       $table->string('bk_bank_name')->nullable();

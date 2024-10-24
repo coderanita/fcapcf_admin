@@ -31,26 +31,30 @@ class Profile extends Model
 
     //employment
     'employment',
-    // 'employment_job_title',
-    // 'employment_dempartment',
-    // 'employment_employment_status',
-    // 'employment_start_date',
-    // 'employment_reporting_manager_supervisor',
-    // 'employment_probation_period',
-    // 'employment_work_location',
+    'employment_job_title',
+    'employment_department',
+    'employment_employment_status',
+    'employment_start_date',
+    'employment_reporting_manager_supervisor',
+    'employment_probation_period',
+    'employment_work_location',
 
 
     //education
     'education',
-    // 'education_highest_qualification',
-    // 'education_institution_name',
-    // 'education_graduation_year',
-    // 'education_Languages_spoken',
-    // 'education_professional_certs',
+    'education_highest_qualification',
+    'education_institution_name',
+    'education_graduation_year',
+    'education_Languages_spoken',
+    'education_professional_certs',
 
 
     //experience
     'work_experience',
+    'prev_emp',
+    'exp_start_date',
+    'exp_end_date',
+    'reason_leaving',
 
     //banking
     'bk_bank_name',

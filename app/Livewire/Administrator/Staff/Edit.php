@@ -8,8 +8,10 @@ use App\Services\DataSourceService;
 use Illuminate\Support\Facades\Hash;
 use Livewire\Component;
 
-class Create extends Component
+class Edit extends Component
 {
+    public $user;
+
     public $languages;
     public $nationalities;
     public $beneficiaries;
@@ -47,6 +49,67 @@ class Create extends Component
         'language_id.exists' => 'Please select a valid language.',
         'relationship_id.exists' => 'Please select a valid relationship.',
     ];
+
+    public function mount(User $user)
+    {
+        $this->user = $user;
+
+        $this->first_name = $user->fname;
+        $this->last_name = $user->lname;
+        $this->email = $user->email;
+
+        $this->middle_name = $user->profile->personal_mname;
+        $this->gender = $user->profile->personal_gender;
+        $this->phone_number = $user->profile->personal_phone;
+        $this->date_of_birth = $user->profile->personal_birth_date;
+        $this->marital_status = $user->profile->personal_marital_status;
+        $this->nationality_id = $user->profile->personal_nationality;
+        $this->id_type = $user->profile->personal_identification_type;
+        $this->id_number = $user->profile->personal_id_number;
+        $this->expiry_date = $user->profile->personal_expiry_date;
+
+        $this->full_name = $user->profile->emergency_full_name;
+        $this->telephone = $user->profile->emergency_phone;
+        $this->relationship_id = $user->profile->emergency_relationship;
+        $this->home_address = $user->profile->personal_home_address;
+
+        $this->job_title = $user->profile->employment_job_title;
+        $this->department = $user->profile->employment_department;
+        $this->emp_status = $user->profile->employment_employment_status;
+        $this->start_date = $user->profile->employment_start_date;
+        $this->reporting_manager = $user->profile->employment_reporting_manager_supervisor;
+        $this->probation_period = $user->profile->employment_probation_period;
+        $this->work_location = $user->profile->employment_work_location;
+
+        $this->highest_qualification = $user->profile->education_highest_qualification;
+        $this->institution = $user->profile->education_institution_name;
+        $this->graduation_date = $user->profile->education_graduation_year;
+        $this->lan_spoken = $user->profile->education_Languages_spoken;
+        $this->certification = $user->profile->education_professional_certs;
+
+        $this->exp_job_title = $user->profile->work_experience;
+        $this->prev_emp = $user->profile->prev_emp;
+        $this->exp_start_date = $user->profile->exp_start_date;
+        $this->exp_end_date = $user->profile->exp_end_date;
+        $this->reason_leaving = $user->profile->reason_leaving;
+
+        $this->bank_name = $user->profile->bk_bank_name;
+        $this->acc_no = $user->profile->bk_account_number;
+        $this->bank_code = $user->profile->bk_bank_sort_code;
+        $this->prev_salary = $user->profile->bk_previours_salary;
+        $this->pension_scheme = $user->profile->bk_pension_scheme;
+        $this->pension_adm = $user->profile->bk_pension_admin_name;
+        $this->pension_id = $user->profile->bk_pension_id;
+        $this->health_insurance = $user->profile->bk_health_insurance;
+        $this->insurance_name = $user->profile->bk_insurance_name;
+        $this->insurance_id = $user->profile->bk_insurance_id;
+        $this->benefits = $user->profile->bk_other_benefit;
+
+        $this->office_email = $user->profile->sec_offical_email;
+        $this->comp_equipment = $user->profile->sec_company_equipment_issued;
+        $this->system_access = $user->profile->sec_sys_access_requirement;
+        $this->security = $user->profile->sec_security_clearance;
+    }
 
     public function validateData()
     {
@@ -156,7 +219,7 @@ class Create extends Component
     public function save()
     {
 
-        $user = User::create([
+        $user = User::where('id', $this->user->id)->update([
             'fname' => $this->first_name,
             'lname' => $this->last_name,
             'email' => $this->email,
@@ -164,8 +227,7 @@ class Create extends Component
             'role_id' => 3
         ]);
 
-        Profile::create([
-            'user_id' =>  $user->id,
+        Profile::where('user_id', $this->user->id)->update([
             'personal_mname' =>  $this->middle_name,
             'personal_gender' =>  $this->gender,
             'personal_phone' =>  $this->phone_number,
@@ -201,10 +263,6 @@ class Create extends Component
 
             // step 4
             'work_experience'  =>  $this->exp_job_title,
-            'prev_emp'  =>  $this->prev_emp,
-            'exp_start_date'  =>  $this->exp_start_date,
-            'exp_end_date'  =>  $this->exp_end_date,
-            'reason_leaving'  =>  $this->reason_leaving,
 
             // step 5
             'bk_bank_name'  =>  $this->bank_name,
@@ -218,7 +276,6 @@ class Create extends Component
             'bk_insurance_name'  =>  $this->insurance_name,
             'bk_insurance_id'  =>  $this->insurance_id,
             'bk_other_benefit'  =>  $this->benefits,
-            'bk_bank_branch'  =>  $this->bank_branch,
 
             // step 6
             'sec_offical_email'  =>  $this->office_email,
@@ -230,11 +287,11 @@ class Create extends Component
 
         $this->dispatch(
             'alert',
-            msg: 'New Staff Added!',
+            msg: 'Staff Updated Successfully!',
             type: 'success'
         );
 
-        $this->reset();
+        $this->currentStep = 1;
     }
 
     public function render()
@@ -246,7 +303,7 @@ class Create extends Component
         $this->beneficiaries = $dataSource->beneficiaries();
         $this->countries = $dataSource->countries();
 
-        return view('_administrator.staff.create', [
+        return view('_administrator.staff.edit', [
             'nationalities' => $this->nationalities,
             'languages' => $this->languages,
             'beneficiaries' => $this->beneficiaries,

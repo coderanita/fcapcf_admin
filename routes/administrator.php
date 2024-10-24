@@ -18,6 +18,7 @@ use App\Livewire\Administrator\Reports\ProjectReports;
 use App\Livewire\Administrator\Reports\UserReports;
 use App\Livewire\Administrator\Roles\ShowRole;
 use App\Livewire\Administrator\Staff\Create as StaffCreate;
+use App\Livewire\Administrator\Staff\Edit as StaffEdit;
 use App\Livewire\Administrator\Supports\Create as SupportsCreate;
 use App\Livewire\Administrator\Supports\View as SupportView;
 use Illuminate\Support\Facades\Route;
@@ -64,6 +65,7 @@ Route::middleware([
   Route::get('/regions', RegionManage::class)->name('regions');
 
   Route::get('/staffs/create', StaffCreate::class)->name('staffs.create');
+  Route::get('/staffs/edit/{user}', StaffEdit::class)->name('staffs.edit');
 
   Route::get('/supports', function () {
     $supportCount = Support::count(); // Get the count of support tickets
@@ -77,9 +79,4 @@ Route::middleware([
   Route::get('/project-reports', ProjectReports::class)->name('report.projects');
   Route::get('/user-reports', UserReports::class)->name('report.users');
   Route::get('/beneficiary-reports', BeneficiaryReports::class)->name('report.beneficiaries');
-
-
-
-
-
 });
