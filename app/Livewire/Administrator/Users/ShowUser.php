@@ -48,7 +48,7 @@ class ShowUser extends Component
     $this->last_name = $user->lname;
     $this->email = $user->email;
 
-    $this->middle_name = $user->profile->personal_mname;
+    $this->middle_name = $user->profile->personal_mname ?? '';
     $this->gender = $user->profile->personal_gender;
     $this->phone_number = $user->profile->personal_phone;
     $this->date_of_birth = $user->profile->personal_birth_date;
