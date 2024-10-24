@@ -33,23 +33,21 @@ return new class extends Migration
 
       //employment
       $table->longText('employment')->nullable();
-
-      // $table->string('employment_job_title')->nullable();
-      // $table->string('employment_dempartment')->nullable();
-      // $table->string('employment_employment_status')->nullable();
-      // $table->string('employment_start_date')->nullable();
-      // $table->string('employment_reporting_manager_supervisor')->nullable();
-      // $table->string('employment_probation_period')->nullable();
-      // $table->string('employment_work_location')->nullable();
+      $table->string('employment_job_title')->nullable();
+      $table->string('employment_department')->nullable();
+      $table->string('employment_employment_status')->nullable();
+      $table->string('employment_start_date')->nullable();
+      $table->string('employment_reporting_manager_supervisor')->nullable();
+      $table->string('employment_probation_period')->nullable();
+      $table->string('employment_work_location')->nullable();
 
       //education
       $table->longText('education')->nullable();
-
-      // $table->string('education_highest_qualification')->nullable();
-      // $table->string('education_institution_name')->nullable();
-      // $table->string('education_graduation_year')->nullable();
-      // $table->string('education_Languages_spoken')->nullable();
-      // $table->string('education_professional_certs')->nullable();
+      $table->string('education_highest_qualification')->nullable();
+      $table->string('education_institution_name')->nullable();
+      $table->string('education_graduation_year')->nullable();
+      $table->string('education_Languages_spoken')->nullable();
+      $table->string('education_professional_certs')->nullable();
 
       //experience
       $table->longText('work_experience')->nullable();

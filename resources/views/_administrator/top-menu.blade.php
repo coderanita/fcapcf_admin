@@ -165,7 +165,7 @@
                                             </div>
                                         </a>
                                     </li>
-                                    {{-- <li>
+                                    <li>
                                         <a href="{{ route('administrator.staffs.create') }}"
                                             class="d-flex align-items-center py-2 rounded">
                                             <div class="avatar rounded no-thumbnail bg-light">
@@ -187,7 +187,7 @@
                                                 <small class="text-muted">Create and manage system users</small>
                                             </div>
                                         </a>
-                                    </li> --}}
+                                    </li>
 
                                     <li>
                                         <a href="{{ route('administrator.roles') }}"
