@@ -167,7 +167,7 @@
                                 </div>
                                 <div class="tab-pane fade" id="pd_files" role="tabpanel">
                                     <div class="d-flex justify-content-between p-3 bg-card rounded-4 mb-3">
-                                        <h6 class="card-title mb-0">Project Files (45)</h6>
+                                        <h6 class="card-title mb-0">Project Files ({{count(json_decode($project->files, true))}})</h6>
                                         <button class="btn btn-sm d-block d-lg-none btn-primary project-list-toggle"
                                             type="button"><i class="fa fa-bars"></i></button>
                                     </div>

@@ -29,9 +29,9 @@
           <td>
 
             <a href="{{ route('administrator.users.show', $user->id) }}">
-                            {{-- <button type="button" class="btn btn-link btn-sm" data-bs-toggle="tooltip"
+                            <button type="button" class="btn btn-link btn-sm" data-bs-toggle="tooltip"
                                 data-bs-placement="top" title="View User"><i class="fa fa-eye"></i></button>
-                            </a> --}}
+                            </a>
 
                             <a href="{{ route('administrator.staffs.edit', $user->id) }}">
                                 <button type="button" class="btn btn-link btn-sm" data-bs-toggle="tooltip"
