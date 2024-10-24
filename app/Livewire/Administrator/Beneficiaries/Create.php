@@ -28,7 +28,7 @@ class Create extends Component
 
 
     // Personal Information
-    public $first_name, $last_name, $gender, $phone_number, $email, $marital_status, $countryCode;
+    public $first_name, $last_name, $gender, $phone_number, $email, $marital_status, $countryCode, $countryCodeEmergency;
     public $profile_photo_path;
     public $nationality_id, $disability_status, $language_id;
     public $type_of_disability;
@@ -158,6 +158,7 @@ class Create extends Component
         BeneficiaryEmergencyContact::create([
             'beneficiary_id' =>  $this->beneficiary_id, // Associate with beneficiary
             'full_name' => $this->full_name,
+            'country_code'  =>  $this->countryCodeEmergency,
             'telephone' => $this->telephone,
             'relationship_id' => $this->relationship_id,
             'home_address' => $this->home_address,

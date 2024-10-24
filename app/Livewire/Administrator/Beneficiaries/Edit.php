@@ -28,7 +28,7 @@ class Edit extends Component
 
 
     // Personal Information
-    public $first_name, $last_name, $gender, $phone_number, $email, $marital_status, $countryCode;
+    public $first_name, $last_name, $gender, $phone_number, $email, $marital_status, $countryCode,  $countryCodeEmergency;
     public $profile_photo_path;
     public $nationality_id, $disability_status, $language_id;
     public $type_of_disability;
@@ -128,6 +128,7 @@ class Edit extends Component
 
         // Emergency Contact
         $this->full_name = $beneficiary->emergencyContact->first()->full_name ?? '';
+        $this->countryCodeEmergency = $beneficiary->emergencyContact->first()->country_code ?? '';
         $this->telephone = $beneficiary->emergencyContact->first()->telephone ?? '';
         $this->relationship_id = $beneficiary->emergencyContact->first()->relationship_id ?? '';
         $this->home_address = $beneficiary->emergencyContact->first()->home_address ?? '';
@@ -209,6 +210,7 @@ class Edit extends Component
         if ($emergencyContact) {
             $emergencyContact->update([
                 'full_name' => $this->full_name,
+                'country_code'  =>  $this->countryCodeEmergency,
                 'telephone' => $this->telephone,
                 'relationship_id' => $this->relationship_id,
                 'home_address' => $this->home_address,

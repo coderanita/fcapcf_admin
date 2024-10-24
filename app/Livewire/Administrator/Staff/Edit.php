@@ -24,7 +24,7 @@ class Edit extends Component
     public $first_name, $middle_name, $last_name, $gender, $phone_number, $email, $date_of_birth, $marital_status, $countryCode;
     public $nationality_id, $id_type, $id_number, $expiry_date;
 
-    public $full_name, $telephone, $relationship_id, $home_address;
+    public $full_name, $countryCodeEmergency,  $telephone, $relationship_id, $home_address;
 
     // Sterp 2
     public $job_title, $department, $emp_status, $start_date, $reporting_manager, $probation_period, $work_location;
@@ -69,6 +69,7 @@ class Edit extends Component
         $this->expiry_date = $user->profile->personal_expiry_date;
 
         $this->full_name = $user->profile->emergency_full_name;
+        $this->countryCodeEmergency = $user->profile->emergency_country_code;
         $this->telephone = $user->profile->emergency_phone;
         $this->relationship_id = $user->profile->emergency_relationship;
         $this->home_address = $user->profile->personal_home_address;
@@ -239,6 +240,7 @@ class Edit extends Component
             'personal_expiry_date'  =>  $this->expiry_date,
 
             'emergency_full_name'  =>  $this->full_name,
+            'emergency_country_code'  =>  $this->countryCodeEmergency,
             'emergency_phone'  =>  $this->telephone,
             'emergency_relationship'  =>  $this->relationship_id,
             'personal_home_address'  =>  $this->home_address,

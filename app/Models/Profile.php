@@ -24,6 +24,7 @@ class Profile extends Model
     'personal_expiry_date',
     //emergency
     'emergency_full_name',
+    'emergency_country_code',
     'emergency_phone',
     'emergency_relationship',
     'personal_home_address',

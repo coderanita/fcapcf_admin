@@ -324,11 +324,25 @@
                                                                         </div>
 
                                                                         <div class="form-floating mb-2 col-md-4">
-                                                                            <input type="text"
-                                                                                class="form-control @error('telephone') is-invalid @enderror"
-                                                                                placeholder="Emergency telephone"
-                                                                                wire:model="telephone" />
-                                                                            <label>Telephone *</label>
+                                                                            <div class="input-group">
+                                                                                <select id="countryCodeEmergency"
+                                                                                    class="form-select @error('telephone') is-invalid @enderror"
+                                                                                    style="height: 58px; width: 150px;"
+                                                                                    wire:model="countryCodeEmergency">
+                                                                                    @foreach ($countries as $country)
+                                                                                        <option
+                                                                                            value="{{ $country->code }}">
+                                                                                            {{ $country->name }}
+                                                                                            ({{ $country->code }})
+                                                                                        </option>
+                                                                                    @endforeach
+                                                                                </select>
+                                                                                <input type="number" id="phone"
+                                                                                    class="form-control @error('telephone') is-invalid @enderror"
+                                                                                    placeholder="Add telephone number"
+                                                                                    wire:model="telephone"
+                                                                                    style="height: 58px; padding: 10px; width: 200px;" />
+                                                                            </div>
                                                                             @error('telephone')
                                                                                 <div class="invalid-feedback">
                                                                                     {{ $message }}</div>

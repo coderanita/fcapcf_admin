@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('beneficiary_id');
             $table->string('full_name');
+            $table->string('country_code');
             $table->string('telephone');
             $table->unsignedBigInteger('relationship_id');
             $table->text('home_address');

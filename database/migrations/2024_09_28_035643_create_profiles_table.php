@@ -27,6 +27,7 @@ return new class extends Migration
       $table->string('personal_expiry_date')->nullable();
       //emergency
       $table->string('emergency_full_name')->nullable();
+      $table->string('emergency_country_code')->nullable();
       $table->string('emergency_phone')->nullable();
       $table->string('emergency_relationship')->nullable();
       $table->string('personal_home_address')->nullable();

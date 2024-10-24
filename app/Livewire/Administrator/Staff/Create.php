@@ -22,7 +22,7 @@ class Create extends Component
     public $first_name, $middle_name, $last_name, $gender, $phone_number, $email, $date_of_birth, $marital_status, $countryCode;
     public $nationality_id, $id_type, $id_number, $expiry_date;
 
-    public $full_name, $telephone, $relationship_id, $home_address;
+    public $full_name, $countryCodeEmergency, $telephone, $relationship_id, $home_address;
 
     // Sterp 2
     public $job_title, $department, $emp_status, $start_date, $reporting_manager, $probation_period, $work_location;
@@ -177,6 +177,7 @@ class Create extends Component
             'personal_expiry_date'  =>  $this->expiry_date,
 
             'emergency_full_name'  =>  $this->full_name,
+            'emergency_country_code'  =>  $this->countryCodeEmergency,
             'emergency_phone'  =>  $this->telephone,
             'emergency_relationship'  =>  $this->relationship_id,
             'personal_home_address'  =>  $this->home_address,
