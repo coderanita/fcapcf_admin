@@ -207,7 +207,7 @@ class Create extends Component
             $teamMemberIds = array_map(function ($member) {
                 return [
                     'id' => $member['id'],
-                    'is_lead' => $member['is_lead'],
+                    'is_lead' => isset($member['is_lead']) ? $member['is_lead'] : false,
                 ];
             }, $this->teamMembers);
         }
