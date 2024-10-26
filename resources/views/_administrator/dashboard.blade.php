@@ -230,7 +230,7 @@
                                             @foreach ($users as $user)
                                                 <tr>
                                                     <td>{{ $user->fname }} {{ $user->lname }}</td>
-                                                    <td>{{ $user->profile->personal_phone ?? 'Not Added' }}</td>
+                                                    <td>{{ $user->email ?? 'Not Added' }}</td>
                                                     <td>{{ dateToWord($user->created_at) }}</td>
                                                 </tr>
                                             @endforeach
@@ -260,7 +260,7 @@
                                 </div>
                             </div>
                             <div class="card-body">
-                                <h3>&#x20A6; {{formatMoney($totalProjectCost) }}</h3>
+                                <h3>&#x20A6; {{ formatMoney($totalProjectCost) }}</h3>
                                 <!-- Progress -->
                                 {{-- <div class="progress rounded-pill mb-2" style="height: 5px;">
                                     <div class="progress-bar chart-color1" role="progressbar" style="width: 15%"
