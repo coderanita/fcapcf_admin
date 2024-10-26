@@ -197,7 +197,6 @@ class Create extends Component
 
     public function save()
     {
-        info($this->teamMembers);
         $this->validateStepTwo();
 
         $this->currentStep = 5;

@@ -46,24 +46,24 @@
                                         Cost</small></li>
                                 <li>
                                     <h2 class="fw-normal">&#x20A6;{{ number_format($totalProjectCost) }}</h2>
-                                    <div class="my-3">
+                                    {{-- <div class="my-3">
                                         <div class="mb-0 fw-bold">75,250 <span
                                                 class="fa fa-level-up text-success"></span></div>
                                         <small class="text-muted">Lives Impacted</small>
-                                    </div>
-                                    <div>
+                                    </div> --}}
+                                    {{-- <div>
                                         <div class="mb-0 fw-bold">&#x20A6; 1,450 <span
                                                 class="fa fa-level-down text-danger"></span></div>
-                                        <small class="text-muted">Project Expense</small>
-                                    </div>
+                                        <small class="text-muted">Total Project Target</small>
+                                    </div> --}}
                                 </li>
-                                <li class="divider mt-4 py-2 border-top text-uppercase text-muted"><small>Our
+                                {{-- <li class="divider mt-4 py-2 border-top text-uppercase text-muted"><small>Our
                                         Volunteers</small></li>
                                 <li class="d-flex flex-wrap">
                                     <a href="app-project.html#" data-bs-toggle="tooltip" data-placement="top"
                                         title="Clients name"><img class="avatar rounded-circle m-1 lift"
                                             src="{{ asset('img/xs/avatar2.jpg.png') }}" alt=""></a>
-                                </li>
+                                </li> --}}
                             </ul>
                         </div>
                         <div class="order-2 flex-grow-1 ps-lg-3 ps-0">
@@ -84,7 +84,8 @@
                                                                 href="{{ route('administrator.project.details', $project) }}"
                                                                 class="color-600">{{ $project->project_name }}</a>
                                                         </h5>
-                                                        <p class="text-muted">{{ $project->project_details }}
+                                                        <p class="text-muted">
+                                                            {{ limitWords($project->project_details, 10) }}
                                                             <a
                                                                 href="{{ route('administrator.project.details', $project) }}"><span
                                                                     class="text-secondary">
@@ -113,16 +114,18 @@
                                                                         class="avatar sm rounded-circle"
                                                                         src="{{ $member->profile_photo_path ? $member->profile_photo_path : asset('img/xs/avatar4.jpg.png') }}"
                                                                         data-bs-toggle="tooltip" data-bs-placement="top"
-                                                                        title="Team Lead" alt="friend"> </a>
+                                                                        title="{{ $member->fname }} {{ $member->lname }}"
+                                                                        alt="friend">
+                                                                </a>
                                                             @endforeach
                                                         </div>
-                                                        <label class="small d-flex justify-content-between">95% <span
+                                                        {{-- <label class="small d-flex justify-content-between">95% <span
                                                                 class="text-custom">Done</span></label>
                                                         <div class="progress mt-1" style="height: 3px;">
                                                             <div class="progress-bar bg-success" role="progressbar"
                                                                 aria-valuenow="95" aria-valuemin="0" aria-valuemax="100"
                                                                 style="width: 95%;"></div>
-                                                        </div>
+                                                        </div> --}}
                                                     </div>
                                                     <div class="card-footer py-3">
                                                         <span>Date
