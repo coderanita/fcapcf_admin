@@ -101,6 +101,29 @@
                                                                     <!-- Custome redio input -->
 
                                                                     <div class="row g-2 mt-3">
+
+                                                                        <div class="form-floating mb-2 col-md-4">
+                                                                            <select
+                                                                                class="form-select @error('selectedRole') is-invalid @enderror"
+                                                                                wire:model="selectedRole">
+                                                                                <option value="" selected>Open
+                                                                                    this select
+                                                                                    menu</option>
+                                                                                @foreach ($roles as $role)
+                                                                                    <option value="{{ $role->id }}">
+                                                                                        {{ ucwords($role->name) }} -
+                                                                                        {{ ucwords($role->access_level) }}
+                                                                                        Access
+                                                                                    </option>
+                                                                                @endforeach
+                                                                            </select>
+                                                                            <label>Select Role *</label>
+                                                                            @error('selectedRole')
+                                                                                <div class="invalid-feedback">
+                                                                                    {{ $message }}</div>
+                                                                            @enderror
+                                                                        </div>
+
                                                                         <div class="form-floating mb-2 col-md-4">
                                                                             <input type="text"
                                                                                 class="form-control @error('first_name') is-invalid @enderror"
@@ -113,7 +136,7 @@
                                                                             @enderror
                                                                         </div>
 
-                                                                        <div class="form-floating mb-2 col-md-4">
+                                                                        {{-- <div class="form-floating mb-2 col-md-4">
                                                                             <input type="text"
                                                                                 class="form-control @error('middle_name') is-invalid @enderror"
                                                                                 placeholder="Enter middle name"
@@ -123,7 +146,7 @@
                                                                                 <div class="invalid-feedback">
                                                                                     {{ $message }}</div>
                                                                             @enderror
-                                                                        </div>
+                                                                        </div> --}}
 
                                                                         <div class="form-floating mb-2 col-md-4">
                                                                             <input type="text"

@@ -3,6 +3,7 @@
 namespace App\Livewire\Administrator\Staff;
 
 use App\Models\Profile;
+use App\Models\Role;
 use App\Models\User;
 use App\Services\DataSourceService;
 use Illuminate\Support\Facades\Hash;
@@ -14,6 +15,7 @@ class Create extends Component
     public $nationalities;
     public $beneficiaries;
     public $countries;
+    public $selectedRole;
 
     public $totalStep = 7;
     public $currentStep = 1;
@@ -52,6 +54,7 @@ class Create extends Component
     {
         if ($this->currentStep == 1) {
             $this->validate([
+                'selectedRole' => 'required|string',
                 'first_name' => 'required|string|max:255',
                 'last_name' => 'required|string|max:255',
                 'gender' => 'required|string',
@@ -156,12 +159,16 @@ class Create extends Component
     public function save()
     {
 
+        $this->authorize('create', User::class);
+        $this->authorize('create', Profile::class);
+
         $user = User::create([
+            'role_id' => $this->selectedRole,
             'fname' => $this->first_name,
             'lname' => $this->last_name,
             'email' => $this->email,
             'password' => Hash::make('password'),
-            'role_id' => 3
+            'role_id' => $this->selectedRole
         ]);
 
         Profile::create([
@@ -251,7 +258,8 @@ class Create extends Component
             'nationalities' => $this->nationalities,
             'languages' => $this->languages,
             'beneficiaries' => $this->beneficiaries,
-            'countries' => $this->countries
+            'countries' => $this->countries,
+            'roles' => Role::all(),
         ]);
     }
 }

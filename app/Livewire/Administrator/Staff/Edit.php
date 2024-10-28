@@ -3,6 +3,7 @@
 namespace App\Livewire\Administrator\Staff;
 
 use App\Models\Profile;
+use App\Models\Role;
 use App\Models\User;
 use App\Services\DataSourceService;
 use Illuminate\Support\Facades\Hash;
@@ -16,6 +17,7 @@ class Edit extends Component
     public $nationalities;
     public $beneficiaries;
     public $countries;
+    public $selectedRole;
 
     public $totalStep = 7;
     public $currentStep = 1;
@@ -57,6 +59,7 @@ class Edit extends Component
         $this->first_name = $user->fname;
         $this->last_name = $user->lname;
         $this->email = $user->email;
+        $this->selectedRole = $user->role_id;
 
         $this->middle_name = $user->profile->personal_mname;
         $this->gender = $user->profile->personal_gender;
@@ -220,12 +223,15 @@ class Edit extends Component
     public function save()
     {
 
+        $this->authorize('update', $this->user);
+        $this->authorize('update', $this->user->profile);
+
         $user = User::where('id', $this->user->id)->update([
             'fname' => $this->first_name,
             'lname' => $this->last_name,
             'email' => $this->email,
             'password' => Hash::make('password'),
-            'role_id' => 3
+            'role_id' => $this->selectedRole
         ]);
 
         Profile::where('user_id', $this->user->id)->update([
@@ -309,7 +315,8 @@ class Edit extends Component
             'nationalities' => $this->nationalities,
             'languages' => $this->languages,
             'beneficiaries' => $this->beneficiaries,
-            'countries' => $this->countries
+            'countries' => $this->countries,
+            'roles' => Role::all(),
         ]);
     }
 }
