@@ -197,7 +197,8 @@ class Create extends Component
 
     public function save()
     {
-        info($this->teamMembers);
+        $this->authorize('create', Project::class);
+
         $this->validateStepTwo();
 
         $this->currentStep = 5;

@@ -131,6 +131,8 @@ class Create extends Component
 
     public function save()
     {
+        $this->authorize('create', Beneficiary::class);
+
         $savedImage = '';
         if ($this->profile_photo_path) {
             $savedImage = $this->profile_photo_path->store('beneficiaries/profile_photos', 'public');

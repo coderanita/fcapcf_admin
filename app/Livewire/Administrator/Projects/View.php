@@ -13,6 +13,8 @@ class View extends Component
 
     public function mount(Project $project)
     {
+        $this->authorize('view', $project);
+
         $this->project = $project;
 
         $invitedTeamIds = collect($project->invited_teams)->pluck('id');

@@ -20,6 +20,7 @@ class Manage extends Component
 
     public function confirmDelete()
     {
+        $this->authorize('delete', $this->beneficiary);
         $this->beneficiary->delete();
 
         $this->dispatch('modalClosedDelete');
@@ -33,6 +34,8 @@ class Manage extends Component
 
     public function render()
     {
+        $this->authorize('viewany', Beneficiary::class);
+
         $beneficiaries = Beneficiary::with('emergencyContact', 'assistance', 'socialEconomic')->get();
 
         return view('_administrator.beneficiaries.manage', [

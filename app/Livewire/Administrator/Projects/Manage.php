@@ -13,6 +13,8 @@ class Manage extends Component
     #[On('re-render-projects')]
     public function render()
     {
+        $this->authorize('viewany', Project::class);
+
         $projects = Project::with('region', 'country', 'state')->get()->map(function ($project) {
             // Decode the invited_teams JSON into an array
             $invitedTeamIds = collect($project->invited_teams)->pluck('id');

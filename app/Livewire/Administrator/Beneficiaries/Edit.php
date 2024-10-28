@@ -16,6 +16,7 @@ class Edit extends Component
 {
     use WithFileUploads;
 
+    public $beneficiary;
     public $beneficiary_id;
 
     public $languages;
@@ -110,6 +111,8 @@ class Edit extends Component
         $beneficiary = Beneficiary::with('emergencyContact', 'assistance', 'socialEconomic')
             ->findOrFail($beneficiaryId);
 
+        $this->beneficiary = $beneficiary;
+
         // Set beneficiary data to form inputs
         $this->beneficiary_id = $beneficiary->id;
         $this->first_name = $beneficiary->first_name;
@@ -180,6 +183,8 @@ class Edit extends Component
 
     public function save()
     {
+        $this->authorize('update', $this->beneficiary);
+
         $beneficiary = Beneficiary::findOrFail($this->beneficiary_id);
 
         // Check if a new profile photo has been uploaded
