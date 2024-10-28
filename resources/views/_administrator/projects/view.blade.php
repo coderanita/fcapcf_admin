@@ -33,16 +33,18 @@
                                         <small class="text-muted">Start Date</small>
                                     </div>
                                 </li>
-                                <li class="divider mt-4 py-2 border-top text-uppercase text-muted"><small>Project
+                                {{-- <li class="divider mt-4 py-2 border-top text-uppercase text-muted"><small>Project
                                         Supervisor</small></li>
-                                <li>
-                                    <div class="circle">
+                                <li> --}}
+                                {{-- <div class="circle">
                                         <img class="avatar xl rounded-circle img-thumbnail"
                                             src="assets/img/xs/avatar1.jpg.png" alt="">
-                                    </div>
+                                    </div> --}}
+                                {{-- @foreach ($invitedMembers as $invitedMember)
                                     <h6 class="mt-3 mb-0">Ahmed Peter</h6>
                                     <span>ahmedr@info.com </span>
-                                    <button class="btn btn-outline-secondary btn-sm mt-3">Message</button>
+                                    @endforeach --}}
+                                {{-- <button class="btn btn-outline-secondary btn-sm mt-3">Message</button> --}}
                                 </li>
                             </ul>
                         </div>
@@ -111,7 +113,9 @@
                                 </div>
                                 <div class="tab-pane fade" id="pd_users" role="tabpanel">
                                     <div class="d-flex justify-content-between p-3 bg-card rounded-4 mb-3">
-                                        <h6 class="card-title mb-0">Users ({{ count($invitedMembers) }})</h6>
+                                        <h6 class="card-title mb-0"> <a class="me-2 fa fa-arrow-circle-left"
+                                                href="{{ route('administrator.projects') }}" title="back"></a> Users
+                                            ({{ count($invitedMembers) }})</h6>
                                         <button class="btn btn-sm d-block d-lg-none btn-primary project-list-toggle"
                                             type="button"><i class="fa fa-bars"></i></button>
                                     </div>
@@ -138,8 +142,8 @@
                                                                     <ul
                                                                         class="list-unstyled d-flex mb-0 text-center text-md-start">
                                                                         <li class="flex-fill card p-2 px-xl-3">
-                                                                            <h6 class="mb-0 text-danger">080 123 456
-                                                                                7890
+                                                                            <h6 class="mb-0 text-danger">
+                                                                                {{ $invitedMember->profile->personal_phone ?? '' }}
                                                                             </h6>
                                                                             <span class="text-muted">Phone</span>
                                                                         </li>
@@ -167,7 +171,9 @@
                                 </div>
                                 <div class="tab-pane fade" id="pd_files" role="tabpanel">
                                     <div class="d-flex justify-content-between p-3 bg-card rounded-4 mb-3">
-                                        <h6 class="card-title mb-0">Project Files (45)</h6>
+                                        <h6 class="card-title mb-0"><a class="me-2 fa fa-arrow-circle-left"
+                                            href="{{ route('administrator.projects') }}" title="back"></a> Project Files
+                                            ({{ count(json_decode($project->files, true)) }})</h6>
                                         <button class="btn btn-sm d-block d-lg-none btn-primary project-list-toggle"
                                             type="button"><i class="fa fa-bars"></i></button>
                                     </div>
@@ -216,9 +222,9 @@
                                                         <span
                                                             class="text-muted">{{ \Carbon\Carbon::parse($file['created_at'])->diffForHumans() }}
                                                             <small>{{ $file['size'] }} MB</small></span>
-                                                        <div class="text-truncate">
+                                                        {{-- <div class="text-truncate">
                                                             <i class="fa fa-map me-1"></i> North Carolina, CT
-                                                        </div>
+                                                        </div> --}}
                                                     </div>
                                                 </div>
 
@@ -230,7 +236,8 @@
                                 <div class="tab-pane fade" id="pd_activity" role="tabpanel">
                                     <div class="card">
                                         <div class="card-header">
-                                            <h6 class="card-title mb-0">{{ $project->project_name }}</h6>
+                                            <h6 class="card-title mb-0"><a class="me-2 fa fa-arrow-circle-left"
+                                                href="{{ route('administrator.projects') }}" title="back"></a> {{ $project->project_name }}</h6>
                                             <button
                                                 class="btn btn-sm d-block d-lg-none btn-primary project-list-toggle"
                                                 type="button"><i class="fa fa-bars"></i></button>
@@ -240,22 +247,12 @@
                                                 <div class="d-flex">
                                                     <div class="flex-fill ms-3">
                                                         <div class="mb-1 fs-6">About the Project</div>
-                                                        <span class="d-flex text-muted small">The Widows Empowerment
-                                                            Initiative is a community-focused project dedicated to
-                                                            improving the lives of widows by offering support,
-                                                            resources, and opportunities for economic and social
-                                                            empowerment. Recognizing the unique challenges that widows
-                                                            often face, including financial instability, social
-                                                            isolation, and limited access to education or employment,
-                                                            this initiative seeks to create an inclusive environment
-                                                            where widows can thrive and become self-sufficient. Through
-                                                            workshops, training programs, and advocacy, the initiative
-                                                            aims to transform the lives of widows, fostering resilience,
-                                                            confidence, and independence. </span>
+                                                        <span
+                                                            class="d-flex text-muted small">{{ $project->project_details }}</span>
                                                     </div>
                                                 </div>
                                             </div> <!-- timeline item end  -->
-                                            <div class="timeline-item ti-danger ms-2">
+                                            {{-- <div class="timeline-item ti-danger ms-2">
                                                 <div class="d-flex">
                                                     <div class="flex-fill ms-3">
                                                         <div class="mb-1 fs-6">Project Objectives:</div>
@@ -276,8 +273,8 @@
 
                                                     </div>
                                                 </div>
-                                            </div> <!-- timeline item end  -->
-                                            <div class="timeline-item ti-success ms-2">
+                                            </div> <!-- timeline item end  --> --}}
+                                            {{-- <div class="timeline-item ti-success ms-2">
                                                 <div class="d-flex">
                                                     <div class="flex-fill ms-3">
                                                         <div class="mb-1">Project Goal</div>
@@ -296,7 +293,7 @@
 
                                                     </div>
                                                 </div>
-                                            </div> <!-- timeline item end  -->
+                                            </div> <!-- timeline item end  --> --}}
 
 
 

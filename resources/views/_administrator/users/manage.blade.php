@@ -6,7 +6,7 @@
                 <th>S/N</th>
                 <th>Name</th>
                 <th>Account Type</th>
-                <th>Assigned Program</th>
+                {{-- <th>Assigned Program</th> --}}
                 <th>Status</th>
                 <th>Action</th>
             </tr>
@@ -22,16 +22,16 @@
                     <td> {{ $loop->iteration }}</td>
                     <td>{{ $user->fullName() }} <br> <span class="text-info">{{ $user->email }}</span></td>
                     <td>{{ ucwords($user->role->name) }}</td>
-                    <td><span class="badge bg-primary">MCA - Nasarawa</span></td>
+                    {{-- <td><span class="badge bg-primary">MCA - Nasarawa</span></td> --}}
                     <td> <button title="Click To Change" wire:click="toggleActive({{ $user->id }})"
                             class="badge  @if ($user->active) bg-success"> Active @else bg-danger"> Suspend @endif
         </button></td>
           <td>
 
             <a href="{{ route('administrator.users.show', $user->id) }}">
-                            {{-- <button type="button" class="btn btn-link btn-sm" data-bs-toggle="tooltip"
+                            <button type="button" class="btn btn-link btn-sm" data-bs-toggle="tooltip"
                                 data-bs-placement="top" title="View User"><i class="fa fa-eye"></i></button>
-                            </a> --}}
+                            </a>
 
                             <a href="{{ route('administrator.staffs.edit', $user->id) }}">
                                 <button type="button" class="btn btn-link btn-sm" data-bs-toggle="tooltip"

@@ -226,31 +226,14 @@
                                 <div class="table-responsive">
                                     <table class="table table-sm table-nowrap mb-0">
                                         <tbody>
-                                            <tr>
-                                                <td>Ahmed Peter</td>
-                                                <td>080 123 456 7890</td>
-                                                <td>12 Jun 2024</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Emeka Awa</td>
-                                                <td>080 123 456 7890</td>
-                                                <td>12 Jun 2024</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Miracle Sulieman</td>
-                                                <td>080 123 456 7890</td>
-                                                <td>12 Jun 2024</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Ahmed Damian</td>
-                                                <td>080 123 456 7890</td>
-                                                <td>12 Jun 2024</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Urem Damian</td>
-                                                <td>080 123 456 7890</td>
-                                                <td>12 Jun 2024</td>
-                                            </tr>
+
+                                            @foreach ($users as $user)
+                                                <tr>
+                                                    <td>{{ $user->fname }} {{ $user->lname }}</td>
+                                                    <td>{{ $user->email ?? 'Not Added' }}</td>
+                                                    <td>{{ dateToWord($user->created_at) }}</td>
+                                                </tr>
+                                            @endforeach
                                         </tbody>
                                     </table>
                                 </div>
@@ -277,9 +260,9 @@
                                 </div>
                             </div>
                             <div class="card-body">
-                                <h3>&#x20A6; 77,431.14</h3>
+                                <h3>&#x20A6; {{ formatMoney($totalProjectCost) }}</h3>
                                 <!-- Progress -->
-                                <div class="progress rounded-pill mb-2" style="height: 5px;">
+                                {{-- <div class="progress rounded-pill mb-2" style="height: 5px;">
                                     <div class="progress-bar chart-color1" role="progressbar" style="width: 15%"
                                         aria-valuenow="15" aria-valuemin="0" aria-valuemax="100"></div>
                                     <div class="progress-bar chart-color2" role="progressbar" style="width: 30%"
@@ -290,35 +273,38 @@
                                 <div class="d-flex justify-content-between mb-4">
                                     <span>0%</span>
                                     <span>100%</span>
-                                </div>
+                                </div> --}}
                                 <!-- End Progress -->
                                 <div class="table-responsive">
                                     <table class="table table-sm table-nowrap mb-0">
                                         <tbody>
-                                            <tr>
-                                                <td><i class="fa fa-circle me-2 chart-text-color1"></i>Prisoners'
-                                                    Rehabilitation Program</td>
-                                                <td>&#x20A6;3,500.71</td>
-                                                <td><span class="badge bg-success">+12.1%</span></td>
-                                            </tr>
-                                            <tr>
-                                                <td><i class="fa fa-circle me-2 chart-text-color2"></i>Widows' Health
-                                                    Awareness Campaign</td>
-                                                <td>&#x20A6;2,980.45</td>
-                                                <td><span class="badge bg-warning">+6.9%</span></td>
-                                            </tr>
-                                            <tr>
-                                                <td><i class="fa fa-circle me-2 chart-text-color3"></i>Widows
-                                                    Empowerment Initiative</td>
-                                                <td>&#x20A6;950.00</td>
-                                                <td><span class="badge bg-danger">-1.5%</span></td>
-                                            </tr>
-                                            <tr>
-                                                <td><i class="fa fa-circle me-2"></i>Inmate Literacy and Education
-                                                    Drive</td>
-                                                <td>&#x20A6;32,000.00</td>
-                                                <td><span class="badge bg-success">1.9%</span></td>
-                                            </tr>
+
+                                            @foreach ($projects as $project)
+                                                @php
+                                                    $badge = '';
+                                                    if ($project->projectStatus->name == 'Completed') {
+                                                        $badge = 'success';
+                                                    } elseif ($project->projectStatus->name == 'Pending') {
+                                                        $badge = 'secondary';
+                                                    } elseif ($project->projectStatus->name == 'Suspended') {
+                                                        $badge = 'danger';
+                                                    } elseif ($project->projectStatus->name == 'In-Progress') {
+                                                        $badge = 'info';
+                                                    }
+                                                @endphp
+
+                                                <tr>
+                                                    <td><i
+                                                            class="fa fa-circle me-2 chart-text-color1"></i>{{ $project->project_name }}
+                                                    </td>
+                                                    <td>&#x20A6;{{ $project->project_cost }}</td>
+                                                    <td><span
+                                                            class="badge bg-{{ $badge }}">{{ $project->projectStatus->name }}</span>
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+
+
                                         </tbody>
                                     </table>
                                 </div>

@@ -41,7 +41,9 @@ Route::middleware([
   Route::view('/account', 'account.show')->name('account.show');
   Route::view('/users', '_administrator.users.index')->name('users');
   Route::get('/users/{user}/show', ShowUser::class)->name('users.show');
-  Route::get('/users/{user}/profile', ManageProfile::class)->name('users.profile');
+  // Route::get('/users/{user}/profile', ManageProfile::class)->name('users.profile');
+
+  Route::get('/users/{user}/profile', StaffEdit::class)->name('users.profile');
 
   // Route::view('/users/profile', '_administrator.users.profile.index')->name('users.profile');
 

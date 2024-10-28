@@ -41,3 +41,14 @@ if (!function_exists('formatMoney')) {
     return number_format($number, 2, '.', ',');
   }
 }
+
+if (!function_exists('limitWords')) {
+  function limitWords($text, $limit = 10)
+  {
+    $words = explode(' ', $text);
+    if (count($words) > $limit) {
+      return implode(' ', array_slice($words, 0, $limit)) . '...';
+    }
+    return $text;
+  }
+}
