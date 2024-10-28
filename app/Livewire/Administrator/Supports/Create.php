@@ -18,6 +18,8 @@ class Create extends Component
 
     public function save()
     {
+        $this->authorize('create', Support::class);
+
         $this->validate();
 
         Support::create([

@@ -22,6 +22,8 @@ class View extends Component
 
     public function confirmDelete()
     {
+        $this->authorize('delete', $this->support);
+
         $this->support->delete();
 
         $this->dispatch(
@@ -36,6 +38,8 @@ class View extends Component
 
     public function render()
     {
+        $this->authorize('view', $this->support);
+
         $count = Support::get();
         return view('_administrator.supports.view', ['count' => $count]);
     }

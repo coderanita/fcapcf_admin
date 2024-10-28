@@ -15,6 +15,8 @@ class Manage extends Component
     public function render()
     {
 
+        $this->authorize('viewany', Support::class);
+
         $supports = Support::paginate(10);
 
         return view(
