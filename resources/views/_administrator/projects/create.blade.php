@@ -22,7 +22,7 @@
                             fill="white" />
                     </svg>
                 </button>
-                
+
             </div>
         </x-slot>
     </x-breadcrumb>
@@ -423,28 +423,35 @@
 
                         @if ($currentStep < 5)
                             <div class="text-end">
-                                <button type="button" class="btn btn-secondary" wire:click.prevent="decreaseStep()">
-                                    CLOSE
-                                </button>
+                                @if ($currentStep != 1)
+                                    <button type="button" class="btn btn-secondary"
+                                        wire:click.prevent="decreaseStep()">
+                                        {{-- CLOSE --}}
+                                        PREV
+                                    </button>
+                                @endif
 
                                 @if ($currentStep == 1)
                                     <button class="btn bg-secondary text-light next text-uppercase"
                                         wire:click.prevent="increaseStep()">
-                                        ADD PROJECT DETAILS
+                                        {{-- ADD PROJECT DETAILS --}}
+                                        NEXT
                                     </button>
                                 @endif
 
                                 @if ($currentStep == 2)
                                     <button class="btn bg-secondary text-light next text-uppercase"
                                         wire:click.prevent="increaseStep()">
-                                        SELECT PROJECT TEAM
+                                        {{-- SELECT PROJECT TEAM --}}
+                                        NEXT
                                     </button>
                                 @endif
 
                                 @if ($currentStep == 3)
                                     <button class="btn bg-secondary text-light next text-uppercase"
                                         wire:click.prevent="increaseStep()">
-                                        UPLOAD FILES
+                                        {{-- UPLOAD FILES --}}
+                                        NEXT
                                     </button>
                                 @endif
 

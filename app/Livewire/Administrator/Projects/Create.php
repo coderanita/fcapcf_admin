@@ -116,14 +116,14 @@ class Create extends Component
 
     public function decreaseStep()
     {
-        // $this->currentStep--;
-        // if ($this->currentStep < 1) {
-        //     $this->currentStep = 1;
-        // }
+        $this->currentStep--;
+        if ($this->currentStep < 1) {
+            $this->currentStep = 1;
+        }
 
-        $this->dispatch('modalClosed');
+        // $this->dispatch('modalClosed');
 
-        $this->reset();
+        // $this->reset();
     }
 
     public function updatedInviteTeam()
