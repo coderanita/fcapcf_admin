@@ -111,8 +111,11 @@
                                     value="{{ count($selectedStates) ? count($selectedStates) . ' States Selected' : 'Select States' }}"
                                     aria-label="Selected States" aria-describedby="states-selection"
                                     data-bs-toggle="dropdown">
-                                <span class="input-group-text" id="states-selection"><i
-                                        class="fa fa-chevron-down"></i></span>
+
+                                <!-- Dropdown toggle as a button appearing as part of the input -->
+                                <button class="btn btn-outline-secondary dropdown-toggle" type="button"
+                                    id="states-selection" data-bs-toggle="dropdown" aria-expanded="false">
+                                </button>
 
                                 <div class="dropdown-menu w-100">
                                     @foreach ($states as $state)

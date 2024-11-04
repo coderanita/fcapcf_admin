@@ -37,6 +37,7 @@
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
+
                         <div class="col-md-12">
                             <label class="form-label">Select States</label>
                             <div class="input-group">
@@ -44,9 +45,13 @@
                                     value="{{ count($selectedStates) ? count($selectedStates) . ' States Selected' : 'Select States' }}"
                                     aria-label="Selected States" aria-describedby="states-selection"
                                     data-bs-toggle="dropdown">
-                                <span class="input-group-text" id="states-selection"><i
-                                        class="fa fa-chevron-down"></i></span>
 
+                                <!-- Dropdown toggle as a button appearing as part of the input -->
+                                <button class="btn btn-outline-secondary dropdown-toggle" type="button"
+                                    id="states-selection" data-bs-toggle="dropdown" aria-expanded="false">
+                                </button>
+
+                                <!-- Dropdown content -->
                                 <div class="dropdown-menu w-100">
                                     @foreach ($states as $state)
                                         <div class="form-check">
@@ -60,6 +65,8 @@
                                 </div>
                             </div>
                         </div>
+
+
                         <div class="col-12">
                             <label class="form-label">Describe </label>
                             <textarea class="form-control @error('description') is-invalid @enderror" placeholder="*********"

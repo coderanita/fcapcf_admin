@@ -14,10 +14,10 @@
                                             class="btn bg-secondary text-light w-100 mb-3">New Message</span></a>
                                 </li>
                                 <li><a class="m-link active" href="{{ route('administrator.supports') }}"><i
-                                            class="fa fa-inbox"></i><span>Inbox</span><span
-                                            class="badge bg-light text-dark ms-2 ms-auto">{{ count($count) }}</span></a>
+                                            class="fa fa-inbox"></i><span>Inbox</span></a>
                                 </li>
-                                <li><a class="m-link" href="#"><i class="fa fa-send"></i><span>Sent</span></a>
+                                <li><a class="m-link" href="#"><i class="fa fa-send"></i><span>Sent</span><span
+                                            class="badge bg-light text-dark ms-2 ms-auto">{{ count($count) }}</span></a>
                                 </li>
                             </ul>
                         </div>
