@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('states', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('region_id')->nullable();
+            $table->unsignedBigInteger('country_id')->nullable();
             $table->string('name');
             $table->timestamps();
         });
