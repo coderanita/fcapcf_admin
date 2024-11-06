@@ -107,9 +107,8 @@
                                                                             <select
                                                                                 class="form-select @error('selectedRole') is-invalid @enderror"
                                                                                 wire:model="selectedRole">
-                                                                                <option value="" selected>Open
-                                                                                    this select
-                                                                                    menu</option>
+                                                                                <option value="" selected>
+                                                                                </option>
                                                                                 @foreach ($roles as $role)
                                                                                     <option value="{{ $role->id }}">
                                                                                         {{ ucwords($role->name) }} -
@@ -165,9 +164,8 @@
                                                                             <select
                                                                                 class="form-select @error('gender') is-invalid @enderror"
                                                                                 wire:model="gender">
-                                                                                <option value="" selected>Open
-                                                                                    this select
-                                                                                    menu</option>
+                                                                                <option value="" selected>
+                                                                                </option>
                                                                                 <option value="male">Male</option>
                                                                                 <option value="female">Female
                                                                                 </option>
@@ -234,8 +232,7 @@
                                                                                 class="form-select @error('marital_status') is-invalid @enderror"
                                                                                 wire:model="marital_status">
                                                                                 <option value="" selected>
-                                                                                    Open this select
-                                                                                    menu</option>
+                                                                                </option>
                                                                                 <option value="Single">Single
                                                                                 </option>
                                                                                 <option value="Married">Married
@@ -259,8 +256,7 @@
                                                                                 class="form-select @error('nationality_id') is-invalid @enderror"
                                                                                 wire:model="nationality_id">
                                                                                 <option value="" selected>
-                                                                                    Open this select
-                                                                                    menu</option>
+                                                                                </option>
                                                                                 @foreach ($nationalities as $nationality)
                                                                                     <option
                                                                                         value="{{ $nationality->id }}">
@@ -280,7 +276,6 @@
                                                                                 class="form-select @error('id_type') is-invalid @enderror"
                                                                                 wire:model="id_type">
                                                                                 <option selected>
-                                                                                    Open this select menu
                                                                                 </option>
                                                                                 <option value="nin">
                                                                                     National Id
@@ -378,8 +373,7 @@
                                                                                 class="form-select @error('relationship_id') is-invalid @enderror"
                                                                                 wire:model="relationship_id">
                                                                                 <option value="" selected>
-                                                                                    Open this select
-                                                                                    menu</option>
+                                                                                </option>
                                                                                 @foreach ($beneficiaries as $beneficiaryRelationship)
                                                                                     <option
                                                                                         value="{{ $beneficiaryRelationship->id }}">
