@@ -1,5 +1,5 @@
 <div>
-    <x-breadcrumb title="State Regions FCAPCF Covers" sub_title="Regions">
+    <x-breadcrumb title="Countries" sub_title="Countries">
         <x-slot name="page_action">
             <div class="page-action">
                 <a wire:click='create'>
@@ -19,18 +19,32 @@
 
     </x-breadcrumb>
 
-    <div class="modal fade" id="project_regions" tabindex="-1" wire:ignore.self>
+    <div class="modal fade" id="project_country" tabindex="-1" wire:ignore.self>
         <div class="modal-dialog modal-dialog-vertical modal-dialog-scrollable">
             <div class="modal-content" style="padding: 35px">
                 <div class="offcanvas-header">
-                    <h5 class="offcanvas-title">Add New Region</h5>
+                    <h5 class="offcanvas-title">Add New Country</h5>
                     <button type="button" class="btn-close text-reset" data-bs-dismiss="modal"
                         aria-label="Close"></button>
                 </div>
                 <div class="offcanvas-body">
                     <form class="row g-3" style="margin-top: 60px" wire:submit.prevent="save">
+
                         <div class="col-md-12">
                             <label class="form-label">Region</label>
+                            <select class="form-select" wire:model.live='selectedRegion'>
+                                <option selected>Choose...</option>
+                                @foreach ($regions as $region)
+                                    <option value="{{ $region->id }}">{{ ucwords($region->name) }}
+                                    </option>
+                                @endforeach
+
+                            </select>
+                            <x-input-error for="selectedRegion" />
+                        </div>
+
+                        <div class="col-md-12">
+                            <label class="form-label">Country</label>
                             <input type="text" class="form-control @error('name') is-invalid @enderror"
                                 wire:model="name">
                             @error('name')
@@ -38,48 +52,17 @@
                             @enderror
                         </div>
 
-                        {{-- <div class="col-md-12">
-                            <label class="form-label">Select Country</label>
-                            <div class="input-group">
-                                <input type="text" class="form-control" readonly
-                                    value="{{ count($selectedStates) ? count($selectedStates) . ' States Selected' : 'Select States' }}"
-                                    aria-label="Selected Country" aria-describedby="states-selection"
-                                    data-bs-toggle="dropdown">
-
-                                <!-- Dropdown toggle as a button appearing as part of the input -->
-                                <button class="btn btn-outline-secondary dropdown-toggle" type="button"
-                                    id="states-selection" data-bs-toggle="dropdown" aria-expanded="false">
-                                </button>
-
-                                <!-- Dropdown content -->
-                                <div class="dropdown-menu w-100">
-                                    @foreach ($states as $state)
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value="{{ $state->id }}"
-                                                wire:model.live="selectedStates" id="state-{{ $state->id }}">
-                                            <label class="form-check-label" for="state-{{ $state->id }}">
-                                                {{ $state->name }}
-                                            </label>
-                                        </div>
-                                    @endforeach
-                                </div>
-                            </div>
-                        </div> --}}
-
-
-                        <div class="col-12">
-                            <label class="form-label">Describe </label>
-                            <textarea class="form-control @error('description') is-invalid @enderror" placeholder="*********"
-                                wire:model='description'> </textarea>
-                            @error('description')
-                                <div class="invalid-feedback">
-                                    {{ $message }}
-                                </div>
+                        <div class="col-md-12">
+                            <label class="form-label">Code</label>
+                            <input type="text" class="form-control @error('code') is-invalid @enderror"
+                                wire:model="code">
+                            @error('code')
+                                <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
 
                         <div class="col-12" style="margin-top: 45px;">
-                            <button type="submit" class="btn btn-primary">Add Region</button>
+                            <button type="submit" class="btn btn-primary">Add Country</button>
                             <button type="button" class="btn btn-outline-secondary"
                                 data-bs-dismiss="modal">Cancel</button>
                         </div>
@@ -104,12 +87,12 @@
 
 @push('scripts')
     <script>
-        window.addEventListener('modalClosedRegion', event => {
-            $('#project_regions').modal('hide');
+        window.addEventListener('modalClosedCountry', event => {
+            $('#project_country').modal('hide');
         })
 
-        window.addEventListener('modalOpenedRegion', event => {
-            $('#project_regions').modal('show');
+        window.addEventListener('modalOpenedCountry', event => {
+            $('#project_country').modal('show');
         })
     </script>
 @endpush

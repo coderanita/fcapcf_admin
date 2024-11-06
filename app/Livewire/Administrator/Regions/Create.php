@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Administrator\Regions;
 
+use App\Models\Country;
 use App\Models\Region;
 use App\Models\State;
 use Livewire\Component;
@@ -36,9 +37,9 @@ class Create extends Component
             'description' => $this->description
         ]);
 
-        foreach ($this->selectedStates as $state) {
-            State::where('id', $state)->update(['region_id' => $region->id]);
-        }
+        // foreach ($this->selectedStates as $state) {
+        //     Country::where('id', $state)->update(['region_id' => $region->id]);
+        // }
 
         $this->dispatch('modalClosedRegion');
         $this->dispatch('re-render-region');
@@ -52,7 +53,7 @@ class Create extends Component
 
     public function render()
     {
-        $states = State::get();
+        $states = Country::get();
         return view('_administrator.regions.create', ['states' => $states]);
     }
 }

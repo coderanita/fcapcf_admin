@@ -9,18 +9,12 @@ use Livewire\Component;
 
 class Manage extends Component
 {
-    public $region, $name, $description, $selectedStates = [];
+    public $region, $name, $description;
 
     protected $rules = [
         'name' => 'required',
         'description' => 'required',
     ];
-
-    public function updatedSelectedStates()
-    {
-        // This is optional but useful to make sure Livewire reacts properly
-        $this->selectedStates = array_filter($this->selectedStates);
-    }
 
     public function edit(Region $region)
     {
@@ -36,10 +30,6 @@ class Manage extends Component
         $this->validate();
 
         $this->region->update(['name' => $this->name, 'description' => $this->description]);
-
-        foreach ($this->selectedStates as $state) {
-            State::where('id', $state)->update(['region_id' => $this->region->id]);
-        }
 
         $this->dispatch('modalClosed');
 
@@ -73,9 +63,8 @@ class Manage extends Component
     #[On('re-render-region')]
     public function render()
     {
-        $regions = Region::with('states')->get();
-        $states = State::get();
+        $regions = Region::get();
 
-        return view('_administrator.regions.manage', ['regions' => $regions, 'states' => $states]);
+        return view('_administrator.regions.manage', ['regions' => $regions]);
     }
 }

@@ -7,6 +7,7 @@ use App\Livewire\Administrator\Announcements\View;
 use App\Livewire\Administrator\AuditLogs\Index;
 use App\Livewire\Administrator\Beneficiaries\Create;
 use App\Livewire\Administrator\Beneficiaries\Edit;
+use App\Livewire\Administrator\Countries\Manage as CountriesManage;
 use App\Livewire\Administrator\Dashboard;
 use App\Livewire\Administrator\ProjectCategory\Manage as ProjectCategoryManage;
 use App\Livewire\Administrator\ProjectDocument\Manage as ProjectDocumentManage;
@@ -19,6 +20,7 @@ use App\Livewire\Administrator\Reports\UserReports;
 use App\Livewire\Administrator\Roles\ShowRole;
 use App\Livewire\Administrator\Staff\Create as StaffCreate;
 use App\Livewire\Administrator\Staff\Edit as StaffEdit;
+use App\Livewire\Administrator\States\Manage as StatesManage;
 use App\Livewire\Administrator\Supports\Create as SupportsCreate;
 use App\Livewire\Administrator\Supports\View as SupportView;
 use Illuminate\Support\Facades\Route;
@@ -65,6 +67,8 @@ Route::middleware([
   Route::get('/project-caterogories', ProjectCategoryManage::class)->name('project.categories');
 
   Route::get('/regions', RegionManage::class)->name('regions');
+  Route::get('/countries', CountriesManage::class)->name('countries');
+  Route::get('/states', StatesManage::class)->name('states');
 
   Route::get('/staffs/create', StaffCreate::class)->name('staffs.create');
   Route::get('/staffs/edit/{user}', StaffEdit::class)->name('staffs.edit');

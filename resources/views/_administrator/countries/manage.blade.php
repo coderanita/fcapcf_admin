@@ -17,7 +17,7 @@
 
 <div>
 
-    @livewire('administrator.regions.create')
+    @livewire('administrator.countries.create')
 
     <!-- start: page body -->
     <div class="page-body">
@@ -39,7 +39,8 @@
                                     <tr>
                                         <th>S/N</th>
                                         <th>Region</th>
-                                        <th>Description</th>
+                                        <th>Name</th>
+                                        <th>Country Code</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -47,17 +48,18 @@
                                     @php
                                         $count = 1;
                                     @endphp
-                                    @foreach ($regions as $region)
+                                    @foreach ($countries as $country)
                                         <tr>
                                             <td>{{ $count++ }}</td>
-                                            <td>{{ $region->name }}</td>
-                                            <td>{{ $region->description }}</td>
+                                            <td>{{ $country->region->name }}</td>
+                                            <td>{{ $country->name }}</td>
+                                            <td>{{ $country->code }}</td>
                                             <td>
                                                 <button type="button" class="btn btn-link btn-sm"
-                                                    wire:click="edit({{ $region }})" title="Edit"><i
+                                                    wire:click="edit({{ $country }})" title="Edit"><i
                                                         class="fa fa-pencil"></i></button>
                                                 <button type="button" class="btn btn-link btn-sm"
-                                                    wire:click="delete({{ $region }})" data-bs-toggle="tooltip"
+                                                    wire:click="delete({{ $country }})" data-bs-toggle="tooltip"
                                                     data-bs-placement="top" title="Delete"><i
                                                         class="fa fa-trash"></i></button>
                                             </td>
@@ -73,9 +75,8 @@
         </div>
     </div>
 
-
     <!-- New user modal -->
-    <div class="modal fade" id="edit_project_regions" tabindex="-1" wire:ignore.self>
+    <div class="modal fade" id="edit_project_country" tabindex="-1" wire:ignore.self>
         <div class="modal-dialog modal-dialog-vertical modal-dialog-scrollable">
             <div class="modal-content" style="padding: 35px">
                 <div class="offcanvas-header">
@@ -85,27 +86,40 @@
                 </div>
                 <div class="offcanvas-body">
                     <form class="row g-3" style="margin-top: 60px" wire:submit.prevent="update">
+
                         <div class="col-md-12">
                             <label class="form-label">Region</label>
+                            <select class="form-select" wire:model.live='selectedRegion'>
+                                <option selected>Choose...</option>
+                                @foreach ($regions as $region)
+                                    <option value="{{ $region->id }}">{{ ucwords($region->name) }}
+                                    </option>
+                                @endforeach
+
+                            </select>
+                            <x-input-error for="selectedRegion" />
+                        </div>
+
+                        <div class="col-md-12">
+                            <label class="form-label">Country</label>
                             <input type="text" class="form-control @error('name') is-invalid @enderror"
                                 wire:model="name">
                             @error('name')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
-                        <div class="col-12">
-                            <label class="form-label">Describe </label>
-                            <textarea class="form-control @error('description') is-invalid @enderror" placeholder="*********"
-                                wire:model='description'> </textarea>
-                            @error('description')
-                                <div class="invalid-feedback">
-                                    {{ $message }}
-                                </div>
+
+                        <div class="col-md-12">
+                            <label class="form-label">Code</label>
+                            <input type="text" class="form-control @error('code') is-invalid @enderror"
+                                wire:model="code">
+                            @error('code')
+                                <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
 
                         <div class="col-12" style="margin-top: 45px;">
-                            <button type="submit" class="btn btn-primary">Update Region</button>
+                            <button type="submit" class="btn btn-primary">Update Country</button>
                             <button type="button" class="btn btn-outline-secondary"
                                 data-bs-dismiss="modal">Cancel</button>
                         </div>
@@ -130,16 +144,17 @@
     {{-- Modal Delete --}}
     <x-modal-delete></x-modal-delete>
     {{-- Modal Delete --}}
+
 </div>
 
 @push('scripts')
     <script>
         window.addEventListener('modalClosed', event => {
-            $('#edit_project_regions').modal('hide');
+            $('#edit_project_country').modal('hide');
         })
 
         window.addEventListener('modalOpenedEdit', event => {
-            $('#edit_project_regions').modal('show');
+            $('#edit_project_country').modal('show');
         })
     </script>
 @endpush
