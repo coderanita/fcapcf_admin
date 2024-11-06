@@ -35,7 +35,7 @@ class Create extends Component
 
         $this->dispatch('modalClosedCountry');
         $this->dispatch('re-render-country');
-
+        $this->reset();
         $this->dispatch(
             'alert',
             type: "success",

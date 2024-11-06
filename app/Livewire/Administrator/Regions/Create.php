@@ -43,7 +43,7 @@ class Create extends Component
 
         $this->dispatch('modalClosedRegion');
         $this->dispatch('re-render-region');
-
+        $this->reset();
         $this->dispatch(
             'alert',
             type: "success",

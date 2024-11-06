@@ -1,5 +1,5 @@
 <div>
-    <x-breadcrumb title="Countries" sub_title="Countries">
+    <x-breadcrumb title="States" sub_title="States">
         <x-slot name="page_action">
             <div class="page-action">
                 <a wire:click='create'>
@@ -19,11 +19,11 @@
 
     </x-breadcrumb>
 
-    <div class="modal fade" id="project_country" tabindex="-1" wire:ignore.self>
+    <div class="modal fade" id="project_state" tabindex="-1" wire:ignore.self>
         <div class="modal-dialog modal-dialog-vertical modal-dialog-scrollable">
             <div class="modal-content" style="padding: 35px">
                 <div class="offcanvas-header">
-                    <h5 class="offcanvas-title">Add New Country</h5>
+                    <h5 class="offcanvas-title">Add New State</h5>
                     <button type="button" class="btn-close text-reset" data-bs-dismiss="modal"
                         aria-label="Close"></button>
                 </div>
@@ -31,20 +31,20 @@
                     <form class="row g-3" style="margin-top: 60px" wire:submit.prevent="save">
 
                         <div class="col-md-12">
-                            <label class="form-label">Region</label>
-                            <select class="form-select" wire:model.live='selectedRegion'>
+                            <label class="form-label">Country</label>
+                            <select class="form-select" wire:model.live='selectedCountry'>
                                 <option selected value="">Choose...</option>
-                                @foreach ($regions as $region)
-                                    <option value="{{ $region->id }}">{{ ucwords($region->name) }}
+                                @foreach ($countries as $country)
+                                    <option value="{{ $country->id }}">{{ ucwords($country->name) }}
                                     </option>
                                 @endforeach
 
                             </select>
-                            <x-input-error for="selectedRegion" />
+                            <x-input-error for="selectedCountry" />
                         </div>
 
                         <div class="col-md-12">
-                            <label class="form-label">Country Name</label>
+                            <label class="form-label">State Name</label>
                             <input type="text" class="form-control @error('name') is-invalid @enderror"
                                 wire:model="name">
                             @error('name')
@@ -52,17 +52,8 @@
                             @enderror
                         </div>
 
-                        <div class="col-md-12">
-                            <label class="form-label">Country Code</label>
-                            <input type="text" class="form-control @error('code') is-invalid @enderror"
-                                wire:model="code">
-                            @error('code')
-                                <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
-                        </div>
-
                         <div class="col-12" style="margin-top: 45px;">
-                            <button type="submit" class="btn btn-primary">Add Country</button>
+                            <button type="submit" class="btn btn-primary">Add State</button>
                             <button type="button" class="btn btn-outline-secondary"
                                 data-bs-dismiss="modal">Cancel</button>
                         </div>
@@ -87,12 +78,12 @@
 
 @push('scripts')
     <script>
-        window.addEventListener('modalClosedCountry', event => {
-            $('#project_country').modal('hide');
+        window.addEventListener('modalClosedState', event => {
+            $('#project_state').modal('hide');
         })
 
-        window.addEventListener('modalOpenedCountry', event => {
-            $('#project_country').modal('show');
+        window.addEventListener('modalOpenedState', event => {
+            $('#project_state').modal('show');
         })
     </script>
 @endpush

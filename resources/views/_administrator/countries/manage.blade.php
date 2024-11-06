@@ -101,7 +101,7 @@
                         </div>
 
                         <div class="col-md-12">
-                            <label class="form-label">Country</label>
+                            <label class="form-label">Country Name</label>
                             <input type="text" class="form-control @error('name') is-invalid @enderror"
                                 wire:model="name">
                             @error('name')
@@ -110,7 +110,7 @@
                         </div>
 
                         <div class="col-md-12">
-                            <label class="form-label">Code</label>
+                            <label class="form-label">Country Code</label>
                             <input type="text" class="form-control @error('code') is-invalid @enderror"
                                 wire:model="code">
                             @error('code')

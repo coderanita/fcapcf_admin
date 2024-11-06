@@ -12,8 +12,8 @@ class State extends Model
 
     protected $guarded = [];
 
-    public function region(): BelongsTo
+    public function country(): BelongsTo
     {
-        return $this->belongsTo(Region::class);
+        return $this->belongsTo(Country::class);
     }
 }
