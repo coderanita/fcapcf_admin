@@ -16,13 +16,16 @@
                                 <li><a class="m-link pt-0" href="{{ route('administrator.support.create') }}"><span
                                             class="btn bg-secondary text-light w-100 mb-3">New Message</span></a>
                                 </li>
-                                <li><a class="m-link active" href="{{ route('administrator.supports') }}"><i
-                                            class="fa fa-inbox"></i><span>Inbox</span></a></li>
-                                <li><a class="m-link" href="#"><i class="fa fa-send"></i><span>Sent</span><span
+                                <li><a class="m-link active" href="#"><i
+                                            class="fa fa-inbox"></i><span>Inbox</span></a>
+                                </li>
+                                <li><a class="m-link" href="{{ route('administrator.supports', 'status=1') }}"><i
+                                            class="fa fa-send"></i><span>Sent</span><span
                                             class="badge bg-light text-dark ms-2 ms-auto">{{ count($count) }}</span></a>
                                 </li>
 
-                                <li><a class="m-link" href="#"><i class="fa fa-file"></i><span>Draft</span><span
+                                <li><a class="m-link" href="{{ route('administrator.supports', 'status=2') }}"><i
+                                            class="fa fa-file"></i><span>Draft</span><span
                                             class="badge bg-light text-dark ms-2 ms-auto">{{ count($countDraft) }}</span></a>
                                 </li>
                             </ul>

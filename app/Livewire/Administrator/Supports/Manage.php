@@ -17,12 +17,25 @@ class Manage extends Component
 
         $this->authorize('viewany', Support::class);
 
-        $supports = Support::paginate(10);
+        $status = request()->query('status');
+
+        $supports = Support::when($status, function ($query, $status) {
+            return $query->where('status', $status);
+        })->paginate(10);
+
+        $statusName = 'All';
+        if ($status == 1) {
+            $statusName = 'Sent';
+        } elseif ($status == 2) {
+            $statusName = 'Draft';
+        }
+
 
         return view(
             '_administrator.supports.manage',
             [
-                'supports' => $supports
+                'supports' => $supports,
+                'status' => $statusName
             ]
         );
     }
