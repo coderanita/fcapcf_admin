@@ -132,7 +132,7 @@
                                             <div class="form-floating mb-2 floating-col-6 m-r-10">
                                                 <select
                                                     class="form-select @error('selectedRegion') is-invalid @enderror"
-                                                    wire:model="selectedRegion">
+                                                    wire:model.live="selectedRegion">
                                                     <option selected value=""></option>
                                                     @foreach ($regions as $region)
                                                         <option value="{{ $region->id }}">{{ $region->name }}
@@ -151,12 +151,14 @@
                                             <div class="form-floating mb-2 floating-col-6">
                                                 <select
                                                     class="form-select @error('selectedCountry') is-invalid @enderror"
-                                                    wire:model="selectedCountry">
+                                                    wire:model.live="selectedCountry">
                                                     <option selected value=""></option>
-                                                    @foreach ($countries as $country)
+                                                    @forelse($countries as $country)
                                                         <option value="{{ $country->id }}">{{ $country->name }}
                                                         </option>
-                                                    @endforeach
+                                                    @empty
+                                                        <option disabled>No countries available</option>
+                                                    @endforelse
                                                 </select>
                                                 <label>Country</label>
 
@@ -171,10 +173,12 @@
                                             <select class="form-select @error('selectedState') is-invalid @enderror"
                                                 wire:model="selectedState">
                                                 <option selected value=""></option>
-                                                @foreach ($states as $state)
+                                                @forelse ($states as $state)
                                                     <option value="{{ $state->id }}">{{ $state->name }}
                                                     </option>
-                                                @endforeach
+                                                @empty
+                                                    <option disabled>No states available</option>
+                                                @endforelse
                                             </select>
                                             <label>Add State(s) *</label>
 

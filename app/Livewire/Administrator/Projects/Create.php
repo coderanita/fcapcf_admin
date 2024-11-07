@@ -275,8 +275,8 @@ class Create extends Component
     public function render()
     {
         $regions = Region::get();
-        $countries = Country::get();
-        $states = State::get();
+        $countries = Country::where('region_id', $this->selectedRegion)->get();
+        $states = State::where('country_id', $this->selectedCountry)->get();
 
         $statuses = ProjectStatus::get();
 
