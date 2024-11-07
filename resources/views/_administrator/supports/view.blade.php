@@ -54,7 +54,7 @@
                                             </div>
                                         </div>
                                         <div class="card-body">
-                                            {{ $support->message }}
+                                            {!! $support->message !!}
                                         </div>
 
                                     </div>
