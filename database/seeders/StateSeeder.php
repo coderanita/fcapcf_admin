@@ -14,14 +14,17 @@ class StateSeeder extends Seeder
     public function run(): void
     {
         State::create([
+            'country_id' => 1,
             'name' => "Lagos",
         ]);
 
         State::create([
+            'country_id' => 1,
             'name' => "Abuja",
         ]);
 
         State::create([
+            'country_id' => 1,
             'name' => "Kano",
         ]);
     }
