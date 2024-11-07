@@ -54,6 +54,10 @@ class Create extends Component
     public $files = [];
     public $uploadedFiles = [];
 
+    // public $regions = [];
+    public $countries = [];
+    public $states = [];
+
     public function mount($title = null, $sub_title = null, $details = false)
     {
         $this->title = $title ?? '';
@@ -272,11 +276,24 @@ class Create extends Component
         }
     }
 
+    public function updatedSelectedRegion()
+    {
+        $this->countries = Country::where('region_id', $this->selectedRegion)->get();
+        $this->selectedCountry = "";
+        $this->selectedState = "";
+    }
+
+    public function updatedSelectedCountry()
+    {
+        $this->states = State::where('country_id', $this->selectedCountry)->get();
+        $this->selectedState = "";
+    }
+
     public function render()
     {
         $regions = Region::get();
-        $countries = Country::where('region_id', $this->selectedRegion)->get();
-        $states = State::where('country_id', $this->selectedCountry)->get();
+        $countries = $this->countries;
+        $states = $this->states;
 
         $statuses = ProjectStatus::get();
 
