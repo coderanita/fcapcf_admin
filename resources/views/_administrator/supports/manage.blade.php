@@ -40,7 +40,7 @@
                             </a>
                         </div>
                         <div class="col">
-                            <p class="i-msg mb-0 text-muted">{{ $support->message }}</p>
+                            <p class="i-msg mb-0 text-muted">{!! $support->message !!}</p>
                         </div>
                     </div>
                 </div>
