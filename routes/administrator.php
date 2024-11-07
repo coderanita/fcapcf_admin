@@ -74,9 +74,11 @@ Route::middleware([
   Route::get('/staffs/edit/{user}', StaffEdit::class)->name('staffs.edit');
 
   Route::get('/supports', function () {
-    $supportCount = Support::count(); // Get the count of support tickets
-    return view('_administrator.supports.index', compact('supportCount'));
+    $count = Support::where('status', 1)->get();
+    $countDraft = Support::where('status', 2)->get();
+    return view('_administrator.supports.index', compact('count', 'countDraft'));
   })->name('supports');
+
   Route::get('/supports/details/{support}', SupportView::class)->name('supports.details');
   Route::get('/supports/create', SupportsCreate::class)->name('support.create');
 

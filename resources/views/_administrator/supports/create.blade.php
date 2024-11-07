@@ -13,10 +13,17 @@
                                                 class="btn bg-secondary text-light w-100 mb-3">New Message</span></a>
                                     </li>
                                     <li><a class="m-link active" href="{{ route('administrator.supports') }}"><i
-                                                class="fa fa-inbox"></i><span>Inbox</span><span
-                                                class="badge bg-light text-dark ms-2 ms-auto">{{count($count)}}</span></a></li>
+                                                class="fa fa-inbox"></i><span>Inbox</span></a>
+                                    </li>
                                     <li><a class="m-link" href="#"><i
-                                                class="fa fa-send"></i><span>Sent</span></a></li>
+                                                class="fa fa-send"></i><span>Sent</span><span
+                                                class="badge bg-light text-dark ms-2 ms-auto">{{ count($count) }}</span></a>
+                                    </li>
+
+                                    <li><a class="m-link" href="#"><i
+                                                class="fa fa-file"></i><span>Draft</span><span
+                                                class="badge bg-light text-dark ms-2 ms-auto">{{ count($countDraft) }}</span></a>
+                                    </li>
                                 </ul>
                             </div>
                             <div class="order-2 flex-grow-1 ps-lg-3 ps-0">
@@ -24,7 +31,8 @@
                                     <div class="col-12">
                                         <div class="card">
                                             <div class="card-header">
-                                                <a href="{{ route('administrator.supports') }}"><i class="fa fa-arrow-left me-2"></i>Back to
+                                                <a href="{{ route('administrator.supports') }}"><i
+                                                        class="fa fa-arrow-left me-2"></i>Back to
                                                     Inbox</a>
                                             </div>
                                             <div class="card-body">
@@ -59,6 +67,9 @@
                                             <div class="card-body">
                                                 <button type="button" class="btn btn-primary"
                                                     wire:click.prevent="save">Send</button>
+
+                                                <button type="button" class="btn btn-secondary"
+                                                    wire:click.prevent="saveAsDraft">Save as Draft</button>
                                             </div>
                                         </div>
                                     </div>

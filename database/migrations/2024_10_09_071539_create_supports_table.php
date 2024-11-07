@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('email');
             $table->string('subject');
             $table->text('message');
+            $table->integer('status')->default(1)->comment('0 = Failed, 1 = Sent, 2 = Draft');
             $table->timestamps();
         });
     }

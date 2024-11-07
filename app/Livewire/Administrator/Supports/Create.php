@@ -26,6 +26,7 @@ class Create extends Component
             'email' =>  $this->email,
             'subject' =>  $this->subject,
             'message' =>  $this->message,
+            'status' =>  1,
         ]);
 
         $this->dispatch(
@@ -39,10 +40,33 @@ class Create extends Component
         // return redirect()->route('administrator.supports');
     }
 
+    public function saveAsDraft()
+    {
+        $this->authorize('create', Support::class);
+
+        $this->validate();
+
+        Support::create([
+            'email' =>  $this->email,
+            'subject' =>  $this->subject,
+            'message' =>  $this->message,
+            'status' =>  2,
+        ]);
+
+        $this->dispatch(
+            'alert',
+            msg: 'New Support Added to Draft!',
+            type: 'success'
+        );
+
+        $this->reset();
+    }
+
 
     public function render()
     {
-        $count = Support::get();
-        return view('_administrator.supports.create', ['count' => $count]);
+        $count = Support::where('status', 1)->get();
+        $countDraft = Support::where('status', 2)->get();
+        return view('_administrator.supports.create', ['count' => $count, 'countDraft' => $countDraft]);
     }
 }

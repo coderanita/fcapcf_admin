@@ -40,7 +40,8 @@ class View extends Component
     {
         $this->authorize('view', $this->support);
 
-        $count = Support::get();
-        return view('_administrator.supports.view', ['count' => $count]);
+        $count = Support::where('status', 1)->get();
+        $countDraft = Support::where('status', 2)->get();
+        return view('_administrator.supports.view', ['count' => $count, 'countDraft' => $countDraft]);
     }
 }

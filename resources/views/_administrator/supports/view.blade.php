@@ -19,6 +19,10 @@
                                 <li><a class="m-link" href="#"><i class="fa fa-send"></i><span>Sent</span><span
                                             class="badge bg-light text-dark ms-2 ms-auto">{{ count($count) }}</span></a>
                                 </li>
+
+                                <li><a class="m-link" href="#"><i class="fa fa-file"></i><span>Draft</span><span
+                                            class="badge bg-light text-dark ms-2 ms-auto">{{ count($count) }}</span></a>
+                                </li>
                             </ul>
                         </div>
                         <div class="order-2 flex-grow-1 ps-lg-3 ps-0">

@@ -19,7 +19,11 @@
                                 <li><a class="m-link active" href="{{ route('administrator.supports') }}"><i
                                             class="fa fa-inbox"></i><span>Inbox</span></a></li>
                                 <li><a class="m-link" href="#"><i class="fa fa-send"></i><span>Sent</span><span
-                                            class="badge bg-light text-dark ms-2 ms-auto">{{ $supportCount }}</span></a>
+                                            class="badge bg-light text-dark ms-2 ms-auto">{{ count($count) }}</span></a>
+                                </li>
+
+                                <li><a class="m-link" href="#"><i class="fa fa-file"></i><span>Draft</span><span
+                                            class="badge bg-light text-dark ms-2 ms-auto">{{ count($countDraft) }}</span></a>
                                 </li>
                             </ul>
                         </div>
