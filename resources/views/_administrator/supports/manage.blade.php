@@ -34,10 +34,17 @@
                 <div class="col col-md-9 col-xxl-10">
                     <div class="row">
                         <div class="col-md-4 col-xl-4 col-xxl-3 mb-1 mb-md-0">
-                            <a href="{{ route('administrator.supports.details', $support) }}"
-                                class="d-flex text-primary text-truncate" title="">
-                                <div class="ms-2 mb-0">{{ $support->email }}</div>
-                            </a>
+                            @if ($status == 'Sent')
+                                <a href="{{ route('administrator.supports.details', $support) }}"
+                                    class="d-flex text-primary text-truncate" title="">
+                                    <div class="ms-2 mb-0">{{ $support->email }}</div>
+                                </a>
+                            @else
+                                <a href="{{ route('administrator.support.edit', $support) }}"
+                                    class="d-flex text-primary text-truncate" title="">
+                                    <div class="ms-2 mb-0">{{ $support->email }}</div>
+                                </a>
+                            @endif
                         </div>
                         <div class="col">
                             <p class="i-msg mb-0 text-muted">{!! $support->message !!}</p>

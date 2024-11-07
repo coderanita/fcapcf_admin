@@ -22,6 +22,7 @@ use App\Livewire\Administrator\Staff\Create as StaffCreate;
 use App\Livewire\Administrator\Staff\Edit as StaffEdit;
 use App\Livewire\Administrator\States\Manage as StatesManage;
 use App\Livewire\Administrator\Supports\Create as SupportsCreate;
+use App\Livewire\Administrator\Supports\Edit as SupportsEdit;
 use App\Livewire\Administrator\Supports\View as SupportView;
 use Illuminate\Support\Facades\Route;
 use App\Livewire\Administrator\Users\ShowUsers;
@@ -81,6 +82,7 @@ Route::middleware([
 
   Route::get('/supports/details/{support}', SupportView::class)->name('supports.details');
   Route::get('/supports/create', SupportsCreate::class)->name('support.create');
+  Route::get('/supports/edit/{support}', SupportsEdit::class)->name('support.edit');
 
   Route::get('/file-managers', ProjectDocumentManage::class)->name('file-managers');
 
