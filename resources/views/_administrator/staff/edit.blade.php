@@ -233,8 +233,7 @@
                                                                                 class="form-select @error('marital_status') is-invalid @enderror"
                                                                                 wire:model="marital_status">
                                                                                 <option value="" selected>
-                                                                                    Open this select
-                                                                                    menu</option>
+                                                                                </option>
                                                                                 <option value="Single">Single
                                                                                 </option>
                                                                                 <option value="Married">Married
@@ -258,8 +257,7 @@
                                                                                 class="form-select @error('nationality_id') is-invalid @enderror"
                                                                                 wire:model="nationality_id">
                                                                                 <option value="" selected>
-                                                                                    Open this select
-                                                                                    menu</option>
+                                                                                </option>
                                                                                 @foreach ($nationalities as $nationality)
                                                                                     <option
                                                                                         value="{{ $nationality->id }}">
@@ -279,7 +277,7 @@
                                                                                 class="form-select @error('id_type') is-invalid @enderror"
                                                                                 wire:model="id_type">
                                                                                 <option selected>
-                                                                                    Open this select menu
+
                                                                                 </option>
                                                                                 <option value="nin">
                                                                                     National Id
@@ -376,9 +374,7 @@
                                                                             <select
                                                                                 class="form-select @error('relationship_id') is-invalid @enderror"
                                                                                 wire:model="relationship_id">
-                                                                                <option value="" selected>
-                                                                                    Open this select
-                                                                                    menu</option>
+                                                                                <option value="" selected></option>
                                                                                 @foreach ($beneficiaries as $beneficiaryRelationship)
                                                                                     <option
                                                                                         value="{{ $beneficiaryRelationship->id }}">
@@ -452,7 +448,7 @@
                                                                                 class="form-select @error('emp_status') is-invalid @enderror"
                                                                                 wire:model="emp_status">
                                                                                 <option selected>
-                                                                                    Open this select menu
+
                                                                                 </option>
                                                                                 <option value="Full-Time">
                                                                                     Full Time
@@ -543,7 +539,7 @@
                                                                                 class="form-select @error('highest_qualification') is-invalid @enderror"
                                                                                 wire:model="highest_qualification">
                                                                                 <option selected>
-                                                                                    Open this select menu
+
                                                                                 </option>
                                                                                 <option value="phd">PhD</option>
                                                                                 <option value="MSc">MSc</option>
@@ -758,7 +754,7 @@
                                                                                 class="form-select @error('pension_scheme') is-invalid @enderror"
                                                                                 wire:model="pension_scheme">
                                                                                 <option selected>
-                                                                                    Open this select menu
+
                                                                                 </option>
                                                                                 <option value="Yes">Yes</option>
                                                                                 <option value="No">No</option>
@@ -798,7 +794,7 @@
                                                                                 class="form-select @error('health_insurance') is-invalid @enderror"
                                                                                 wire:model="health_insurance">
                                                                                 <option selected>
-                                                                                    Open this select menu
+
                                                                                 </option>
                                                                                 <option value="Yes">Yes</option>
                                                                                 <option value="No">No</option>

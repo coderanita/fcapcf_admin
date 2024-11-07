@@ -133,7 +133,7 @@
                                                 <select
                                                     class="form-select @error('selectedRegion') is-invalid @enderror"
                                                     wire:model="selectedRegion">
-                                                    <option selected value="">Open this select menu</option>
+                                                    <option selected value=""></option>
                                                     @foreach ($regions as $region)
                                                         <option value="{{ $region->id }}">{{ $region->name }}
                                                         </option>
@@ -152,7 +152,7 @@
                                                 <select
                                                     class="form-select @error('selectedCountry') is-invalid @enderror"
                                                     wire:model="selectedCountry">
-                                                    <option selected value="">Open this select menu</option>
+                                                    <option selected value=""></option>
                                                     @foreach ($countries as $country)
                                                         <option value="{{ $country->id }}">{{ $country->name }}
                                                         </option>
@@ -170,7 +170,7 @@
                                         <div class="form-floating mb-2">
                                             <select class="form-select @error('selectedState') is-invalid @enderror"
                                                 wire:model="selectedState">
-                                                <option selected value="">Open this select menu</option>
+                                                <option selected value=""></option>
                                                 @foreach ($states as $state)
                                                     <option value="{{ $state->id }}">{{ $state->name }}
                                                     </option>
@@ -263,7 +263,7 @@
                                                 <select
                                                     class="form-select @error('projectStatus') is-invalid @enderror"
                                                     wire:model="projectStatus">
-                                                    <option selected value="1">Open this select menu</option>
+                                                    <option selected value="1"></option>
                                                     @foreach ($statuses as $status)
                                                         <option value="{{ $status->id }}">{{ $status->name }}
                                                         </option>

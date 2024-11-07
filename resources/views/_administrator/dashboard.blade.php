@@ -413,7 +413,7 @@
                                     </p>
                                     <div class="form-floating mb-2">
                                         <select class="form-select">
-                                            <option selected>Open this select menu</option>
+                                            <option selected></option>
                                             <option value="1">Lucid</option>
                                             <option value="2">AVIO</option>
                                             <option value="3">Avio</option>

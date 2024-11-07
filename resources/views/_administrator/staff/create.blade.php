@@ -447,7 +447,7 @@
                                                                                 class="form-select @error('emp_status') is-invalid @enderror"
                                                                                 wire:model="emp_status">
                                                                                 <option selected>
-                                                                                    Open this select menu
+
                                                                                 </option>
                                                                                 <option value="Full-Time">
                                                                                     Full Time
@@ -538,7 +538,7 @@
                                                                                 class="form-select @error('highest_qualification') is-invalid @enderror"
                                                                                 wire:model="highest_qualification">
                                                                                 <option selected>
-                                                                                    Open this select menu
+
                                                                                 </option>
                                                                                 <option value="phd">PhD</option>
                                                                                 <option value="MSc">MSc</option>
@@ -753,7 +753,7 @@
                                                                                 class="form-select @error('pension_scheme') is-invalid @enderror"
                                                                                 wire:model="pension_scheme">
                                                                                 <option selected>
-                                                                                    Open this select menu
+
                                                                                 </option>
                                                                                 <option value="Yes">Yes</option>
                                                                                 <option value="No">No</option>
@@ -793,7 +793,7 @@
                                                                                 class="form-select @error('health_insurance') is-invalid @enderror"
                                                                                 wire:model="health_insurance">
                                                                                 <option selected>
-                                                                                    Open this select menu
+
                                                                                 </option>
                                                                                 <option value="Yes">Yes</option>
                                                                                 <option value="No">No</option>
