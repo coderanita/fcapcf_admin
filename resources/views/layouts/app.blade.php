@@ -7,7 +7,7 @@
     <x-meta-tags />
     <!-- Scripts -->
 
-    
+
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     @livewireStyles
@@ -87,9 +87,23 @@
 
             }
         </script>
-        @stack('scripts')
-       
 
+        @if (session('message'))
+            <script>
+                Toastify({
+                    text: "Staff successfully added",
+                    duration: 3000,
+                    newWindow: true,
+                    close: true,
+                    gravity: "top", // `top` or `bottom`
+                    position: "right", // `left`, `center` or `right`
+                    stopOnFocus: true, // Prevents dismissing of toast on hover
+                    className: "bg-success",
+                }).showToast();
+            </script>
+        @endif
+
+        @stack('scripts')
 </body>
 
 </html>

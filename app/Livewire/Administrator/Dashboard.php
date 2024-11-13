@@ -17,7 +17,7 @@ class Dashboard extends Component
         $this->users = User::take(5)->get();
         $this->projects = Project::take(5)->get();
 
-        $this->totalProjectCost = $this->projects->sum('project_cost');
+        $this->totalProjectCost = Project::sum('project_cost');
     }
 
 

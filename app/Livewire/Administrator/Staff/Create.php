@@ -242,6 +242,9 @@ class Create extends Component
             type: 'success'
         );
 
+        return redirect()->to(route('administrator.users'))->with('message', 'New Staff Added!');
+
+
         $this->reset();
     }
 
