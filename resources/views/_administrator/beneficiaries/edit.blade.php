@@ -618,7 +618,7 @@
                                                                                         class="rounded-4"
                                                                                         width="250" height="250">
                                                                                 @elseif($savedImage)
-                                                                                    <img src="{{ asset('storage/' . $savedImage) }}"
+                                                                                    <img src="{{ asset('storage/app/public/' . $savedImage) }}"
                                                                                         alt=""
                                                                                         class="rounded-4"
                                                                                         width="250" height="250">

@@ -28,10 +28,6 @@
                         <button type="button" class="btn btn-link btn-sm"
                             wire:click="deleteBeneficiary({{ $beneficiary->id }})" data-bs-toggle="tooltip"
                             data-bs-placement="top" title="Delete"><i class="fa fa-trash"></i></button>
-                        <a href="">
-                            <button type="button" class="btn btn-link btn-sm" data-bs-toggle="tooltip"
-                                data-bs-placement="top" title="View"><i class="fa fa-eye"></i></button>
-                        </a>
                     </td>
                 </tr>
             @empty
