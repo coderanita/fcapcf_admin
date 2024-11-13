@@ -264,7 +264,7 @@
                                                                                     </option>
                                                                                 @endforeach
                                                                             </select>
-                                                                            <label>Nationality *</label>
+                                                                            <label>Country *</label>
                                                                             @error('nationality_id')
                                                                                 <div class="invalid-feedback">
                                                                                     {{ $message }}</div>
