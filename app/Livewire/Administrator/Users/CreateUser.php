@@ -12,6 +12,7 @@ use Illuminate\Support\Str;
 
 use App\Traits\HasModalElement;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 
 class CreateUser extends Component
 {
@@ -70,7 +71,6 @@ class CreateUser extends Component
     // $user->role->permissions()->attach() ;
 
 
-
     return $this->redirect(route('administrator.users'));
   }
 
@@ -98,7 +98,7 @@ class CreateUser extends Component
   public function render()
   {
     return view('_administrator.users.create')->with([
-      'roles' => Role::all(), 
+      'roles' => Role::all(),
       // 'permissions' => Permission::all()
     ]);
   }

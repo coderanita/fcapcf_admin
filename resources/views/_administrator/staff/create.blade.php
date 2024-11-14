@@ -1270,11 +1270,17 @@
                                                         @endif
 
                                                         @if ($currentStep == 7)
-                                                            <button
+                                                            <button wire:loading.remove
                                                                 class="btn bg-secondary text-light next text-uppercase"
                                                                 wire:click.prevent="save()">
                                                                 Save Record
                                                             </button>
+                                                            <div wire:loading>
+                                                                <button
+                                                                    class="btn bg-secondary text-light next text-uppercase">
+                                                                    Saving ...
+                                                                </button>
+                                                            </div>
                                                         @endif
 
                                                     </div>

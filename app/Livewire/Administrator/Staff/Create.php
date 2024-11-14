@@ -7,6 +7,7 @@ use App\Models\Role;
 use App\Models\User;
 use App\Services\DataSourceService;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use Livewire\Component;
 
 class Create extends Component
@@ -241,6 +242,17 @@ class Create extends Component
             msg: 'New Staff Added!',
             type: 'success'
         );
+
+        $data = [
+            'email' => $this->email,
+            'fname' => $this->first_name,
+        ];
+
+        Mail::send('emails.new-user', ['data' => $data], function ($message) use ($data) {
+            $message->to($data['email'], $data['fname'])
+                ->subject('New User');
+            $message->from(env('MAIL_FROM_ADDRESS'), env('MAIL_FROM_NAME'));
+        });
 
         return redirect()->to(route('administrator.users'))->with('message', 'New Staff Added!');
 
