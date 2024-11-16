@@ -20,3 +20,5 @@ yarn-error.log
 *.zip
 
 resources/views/mockup
+
+.DS_Store

@@ -86,8 +86,6 @@
                                                         </svg>
                                                         <span class="ms-3">
                                                             <span class="h6 d-flex mb-1">Personal Project</span>
-                                                            <span class="text-muted">For smaller businesses with simple
-                                                                salaries and pay schedules.</span>
                                                         </span>
                                                     </span>
                                                 </span>
@@ -107,8 +105,8 @@
                                                         </svg>
                                                         <span class="ms-3">
                                                             <span class="h6 d-flex mb-1">Team Project</span>
-                                                            <span class="text-muted">For growing businesses who want to
-                                                                create a rewarding place to work.</span>
+                                                            {{-- <span class="text-muted">For growing businesses who want to
+                                                                create a rewarding place to work.</span> --}}
                                                         </span>
                                                     </span>
                                                 </span>
