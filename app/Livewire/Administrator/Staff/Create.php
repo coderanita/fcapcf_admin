@@ -248,11 +248,11 @@ class Create extends Component
             'fname' => $this->first_name,
         ];
 
-        // Mail::send('emails.new-user', ['data' => $data], function ($message) use ($data) {
-        //     $message->to($data['email'], $data['fname'])
-        //         ->subject('New User');
-        //     $message->from(env('MAIL_FROM_ADDRESS'), env('MAIL_FROM_NAME'));
-        // });
+        Mail::send('emails.new-user', ['data' => $data], function ($message) use ($data) {
+            $message->to($data['email'], $data['fname'])
+                ->subject('New User');
+            $message->from(env('MAIL_FROM_ADDRESS'), env('MAIL_FROM_NAME'));
+        });
 
         return redirect()->to(route('administrator.users'))->with('message', 'New Staff Added!');
 
