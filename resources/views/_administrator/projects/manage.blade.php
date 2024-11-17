@@ -213,7 +213,7 @@
                                                     </div>
                                                 </div>
                                             @empty
-                                                <p>No projects available for {{ $status->name }}</p>
+                                                {{-- <p>No projects available for {{ $status->name }}</p> --}}
                                             @endforelse
                                         </div>
                                     </div>
