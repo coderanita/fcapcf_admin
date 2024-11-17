@@ -44,6 +44,30 @@ class DatabaseSeeder extends Seeder
       'password' => 'password'
     ]);
 
+    User::create([
+      "role_id" => 3,
+      'fname' => "Demo",
+      'lname' => "Staff",
+      'email' =>  'staff@app.com',
+      'password' => 'password'
+    ]);
+
+    User::create([
+      "role_id" => 4,
+      'fname' => "Demo",
+      'lname' => "Volunteer",
+      'email' =>  'volunteer@app.com',
+      'password' => 'password'
+    ]);
+
+    User::create([
+      "role_id" => 2,
+      'fname' => "Demo",
+      'lname' => "Manager",
+      'email' =>  'manager@app.com',
+      'password' => 'password'
+    ]);
+
 
 
     // $users = ["administrator", "manager", "staff", "volunteer"];
