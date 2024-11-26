@@ -186,9 +186,9 @@
                                                                                     wire:model="countryCode">
                                                                                     @foreach ($countries as $country)
                                                                                         <option
-                                                                                            value="{{ $country->code }}">
+                                                                                            value="{{ $country->phonecode }}">
                                                                                             {{ $country->name }}
-                                                                                            ({{ $country->code }})
+                                                                                            ({{ $country->phonecode }})
                                                                                         </option>
                                                                                     @endforeach
                                                                                 </select>
@@ -257,10 +257,10 @@
                                                                                 wire:model="nationality_id">
                                                                                 <option value="" selected>
                                                                                 </option>
-                                                                                @foreach ($nationalities as $nationality)
+                                                                                @foreach ($countries as $country)
                                                                                     <option
-                                                                                        value="{{ $nationality->id }}">
-                                                                                        {{ $nationality->name }}
+                                                                                        value="{{ $country->id }}">
+                                                                                        {{ $country->name }}
                                                                                     </option>
                                                                                 @endforeach
                                                                             </select>

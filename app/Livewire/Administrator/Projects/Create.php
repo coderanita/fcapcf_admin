@@ -2,11 +2,11 @@
 
 namespace App\Livewire\Administrator\Projects;
 
+use App\Models\City;
 use App\Models\Country;
 use App\Models\Project;
 use App\Models\ProjectStatus;
 use App\Models\ProjectTeam;
-use App\Models\Region;
 use App\Models\State;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
@@ -31,9 +31,10 @@ class Create extends Component
     public $selectedPlan = 'Personal';
 
     // Step 2
-    public $selectedRegion;
+
     public $selectedCountry;
     public $selectedState;
+    public $selectedCity;
     public $projectName;
     public $projectDetail;
     public $start_date;
@@ -54,9 +55,8 @@ class Create extends Component
     public $files = [];
     public $uploadedFiles = [];
 
-    // public $regions = [];
-    public $countries = [];
     public $states = [];
+    public $cities = [];
 
     public function mount($title = null, $sub_title = null, $details = false)
     {
@@ -79,9 +79,9 @@ class Create extends Component
 
         if ($this->currentStep == 2) {
             $this->validate([
-                'selectedRegion' => 'required',
                 'selectedCountry' => 'required',
                 'selectedState' => 'required',
+                'selectedCity' => 'required',
                 'projectName' => 'required',
                 'projectDetail' => 'required',
                 'start_date' => 'required',
@@ -90,9 +90,10 @@ class Create extends Component
                 'projectTarget' => 'required',
                 'projectStatus' => 'required',
             ], [
-                'selectedRegion.required' => 'Please select a region.',
+                
                 'selectedCountry.required' => 'Please select a country.',
                 'selectedState.required' => 'Please select a state.',
+                'selectedCity.required' => 'Please select a city.',
             ]);
         }
 
@@ -220,9 +221,9 @@ class Create extends Component
         // Create the project with all fields
         $this->project = Project::create([
             'plan' => $this->selectedPlan,
-            'region_id' => $this->selectedRegion,
             'country_id' => $this->selectedCountry,
             'state_id' => $this->selectedState,
+            'city_id' => $this->selectedCity,
             'project_name' => $this->projectName,
             'project_details' => $this->projectDetail,
             'start_date' => $this->start_date,
@@ -251,13 +252,13 @@ class Create extends Component
     public function validateStepTwo()
     {
         if (
-            empty($this->selectedRegion) || empty($this->selectedCountry)
+            empty($this->selectedCity) || empty($this->selectedCountry)
             || empty($this->selectedState) || empty($this->projectName) || empty($this->projectDetail) || empty($this->start_date)
             || empty($this->end_date) || empty($this->projectCost) || empty($this->projectTarget) || empty($this->projectStatus)
         ) {
             $this->currentStep = 2;
             $this->validate([
-                'selectedRegion' => 'required',
+                'selectedCity' => 'required',
                 'selectedCountry' => 'required',
                 'selectedState' => 'required',
                 'projectName' => 'required',
@@ -268,7 +269,7 @@ class Create extends Component
                 'projectTarget' => 'required',
                 'projectStatus' => 'required',
             ], [
-                'selectedRegion.required' => 'Please select a region.',
+                'selectedCity.required' => 'Please select a city.',
                 'selectedCountry.required' => 'Please select a country.',
                 'selectedState.required' => 'Please select a state.',
             ]);
@@ -276,24 +277,24 @@ class Create extends Component
         }
     }
 
-    public function updatedSelectedRegion()
-    {
-        $this->countries = Country::where('region_id', $this->selectedRegion)->get();
-        $this->selectedCountry = "";
-        $this->selectedState = "";
-    }
-
     public function updatedSelectedCountry()
     {
         $this->states = State::where('country_id', $this->selectedCountry)->get();
         $this->selectedState = "";
+        $this->selectedCity = "";
+    }
+
+    public function updatedSelectedState()
+    {
+        $this->cities = City::where('state_id', $this->selectedState)->get();
+        $this->selectedCity = "";
     }
 
     public function render()
     {
-        $regions = Region::get();
-        $countries = $this->countries;
+        $countries = Country::get();
         $states = $this->states;
+        $cities = $this->cities;
 
         $statuses = ProjectStatus::get();
 
@@ -307,9 +308,9 @@ class Create extends Component
         return view(
             '_administrator.projects.create',
             [
-                'regions' => $regions,
                 'countries' => $countries,
                 'states' => $states,
+                'cities' => $cities,
                 'statuses' => $statuses,
                 'users' => $this->users
             ]

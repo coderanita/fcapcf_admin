@@ -47,7 +47,6 @@ class Create extends Component
     protected $messages = [
         'required' => 'This field is required.',
         'email' => 'Please enter a valid email address.',
-        'nationality_id.exists' => 'Please select a valid nationality.',
         'language_id.exists' => 'Please select a valid language.',
         'relationship_id.exists' => 'Please select a valid relationship.',
     ];
@@ -64,7 +63,7 @@ class Create extends Component
                 'email' => 'required|email|max:255',
                 'date_of_birth' => 'required|date',
                 'marital_status' => 'required|string',
-                'nationality_id' => 'required|exists:nationalities,id',
+                'nationality_id' => 'required',
 
                 'id_type' => 'required|string|max:255',
                 'id_number' => 'required|string|max:255',

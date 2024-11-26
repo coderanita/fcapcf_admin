@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('countries', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('region_id')->nullable();
+            $table->string('code');
             $table->string('name');
-            $table->string('code')->nullable();
+            $table->integer('phonecode');
             $table->timestamps();
         });
     }

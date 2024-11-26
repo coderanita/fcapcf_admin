@@ -15,9 +15,10 @@ return new class extends Migration
             $table->id();
             $table->string('plan')->nullable();
 
-            $table->unsignedBigInteger('region_id')->nullable();
+            
             $table->unsignedBigInteger('country_id')->nullable();
             $table->unsignedBigInteger('state_id')->nullable();
+            $table->unsignedBigInteger('city_id')->nullable();
             $table->string('project_name')->nullable();
             $table->text('project_details')->nullable();
             $table->date('start_date')->nullable();

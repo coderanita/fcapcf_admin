@@ -79,7 +79,7 @@
                                             </div>
                                         </a>
                                     </li>
-                                    <li>
+                                    {{-- <li>
                                         <a href="{{ route('administrator.regions') }}"
                                             class="d-flex align-items-center py-2 rounded">
                                             <div class="avatar rounded no-thumbnail bg-light">
@@ -96,9 +96,9 @@
                                                 <small class="text-muted">Create and manage project regions</small>
                                             </div>
                                         </a>
-                                    </li>
+                                    </li> --}}
 
-                                    <li>
+                                    {{-- <li>
                                         <a href="{{ route('administrator.countries') }}"
                                             class="d-flex align-items-center py-2 rounded">
                                             <div class="avatar rounded no-thumbnail bg-light">
@@ -115,9 +115,9 @@
                                                 <small class="text-muted">Create and manage project countries</small>
                                             </div>
                                         </a>
-                                    </li>
+                                    </li> --}}
 
-                                    <li>
+                                    {{-- <li>
                                         <a href="{{ route('administrator.states') }}"
                                             class="d-flex align-items-center py-2 rounded">
                                             <div class="avatar rounded no-thumbnail bg-light">
@@ -134,7 +134,7 @@
                                                 <small class="text-muted">Create and manage project states</small>
                                             </div>
                                         </a>
-                                    </li>
+                                    </li> --}}
 
                                     <li>
                                         <a href="{{ route('administrator.file-managers') }}"

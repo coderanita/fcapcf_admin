@@ -127,7 +127,7 @@
                                         <p class="text-muted small">Provide comprehensive information about this
                                             project</p>
                                         <div style="display: flex;">
-                                            <div class="form-floating mb-2 floating-col-6 m-r-10">
+                                            {{-- <div class="form-floating mb-2 floating-col-6 m-r-10">
                                                 <select
                                                     class="form-select @error('selectedRegion') is-invalid @enderror"
                                                     wire:model.live="selectedRegion">
@@ -144,7 +144,7 @@
                                                         {{ $message }}
                                                     </div>
                                                 @enderror
-                                            </div>
+                                            </div> --}}
 
                                             <div class="form-floating mb-2 floating-col-6">
                                                 <select
@@ -166,21 +166,42 @@
                                                     </div>
                                                 @enderror
                                             </div>
+
+                                            <div class="form-floating mb-2 floating-col-6">
+                                                <select
+                                                    class="form-select @error('selectedState') is-invalid @enderror"
+                                                    wire:model.live="selectedState">
+                                                    <option selected value=""></option>
+                                                    @forelse($states as $state)
+                                                        <option value="{{ $state->id }}">{{ $state->name }}
+                                                        </option>
+                                                    @empty
+                                                        <option disabled>No state available</option>
+                                                    @endforelse
+                                                </select>
+                                                <label>State</label>
+
+                                                @error('selectedState')
+                                                    <div class="invalid-feedback">
+                                                        {{ $message }}
+                                                    </div>
+                                                @enderror
+                                            </div>
                                         </div>
                                         <div class="form-floating mb-2">
-                                            <select class="form-select @error('selectedState') is-invalid @enderror"
-                                                wire:model="selectedState">
+                                            <select class="form-select @error('selectedCity') is-invalid @enderror"
+                                                wire:model="selectedCity">
                                                 <option selected value=""></option>
-                                                @forelse ($states as $state)
-                                                    <option value="{{ $state->id }}">{{ $state->name }}
+                                                @forelse ($cities as $city)
+                                                    <option value="{{ $city->id }}">{{ $city->name }}
                                                     </option>
                                                 @empty
-                                                    <option disabled>No states available</option>
+                                                    <option disabled>No City available</option>
                                                 @endforelse
                                             </select>
-                                            <label>Add State(s) *</label>
+                                            <label>City *</label>
 
-                                            @error('selectedState')
+                                            @error('selectedCity')
                                                 <div class="invalid-feedback">
                                                     {{ $message }}
                                                 </div>
