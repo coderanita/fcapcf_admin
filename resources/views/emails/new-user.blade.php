@@ -26,6 +26,16 @@
 
                                     <br><br>
 
+                                    Please login using this:
+
+                                    <br><br>
+
+                                    URL: {{ env('APP_URL') }}<br>
+                                    Email: {{ $data['email'] }}<br>
+                                    Password: {{ $password }}<br>
+
+                                    <br><br>
+
                                     Best regards,
                                     <br>
                                     {{ env('MAIL_FROM_NAME') }}

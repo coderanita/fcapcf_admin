@@ -8,6 +8,7 @@ use App\Models\User;
 use App\Services\DataSourceService;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Str;
 use Livewire\Component;
 
 class Create extends Component
@@ -163,12 +164,13 @@ class Create extends Component
         $this->authorize('create', User::class);
         $this->authorize('create', Profile::class);
 
+        $password = Str::random(10);
         $user = User::create([
             'role_id' => $this->selectedRole,
             'fname' => $this->first_name,
             'lname' => $this->last_name,
             'email' => $this->email,
-            'password' => Hash::make('password'),
+            'password' => Hash::make($password),
             'role_id' => $this->selectedRole
         ]);
 
@@ -243,16 +245,11 @@ class Create extends Component
             type: 'success'
         );
 
-        $data = [
-            'email' => $this->email,
-            'fname' => $this->first_name,
-        ];
-
-        // Mail::send('emails.new-user', ['data' => $data], function ($message) use ($data) {
-        //     $message->to($data['email'], $data['fname'])
-        //         ->subject('New User');
-        //     $message->from(env('MAIL_FROM_ADDRESS'), env('MAIL_FROM_NAME'));
-        // });
+        Mail::send('emails.new-user', ['data' => $user, 'password' => $password], function ($message) use ($user) {
+            $message->to($user['email'], $user['fname'])
+                ->subject('New User');
+            $message->from(env('MAIL_FROM_ADDRESS'), env('MAIL_FROM_NAME'));
+        });
 
         return redirect()->to(route('administrator.users'))->with('message', 'New Staff Added!');
 
