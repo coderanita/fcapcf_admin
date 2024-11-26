@@ -187,9 +187,9 @@
                                                                                     wire:model="countryCode">
                                                                                     @foreach ($countries as $country)
                                                                                         <option
-                                                                                            value="{{ $country->code }}">
+                                                                                            value="{{ $country->phonecode }}">
                                                                                             {{ $country->name }}
-                                                                                            ({{ $country->code }})
+                                                                                            ({{ $country->phonecode }})
                                                                                         </option>
                                                                                     @endforeach
                                                                                 </select>
@@ -352,9 +352,9 @@
                                                                                     wire:model="countryCodeEmergency">
                                                                                     @foreach ($countries as $country)
                                                                                         <option
-                                                                                            value="{{ $country->code }}">
+                                                                                            value="{{ $country->phonecode }}">
                                                                                             {{ $country->name }}
-                                                                                            ({{ $country->code }})
+                                                                                            ({{ $country->phonecode }})
                                                                                         </option>
                                                                                     @endforeach
                                                                                 </select>
@@ -374,7 +374,8 @@
                                                                             <select
                                                                                 class="form-select @error('relationship_id') is-invalid @enderror"
                                                                                 wire:model="relationship_id">
-                                                                                <option value="" selected></option>
+                                                                                <option value="" selected>
+                                                                                </option>
                                                                                 @foreach ($beneficiaries as $beneficiaryRelationship)
                                                                                     <option
                                                                                         value="{{ $beneficiaryRelationship->id }}">

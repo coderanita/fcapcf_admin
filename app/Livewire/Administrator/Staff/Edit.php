@@ -61,58 +61,58 @@ class Edit extends Component
         $this->email = $user->email;
         $this->selectedRole = $user->role_id;
 
-        $this->middle_name = $user->profile->personal_mname;
-        $this->gender = $user->profile->personal_gender;
-        $this->phone_number = $user->profile->personal_phone;
-        $this->date_of_birth = $user->profile->personal_birth_date;
-        $this->marital_status = $user->profile->personal_marital_status;
-        $this->nationality_id = $user->profile->personal_nationality;
-        $this->id_type = $user->profile->personal_identification_type;
-        $this->id_number = $user->profile->personal_id_number;
-        $this->expiry_date = $user->profile->personal_expiry_date;
+        $this->middle_name = $user->profile->personal_mname ?? '';
+        $this->gender = $user->profile->personal_gender ?? '';
+        $this->phone_number = $user->profile->personal_phone ?? '';
+        $this->date_of_birth = $user->profile->personal_birth_date ?? '';
+        $this->marital_status = $user->profile->personal_marital_status ?? '';
+        $this->nationality_id = $user->profile->personal_nationality ?? '';
+        $this->id_type = $user->profile->personal_identification_type ?? '';
+        $this->id_number = $user->profile->personal_id_number ?? '';
+        $this->expiry_date = $user->profile->personal_expiry_date ?? '';
 
-        $this->full_name = $user->profile->emergency_full_name;
-        $this->countryCodeEmergency = $user->profile->emergency_country_code;
-        $this->telephone = $user->profile->emergency_phone;
-        $this->relationship_id = $user->profile->emergency_relationship;
-        $this->home_address = $user->profile->personal_home_address;
+        $this->full_name = $user->profile->emergency_full_name ?? '';
+        $this->countryCodeEmergency = $user->profile->emergency_country_code ?? '';
+        $this->telephone = $user->profile->emergency_phone ?? '';
+        $this->relationship_id = $user->profile->emergency_relationship ?? '';
+        $this->home_address = $user->profile->personal_home_address ?? '';
 
-        $this->job_title = $user->profile->employment_job_title;
-        $this->department = $user->profile->employment_department;
-        $this->emp_status = $user->profile->employment_employment_status;
-        $this->start_date = $user->profile->employment_start_date;
-        $this->reporting_manager = $user->profile->employment_reporting_manager_supervisor;
-        $this->probation_period = $user->profile->employment_probation_period;
-        $this->work_location = $user->profile->employment_work_location;
+        $this->job_title = $user->profile->employment_job_title ?? '';
+        $this->department = $user->profile->employment_department ?? '';
+        $this->emp_status = $user->profile->employment_employment_status ?? '';
+        $this->start_date = $user->profile->employment_start_date ?? '';
+        $this->reporting_manager = $user->profile->employment_reporting_manager_supervisor ?? '';
+        $this->probation_period = $user->profile->employment_probation_period ?? '';
+        $this->work_location = $user->profile->employment_work_location ?? '';
 
-        $this->highest_qualification = $user->profile->education_highest_qualification;
-        $this->institution = $user->profile->education_institution_name;
-        $this->graduation_date = $user->profile->education_graduation_year;
-        $this->lan_spoken = $user->profile->education_Languages_spoken;
-        $this->certification = $user->profile->education_professional_certs;
+        $this->highest_qualification = $user->profile->education_highest_qualification ?? '';
+        $this->institution = $user->profile->education_institution_name ?? '';
+        $this->graduation_date = $user->profile->education_graduation_year ?? '';
+        $this->lan_spoken = $user->profile->education_Languages_spoken ?? '';
+        $this->certification = $user->profile->education_professional_certs ?? '';
 
-        $this->exp_job_title = $user->profile->work_experience;
-        $this->prev_emp = $user->profile->prev_emp;
-        $this->exp_start_date = $user->profile->exp_start_date;
-        $this->exp_end_date = $user->profile->exp_end_date;
-        $this->reason_leaving = $user->profile->reason_leaving;
+        $this->exp_job_title = $user->profile->work_experience ?? '';
+        $this->prev_emp = $user->profile->prev_emp ?? '';
+        $this->exp_start_date = $user->profile->exp_start_date ?? '';
+        $this->exp_end_date = $user->profile->exp_end_date ?? '';
+        $this->reason_leaving = $user->profile->reason_leaving ?? '';
 
-        $this->bank_name = $user->profile->bk_bank_name;
-        $this->acc_no = $user->profile->bk_account_number;
-        $this->bank_code = $user->profile->bk_bank_sort_code;
-        $this->prev_salary = $user->profile->bk_previours_salary;
-        $this->pension_scheme = $user->profile->bk_pension_scheme;
-        $this->pension_adm = $user->profile->bk_pension_admin_name;
-        $this->pension_id = $user->profile->bk_pension_id;
-        $this->health_insurance = $user->profile->bk_health_insurance;
-        $this->insurance_name = $user->profile->bk_insurance_name;
-        $this->insurance_id = $user->profile->bk_insurance_id;
-        $this->benefits = $user->profile->bk_other_benefit;
+        $this->bank_name = $user->profile->bk_bank_name ?? '';
+        $this->acc_no = $user->profile->bk_account_number ?? '';
+        $this->bank_code = $user->profile->bk_bank_sort_code ?? '';
+        $this->prev_salary = $user->profile->bk_previours_salary ?? '';
+        $this->pension_scheme = $user->profile->bk_pension_scheme ?? '';
+        $this->pension_adm = $user->profile->bk_pension_admin_name ?? '';
+        $this->pension_id = $user->profile->bk_pension_id ?? '';
+        $this->health_insurance = $user->profile->bk_health_insurance ?? '';
+        $this->insurance_name = $user->profile->bk_insurance_name ?? '';
+        $this->insurance_id = $user->profile->bk_insurance_id ?? '';
+        $this->benefits = $user->profile->bk_other_benefit ?? '';
 
-        $this->office_email = $user->profile->sec_offical_email;
-        $this->comp_equipment = $user->profile->sec_company_equipment_issued;
-        $this->system_access = $user->profile->sec_sys_access_requirement;
-        $this->security = $user->profile->sec_security_clearance;
+        $this->office_email = $user->profile->sec_offical_email ?? '';
+        $this->comp_equipment = $user->profile->sec_company_equipment_issued ?? '';
+        $this->system_access = $user->profile->sec_sys_access_requirement ?? '';
+        $this->security = $user->profile->sec_security_clearance ?? '';
     }
 
     public function validateData()
