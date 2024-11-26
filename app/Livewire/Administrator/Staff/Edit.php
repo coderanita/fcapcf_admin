@@ -223,8 +223,8 @@ class Edit extends Component
     public function save()
     {
 
-        $this->authorize('update', $this->user);
-        $this->authorize('update', $this->user->profile);
+        // $this->authorize('update', $this->user);
+        // $this->authorize('update', $this->user->profile);
 
         $user = User::where('id', $this->user->id)->update([
             'fname' => $this->first_name,

@@ -189,7 +189,7 @@
                                                                                         <option
                                                                                             value="{{ $country->phonecode }}">
                                                                                             {{ $country->name }}
-                                                                                            ({{ $country->phonecode }})
+                                                                                            (+{{ $country->phonecode }})
                                                                                         </option>
                                                                                     @endforeach
                                                                                 </select>
@@ -354,7 +354,7 @@
                                                                                         <option
                                                                                             value="{{ $country->phonecode }}">
                                                                                             {{ $country->name }}
-                                                                                            ({{ $country->phonecode }})
+                                                                                            (+{{ $country->phonecode }})
                                                                                         </option>
                                                                                     @endforeach
                                                                                 </select>

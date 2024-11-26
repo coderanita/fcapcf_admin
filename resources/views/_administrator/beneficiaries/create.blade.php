@@ -135,9 +135,9 @@
                                                                                         wire:model="countryCode">
                                                                                         @foreach ($countries as $country)
                                                                                             <option
-                                                                                                value="{{ $country->phonecode }}">
+                                                                                                value="+{{ $country->phonecode }}">
                                                                                                 {{ $country->name }}
-                                                                                                ({{ $country->phonecode }})
+                                                                                                (+{{ $country->phonecode }})
                                                                                             </option>
                                                                                         @endforeach
                                                                                     </select>
@@ -180,7 +180,8 @@
                                                                                 <select
                                                                                     class="form-select @error('marital_status') is-invalid @enderror"
                                                                                     wire:model="marital_status">
-                                                                                    <option value="" selected></option>
+                                                                                    <option value="" selected>
+                                                                                    </option>
                                                                                     <option value="Single">Single
                                                                                     </option>
                                                                                     <option value="Married">Married
@@ -203,7 +204,8 @@
                                                                                 <select
                                                                                     class="form-select @error('nationality_id') is-invalid @enderror"
                                                                                     wire:model="nationality_id">
-                                                                                    <option value="" selected></option>
+                                                                                    <option value="" selected>
+                                                                                    </option>
                                                                                     @foreach ($nationalities as $nationality)
                                                                                         <option
                                                                                             value="{{ $nationality->id }}">
@@ -222,7 +224,8 @@
                                                                                 <select
                                                                                     class="form-select @error('disability_status') is-invalid @enderror"
                                                                                     wire:model="disability_status">
-                                                                                    <option value="" selected></option>
+                                                                                    <option value="" selected>
+                                                                                    </option>
                                                                                     <option value="yes">Yes</option>
                                                                                     <option value="no">No</option>
                                                                                 </select>
@@ -250,7 +253,8 @@
                                                                                 <select
                                                                                     class="form-select @error('language_id') is-invalid @enderror"
                                                                                     wire:model="language_id">
-                                                                                    <option value="" selected></option>
+                                                                                    <option value="" selected>
+                                                                                    </option>
 
                                                                                     @foreach ($languages as $language)
                                                                                         <option
@@ -291,7 +295,7 @@
                                                                                             <option
                                                                                                 value="{{ $country->phonecode }}">
                                                                                                 {{ $country->name }}
-                                                                                                ({{ $country->phonecode }})
+                                                                                                (+{{ $country->phonecode }})
                                                                                             </option>
                                                                                         @endforeach
                                                                                     </select>
@@ -312,7 +316,8 @@
                                                                                 <select
                                                                                     class="form-select @error('relationship_id') is-invalid @enderror"
                                                                                     wire:model="relationship_id">
-                                                                                    <option value="" selected></option>
+                                                                                    <option value="" selected>
+                                                                                    </option>
                                                                                     @foreach ($beneficiaries as $beneficiaryRelationship)
                                                                                         <option
                                                                                             value="{{ $beneficiaryRelationship->id }}">
