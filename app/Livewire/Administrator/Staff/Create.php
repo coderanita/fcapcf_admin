@@ -49,6 +49,7 @@ class Create extends Component
         'email' => 'Please enter a valid email address.',
         'language_id.exists' => 'Please select a valid language.',
         'relationship_id.exists' => 'Please select a valid relationship.',
+        'email.unique' => 'The email address is already registered.',
     ];
 
     public function validateData()
@@ -60,7 +61,7 @@ class Create extends Component
                 'last_name' => 'required|string|max:255',
                 'gender' => 'required|string',
                 'phone_number' => 'required|string|max:15',
-                'email' => 'required|email|max:255',
+                'email' => 'required|email|max:255|unique:users,email',
                 'date_of_birth' => 'required|date',
                 'marital_status' => 'required|string',
                 'nationality_id' => 'required',
