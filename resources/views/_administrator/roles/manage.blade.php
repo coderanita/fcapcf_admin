@@ -79,7 +79,7 @@
             <div class="col-md-12">
                 <label class="form-label">Access Level</label>
                 <select class="form-select" wire:model.live='access_level'>
-                    <option selected>Choose...</option>
+                    <option selected></option>
                     @foreach (getAccessLevels() as $level)
                         <option value="{{ $level }}">{{ ucwords($level) }}</option>
                     @endforeach
