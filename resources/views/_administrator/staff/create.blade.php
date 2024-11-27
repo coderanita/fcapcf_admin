@@ -751,7 +751,7 @@
                                                                         <div class="form-floating mb-2 col-md-4">
                                                                             <select
                                                                                 class="form-select @error('pension_scheme') is-invalid @enderror"
-                                                                                wire:model="pension_scheme">
+                                                                                wire:model.live="pension_scheme">
                                                                                 <option selected>
 
                                                                                 </option>
@@ -769,18 +769,21 @@
                                                                             <input type="text"
                                                                                 class="form-control @error('pension_adm') is-invalid @enderror"
                                                                                 wire:model="pension_adm"
-                                                                                placeholder="Pension Administrator" />
+                                                                                placeholder="Pension Administrator"
+                                                                                @if ($pension_scheme == 'No') disabled @endif />
                                                                             <label>Name of Pension Administrator</label>
                                                                             @error('pension_adm')
                                                                                 <div class="invalid-feedback">
                                                                                     {{ $message }}</div>
                                                                             @enderror
                                                                         </div>
+
                                                                         <div class="form-floating mb-2 col-md-4">
                                                                             <input type="text"
                                                                                 class="form-control @error('pension_id') is-invalid @enderror"
                                                                                 wire:model="pension_id"
-                                                                                placeholder="pension ID" />
+                                                                                placeholder="pension ID"
+                                                                                @if ($pension_scheme == 'No') disabled @endif />
                                                                             <label>If Yes, Pension ID</label>
                                                                             @error('pension_id')
                                                                                 <div class="invalid-feedback">
@@ -791,7 +794,7 @@
                                                                         <div class="form-floating mb-2 col-md-4">
                                                                             <select
                                                                                 class="form-select @error('health_insurance') is-invalid @enderror"
-                                                                                wire:model="health_insurance">
+                                                                                wire:model.live="health_insurance">
                                                                                 <option selected>
 
                                                                                 </option>
@@ -808,7 +811,8 @@
                                                                             <input type="text"
                                                                                 class="form-control @error('insurance_name') is-invalid @enderror"
                                                                                 wire:model="insurance_name"
-                                                                                placeholder="pension ID" />
+                                                                                placeholder="pension ID"
+                                                                                @if ($health_insurance == 'No') disabled @endif />
                                                                             <label>Name of Insurance</label>
                                                                             @error('insurance_name')
                                                                                 <div class="invalid-feedback">
@@ -819,7 +823,8 @@
                                                                             <input type="text"
                                                                                 class="form-control @error('insurance_id') is-invalid @enderror"
                                                                                 wire:model="insurance_id"
-                                                                                placeholder="pension ID" />
+                                                                                placeholder="pension ID"
+                                                                                @if ($health_insurance == 'No') disabled @endif />
                                                                             <label>Insurance ID</label>
                                                                             @error('insurance_id')
                                                                                 <div class="invalid-feedback">
