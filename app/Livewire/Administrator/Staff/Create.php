@@ -164,7 +164,8 @@ class Create extends Component
         $this->authorize('create', User::class);
         $this->authorize('create', Profile::class);
 
-        $password = Str::random(10);
+        $password = Str::random(9) . Str::random(1, '!@#$%^&*()_+-=[]{}|;:,.<>?');
+        $password = Str::shuffle($password);
         $user = User::create([
             'role_id' => $this->selectedRole,
             'fname' => $this->first_name,
