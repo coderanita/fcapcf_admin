@@ -753,10 +753,8 @@
                                                                         <div class="form-floating mb-2 col-md-4">
                                                                             <select
                                                                                 class="form-select @error('pension_scheme') is-invalid @enderror"
-                                                                                wire:model="pension_scheme">
-                                                                                <option selected>
-
-                                                                                </option>
+                                                                                wire:model.live="pension_scheme">
+                                                                                <option selected></option>
                                                                                 <option value="Yes">Yes</option>
                                                                                 <option value="No">No</option>
                                                                             </select>
@@ -764,36 +762,43 @@
                                                                                 *</label>
                                                                             @error('pension_scheme')
                                                                                 <div class="invalid-feedback">
-                                                                                    {{ $message }}</div>
+                                                                                    {{ $message }}
+                                                                                </div>
                                                                             @enderror
                                                                         </div>
-                                                                        <div class="form-floating mb-2 col-md-4">
-                                                                            <input type="text"
-                                                                                class="form-control @error('pension_adm') is-invalid @enderror"
-                                                                                wire:model="pension_adm"
-                                                                                placeholder="Pension Administrator" />
-                                                                            <label>Name of Pension Administrator</label>
-                                                                            @error('pension_adm')
-                                                                                <div class="invalid-feedback">
-                                                                                    {{ $message }}</div>
-                                                                            @enderror
-                                                                        </div>
-                                                                        <div class="form-floating mb-2 col-md-4">
-                                                                            <input type="text"
-                                                                                class="form-control @error('pension_id') is-invalid @enderror"
-                                                                                wire:model="pension_id"
-                                                                                placeholder="pension ID" />
-                                                                            <label>If Yes, Pension ID</label>
-                                                                            @error('pension_id')
-                                                                                <div class="invalid-feedback">
-                                                                                    {{ $message }}</div>
-                                                                            @enderror
-                                                                        </div>
+
+                                                                        @if ($pension_scheme === 'Yes' || $pension_scheme === null)
+                                                                            <div class="form-floating mb-2 col-md-4">
+                                                                                <input type="text"
+                                                                                    class="form-control @error('pension_adm') is-invalid @enderror"
+                                                                                    wire:model="pension_adm"
+                                                                                    placeholder="Pension Administrator" />
+                                                                                <label>Name of Pension
+                                                                                    Administrator</label>
+                                                                                @error('pension_adm')
+                                                                                    <div class="invalid-feedback">
+                                                                                        {{ $message }}
+                                                                                    </div>
+                                                                                @enderror
+                                                                            </div>
+
+                                                                            <div class="form-floating mb-2 col-md-4">
+                                                                                <input type="text"
+                                                                                    class="form-control @error('pension_id') is-invalid @enderror"
+                                                                                    wire:model="pension_id"
+                                                                                    placeholder="pension ID" />
+                                                                                <label>If Yes, Pension ID</label>
+                                                                                @error('pension_id')
+                                                                                    <div class="invalid-feedback">
+                                                                                        {{ $message }}</div>
+                                                                                @enderror
+                                                                            </div>
+                                                                        @endif
 
                                                                         <div class="form-floating mb-2 col-md-4">
                                                                             <select
                                                                                 class="form-select @error('health_insurance') is-invalid @enderror"
-                                                                                wire:model="health_insurance">
+                                                                                wire:model.live="health_insurance">
                                                                                 <option selected>
 
                                                                                 </option>
@@ -806,28 +811,31 @@
                                                                                     {{ $message }}</div>
                                                                             @enderror
                                                                         </div>
-                                                                        <div class="form-floating mb-2 col-md-4">
-                                                                            <input type="text"
-                                                                                class="form-control @error('insurance_name') is-invalid @enderror"
-                                                                                wire:model="insurance_name"
-                                                                                placeholder="pension ID" />
-                                                                            <label>Name of Insurance</label>
-                                                                            @error('insurance_name')
-                                                                                <div class="invalid-feedback">
-                                                                                    {{ $message }}</div>
-                                                                            @enderror
-                                                                        </div>
-                                                                        <div class="form-floating mb-2 col-md-4">
-                                                                            <input type="text"
-                                                                                class="form-control @error('insurance_id') is-invalid @enderror"
-                                                                                wire:model="insurance_id"
-                                                                                placeholder="pension ID" />
-                                                                            <label>Insurance ID</label>
-                                                                            @error('insurance_id')
-                                                                                <div class="invalid-feedback">
-                                                                                    {{ $message }}</div>
-                                                                            @enderror
-                                                                        </div>
+                                                                        @if ($health_insurance === 'Yes' || $health_insurance === null)
+                                                                            <div class="form-floating mb-2 col-md-4">
+                                                                                <input type="text"
+                                                                                    class="form-control @error('insurance_name') is-invalid @enderror"
+                                                                                    wire:model="insurance_name"
+                                                                                    placeholder="pension ID" />
+                                                                                <label>Name of Insurance</label>
+                                                                                @error('insurance_name')
+                                                                                    <div class="invalid-feedback">
+                                                                                        {{ $message }}</div>
+                                                                                @enderror
+                                                                            </div>
+                                                                            <div class="form-floating mb-2 col-md-4">
+                                                                                <input type="text"
+                                                                                    class="form-control @error('insurance_id') is-invalid @enderror"
+                                                                                    wire:model="insurance_id"
+                                                                                    placeholder="pension ID" />
+                                                                                <label>Insurance ID</label>
+                                                                                @error('insurance_id')
+                                                                                    <div class="invalid-feedback">
+                                                                                        {{ $message }}</div>
+                                                                                @enderror
+                                                                            </div>
+                                                                        @endif
+
                                                                         <div class="form-floating mb-2 col-12">
                                                                             <textarea class="form-control @error('benefits') is-invalid @enderror" wire:model="benefits" rows="3"
                                                                                 placeholder="State reason for leaving"></textarea>

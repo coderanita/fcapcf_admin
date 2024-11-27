@@ -793,10 +793,6 @@
                                                                             </div>
                                                                         @endif
 
-
-
-
-
                                                                         <div class="form-floating mb-2 col-md-4">
                                                                             <select
                                                                                 class="form-select @error('health_insurance') is-invalid @enderror"
@@ -837,6 +833,7 @@
                                                                                 @enderror
                                                                             </div>
                                                                         @endif
+                                                                        
                                                                         <div class="form-floating mb-2 col-12">
                                                                             <textarea class="form-control @error('benefits') is-invalid @enderror" wire:model="benefits" rows="3"
                                                                                 placeholder="State reason for leaving"></textarea>
