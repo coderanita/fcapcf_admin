@@ -23,10 +23,11 @@ return new class extends Migration
             $table->string('email');
             $table->date('date_of_birth');
             $table->string('marital_status');
-            $table->unsignedBigInteger('nationality_id');
+            $table->unsignedBigInteger('nationality_id')->nullable();
             $table->string('disability_status');
             $table->string('type_of_disability')->nullable();
             $table->unsignedBigInteger('language_id');
+            $table->unsignedBigInteger('country_id')->nullable();
             $table->timestamps();
         });
     }

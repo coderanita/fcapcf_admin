@@ -40,7 +40,7 @@
                         </div>
                         <div class="col-12">
                             <label class="form-label">Describe Category</label>
-                            <textarea class="form-control @error('description') is-invalid @enderror" placeholder="*********" wire:model='description'> </textarea>
+                            <textarea class="form-control @error('description') is-invalid @enderror" wire:model='description'> </textarea>
                             @error('description')
                                 <div class="invalid-feedback">
                                     {{ $message }}

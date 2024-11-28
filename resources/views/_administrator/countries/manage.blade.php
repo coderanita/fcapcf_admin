@@ -38,7 +38,6 @@
                                 <thead>
                                     <tr>
                                         <th>S/N</th>
-                                        <th>Region</th>
                                         <th>Name</th>
                                         <th>Country Code</th>
                                         <th>Action</th>
@@ -50,8 +49,7 @@
                                     @endphp
                                     @foreach ($countries as $country)
                                         <tr>
-                                            <td>{{ $count++ }}</td>
-                                            <td>{{ $country->region->name }}</td>
+                                            <td>{{ $country->id }}</td>
                                             <td>{{ $country->name }}</td>
                                             <td>{{ $country->code }}</td>
                                             <td>
@@ -73,6 +71,12 @@
                 </div>
             </div> <!-- .row end -->
         </div>
+
+        <div class="tab-pane fade show active" id="nav-Preview5" role="tabpanel">
+            <div class="mt-4">
+                {{ $countries->links() }}
+            </div>
+        </div>
     </div>
 
     <!-- New user modal -->
@@ -86,20 +90,6 @@
                 </div>
                 <div class="offcanvas-body">
                     <form class="row g-3" style="margin-top: 60px" wire:submit.prevent="update">
-
-                        <div class="col-md-12">
-                            <label class="form-label">Region</label>
-                            <select class="form-select" wire:model.live='selectedRegion'>
-                                <option selected>Choose...</option>
-                                @foreach ($regions as $region)
-                                    <option value="{{ $region->id }}">{{ ucwords($region->name) }}
-                                    </option>
-                                @endforeach
-
-                            </select>
-                            <x-input-error for="selectedRegion" />
-                        </div>
-
                         <div class="col-md-12">
                             <label class="form-label">Country Name</label>
                             <input type="text" class="form-control @error('name') is-invalid @enderror"

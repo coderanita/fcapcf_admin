@@ -1,6 +1,6 @@
 <div>
     <x-breadcrumb title="Countries" sub_title="Countries">
-        <x-slot name="page_action">
+        {{-- <x-slot name="page_action">
             <div class="page-action">
                 <a wire:click='create'>
                     <button class="btn d-none d-sm-inline-flex rounded-pill" type="button">
@@ -15,7 +15,7 @@
                 </a>
 
             </div>
-        </x-slot>
+        </x-slot> --}}
 
     </x-breadcrumb>
 
@@ -30,18 +30,6 @@
                 <div class="offcanvas-body">
                     <form class="row g-3" style="margin-top: 60px" wire:submit.prevent="save">
 
-                        <div class="col-md-12">
-                            <label class="form-label">Region</label>
-                            <select class="form-select" wire:model.live='selectedRegion'>
-                                <option selected value="">Choose...</option>
-                                @foreach ($regions as $region)
-                                    <option value="{{ $region->id }}">{{ ucwords($region->name) }}
-                                    </option>
-                                @endforeach
-
-                            </select>
-                            <x-input-error for="selectedRegion" />
-                        </div>
 
                         <div class="col-md-12">
                             <label class="form-label">Country Name</label>

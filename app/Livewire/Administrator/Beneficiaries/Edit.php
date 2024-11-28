@@ -31,7 +31,7 @@ class Edit extends Component
     // Personal Information
     public $first_name, $last_name, $gender, $phone_number, $email, $marital_status, $countryCode,  $countryCodeEmergency;
     public $profile_photo_path;
-    public $nationality_id, $disability_status, $language_id;
+    public $country_id, $disability_status, $language_id;
     public $type_of_disability;
     public $date_of_birth;
 
@@ -51,7 +51,7 @@ class Edit extends Component
         'email' => 'Please enter a valid email address.',
         'profile_photo_path.image' => 'Please upload a valid image.',
         'profile_photo_path.max' => 'Image size cannot exceed 2MB.',
-        'nationality_id.exists' => 'Please select a valid nationality.',
+        'country_id.exists' => 'Please select a valid country.',
         'language_id.exists' => 'Please select a valid language.',
         'relationship_id.exists' => 'Please select a valid relationship.',
     ];
@@ -68,7 +68,7 @@ class Edit extends Component
                 'email' => 'required|email|max:255',
                 'date_of_birth' => 'required|date',
                 'marital_status' => 'required|string',
-                'nationality_id' => 'required|exists:nationalities,id',
+                'country_id' => 'required|exists:countries,id',
                 'disability_status' => 'required|string',
                 'type_of_disability' => $this->disability_status === 'no' ? 'nullable' : 'required',
                 'language_id' => 'required|exists:languages,id',
@@ -123,7 +123,7 @@ class Edit extends Component
         $this->email = $beneficiary->email;
         $this->marital_status = $beneficiary->marital_status;
         $this->date_of_birth = $beneficiary->date_of_birth;
-        $this->nationality_id = $beneficiary->nationality_id;
+        $this->country_id = $beneficiary->country_id;
         $this->disability_status = $beneficiary->disability_status;
         $this->type_of_disability = $beneficiary->type_of_disability;
         $this->language_id = $beneficiary->language_id;
@@ -204,7 +204,7 @@ class Edit extends Component
             'email' => $this->email,
             'date_of_birth' => $this->date_of_birth,
             'marital_status' => $this->marital_status,
-            'nationality_id' => $this->nationality_id,
+            'country_id' => $this->country_id,
             'disability_status' => $this->disability_status,
             'type_of_disability' => $this->type_of_disability,
             'language_id' => $this->language_id,
@@ -233,7 +233,7 @@ class Edit extends Component
                 'vulnerabilities' => $this->vulnerabilities,
             ]);
         }
-
+ 
         $assistance = BeneficiaryAssistance::where('beneficiary_id', $this->beneficiary_id)->first();
         if ($assistance) {
             $assistance->update([

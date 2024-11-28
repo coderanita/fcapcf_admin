@@ -18,9 +18,7 @@
                                 <label class="form-label">Announcement To</label>
                                 <select wire:model="to" id=""
                                     class="form-control @error('to') is-invalid @enderror">
-                                    <option value="" selected>Open
-                                        this
-                                        select menu</option>
+                                    <option value="" selected></option>
                                     <option value="All Admins">All Admins</option>
                                     <option value="All Volunteers">All Volunteers</option>
                                     <option value="All Beneficiaries">All Beneficiaries</option>

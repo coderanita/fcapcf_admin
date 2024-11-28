@@ -106,9 +106,8 @@
                                                                             <select
                                                                                 class="form-select @error('selectedRole') is-invalid @enderror"
                                                                                 wire:model="selectedRole">
-                                                                                <option value="" selected>Open
-                                                                                    this select
-                                                                                    menu</option>
+                                                                                <option value="" selected>
+                                                                                </option>
                                                                                 @foreach ($roles as $role)
                                                                                     <option value="{{ $role->id }}">
                                                                                         {{ ucwords($role->name) }} -
@@ -164,9 +163,8 @@
                                                                             <select
                                                                                 class="form-select @error('gender') is-invalid @enderror"
                                                                                 wire:model="gender">
-                                                                                <option value="" selected>Open
-                                                                                    this select
-                                                                                    menu</option>
+                                                                                <option value="" selected>
+                                                                                </option>
                                                                                 <option value="male">Male</option>
                                                                                 <option value="female">Female
                                                                                 </option>

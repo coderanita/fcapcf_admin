@@ -7,6 +7,7 @@ use App\Livewire\Administrator\Announcements\View;
 use App\Livewire\Administrator\AuditLogs\Index;
 use App\Livewire\Administrator\Beneficiaries\Create;
 use App\Livewire\Administrator\Beneficiaries\Edit;
+use App\Livewire\Administrator\Cities\Index as CitiesIndex;
 use App\Livewire\Administrator\Countries\Manage as CountriesManage;
 use App\Livewire\Administrator\Dashboard;
 use App\Livewire\Administrator\ProjectCategory\Manage as ProjectCategoryManage;
@@ -70,6 +71,7 @@ Route::middleware([
   Route::get('/regions', RegionManage::class)->name('regions');
   Route::get('/countries', CountriesManage::class)->name('countries');
   Route::get('/states', StatesManage::class)->name('states');
+  Route::get('/cities', CitiesIndex::class)->name('cities');
 
   Route::get('/staffs/create', StaffCreate::class)->name('staffs.create');
   Route::get('/staffs/edit/{user}', StaffEdit::class)->name('staffs.edit');

@@ -113,9 +113,8 @@
                                                                                 <select
                                                                                     class="form-select @error('gender') is-invalid @enderror"
                                                                                     wire:model="gender">
-                                                                                    <option value="" selected>Open
-                                                                                        this select
-                                                                                        menu</option>
+                                                                                    <option value="" selected>
+                                                                                    </option>
                                                                                     <option value="male">Male</option>
                                                                                     <option value="female">Female
                                                                                     </option>
@@ -202,19 +201,19 @@
 
                                                                             <div class="form-floating mb-2 col-md-4">
                                                                                 <select
-                                                                                    class="form-select @error('nationality_id') is-invalid @enderror"
-                                                                                    wire:model="nationality_id">
+                                                                                    class="form-select @error('country_id') is-invalid @enderror"
+                                                                                    wire:model="country_id">
                                                                                     <option value="" selected>
                                                                                     </option>
-                                                                                    @foreach ($nationalities as $nationality)
+                                                                                    @foreach ($countries as $country)
                                                                                         <option
-                                                                                            value="{{ $nationality->id }}">
-                                                                                            {{ $nationality->name }}
+                                                                                            value="{{ $country->id }}">
+                                                                                            {{ $country->name }}
                                                                                         </option>
                                                                                     @endforeach
                                                                                 </select>
-                                                                                <label>Nationality *</label>
-                                                                                @error('nationality_id')
+                                                                                <label>Country *</label>
+                                                                                @error('country_id')
                                                                                     <div class="invalid-feedback">
                                                                                         {{ $message }}</div>
                                                                                 @enderror
@@ -396,7 +395,7 @@
                                                                                     class="form-select @error('education_level') is-invalid @enderror"
                                                                                     wire:model="education_level">
                                                                                     <option value="" selected>
-                                                                                        Select Education Level
+                                                                                        
                                                                                     </option>
                                                                                     <option value="PhD">PhD</option>
                                                                                     <option value="BSc">BSc</option>
@@ -429,7 +428,7 @@
                                                                                     class="form-select @error('housing_status') is-invalid @enderror"
                                                                                     wire:model="housing_status">
                                                                                     <option value="" selected>
-                                                                                        Select Housing Status
+                                                                                        
                                                                                     </option>
                                                                                     <option value="Owned">Owned
                                                                                     </option>
@@ -448,7 +447,7 @@
                                                                                     class="form-select @error('vulnerabilities') is-invalid @enderror"
                                                                                     wire:model="vulnerabilities">
                                                                                     <option value="" selected>
-                                                                                        Select Vulnerabilities
+                                                                                        
                                                                                     </option>
                                                                                     <option value="Orphan">Orphan
                                                                                     </option>
@@ -487,9 +486,7 @@
                                                                             <select
                                                                                 class="form-select @error('type_of_assistance') is-invalid @enderror"
                                                                                 wire:model="type_of_assistance">
-                                                                                <option value="" selected>Open
-                                                                                    this
-                                                                                    select menu</option>
+                                                                                <option value="" selected></option>
                                                                                 <option value="Medical">Medical
                                                                                 </option>
                                                                                 <option value="Educational">Educational
@@ -523,9 +520,7 @@
                                                                             <select
                                                                                 class="form-select @error('health_status') is-invalid @enderror"
                                                                                 wire:model="health_status">
-                                                                                <option value="" selected>Open
-                                                                                    this
-                                                                                    select menu</option>
+                                                                                <option value="" selected></option>
                                                                                 <option value="chronic illness">Chronic
                                                                                     Illness</option>
                                                                                 <option value="Health">Health</option>
@@ -654,14 +649,6 @@
                                                                                                 Status</small>
                                                                                             <div class="fs-5">
                                                                                                 {{ $marital_status }}
-                                                                                            </div>
-                                                                                        </div>
-                                                                                        <div
-                                                                                            class="py-2 px-3 me-2 mt-2">
-                                                                                            <small
-                                                                                                class="text-muted">Nationality</small>
-                                                                                            <div class="fs-5">
-                                                                                                {{ $this->getNationalityName($nationality_id) }}
                                                                                             </div>
                                                                                         </div>
                                                                                         <div

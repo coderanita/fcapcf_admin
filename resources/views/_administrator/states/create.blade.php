@@ -1,6 +1,6 @@
 <div>
     <x-breadcrumb title="States" sub_title="States">
-        <x-slot name="page_action">
+        {{-- <x-slot name="page_action">
             <div class="page-action">
                 <a wire:click='create'>
                     <button class="btn d-none d-sm-inline-flex rounded-pill" type="button">
@@ -15,7 +15,7 @@
                 </a>
 
             </div>
-        </x-slot>
+        </x-slot> --}}
 
     </x-breadcrumb>
 

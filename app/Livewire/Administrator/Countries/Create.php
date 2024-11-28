@@ -14,7 +14,6 @@ class Create extends Component
     protected $rules = [
         'name' => 'required',
         'code' => 'required',
-        'selectedRegion' => 'required',
     ];
 
     public function create()
@@ -30,7 +29,6 @@ class Create extends Component
         $country = Country::create([
             'name' => $this->name,
             'code' => $this->code,
-            'region_id' => $this->selectedRegion
         ]);
 
         $this->dispatch('modalClosedCountry');

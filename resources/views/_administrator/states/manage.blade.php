@@ -49,7 +49,7 @@
                                     @endphp
                                     @foreach ($states as $state)
                                         <tr>
-                                            <td>{{ $count++ }}</td>
+                                            <td>{{ $state->id }}</td>
                                             <td>{{ $state->country->name }}</td>
                                             <td>{{ $state->name }}</td>
                                             <td>
