@@ -8,7 +8,7 @@
             <div class="modal-content">
                 <div class="modal-body custom_scroll p-lg-5">
                     <button type="button" class="btn-close position-absolute top-0 end-0 mt-3 me-3"
-                        data-bs-dismiss="modal" aria-label="Close"></button>
+                        wire:click="closeModal"></button>
                     <h4 class="modal-title">Create Announcement</h4>
                     <p class="text-muted">Announcements are a way to communicate to a group. Complete the form below
                         announcement</p>
@@ -60,7 +60,7 @@
                             </div>
                             <div class="col-12 mt-3">
                                 <button class="btn btn-lg btn-secondary text-uppercase" type="button"
-                                    data-bs-dismiss="modal">Close</button>
+                                    wire:click="closeModal">Close</button>
                                 <button class="btn btn-lg btn-primary text-uppercase" type="submit">Submit</button>
                             </div>
                         </form>

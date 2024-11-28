@@ -26,6 +26,13 @@ class Create extends Component
     ];
 
 
+    public function closeModal()
+    {
+        $this->dispatch('modalClosed');
+
+        $this->reset();
+    }
+    
     public function save()
     {
         $this->validate();
