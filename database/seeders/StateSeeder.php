@@ -2661,7 +2661,7 @@ class StateSeeder extends Seeder
             array('name' => "Tillabery", 'country_id' => 159),
             array('name' => "Zinder", 'country_id' => 159),
             array('name' => "Abia", 'country_id' => 160),
-            array('name' => "Abuja Federal Capital Territor", 'country_id' => 160),
+            array('name' => "Abuja Federal Capital Territory", 'country_id' => 160),
             array('name' => "Adamawa", 'country_id' => 160),
             array('name' => "Akwa Ibom", 'country_id' => 160),
             array('name' => "Anambra", 'country_id' => 160),

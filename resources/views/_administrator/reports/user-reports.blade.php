@@ -712,3 +712,7 @@
         </div>
     </div>
 </div>
+
+@push('scripts')
+    <script src="{{ asset('js/theme.js') }}"></script>
+@endpush

@@ -2,7 +2,7 @@
     <x-breadcrumb title="System Users" sub_title="User list">
         <x-slot name="page_action">
             <div class="page-action">
-                <a href="{{ route('administrator.staffs.create') }}">
+                <a wire:click='create'>
                     <button class="btn d-none d-sm-inline-flex rounded-pill" type="button">
                         <span class="me-1 d-none d-lg-inline-block">Create New</span>
                         <svg width="14" height="14" viewBox="0 0 14 14" fill="none"
@@ -14,9 +14,16 @@
                     </button>
                 </a>
 
+                <div class="btn-group">
+                    <div id="reportrange"
+                        style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #007bff; border-radius: 4px; width: 100%;">
+                        <i class="fa fa-calendar"></i>&nbsp;
+                        <span>Select Date Range</span> <i class="fa fa-caret-down"></i>
+                    </div>
+                </div>
+
             </div>
         </x-slot>
-
     </x-breadcrumb>
     <x-custom-modal isOpenModal="{{ $isOpenModal }}" title="Create New User" id="createUser" submit="save">
         <x-slot name="body">
@@ -97,3 +104,45 @@
 
     </x-custom-modal>
 </div>
+@push('styles')
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+@endpush
+
+@push('scripts')
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var start = moment();
+            var end = moment();
+
+
+            function cb(start, end) {
+                $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
+                // Trigger Livewire event with new date range
+                Livewire.dispatch('updateDateRange', {
+                    start: start.format('YYYY-MM-DD'),
+                    end: end.format('YYYY-MM-DD')
+                });
+            }
+
+            $('#reportrange').daterangepicker({
+                startDate: start,
+                endDate: end,
+                ranges: {
+                    'Today': [moment(), moment()],
+                    'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+                    'Last 7 Days': [moment().subtract(6, 'days'), moment()],
+                    'Last 30 Days': [moment().subtract(29, 'days'), moment()],
+                    'This Month': [moment().startOf('month'), moment().endOf('month')],
+                    'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1,
+                        'month').endOf('month')]
+                }
+            }, cb);
+
+            cb(start, end);
+        });
+    </script>
+@endpush

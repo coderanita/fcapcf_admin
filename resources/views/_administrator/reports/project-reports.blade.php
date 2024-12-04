@@ -31,8 +31,6 @@
                                 <ul class="dropdown-menu border-0 shadow">
                                     <li><a class="dropdown-item" href="#"
                                             wire:click.prevent="sortBy('created_at')">By Created Date</a></li>
-                                    <li><a class="dropdown-item" href="#"
-                                            wire:click.prevent="sortBy('region_id')">By Region</a></li>
                                     {{-- <li><a class="dropdown-item" href="#"
                                             wire:click.prevent="sortBy('supervisor_id')">By Supervisor</a></li> --}}
                                     <li><a class="dropdown-item" href="#"
@@ -121,18 +119,6 @@
                                         <div class="item card bg-body">
                                             <div class="card-body">
                                                 <div class="avatar lg rounded-circle no-thumbnail mb-3 fs-5">
-                                                    PR
-                                                </div>
-                                                <small class="text-muted">Project Region</small>
-                                                <h4>{{ $totalRegions }}</h4>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="owl-item active" style="width: 251.4px; margin-right: 10px">
-                                        <div class="item card bg-body">
-                                            <div class="card-body">
-                                                <div class="avatar lg rounded-circle no-thumbnail mb-3 fs-5">
                                                     PP
                                                 </div>
                                                 <small class="text-muted">Total Incomplete Projects</small>
@@ -147,7 +133,7 @@
                     </div>
 
                     <!-- Plugin Js -->
-                    <script src="./assets/js/bundle/owlcarousel.bundle.js"></script>
+                    <script src="{{ asset('js/bundle/owlcarousel.bundle.js') }}"></script>
                     <!-- Jquery Page Js -->
                     <script>
                         // recent invoices Carousel
@@ -206,12 +192,6 @@
                                                     </th>
                                                     <th class="sorting" tabindex="0"
                                                         aria-controls="DataTables_Table_0" rowspan="1"
-                                                        colspan="1" style="width: 88px"
-                                                        aria-label="region: activate to sort column ascending">
-                                                        Region
-                                                    </th>
-                                                    <th class="sorting" tabindex="0"
-                                                        aria-controls="DataTables_Table_0" rowspan="1"
                                                         colspan="1" style="width: 105px"
                                                         aria-label="Amount: activate to sort column ascending">
                                                         Amount
@@ -266,7 +246,6 @@
                                                         <td class="dtr-control sorting_1" tabindex="0">
                                                             <span>{{ $project->project_name }}</span>
                                                         </td>
-                                                        <td>{{ $project->region->name }}</td>
                                                         <td>N{{ formatMoney($project->project_cost) }}</td>
                                                         <td></td>
                                                         <td>
@@ -302,7 +281,7 @@
                         </div>
                     </div>
                     <!-- Plugin Js -->
-                    <script src="./assets/js/bundle/dataTables.bundle.js"></script>
+                    <script src="{{ asset('js/bundle/dataTables.bundle.js') }}"></script>
                     <!-- Jquery Page Js -->
                     <script>
                         $(document).ready(function() {
@@ -616,3 +595,7 @@
         </div>
     </div>
 </div>
+
+@push('scripts')
+    <script src="{{ asset('js/theme.js') }}"></script>
+@endpush

@@ -215,13 +215,13 @@
                                             <thead>
                                                 <tr>
                                                     <th class="sorting sorting_asc" tabindex="0"
-                                                        aria-controls="DataTables_Table_0" rowspan="1"
-                                                        colspan="1" style="width: 88px;" aria-sort="ascending"
+                                                        aria-controls="DataTables_Table_0" rowspan="1" colspan="1"
+                                                        style="width: 88px;" aria-sort="ascending"
                                                         aria-label="Project: activate to sort column descending">Full
                                                         Name (Gender)</th>
                                                     <th class="sorting" tabindex="0"
-                                                        aria-controls="DataTables_Table_0" rowspan="1"
-                                                        colspan="1" style="width: 40px;"
+                                                        aria-controls="DataTables_Table_0" rowspan="1" colspan="1"
+                                                        style="width: 40px;"
                                                         aria-label="region: activate to sort column ascending">Marital
                                                         Status/Age</th>
                                                     <th class="sorting" tabindex="0"
@@ -636,3 +636,7 @@
             </div>
         </div>
     </div>
+
+    @push('scripts')
+        <script src="{{ asset('js/theme.js') }}"></script>
+    @endpush
