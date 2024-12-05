@@ -234,6 +234,8 @@ class Edit extends Component
             'role_id' => $this->selectedRole
         ]);
 
+        info($this->marital_status);
+
         Profile::where('user_id', $this->user->id)->update([
             'personal_mname' =>  $this->middle_name,
             'personal_gender' =>  $this->gender,

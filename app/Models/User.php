@@ -13,6 +13,7 @@ use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Builder;
 
 class User extends Authenticatable
 {
@@ -113,5 +114,24 @@ class User extends Authenticatable
   public function fullName()
   {
     return ucwords($this->fname . " " . $this->lname);
+  }
+
+  public function scopeSortable(Builder $query, $sortField, $sortDirection)
+  {
+    // Fields that belong to the Profile table
+    $profileFields = ['personal_marital_status']; // Add other profile fields here
+
+    // Fields that belong to the User table
+    $userFields = ['role_id', 'created_at']; // Add other user fields here (e.g. 'created_at', 'name', etc.)
+
+    if (in_array($sortField, $profileFields)) {
+      return $query->leftJoin('profiles', 'users.id', '=', 'profiles.user_id')
+        ->orderBy('profiles.' . $sortField, $sortDirection);
+    } elseif (in_array($sortField, $userFields)) {
+      return $query->orderBy($sortField, $sortDirection);
+    }
+
+    // Default: Sort by created_at or any field on the users table
+    return $query->orderBy($sortField, $sortDirection);
   }
 }

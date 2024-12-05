@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Permission;
+use App\Models\Profile;
 use App\Models\ProjectStatus;
 use App\Models\Role;
 use App\Models\User;
@@ -37,7 +38,7 @@ class DatabaseSeeder extends Seeder
 
 
 
-    User::create([
+    $userone = User::create([
       "role_id" => $admin_role->id,
       'fname' => "Demo",
       'lname' => "Admin",
@@ -45,7 +46,11 @@ class DatabaseSeeder extends Seeder
       'password' => 'password'
     ]);
 
-    User::create([
+    Profile::create([
+      'user_id' => $userone->id
+    ]);
+
+    $userone = User::create([
       "role_id" => 3,
       'fname' => "Demo",
       'lname' => "Staff",
@@ -53,7 +58,11 @@ class DatabaseSeeder extends Seeder
       'password' => 'password'
     ]);
 
-    User::create([
+    Profile::create([
+      'user_id' => $userone->id
+    ]);
+
+    $userone = User::create([
       "role_id" => 4,
       'fname' => "Demo",
       'lname' => "Volunteer",
@@ -61,12 +70,20 @@ class DatabaseSeeder extends Seeder
       'password' => 'password'
     ]);
 
-    User::create([
+    Profile::create([
+      'user_id' => $userone->id
+    ]);
+
+    $userone = User::create([
       "role_id" => 2,
       'fname' => "Demo",
       'lname' => "Manager",
       'email' =>  'manager@app.com',
       'password' => 'password'
+    ]);
+
+    Profile::create([
+      'user_id' => $userone->id
     ]);
 
 

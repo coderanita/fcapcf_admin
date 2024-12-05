@@ -17,7 +17,7 @@
                             <!-- btn:: create new project -->
 
                             <!-- btn:: Filter -->
-                            {{-- <div class="btn-group">
+                            <div class="btn-group">
                                 <button type="button" class="btn dropdown-toggle after-none rounded-pill"
                                     data-bs-toggle="dropdown">
                                     <span class="me-1 d-none d-lg-inline-block">Filter</span>
@@ -30,20 +30,19 @@
                                 </button>
                                 <ul class="dropdown-menu border-0 shadow">
                                     <li>
-                                        <a class="dropdown-item" href="#">By Nationality</a>
+                                        <a class="dropdown-item" href="#"
+                                            wire:click.prevent="sortBy('personal_marital_status')">By Marital Status</a>
                                     </li>
                                     <li>
-                                        <a class="dropdown-item" href="#">By Marital Status</a>
-                                    </li>
-                                    <li><a class="dropdown-item" href="#">By Gender</a></li>
-                                    <li>
-                                        <a class="dropdown-item" href="#">By Role</a>
+                                        <a class="dropdown-item" href="#"
+                                            wire:click.prevent="sortBy('role_id')">By Role</a>
                                     </li>
                                     <li>
-                                        <a class="dropdown-item" href="#">By Registration Date</a>
+                                        <a class="dropdown-item" href="#"
+                                            wire:click.prevent="sortBy('created_at')">By Registration Date</a>
                                     </li>
                                 </ul>
-                            </div> --}}
+                            </div>
 
                             <button wire:click="export" class="btn d-none d-sm-inline-flex bg-secondary rounded-pill"
                                 type="button">
@@ -235,69 +234,6 @@
                                             id="DataTables_Table_0" style="width: 100%;">
                                             <thead>
                                                 <tr>
-                                                    {{-- <th class="sorting sorting_asc" tabindex="0"
-                                                        aria-controls="DataTables_Table_0" rowspan="1"
-                                                        colspan="1" style="width: 88px" aria-sort="ascending"
-                                                        aria-label="Project: activate to sort column descending">
-                                                        Full Name (Gender)
-                                                    </th>
-                                                    <th class="sorting" tabindex="0"
-                                                        aria-controls="DataTables_Table_0" rowspan="1"
-                                                        colspan="1" style="width: 50px"
-                                                        aria-label="region: activate to sort column ascending">
-                                                        Marital Status
-                                                    </th>
-                                                    <th class="sorting" tabindex="0"
-                                                        aria-controls="DataTables_Table_0" rowspan="1"
-                                                        colspan="1" style="width: 88px"
-                                                        aria-label="region: activate to sort column ascending">
-                                                        Contact
-                                                    </th>
-                                                    <th class="sorting" tabindex="0"
-                                                        aria-controls="DataTables_Table_0" rowspan="1"
-                                                        colspan="1" style="width: 88px"
-                                                        aria-label="Amount: activate to sort column ascending">
-                                                        Nationality
-                                                    </th>
-                                                    <th class="sorting" tabindex="0"
-                                                        aria-controls="DataTables_Table_0" rowspan="1"
-                                                        colspan="1" style="width: 40px"
-                                                        aria-label="Beneficiaries: activate to sort column ascending">
-                                                        Age
-                                                    </th>
-                                                    <th class="sorting" tabindex="0"
-                                                        aria-controls="DataTables_Table_0" rowspan="1"
-                                                        colspan="1" style="width: 88px"
-                                                        aria-label="End Date: activate to sort column ascending">
-                                                        Education
-                                                    </th>
-                                                    <th class="sorting" tabindex="0"
-                                                        aria-controls="DataTables_Table_0" rowspan="1"
-                                                        colspan="1" style="width: 88px"
-                                                        aria-label="End Date: activate to sort column ascending">
-                                                        Experience
-                                                    </th>
-                                                    <th class="sorting" tabindex="0"
-                                                        aria-controls="DataTables_Table_0" rowspan="1"
-                                                        colspan="1" style="width: 88px"
-                                                        aria-label="Supervisor: activate to sort column ascending">
-                                                        Registered
-                                                    </th>
-                                                    <th class="sorting" tabindex="0"
-                                                        aria-controls="DataTables_Table_0" rowspan="1"
-                                                        colspan="1" style="width: 88px"
-                                                        aria-label="Start Date: activate to sort column ascending">
-                                                        Emergency
-                                                    </th>
-
-                                                    <th class="sorting" tabindex="0"
-                                                        aria-controls="DataTables_Table_0" rowspan="1"
-                                                        colspan="1" style="width: 75px"
-                                                        aria-label="Status: activate to sort column ascending">
-                                                        Type
-                                                    </th> --}}
-
-
                                                     <th class="sorting sorting_asc" tabindex="0"
                                                         aria-controls="DataTables_Table_0" rowspan="1"
                                                         colspan="1" style="width: 88px" aria-sort="ascending"
@@ -305,11 +241,60 @@
                                                         Full Name
                                                     </th>
 
+                                                    <th class="sorting" tabindex="0"
+                                                        aria-controls="DataTables_Table_0" rowspan="1"
+                                                        colspan="1" style="width: 50px"
+                                                        aria-label="region: activate to sort column ascending">
+                                                        Marital Status
+                                                    </th>
+
+                                                    <th class="sorting" tabindex="0"
+                                                        aria-controls="DataTables_Table_0" rowspan="1"
+                                                        colspan="1" style="width: 50px"
+                                                        aria-label="region: activate to sort column ascending">
+                                                        Country
+                                                    </th>
+
+                                                    <th class="sorting" tabindex="0"
+                                                        aria-controls="DataTables_Table_0" rowspan="1"
+                                                        colspan="1" style="width: 50px"
+                                                        aria-label="region: activate to sort column ascending">
+                                                        Age
+                                                    </th>
+
+                                                    <th class="sorting" tabindex="0"
+                                                        aria-controls="DataTables_Table_0" rowspan="1"
+                                                        colspan="1" style="width: 50px"
+                                                        aria-label="region: activate to sort column ascending">
+                                                        Education
+                                                    </th>
+
+                                                    <th class="sorting" tabindex="0"
+                                                        aria-controls="DataTables_Table_0" rowspan="1"
+                                                        colspan="1" style="width: 50px"
+                                                        aria-label="region: activate to sort column ascending">
+                                                        Experience
+                                                    </th>
+
+                                                    <th class="sorting" tabindex="0"
+                                                        aria-controls="DataTables_Table_0" rowspan="1"
+                                                        colspan="1" style="width: 50px"
+                                                        aria-label="region: activate to sort column ascending">
+                                                        Emergency Contact
+                                                    </th>
+
+                                                    <th class="sorting" tabindex="0"
+                                                        aria-controls="DataTables_Table_0" rowspan="1"
+                                                        colspan="1" style="width: 50px"
+                                                        aria-label="region: activate to sort column ascending">
+                                                        Registered
+                                                    </th>
+
                                                     <th class="sorting sorting_asc" tabindex="0"
                                                         aria-controls="DataTables_Table_0" rowspan="1"
                                                         colspan="1" style="width: 88px" aria-sort="ascending"
                                                         aria-label="Project: activate to sort column descending">
-                                                        Contact
+                                                        Email
                                                     </th>
 
                                                     <th class="sorting" tabindex="0"
@@ -328,33 +313,21 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                {{-- <tr class="odd">
-                                                    <td class="dtr-control sorting_1" tabindex="0">
-                                                        <span>Funmi Yusuf Ifeanyi (M)</span>
-                                                    </td>
-                                                    <td>Single</td>
-                                                    <td>
-                                                        080 123 456 789 <br />
-                                                        <span>email@faker.com</span>
-                                                    </td>
-                                                    <td>Ghana</td>
-                                                    <td>43 years</td>
-
-                                                    <td>PhD</td>
-                                                    <td>13 years</td>
-                                                    <td>Sept 13, 2020</td>
-                                                    <td>
-                                                        Damian Godswill <br />
-                                                        <span>damian@faker.com</span>
-                                                    </td>
-                                                    <td><span class="badge bg-info">Staff</span></td>
-                                                </tr> --}}
 
                                                 @foreach ($users as $user)
                                                     <tr class="odd">
                                                         <td class="dtr-control sorting_1" tabindex="0">
                                                             <span>{{ $user->fname }} {{ $user->lname }}</span>
                                                         </td>
+                                                        <td>{{ $user->profile->personal_marital_status ?? '' }}</td>
+                                                        <td>{{ $user->profile->country->name ?? '' }}</td>
+                                                        <td>{{ $user->profile ? \Carbon\Carbon::parse($user->profile->personal_birth_date)->age : '' }}
+                                                        </td>
+                                                        <td>{{ $user->profile->education ?? '' }}</td>
+                                                        <td>{{ $user->profile->work_experience ?? '' }}</td>
+                                                        <td>{{ $user->profile && $user->profile->emergency_phone ? '+' . $user->profile->emergency_phone : '' }}
+                                                        </td>
+                                                        <td>{{ dateToWord($user->created_at) }}</td>
                                                         <td>{{ $user->email }}</td>
                                                         <td>
                                                             {{ $user->role->name }}
@@ -417,295 +390,6 @@
                             });
                         });
                     </script>
-                    <!-- Modal: invoice send -->
-                    <!-- <button class="btn btn-primary px-4 text-uppercase" data-bs-toggle="modal" data-bs-target="#invoice_send" type="button">invoice send</button> -->
-                    <div class="modal fade" id="invoice_send" tabindex="-1" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-scrollable">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title">Invoice #RA0011</h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                        aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body custom_scroll">
-                                    <table class="card p-2">
-                                        <tbody>
-                                            <tr>
-                                                <td></td>
-                                                <td style="text-align: center; width: 100%">
-                                                    <table class="table table-borderless mb-0" width="100%"
-                                                        cellpadding="0" cellspacing="0">
-                                                        <tbody>
-                                                            <tr>
-                                                                <td style="text-align: center">
-                                                                    <h2 style="margin-bottom: 0">
-                                                                        $33.98 Paid
-                                                                    </h2>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td
-                                                                    style="
-                                        padding-bottom: 30px 0;
-                                        padding-top: 10px;
-                                        text-align: center;
-                                      ">
-                                                                    <h4 style="margin-bottom: 0">
-                                                                        Thanks for using TTM Inc.
-                                                                    </h4>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td style="padding: 20px 0">
-                                                                    <table width="100%">
-                                                                        <tbody>
-                                                                            <tr>
-                                                                                <td>
-                                                                                    Attn:
-                                                                                    <strong>Daniel Marek</strong>
-                                                                                    43-190 Mikolow, Poland<br />
-                                                                                    Email: marek@daniel.com<br />
-                                                                                    Phone: +48 123 456 789<br />
-                                                                                </td>
-                                                                            </tr>
-                                                                            <tr>
-                                                                                <td>
-                                                                                    <table
-                                                                                        class="table table-borderless table-striped mb-0"
-                                                                                        cellpadding="0"
-                                                                                        cellspacing="0">
-                                                                                        <tbody>
-                                                                                            <tr>
-                                                                                                <td
-                                                                                                    style="text-align: left">
-                                                                                                    Extended License
-                                                                                                </td>
-                                                                                                <td
-                                                                                                    style="text-align: right">
-                                                                                                    $19.99
-                                                                                                </td>
-                                                                                            </tr>
-                                                                                            <tr>
-                                                                                                <td
-                                                                                                    style="text-align: left">
-                                                                                                    1 year subcription
-                                                                                                </td>
-                                                                                                <td
-                                                                                                    style="text-align: right">
-                                                                                                    $9.99
-                                                                                                </td>
-                                                                                            </tr>
-                                                                                            <tr>
-                                                                                                <td
-                                                                                                    style="text-align: left">
-                                                                                                    Instalation and
-                                                                                                    Customization
-                                                                                                </td>
-                                                                                                <td
-                                                                                                    style="text-align: right">
-                                                                                                    $4.00
-                                                                                                </td>
-                                                                                            </tr>
-                                                                                            <tr>
-                                                                                                <td style="text-align: right"
-                                                                                                    width="80%">
-                                                                                                    <strong>Total</strong>
-                                                                                                </td>
-                                                                                                <td
-                                                                                                    style="text-align: right">
-                                                                                                    $33.98
-                                                                                                </td>
-                                                                                            </tr>
-                                                                                        </tbody>
-                                                                                    </table>
-                                                                                </td>
-                                                                            </tr>
-                                                                        </tbody>
-                                                                    </table>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td
-                                                                    style="
-                                        padding: 10px 0;
-                                        text-align: center;
-                                      ">
-                                                                    <a href="#">View in browser</a>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td style="padding: 0; text-align: center">
-                                                                    TTM Inc. 70 Bowman St. South Windsor, CT
-                                                                    06074
-                                                                </td>
-                                                            </tr>
-                                                        </tbody>
-                                                    </table>
-                                                    <table width="100%"
-                                                        style="text-align: center; margin-top: 40px">
-                                                        <tbody>
-                                                            <tr>
-                                                                <td class="aligncenter content-block">
-                                                                    Questions? Email
-                                                                    <a href="mailto:">info@thememakker.com</a>
-                                                                </td>
-                                                            </tr>
-                                                        </tbody>
-                                                    </table>
-                                                </td>
-                                                <td></td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-primary">
-                                        Send Email
-                                    </button>
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-                                        Close
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Modal: invoice detail -->
-                    <!-- <button class="btn btn-primary px-4 text-uppercase" data-bs-toggle="modal" data-bs-target="#invoice_detail" type="button">invoice detail</button> -->
-                    <div class="modal fade" id="invoice_detail" tabindex="-1" aria-hidden="true">
-                        <div class="modal-dialog modal-lg modal-dialog-scrollable">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title">Invoice #RA0011</h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                        aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body custom_scroll">
-                                    <table class="table table-borderless mb-0">
-                                        <tbody>
-                                            <tr>
-                                                <td>Invoice <strong>01/Nov/2020</strong></td>
-                                                <td class="text-end">
-                                                    <span class="text-danger">
-                                                        <strong>Status:</strong> Pending</span>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <div>From:</div>
-                                                    <div class="fs-6 fw-bold mb-1">Webz Poland</div>
-                                                    <div>Madalinskiego 8</div>
-                                                    <div>71-101 Szczecin, Poland</div>
-                                                    <div>Email: info@webz.com.pl</div>
-                                                    <div>Phone: +48 444 666 3333</div>
-                                                </td>
-                                                <td class="text-end">
-                                                    <div>To:</div>
-                                                    <div class="fs-6 fw-bold mb-1">Bob Mart</div>
-                                                    <div>Attn: Daniel Marek</div>
-                                                    <div>43-190 Mikolow, Poland</div>
-                                                    <div>Email: marek@daniel.com</div>
-                                                    <div>Phone: +48 123 456 789</div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td colspan="2">
-                                                    <table class="table table-borderless table-striped mb-0">
-                                                        <thead>
-                                                            <tr>
-                                                                <th class="text-center">#</th>
-                                                                <th>Item</th>
-                                                                <th>Description</th>
-                                                                <th class="text-end">Unit Cost</th>
-                                                                <th class="text-center">Qty</th>
-                                                                <th class="text-end">Total</th>
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                            <tr>
-                                                                <td class="text-center">1</td>
-                                                                <td>Origin License</td>
-                                                                <td>Extended License</td>
-                                                                <td class="text-end">$999,00</td>
-                                                                <td class="text-center">1</td>
-                                                                <td class="text-end">$999,00</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="text-center">2</td>
-                                                                <td>Custom Services</td>
-                                                                <td>
-                                                                    Instalation and Customization (cost per
-                                                                    hour)
-                                                                </td>
-                                                                <td class="text-end">$150,00</td>
-                                                                <td class="text-center">20</td>
-                                                                <td class="text-end">$3.000,00</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="text-center">3</td>
-                                                                <td>Hosting</td>
-                                                                <td>1 year subcription</td>
-                                                                <td class="text-end">$499,00</td>
-                                                                <td class="text-center">1</td>
-                                                                <td class="text-end">$499,00</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="text-center">4</td>
-                                                                <td>Platinum Support</td>
-                                                                <td>1 year subcription 24/7</td>
-                                                                <td class="text-end">$3.999,00</td>
-                                                                <td class="text-center">1</td>
-                                                                <td class="text-end">$3.999,00</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td colspan="3">
-                                                                    <h6>Terms &amp; Condition</h6>
-                                                                    <p class="text-muted">
-                                                                        You know, being a test pilot isn't
-                                                                        always the healthiest business in the
-                                                                        world. We predict too much for the next
-                                                                        year and yet far too little for the next
-                                                                        10.
-                                                                    </p>
-                                                                </td>
-                                                                <td colspan="3">
-                                                                    <table class="table table-borderless mb-0">
-                                                                        <tbody>
-                                                                            <tr>
-                                                                                <td><strong>Subtotal</strong></td>
-                                                                                <td class="text-end">$8.497,00</td>
-                                                                            </tr>
-                                                                            <tr>
-                                                                                <td><strong>VAT (10%)</strong></td>
-                                                                                <td class="text-end">$679,76</td>
-                                                                            </tr>
-                                                                            <tr>
-                                                                                <td><strong>Total</strong></td>
-                                                                                <td class="text-end">
-                                                                                    <strong>$7.477,36</strong>
-                                                                                </td>
-                                                                            </tr>
-                                                                        </tbody>
-                                                                    </table>
-                                                                </td>
-                                                            </tr>
-                                                        </tbody>
-                                                    </table>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-primary">
-                                        <i class="fa fa-print me-2"></i>Print
-                                    </button>
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-                                        Close
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
             <!-- .row end -->
