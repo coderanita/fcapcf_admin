@@ -8,9 +8,12 @@ use App\Models\User;
 use App\Services\DataSourceService;
 use Illuminate\Support\Facades\Hash;
 use Livewire\Component;
+use Livewire\WithFileUploads;
 
 class Edit extends Component
 {
+    use WithFileUploads;
+
     public $user;
 
     public $languages;
