@@ -397,6 +397,7 @@
                                                                                     <option value="" selected>
                                                                                     </option>
                                                                                     <option value="PhD">PhD</option>
+                                                                                    <option value="msc">MSc</option>
                                                                                     <option value="BSc">BSc</option>
                                                                                     <option value="Primary">Primary
                                                                                     </option>
