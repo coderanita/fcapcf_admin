@@ -235,7 +235,11 @@
                                                         aria-controls="DataTables_Table_0" rowspan="1"
                                                         colspan="1" style="width: 40px;"
                                                         aria-label="region: activate to sort column ascending">Marital
-                                                        Status/Age</th>
+                                                        Status</th>
+                                                    <th class="sorting" tabindex="0"
+                                                        aria-controls="DataTables_Table_0" rowspan="1"
+                                                        colspan="1" style="width: 40px;"
+                                                        aria-label="region: activate to sort column ascending">Age</th>
                                                     <th class="sorting" tabindex="0"
                                                         aria-controls="DataTables_Table_0" rowspan="1"
                                                         colspan="1" style="width: 88px;"
@@ -293,9 +297,10 @@
                                                                 ({{ $beneficiary->gender === 'female' ? 'F' : 'M' }})
                                                             </span>
                                                         </td>
-                                                        <td>{{ $beneficiary->marital_status }}
-                                                            {{ $beneficiary->age }}</td>
-                                                        <td>{{ $beneficiary->phone_number }} <br>
+                                                        <td>{{ $beneficiary->marital_status }}</td>
+                                                        <td>{{ $beneficiary->age }}</td>
+                                                        <td>{{ $beneficiary->country_code }}{{ $beneficiary->phone_number }}
+                                                            <br>
                                                         </td>
                                                         <td> {{ $beneficiary->disability_status === 'no' ? 'N/A' : $beneficiary->type_of_disability }}
                                                         </td>
