@@ -35,6 +35,11 @@ class BeneficiaryReports extends Component
 
         $totalBeneficiaryMale = Beneficiary::where('gender', 'male')->count();
         $totalBeneficiaryFemale = Beneficiary::where('gender', 'female')->count();
+        $totalBeneficiaryCountry = Beneficiary::select('nationality_id')
+            ->groupBy('nationality_id')
+            ->get()
+            ->count();
+
 
         return view(
             '_administrator.reports.beneficiary-reports',
@@ -43,6 +48,7 @@ class BeneficiaryReports extends Component
                 'totalBeneficiaries' => $totalBeneficiaries,
                 'totalBeneficiaryMale' => $totalBeneficiaryMale,
                 'totalBeneficiaryFemale' => $totalBeneficiaryFemale,
+                'totalBeneficiaryCountry' => $totalBeneficiaryCountry,
             ]
         );
     }

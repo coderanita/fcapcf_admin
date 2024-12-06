@@ -113,6 +113,18 @@
                                             </div>
                                         </div>
 
+                                        <div class="owl-item active" style="width: 251.4px; margin-right: 10px">
+                                            <div class="item card bg-body">
+                                                <div class="card-body">
+                                                    <div class="avatar lg rounded-circle no-thumbnail mb-3 fs-5">
+                                                        TC
+                                                    </div>
+                                                    <small class="text-muted">Total Country</small>
+                                                    <h4>{{ $totalBeneficiaryCountry }}</h4>
+                                                </div>
+                                            </div>
+                                        </div>
+
                                     </div>
                                 </div>
                                 <div class="owl-nav disabled">
@@ -220,8 +232,8 @@
                                                         aria-label="Project: activate to sort column descending">Full
                                                         Name (Gender)</th>
                                                     <th class="sorting" tabindex="0"
-                                                        aria-controls="DataTables_Table_0" rowspan="1" colspan="1"
-                                                        style="width: 40px;"
+                                                        aria-controls="DataTables_Table_0" rowspan="1"
+                                                        colspan="1" style="width: 40px;"
                                                         aria-label="region: activate to sort column ascending">Marital
                                                         Status/Age</th>
                                                     <th class="sorting" tabindex="0"
