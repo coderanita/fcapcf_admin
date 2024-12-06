@@ -35,8 +35,8 @@ class BeneficiaryReports extends Component
 
         $totalBeneficiaryMale = Beneficiary::where('gender', 'male')->count();
         $totalBeneficiaryFemale = Beneficiary::where('gender', 'female')->count();
-        $totalBeneficiaryCountry = Beneficiary::select('nationality_id')
-            ->groupBy('nationality_id')
+        $totalBeneficiaryCountry = Beneficiary::select('country_id')
+            ->groupBy('country_id')
             ->get()
             ->count();
 
