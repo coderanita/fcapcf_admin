@@ -15,6 +15,20 @@ class BeneficiaryReports extends Component
 {
     use WithPagination;
 
+    public $sortField = 'created_at'; // Default sort field
+    public $sortDirection = 'asc'; // Default sort direction
+
+    // Function to handle the sorting
+    public function sortBy($field)
+    {
+        if ($this->sortField === $field) {
+            $this->sortDirection = $this->sortDirection === 'asc' ? 'desc' : 'asc';
+        } else {
+            $this->sortField = $field;
+            $this->sortDirection = 'asc';
+        }
+    }
+
     public function getLanguageName($languageId)
     {
         return Language::firstWhere('id', $languageId)->name ?? 'Unknown';
@@ -29,7 +43,8 @@ class BeneficiaryReports extends Component
 
     public function render()
     {
-        $beneficiaries = Beneficiary::paginate(10);
+        $beneficiaries = Beneficiary::orderBy($this->sortField, $this->sortDirection)
+            ->paginate(10);
 
         $totalBeneficiaries = Beneficiary::count();
 

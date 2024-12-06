@@ -17,7 +17,7 @@
                             <!-- btn:: create new project -->
 
                             <!-- btn:: Filter -->
-                            {{-- <div class="btn-group">
+                            <div class="btn-group">
                                 <button type="button" class="btn dropdown-toggle after-none rounded-pill"
                                     data-bs-toggle="dropdown">
                                     <span class="me-1 d-none d-lg-inline-block">Filter</span>
@@ -29,20 +29,18 @@
                                     </svg>
                                 </button>
                                 <ul class="dropdown-menu border-0 shadow">
-                                    <li><a class="dropdown-item" href="#">By Region</a></li>
-                                    <li><a class="dropdown-item" href="#">By Marital Status</a></li>
-                                    <li><a class="dropdown-item" href="#">By Gender</a></li>
-                                    <li><a class="dropdown-item" href="#">By Marital Status</a></li>
-                                    <li><a class="dropdown-item" href="#">By Education Level</a></li>
-                                    <li><a class="dropdown-item" href="#">By Tribe</a></li>
+                                    <li><a class="dropdown-item" href="#"
+                                            wire:click.prevent="sortBy('marital_status')">By Marital Status</a></li>
+                                    <li><a class="dropdown-item" href="#" wire:click.prevent="sortBy('gender')">By
+                                            Gender</a></li>
+                                    <li><a class="dropdown-item" href="#"
+                                            wire:click.prevent="sortBy('country_id')">By Country</a></li>
                                     <li>
-                                        <a class="dropdown-item" href="#">By Registration Dtae</a>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item" href="#">By Registration Date</a>
+                                        <a class="dropdown-item" href="#"
+                                            wire:click.prevent="sortBy('created_at')">By Registration Dtae</a>
                                     </li>
                                 </ul>
-                            </div> --}}
+                            </div>
 
                             <button wire:click="export" class="btn d-none d-sm-inline-flex bg-secondary rounded-pill"
                                 type="button">
@@ -227,8 +225,8 @@
                                             <thead>
                                                 <tr>
                                                     <th class="sorting sorting_asc" tabindex="0"
-                                                        aria-controls="DataTables_Table_0" rowspan="1" colspan="1"
-                                                        style="width: 88px;" aria-sort="ascending"
+                                                        aria-controls="DataTables_Table_0" rowspan="1"
+                                                        colspan="1" style="width: 88px;" aria-sort="ascending"
                                                         aria-label="Project: activate to sort column descending">Full
                                                         Name (Gender)</th>
                                                     <th class="sorting" tabindex="0"
