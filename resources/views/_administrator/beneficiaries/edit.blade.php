@@ -113,7 +113,8 @@
                                                                                 <select
                                                                                     class="form-select @error('gender') is-invalid @enderror"
                                                                                     wire:model="gender">
-                                                                                    <option value="" selected></option>
+                                                                                    <option value="" selected>
+                                                                                    </option>
                                                                                     <option value="male">Male</option>
                                                                                     <option value="female">Female
                                                                                     </option>
@@ -444,12 +445,18 @@
                                                                                     class="form-select @error('vulnerabilities') is-invalid @enderror"
                                                                                     wire:model="vulnerabilities">
                                                                                     <option value="" selected>
-                                                                                        
+
                                                                                     </option>
                                                                                     <option value="Orphan">Orphan
                                                                                     </option>
+                                                                                    <option value="Prisoner">Prisoner
+                                                                                    </option>
                                                                                     <option value="Single Parent">
                                                                                         Single Parent</option>
+                                                                                    <option value="Widow">Widow
+                                                                                    </option>
+                                                                                    <option value="Widower">Widower
+                                                                                    </option>
                                                                                 </select>
                                                                                 <label>Vulnerabilities *</label>
                                                                                 @error('vulnerabilities')
@@ -483,7 +490,8 @@
                                                                             <select
                                                                                 class="form-select @error('type_of_assistance') is-invalid @enderror"
                                                                                 wire:model="type_of_assistance">
-                                                                                <option value="" selected></option>
+                                                                                <option value="" selected>
+                                                                                </option>
                                                                                 <option value="Medical">Medical
                                                                                 </option>
                                                                                 <option value="Educational">Educational
@@ -517,7 +525,8 @@
                                                                             <select
                                                                                 class="form-select @error('health_status') is-invalid @enderror"
                                                                                 wire:model="health_status">
-                                                                                <option value="" selected></option>
+                                                                                <option value="" selected>
+                                                                                </option>
                                                                                 <option value="chronic illness">Chronic
                                                                                     Illness</option>
                                                                                 <option value="Health">Health</option>
@@ -657,7 +666,7 @@
                                                                                                 {{ $marital_status }}
                                                                                             </div>
                                                                                         </div>
-                                                                                        
+
                                                                                         <div
                                                                                             class="py-2 px-3 me-2 mt-2">
                                                                                             <small
