@@ -38,12 +38,13 @@ class Create extends Component
             'alert',
             type: "success",
             msg: "{$this->name}  saved successfully"
-          );
+        );
+
+        $this->reset();
     }
-    
+
     public function render()
     {
         return view('_administrator.project-category.create');
     }
 }
-
