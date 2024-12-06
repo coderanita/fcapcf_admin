@@ -76,17 +76,6 @@
             </div>
         </div> --}}
     </div>
-
-    <!-- Start:: footer link and more -->
-    <div class="page-footer bg-card mt-4">
-        <div class="container-fluid">
-            <footer class="d-flex flex-wrap justify-content-between align-items-center py-2">
-                <p class="col-md-5 mb-0 text-muted">© 2024 <a href="javascript:void(0)">First Child & Prisoner
-                        Care Foundation</a>. <span class="fa fa-heart text-danger"></span> </p>
-
-            </footer>
-        </div>
-    </div>
 </div>
 
 </div>
