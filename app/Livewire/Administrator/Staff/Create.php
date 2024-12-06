@@ -10,9 +10,12 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
 use Livewire\Component;
+use Livewire\WithFileUploads;
 
 class Create extends Component
 {
+    use WithFileUploads;
+
     public $languages;
     public $nationalities;
     public $beneficiaries;
@@ -25,6 +28,7 @@ class Create extends Component
     // Step 1
     public $first_name, $middle_name, $last_name, $gender, $phone_number, $email, $date_of_birth, $marital_status, $countryCode;
     public $nationality_id, $id_type, $id_number, $expiry_date;
+    public $profile_photo_path;
 
     public $full_name, $countryCodeEmergency, $telephone, $relationship_id, $home_address;
 
@@ -50,6 +54,9 @@ class Create extends Component
         'language_id.exists' => 'Please select a valid language.',
         'relationship_id.exists' => 'Please select a valid relationship.',
         'email.unique' => 'The email address is already registered.',
+
+        'profile_photo_path.image' => 'Please upload a valid image.',
+        'profile_photo_path.max' => 'Image size cannot exceed 2MB.',
     ];
 
     public function validateData()
@@ -75,6 +82,8 @@ class Create extends Component
                 'telephone' => 'required|string|max:15',
                 'relationship_id' => 'required|exists:relationships,id',
                 'home_address' => 'required|string|max:500',
+
+                'profile_photo_path' => 'required|image',
             ]);
         }
 
@@ -169,13 +178,19 @@ class Create extends Component
         // Generate a random password
         $password = Str::random(9) . $specialChars[random_int(0, strlen($specialChars) - 1)];
 
+        $savedImage = '';
+        if ($this->profile_photo_path) {
+            $savedImage = $this->profile_photo_path->store('staff/profile_photos', 'public');
+        }
+
         $user = User::create([
             'role_id' => $this->selectedRole,
             'fname' => $this->first_name,
             'lname' => $this->last_name,
             'email' => $this->email,
             'password' => Hash::make($password),
-            'role_id' => $this->selectedRole
+            'role_id' => $this->selectedRole,
+            'profile_photo_path' => $savedImage,
         ]);
 
         Profile::create([

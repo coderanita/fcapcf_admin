@@ -160,6 +160,19 @@
                                                                         </div>
 
                                                                         <div class="form-floating mb-2 col-md-4">
+                                                                            <input type="file"
+                                                                                class="form-control @error('profile_photo_path') is-invalid @enderror"
+                                                                                accept="image/*, video/*"
+                                                                                capture="environment"
+                                                                                wire:model="profile_photo_path" />
+                                                                            <label>Take Photo *</label>
+                                                                            @error('profile_photo_path')
+                                                                                <div class="invalid-feedback">
+                                                                                    {{ $message }}</div>
+                                                                            @enderror
+                                                                        </div>
+
+                                                                        <div class="form-floating mb-2 col-md-4">
                                                                             <select
                                                                                 class="form-select @error('gender') is-invalid @enderror"
                                                                                 wire:model="gender">
@@ -930,6 +943,19 @@
                                                                             <div class="card">
                                                                                 <div
                                                                                     class="card-body table-responsive p-0">
+                                                                                    @if ($profile_photo_path)
+                                                                                        <img src="{{ $profile_photo_path->temporaryUrl() }}"
+                                                                                            alt=""
+                                                                                            class="rounded-4"
+                                                                                            width="250"
+                                                                                            height="250">
+                                                                                    @elseif($savedImage)
+                                                                                        <img src="{{ 'https://console.fcapcf.org/storage/app/public/' . $savedImage }}"
+                                                                                            alt=""
+                                                                                            class="rounded-4"
+                                                                                            width="250"
+                                                                                            height="250">
+                                                                                    @endif
                                                                                     <table
                                                                                         class="table card-table mb-0">
                                                                                         <thead>

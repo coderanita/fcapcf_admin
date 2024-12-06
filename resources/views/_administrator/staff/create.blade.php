@@ -161,6 +161,19 @@
                                                                         </div>
 
                                                                         <div class="form-floating mb-2 col-md-4">
+                                                                            <input type="file"
+                                                                                class="form-control @error('profile_photo_path') is-invalid @enderror"
+                                                                                accept="image/*, video/*"
+                                                                                capture="environment"
+                                                                                wire:model="profile_photo_path" />
+                                                                            <label>Take Photo *</label>
+                                                                            @error('profile_photo_path')
+                                                                                <div class="invalid-feedback">
+                                                                                    {{ $message }}</div>
+                                                                            @enderror
+                                                                        </div>
+
+                                                                        <div class="form-floating mb-2 col-md-4">
                                                                             <select
                                                                                 class="form-select @error('gender') is-invalid @enderror"
                                                                                 wire:model="gender">
@@ -833,7 +846,7 @@
                                                                                 @enderror
                                                                             </div>
                                                                         @endif
-                                                                        
+
                                                                         <div class="form-floating mb-2 col-12">
                                                                             <textarea class="form-control @error('benefits') is-invalid @enderror" wire:model="benefits" rows="3"
                                                                                 placeholder="State reason for leaving"></textarea>
@@ -930,6 +943,10 @@
                                                                             <div class="card">
                                                                                 <div
                                                                                     class="card-body table-responsive p-0">
+                                                                                    <img src="{{ $profile_photo_path ? $profile_photo_path->temporaryUrl() : asset('img/profile_av.png') }}"
+                                                                                        alt=""
+                                                                                        class="rounded-4"
+                                                                                        width="250" height="250">
                                                                                     <table
                                                                                         class="table card-table mb-0">
                                                                                         <thead>

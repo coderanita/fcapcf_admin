@@ -25,6 +25,8 @@ class Edit extends Component
     // Step 1
     public $first_name, $middle_name, $last_name, $gender, $phone_number, $email, $date_of_birth, $marital_status, $countryCode;
     public $nationality_id, $id_type, $id_number, $expiry_date;
+    public $profile_photo_path;
+    public $savedImage;
 
     public $full_name, $countryCodeEmergency,  $telephone, $relationship_id, $home_address;
 
@@ -50,6 +52,9 @@ class Edit extends Component
         'nationality_id.exists' => 'Please select a valid nationality.',
         'language_id.exists' => 'Please select a valid language.',
         'relationship_id.exists' => 'Please select a valid relationship.',
+
+        'profile_photo_path.image' => 'Please upload a valid image.',
+        'profile_photo_path.max' => 'Image size cannot exceed 2MB.',
     ];
 
     public function mount(User $user)
@@ -113,6 +118,8 @@ class Edit extends Component
         $this->comp_equipment = $user->profile->sec_company_equipment_issued ?? '';
         $this->system_access = $user->profile->sec_sys_access_requirement ?? '';
         $this->security = $user->profile->sec_security_clearance ?? '';
+
+        $this->savedImage = $user->profile_photo_path;
     }
 
     public function validateData()
@@ -223,6 +230,11 @@ class Edit extends Component
     public function save()
     {
 
+        $profilePic = $this->savedImage;
+        if ($this->profile_photo_path) {
+            $profilePic = $this->profile_photo_path->store('beneficiaries/profile_photos', 'public');
+        }
+
         // $this->authorize('update', $this->user);
         // $this->authorize('update', $this->user->profile);
 
@@ -231,7 +243,9 @@ class Edit extends Component
             'lname' => $this->last_name,
             'email' => $this->email,
             'password' => Hash::make('password'),
-            'role_id' => $this->selectedRole
+            'role_id' => $this->selectedRole,
+
+            'profile_photo_path' => $profilePic,
         ]);
 
         info($this->marital_status);
