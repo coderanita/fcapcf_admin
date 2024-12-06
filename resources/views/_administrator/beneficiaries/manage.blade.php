@@ -43,3 +43,27 @@
     <x-modal-delete></x-modal-delete>
     {{-- Modal Delete --}}
 </div>
+
+<script src="{{ asset('js/theme.js') }}"></script>
+<!-- Plugin Js -->
+<script src="{{ asset('js/bundle/dataTables.bundle.js') }}"></script>
+<!-- Jquery Page Js -->
+<script>
+    $('.myDataTable').addClass('nowrap').dataTable({
+        responsive: true,
+        searching: true,
+        paging: true,
+        ordering: true,
+        info: false,
+    });
+    $('#myDataTable_no_filter').addClass('nowrap').dataTable({
+        responsive: true,
+        searching: false,
+        paging: true,
+        ordering: false,
+        info: false,
+    });
+    $('a[data-bs-toggle="tab"]').on('shown.bs.tab', function(e) {
+        $($.fn.dataTable.tables(true)).DataTable().columns.adjust().responsive.recalc();
+    });
+</script>
