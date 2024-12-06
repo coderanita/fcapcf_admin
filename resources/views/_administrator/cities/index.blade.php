@@ -48,7 +48,7 @@
                                     @endphp
                                     @foreach ($cities as $city)
                                         <tr>
-                                            <td>{{ $city->id}}</td>
+                                            <td>{{ $loop->iteration }}</td>
                                             <td>{{ $city->name }}</td>
                                             <td>
                                                 <button type="button" class="btn btn-link btn-sm"
@@ -70,11 +70,11 @@
             </div> <!-- .row end -->
         </div>
 
-        <div class="tab-pane fade show active" id="nav-Preview5" role="tabpanel">
+        {{-- <div class="tab-pane fade show active" id="nav-Preview5" role="tabpanel">
             <div class="mt-4">
                 {{ $cities->links() }}
             </div>
-        </div>
+        </div> --}}
     </div>
 
     <!-- Start:: footer link and more -->
@@ -100,5 +100,29 @@
         window.addEventListener('modalOpenedEdit', event => {
             $('#edit_project_country').modal('show');
         })
+    </script>
+
+    <script src="{{ asset('js/theme.js') }}"></script>
+    <!-- Plugin Js -->
+    <script src="{{ asset('js/bundle/dataTables.bundle.js') }}"></script>
+    <!-- Jquery Page Js -->
+    <script>
+        $('.myDataTable').addClass('nowrap').dataTable({
+            responsive: true,
+            searching: true,
+            paging: true,
+            ordering: true,
+            info: false,
+        });
+        $('#myDataTable_no_filter').addClass('nowrap').dataTable({
+            responsive: true,
+            searching: false,
+            paging: true,
+            ordering: false,
+            info: false,
+        });
+        $('a[data-bs-toggle="tab"]').on('shown.bs.tab', function(e) {
+            $($.fn.dataTable.tables(true)).DataTable().columns.adjust().responsive.recalc();
+        });
     </script>
 @endpush

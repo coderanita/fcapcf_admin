@@ -17,7 +17,7 @@ class Index extends Component
     public function render()
     {
         $states = State::get();
-        $cities = City::paginate(10);
+        $cities = City::skip(30000)->take(5000)->get();
         return view('_administrator.cities.index', ['cities' => $cities, 'states' => $states]);
     }
 }

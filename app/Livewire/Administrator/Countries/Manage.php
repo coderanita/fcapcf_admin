@@ -74,7 +74,7 @@ class Manage extends Component
     #[On('re-render-country')]
     public function render()
     {
-        $countries = Country::paginate(10);
+        $countries = Country::get();
         $regions = Region::get();
         return view('_administrator.countries.manage', ['countries' => $countries, 'regions' => $regions]);
     }

@@ -11,7 +11,7 @@ use Livewire\WithPagination;
 class Manage extends Component
 {
     use WithPagination;
-    
+
     public $state;
     public $name, $selectedCountry = "";
 
@@ -70,7 +70,7 @@ class Manage extends Component
     #[On('re-render-state')]
     public function render()
     {
-        $states = State::paginate(10);
+        $states = State::get();
         $countries = Country::get();
         return view('_administrator.states.manage', ['countries' => $countries, 'states' => $states]);
     }
