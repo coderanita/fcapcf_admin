@@ -14,8 +14,6 @@
                                     $fullUrl = $user->profile_photo_url; // Full URL
                                     $relativePath = str_replace(url('/storage') . '/', '', $fullUrl);
 
-                                    echo $relativePath; // Outputs: staff/profile_photos/UavNsdZE29oBGSIvJPA4YBV5fTaCXwk28uOvTh89.jpg
-
                                 @endphp
 
                                 <img style="max-width:160px"
