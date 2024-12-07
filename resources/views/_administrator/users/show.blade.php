@@ -9,8 +9,19 @@
                     <div class="card">
                         <div class="card-body border-bottom">
                             <div class="d-flex align-items-md-start align-items-center flex-column flex-md-row">
-                                <img style="max-width:160px" src="{{ $user->profile_photo_url }}" alt=""
-                                    class="rounded-4">
+
+                                @php
+                                    $fullUrl = $user->profile_photo_url; // Full URL
+                                    $relativePath = str_replace(url('/storage') . '/', '', $fullUrl);
+
+                                    echo $relativePath; // Outputs: staff/profile_photos/UavNsdZE29oBGSIvJPA4YBV5fTaCXwk28uOvTh89.jpg
+
+                                @endphp
+
+                                <img style="max-width:160px"
+                                    src="{{ 'https://console.fcapcf.org/storage/app/public/' . $relativePath }}"
+                                    alt="" class="rounded-4">
+
                                 <div class="media-body ms-md-5 m-0 mt-4 mt-md-0 text-md-start text-center">
                                     <h4 class="mb-1 fw-light">{{ ucwords($user->fullName()) }}<a
                                             href="{{ route('administrator.users.profile', $user->id) }}"
