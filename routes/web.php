@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\HomeController;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 // Route::middleware(['auth', 'verified'])->group(function () {
 //   Route::get('/user/profile', function () {
@@ -51,7 +52,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
 // Route::get('/payroll/', EmployeePayroll::class)->name('payroll');
 // });
 
-
+Route::get('/foo', function () {
+  Artisan::call('storage:link');
+});
 
 
 
