@@ -13,7 +13,7 @@
         <div class="col-sm-12 col-md-6 d-flex justify-content-end">
             <div class="d-flex align-items-center">
                 <label class="me-2 mb-0">Search:</label>
-                <input type="search" class="form-control form-control-sm">
+                <input type="search" class="form-control form-control-sm" wire:model.live="search">
             </div>
         </div>
     </div>

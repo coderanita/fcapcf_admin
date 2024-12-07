@@ -146,6 +146,8 @@ class ManageUser extends Component
     $this->endDate = $endDate;
   }
 
+  public $search = '';
+
   public function render()
   {
     $this->authorize('viewany', User::class);
@@ -154,6 +156,14 @@ class ManageUser extends Component
 
 
     $users = User::with(['role']);
+
+    if ($this->search) {
+      $users->where(function ($query) {
+        $query->where('fname', 'like', '%' . $this->search . '%')
+          ->orWhere('email', 'like', '%' . $this->search . '%')
+          ->orWhere('lname', 'like', '%' . $this->search . '%');
+      });
+    }
 
     if ($this->roleName) {
       $users->whereRelation('role', 'name', $this->roleName);
