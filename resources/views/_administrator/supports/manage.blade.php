@@ -5,7 +5,7 @@
                 {{-- <input class="form-check-input" type="checkbox" value="" id="checkall"> --}}
                 <label class="form-check-label" for="checkall">{{ $status }}</label>
             </div>
-            {{-- <button class="btn btn-sm btn-outline-secondary" type="button"><i class="fa fa-refresh"></i></button> --}}
+            <button class="btn btn-sm btn-outline-secondary" type="button"><i class="fa fa-refresh"></i></button>
         </div>
         <div class="d-flex align-items-center">
             <span class="text-muted me-2">{{ $supports->firstItem() }}-{{ $supports->lastItem() }} of

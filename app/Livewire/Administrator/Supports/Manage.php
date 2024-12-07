@@ -11,6 +11,8 @@ class Manage extends Component
 {
     use WithPagination;
 
+    
+
     #[On('re-render-supports')]
     public function render()
     {

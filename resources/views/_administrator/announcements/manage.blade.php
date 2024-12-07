@@ -2,10 +2,10 @@
     <div class="card-header bg-body px-3">
         <div class="d-flex flex-wrap flex-grow-1 align-items-center">
             <div class="form-check mb-0 me-lg-3 me-2">
-                {{-- <input class="form-check-input" type="checkbox" value="" id="checkall">
-                <label class="form-check-label" for="checkall">All</label> --}}
+                <input class="form-check-input" type="checkbox" value="" id="checkall">
+                <label class="form-check-label" for="checkall">All</label>
             </div>
-            {{-- <button class="btn btn-sm btn-outline-secondary" type="button"><i class="fa fa-refresh"></i></button> --}}
+            <button class="btn btn-sm btn-outline-secondary" type="button"><i class="fa fa-refresh"></i></button>
         </div>
         <div class="d-flex align-items-center">
             <span class="text-muted me-2">{{ $announcements->firstItem() }}-{{ $announcements->lastItem() }} of
