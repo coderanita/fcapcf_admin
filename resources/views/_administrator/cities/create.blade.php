@@ -19,4 +19,60 @@
 
     </x-breadcrumb>
 
+    <div class="modal fade" id="project_city" tabindex="-1" wire:ignore.self>
+        <div class="modal-dialog modal-dialog-vertical modal-dialog-scrollable">
+            <div class="modal-content" style="padding: 35px">
+                <div class="offcanvas-header">
+                    <h5 class="offcanvas-title">Add New City</h5>
+                    <button type="button" class="btn-close text-reset" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body">
+                    <form class="row g-3" style="margin-top: 60px" wire:submit.prevent="save">
+
+                        <div class="col-md-12">
+                            <label class="form-label">State</label>
+                            <select class="form-select" wire:model.live='selectedState'>
+                                <option selected value="">Choose...</option>
+                                @foreach ($states as $state)
+                                    <option value="{{ $state->id }}">{{ ucwords($state->name) }}
+                                    </option>
+                                @endforeach
+
+                            </select>
+                            <x-input-error for="selectedState" />
+                        </div>
+
+                        <div class="col-md-12">
+                            <label class="form-label">City Name</label>
+                            <input type="text" class="form-control @error('name') is-invalid @enderror"
+                                wire:model="name">
+                            @error('name')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+
+                        <div class="col-12" style="margin-top: 45px;">
+                            <button type="submit" class="btn btn-primary">Add City</button>
+                            <button type="button" class="btn btn-outline-secondary"
+                                data-bs-dismiss="modal">Cancel</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </div>
+
+@push('scripts')
+    <script>
+        window.addEventListener('modalClosedCity', event => {
+            $('#project_city').modal('hide');
+        })
+
+        window.addEventListener('modalOpenedCity', event => {
+            $('#project_city').modal('show');
+        })
+    </script>
+@endpush
