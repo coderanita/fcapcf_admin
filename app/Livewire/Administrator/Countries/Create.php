@@ -9,11 +9,12 @@ use Livewire\Component;
 class Create extends Component
 {
 
-    public $name, $code, $selectedRegion = "";
+    public $name, $code, $phonecode, $selectedRegion = "";
 
     protected $rules = [
         'name' => 'required',
         'code' => 'required',
+        'phonecode' => 'required',
     ];
 
     public function create()
@@ -29,6 +30,7 @@ class Create extends Component
         $country = Country::create([
             'name' => $this->name,
             'code' => $this->code,
+            'phonecode' => $this->phonecode,
         ]);
 
         $this->dispatch('modalClosedCountry');

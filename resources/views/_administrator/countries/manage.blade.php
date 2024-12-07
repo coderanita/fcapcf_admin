@@ -40,6 +40,7 @@
                                         <th>S/N</th>
                                         <th>Name</th>
                                         <th>Country Code</th>
+                                        <th>Phone Code</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -52,6 +53,7 @@
                                             <td>{{ $country->id }}</td>
                                             <td>{{ $country->name }}</td>
                                             <td>{{ $country->code }}</td>
+                                            <td>+{{ $country->phonecode }}</td>
                                             <td>
                                                 <button type="button" class="btn btn-link btn-sm"
                                                     wire:click="edit({{ $country }})" title="Edit"><i
@@ -104,6 +106,15 @@
                             <input type="text" class="form-control @error('code') is-invalid @enderror"
                                 wire:model="code">
                             @error('code')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+
+                        <div class="col-md-12">
+                            <label class="form-label">Phone Code</label>
+                            <input type="number" class="form-control @error('phonecode') is-invalid @enderror"
+                                wire:model="phonecode">
+                            @error('phonecode')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>

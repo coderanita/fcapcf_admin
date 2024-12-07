@@ -12,14 +12,14 @@ class Manage extends Component
 {
 
     use WithPagination;
-    
+
     public $country;
-    public $name, $code, $selectedRegion = "";
+    public $name, $code, $selectedRegion = "", $phonecode;
 
     protected $rules = [
         'name' => 'required',
         'code' => 'required',
-        'selectedRegion' => 'required',
+        'phonecode' => 'required',
     ];
 
     public function edit(Country $country)
@@ -27,7 +27,7 @@ class Manage extends Component
         $this->country = $country;
         $this->name = $country->name;
         $this->code = $country->code;
-        $this->selectedRegion = $country->region_id;
+        $this->phonecode = $country->phonecode;
 
         $this->dispatch('modalOpenedEdit');
     }
@@ -39,7 +39,7 @@ class Manage extends Component
         $this->country->update([
             'name' => $this->name,
             'code' => $this->code,
-            'region_id' => $this->selectedRegion
+            'phonecode' => $this->phonecode
         ]);
 
         $this->dispatch('modalClosed');

@@ -1,6 +1,6 @@
 <div>
     <x-breadcrumb title="Countries" sub_title="Countries">
-        {{-- <x-slot name="page_action">
+        <x-slot name="page_action">
             <div class="page-action">
                 <a wire:click='create'>
                     <button class="btn d-none d-sm-inline-flex rounded-pill" type="button">
@@ -15,7 +15,7 @@
                 </a>
 
             </div>
-        </x-slot> --}}
+        </x-slot>
 
     </x-breadcrumb>
 
@@ -49,6 +49,15 @@
                             @enderror
                         </div>
 
+                        <div class="col-md-12">
+                            <label class="form-label">Phone Code</label>
+                            <input type="number" class="form-control @error('phonecode') is-invalid @enderror"
+                                wire:model="phonecode">
+                            @error('phonecode')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+
                         <div class="col-12" style="margin-top: 45px;">
                             <button type="submit" class="btn btn-primary">Add Country</button>
                             <button type="button" class="btn btn-outline-secondary"
@@ -77,6 +86,7 @@
     <script>
         window.addEventListener('modalClosedCountry', event => {
             $('#project_country').modal('hide');
+            window.location.reload();
         })
 
         window.addEventListener('modalOpenedCountry', event => {
