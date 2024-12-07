@@ -57,8 +57,8 @@ Route::get('/foo', function () {
 });
 
 Route::get('/link', function () {        
-  $target = '/home/public_html/storage/app/public';
-  $shortcut = '/home/public_html/public/storage';
+  $target = '/var/www/fastuser/data/www/console.fcapcf.org/storage/app/public';
+  $shortcut = '/var/www/fastuser/data/www/console.fcapcf.org/public/storage';
   symlink($target, $shortcut);
 });
 
