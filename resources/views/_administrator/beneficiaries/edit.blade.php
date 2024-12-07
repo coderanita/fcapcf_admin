@@ -671,9 +671,9 @@
                                                                                         <div
                                                                                             class="py-2 px-3 me-2 mt-2">
                                                                                             <small
-                                                                                                class="text-muted">Tribe/Ethnicity</small>
+                                                                                                class="text-muted">Country</small>
                                                                                             <div class="fs-5">
-                                                                                                {{ $ethnicity_tribe }}
+                                                                                                {{ $this->getCountryName($country_id) }}
                                                                                             </div>
                                                                                         </div>
                                                                                         <div

@@ -14,12 +14,12 @@ return new class extends Migration
         Schema::create('beneficiary_social_economics', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('beneficiary_id');
-            $table->string('occupation');
-            $table->string('household_size');
-            $table->string('education_level');
-            $table->string('income');
-            $table->string('housing_status');
-            $table->string('vulnerabilities');
+            $table->string('occupation')->nullable();
+            $table->string('household_size')->nullable();
+            $table->string('education_level')->nullable();
+            $table->string('income')->nullable();
+            $table->string('housing_status')->nullable();
+            $table->string('vulnerabilities')->nullable();
             $table->timestamps();
 
             // $table->foreign('beneficiary_id')->references('id')->on('beneficiaries')->onDelete('cascade');

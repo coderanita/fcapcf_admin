@@ -14,11 +14,11 @@ return new class extends Migration
         Schema::create('beneficiary_assistances', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('beneficiary_id');
-            $table->string('type_of_assistance');
-            $table->string('previous_assistance');
-            $table->string('health_status');
-            $table->string('skills_or_training');
-            $table->string('geographical_location');
+            $table->string('type_of_assistance')->nullable();
+            $table->string('previous_assistance')->nullable();
+            $table->string('health_status')->nullable();
+            $table->string('skills_or_training')->nullable();
+            $table->string('geographical_location')->nullable();
             $table->string('ethnicity_tribe')->nullable();
             $table->string('religion')->nullable();
             $table->string('referring_organization')->nullable();

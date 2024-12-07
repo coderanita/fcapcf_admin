@@ -204,6 +204,11 @@ class Create extends Component
         return $this->nationalities->firstWhere('id', $nationalityId)->name ?? 'Unknown';
     }
 
+    public function getCountryName($country_id)
+    {
+        return $this->countries->firstWhere('id', $country_id)->name ?? 'Unknown';
+    }
+
     public function getLanguageName($languageId)
     {
         return $this->languages->firstWhere('id', $languageId)->name ?? 'Unknown';

@@ -233,7 +233,7 @@ class Edit extends Component
                 'vulnerabilities' => $this->vulnerabilities,
             ]);
         }
- 
+
         $assistance = BeneficiaryAssistance::where('beneficiary_id', $this->beneficiary_id)->first();
         if ($assistance) {
             $assistance->update([
@@ -270,6 +270,11 @@ class Edit extends Component
     public function getRelationshipName($relationshipId)
     {
         return $this->beneficiaries->firstWhere('id', $relationshipId)->name ?? 'Unknown';
+    }
+
+    public function getCountryName($country_id)
+    {
+        return $this->countries->firstWhere('id', $country_id)->name ?? 'Unknown';
     }
 
     public function render()
