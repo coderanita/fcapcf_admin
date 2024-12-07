@@ -56,7 +56,11 @@ Route::get('/foo', function () {
   Artisan::call('storage:link');
 });
 
-
+Route::get('/link', function () {        
+  $target = '/home/public_html/storage/app/public';
+  $shortcut = '/home/public_html/public/storage';
+  symlink($target, $shortcut);
+});
 
 require_once __DIR__ . "/administrator.php";
 require_once __DIR__ . "/manager.php";
