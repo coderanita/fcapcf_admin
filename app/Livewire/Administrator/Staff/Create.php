@@ -183,6 +183,7 @@ class Create extends Component
             $savedImage = $this->profile_photo_path->store('staff/profile_photos', 'public');
         }
 
+        info($savedImage . '$savedImage');
         $user = User::create([
             'role_id' => $this->selectedRole,
             'fname' => $this->first_name,
