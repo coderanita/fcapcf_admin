@@ -140,6 +140,7 @@
     <script>
         window.addEventListener('modalClosed', event => {
             $('#edit_project_state').modal('hide');
+            window.location.reload();
         })
 
         window.addEventListener('modalOpenedEdit', event => {
