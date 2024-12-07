@@ -1,4 +1,24 @@
 <div>
+    <div class="row align-items-center">
+        <div class="col-sm-12 col-md-6 d-flex align-items-center">
+            {{-- <label class="me-2 mb-0">Show</label>
+            <select class=" form-select-sm">
+                <option value="10">10</option>
+                <option value="25">25</option>
+                <option value="50">50</option>
+                <option value="100">100</option>
+            </select>
+            <span class="ms-2">entries</span> --}}
+        </div>
+        <div class="col-sm-12 col-md-6 d-flex justify-content-end">
+            <div class="d-flex align-items-center">
+                <label class="me-2 mb-0">Search:</label>
+                <input type="search" class="form-control form-control-sm">
+            </div>
+        </div>
+    </div>
+
+
     <table class="myDataTable table table-hover mb-0">
         <thead>
             <tr>
@@ -165,7 +185,8 @@
         title="Confirm Delete  {{ $fname . ' ' . $lname }}?" id="deleteUser" class="modal-md modal-dialog-centered"
         submit="delete({{ $userId }})">
         <x-slot name="body">
-            <h5 class="text-danger"><i class="bi bi-info-circle-fill text-danger"></i> Deleting user will remove all of
+            <h5 class="text-danger"><i class="bi bi-info-circle-fill text-danger"></i> Deleting user will remove all
+                of
                 information from our database. </h5>
         </x-slot>
         <x-slot name="footer">
