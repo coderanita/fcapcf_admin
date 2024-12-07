@@ -17,7 +17,8 @@
                                             class="btn bg-secondary text-light w-100 mb-3">New Message</span></a>
                                 </li>
                                 <li><a class="m-link active" href="#"><i
-                                            class="fa fa-inbox"></i><span>Inbox</span></a>
+                                            class="fa fa-inbox"></i><span>Inbox</span><span
+                                            class="badge bg-light text-dark ms-2 ms-auto">0</span></a>
                                 </li>
                                 <li><a class="m-link" href="{{ route('administrator.supports', 'status=1') }}"><i
                                             class="fa fa-send"></i><span>Sent</span><span
