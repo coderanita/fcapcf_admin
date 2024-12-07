@@ -6,6 +6,7 @@
                 <th>Name</th>
                 <th>Account Type</th>
                 <th>Assigned Program</th>
+                <th>Contact</th>
                 <th>Status</th>
                 <th>Action</th>
             </tr>
@@ -32,6 +33,8 @@
                         </span>
 
                     </td>
+
+                    <td>{{ $user->profile && $user->profile->personal_phone ? '+' . $user->profile->country_code . $user->profile->personal_phone : '' }}
 
                     <td>
 
@@ -195,14 +198,14 @@
         $('.myDataTable').addClass('nowrap').dataTable({
             responsive: true,
             searching: true,
-            paging: false,
+            paging: true,
             ordering: true,
             info: false,
         });
         $('#myDataTable_no_filter').addClass('nowrap').dataTable({
             responsive: true,
             searching: false,
-            paging: false,
+            paging: true,
             ordering: false,
             info: false,
         });

@@ -2,7 +2,7 @@
     <x-breadcrumb title="System Users" sub_title="User list">
         <x-slot name="page_action">
             <div class="page-action">
-                <a wire:click='create'>
+                {{-- <a wire:click='create'>
                     <button class="btn d-none d-sm-inline-flex rounded-pill" type="button">
                         <span class="me-1 d-none d-lg-inline-block">Create New</span>
                         <svg width="14" height="14" viewBox="0 0 14 14" fill="none"
@@ -12,7 +12,7 @@
                                 fill="white" />
                         </svg>
                     </button>
-                </a>
+                </a> --}}
 
                 <div class="btn-group">
                     <div id="reportrange"

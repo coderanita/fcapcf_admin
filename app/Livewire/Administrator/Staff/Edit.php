@@ -310,6 +310,8 @@ class Edit extends Component
             'sec_sys_access_requirement'  =>  $this->system_access,
             'sec_security_clearance'  =>  $this->security,
 
+            'country_code' => $this->countryCode
+
         ]);
 
         $this->dispatch(

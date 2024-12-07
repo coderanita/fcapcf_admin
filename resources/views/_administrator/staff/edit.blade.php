@@ -981,7 +981,7 @@
                                                                                             </tr>
                                                                                             <tr>
                                                                                                 <td>Phone Number</td>
-                                                                                                <td>{{ $phone_number }}
+                                                                                                <td>+{{ $countryCode }}{{ $phone_number }}
                                                                                                 </td>
                                                                                             </tr>
                                                                                             <tr>

@@ -18,6 +18,8 @@ return new class extends Migration
       //personal information
       $table->string('personal_mname')->nullable();
       $table->string('personal_gender')->nullable();
+      $table->string('country_code')->nullable();
+      $table->string('country_id')->nullable();
       $table->string('personal_phone')->nullable();
       $table->string('personal_birth_date')->nullable();
       $table->string('personal_marital_status')->nullable();
