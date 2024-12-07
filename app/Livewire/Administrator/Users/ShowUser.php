@@ -33,7 +33,7 @@ class ShowUser extends Component
     $pension_adm, $pension_id, $health_insurance, $insurance_name, $insurance_id, $benefits;
 
   // Step 6
-  public $office_email, $comp_equipment, $system_access, $security;
+  public $office_email, $comp_equipment, $system_access, $security, $savedImage;
 
   // public function mount(User $user)
   // {
@@ -43,6 +43,8 @@ class ShowUser extends Component
   public function mount(User $user)
   {
     $this->user = $user;
+
+    $this->savedImage = $user->profile_photo_url;
 
     $this->first_name = $user->fname;
     $this->last_name = $user->lname;

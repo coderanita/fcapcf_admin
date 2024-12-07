@@ -10,8 +10,8 @@
                         <div class="card-body border-bottom">
                             <div class="d-flex align-items-md-start align-items-center flex-column flex-md-row">
                                 <img style="max-width:160px"
-                                    alt=""src="{{ 'https://console.fcapcf.org/storage/app/public/' . $user->profile_photo_url }}"
-                                    class="rounded-4">
+                                    src="{{ 'https://console.fcapcf.org/storage/app/public/' . $savedImage }}"
+                                    alt="" class="rounded-4">
                                 <div class="media-body ms-md-5 m-0 mt-4 mt-md-0 text-md-start text-center">
                                     <h4 class="mb-1 fw-light">{{ ucwords($user->fullName()) }}<a
                                             href="{{ route('administrator.users.profile', $user->id) }}"
