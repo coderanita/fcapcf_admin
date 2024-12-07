@@ -222,7 +222,7 @@
                                                                             <div class="form-floating mb-2 col-md-4">
                                                                                 <select
                                                                                     class="form-select @error('disability_status') is-invalid @enderror"
-                                                                                    wire:model="disability_status">
+                                                                                    wire:model.live="disability_status">
                                                                                     <option value="" selected>
                                                                                     </option>
                                                                                     <option value="yes">Yes</option>
@@ -234,19 +234,21 @@
                                                                                         {{ $message }}</div>
                                                                                 @enderror
                                                                             </div>
-
-                                                                            <div class="form-floating mb-2 col-md-4">
-                                                                                <input type="text"
-                                                                                    class="form-control @error('type_of_disability') is-invalid @enderror"
-                                                                                    placeholder="Enter type of disability"
-                                                                                    wire:model="type_of_disability" />
-                                                                                <label>If Yes, Type of Disability
-                                                                                    *</label>
-                                                                                @error('type_of_disability')
-                                                                                    <div class="invalid-feedback">
-                                                                                        {{ $message }}</div>
-                                                                                @enderror
-                                                                            </div>
+                                                                            @if ($disability_status === 'yes' || $disability_status === null)
+                                                                                <div
+                                                                                    class="form-floating mb-2 col-md-4">
+                                                                                    <input type="text"
+                                                                                        class="form-control @error('type_of_disability') is-invalid @enderror"
+                                                                                        placeholder="Enter type of disability"
+                                                                                        wire:model="type_of_disability" />
+                                                                                    <label>If Yes, Type of Disability
+                                                                                        *</label>
+                                                                                    @error('type_of_disability')
+                                                                                        <div class="invalid-feedback">
+                                                                                            {{ $message }}</div>
+                                                                                    @enderror
+                                                                                </div>
+                                                                            @endif
 
                                                                             <div class="form-floating mb-2 col-md-4">
                                                                                 <select
