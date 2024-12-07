@@ -18,6 +18,23 @@ class CreateUser extends Component
 {
   use HasModalElement;
 
+  public $startDate;
+  public $endDate;
+
+  protected $listeners = ['updateDateRange'];
+
+  public function updateDateRange($start, $end)
+  {
+    $this->startDate = $start;
+    $this->endDate = $end;
+
+    $this->dispatch(
+      're-render-update-user',
+      startDate: $this->startDate,
+      endDate: $this->endDate
+    );
+  }
+
   #[Validate]
   public $fname, $lname, $email, $password, $role;
 
@@ -93,6 +110,13 @@ class CreateUser extends Component
       // 'permission.*' => ['exists:permissions,code']
 
     ];
+  }
+
+  public function mount()
+  {
+    // Set default date range to today
+    $this->startDate = now()->format('Y-m-d');
+    $this->endDate = now()->format('Y-m-d');
   }
 
   public function render()

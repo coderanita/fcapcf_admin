@@ -14,7 +14,7 @@
                     </button>
                 </a> --}}
 
-                <div class="btn-group">
+                <div class="btn-group" wire:ignore>
                     <div id="reportrange"
                         style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #007bff; border-radius: 4px; width: 100%;">
                         <i class="fa fa-calendar"></i>&nbsp;
@@ -115,7 +115,8 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            var start = moment();
+            var start = moment().subtract(1, 'month').startOf('month');
+            // Set default end as today's date
             var end = moment();
 
 

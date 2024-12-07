@@ -12,6 +12,7 @@ use Illuminate\Support\Str;
 use App\Traits\HasModalElement;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Auth;
+use Livewire\Attributes\On;
 use Livewire\WithPagination;
 
 class ManageUser extends Component
@@ -19,6 +20,8 @@ class ManageUser extends Component
   use WithPagination, HasModalElement;
   #[Validate]
   public $fname, $lname, $email, $password, $role, $userId, $counter, $roleName;
+  public $startDate = '2024-01-01';
+  public $endDate = '2025-01-01';
 
   public function mount(?string $roleName = null)
   {
@@ -136,6 +139,13 @@ class ManageUser extends Component
     $this->closeModal(modalName: 'deleteUser');
   }
 
+  #[On('re-render-update-user')]
+  public function updateUserTable($startDate, $endDate)
+  {
+    $this->startDate = $startDate;
+    $this->endDate = $endDate;
+  }
+
   public function render()
   {
     $this->authorize('viewany', User::class);
@@ -149,11 +159,12 @@ class ManageUser extends Component
       $users->whereRelation('role', 'name', $this->roleName);
     }
 
+    $users->whereBetween('created_at', [$this->startDate, $this->endDate]);
 
 
     return view('_administrator.users.manage')->with([
       'roles' => Role::all(),
-      'users' => $users->whereNot('id', auth()->id())->paginate()
+      'users' => $users->whereNot('id', auth()->id())->get()
     ]);
   }
 }

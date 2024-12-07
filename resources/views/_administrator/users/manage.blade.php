@@ -204,7 +204,7 @@
         });
         $('#myDataTable_no_filter').addClass('nowrap').dataTable({
             responsive: true,
-            searching: false,
+            searching: true,
             paging: true,
             ordering: false,
             info: false,
