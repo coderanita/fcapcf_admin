@@ -16,8 +16,7 @@
 
                                 @endphp
 
-                                <img style="max-width:160px"
-                                    src="{{ 'https://console.fcapcf.org/storage/app/public/' . $relativePath }}"
+                                <img style="max-width:160px" src="{{ env('APP_IMAGE_PATH') . $relativePath }}"
                                     alt="" class="rounded-4">
 
                                 <div class="media-body ms-md-5 m-0 mt-4 mt-md-0 text-md-start text-center">
