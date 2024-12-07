@@ -351,9 +351,7 @@
                             <div class="card bg-body mb-2">
                                 <div class="card-body">
                                     <h6 class="card-title mb-1">Project Type</h6>
-                                    <p class="text-muted small">If you need more info, please check out <a
-                                            href="#">FAQ Page</a>
-                                    </p>
+                                   
                                     <!-- Custome redio input -->
                                     <div class="c_radio d-flex flex-md-wrap">
                                         <label class="m-1 w-100" for="Personal">

@@ -70,10 +70,6 @@
                                                                 <h6 class="card-title mb-1">
                                                                     Personal Information
                                                                 </h6>
-                                                                <p class="text-muted small">
-                                                                    If you need more info, please check out
-                                                                    <a href="add-user.html#">FAQ Page</a>
-                                                                </p>
                                                                 <!-- Custome redio input -->
 
                                                                 <div class="row g-2 mt-3">
