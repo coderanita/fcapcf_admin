@@ -48,7 +48,7 @@
                                                     <tr>
                                                         <th>Name</th>
                                                         <th>Date Uploaded</th>
-                                                        {{-- <th>Location</th> --}}
+                                                        <th>Location</th>
                                                         <th>Uploaded By</th>
                                                         <th>Size</th>
                                                         <th>Action</th>
@@ -66,7 +66,7 @@
                                                                 </a>
                                                             </td>
                                                             <td>{{ dateToWord($document->created_at) }}</td>
-                                                            {{-- <td>Kwara, Ijeilasha South</td> --}}
+                                                            <td></td>
                                                             <td>
                                                                 {{ $document->user->fname }}
                                                                 {{ $document->user->lname }}
