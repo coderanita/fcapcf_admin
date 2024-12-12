@@ -65,7 +65,7 @@
                                                                         <h6 class="card-title mb-1">
                                                                             Personal Information
                                                                         </h6>
-                                                                        
+
                                                                         <!-- Custome redio input -->
 
                                                                         <div class="row g-2 mt-3">
@@ -195,6 +195,50 @@
                                                                                         {{ $message }}</div>
                                                                                 @enderror
                                                                             </div>
+
+                                                                            <div class="form-floating mb-2 col-md-4">
+                                                                                <select
+                                                                                    class="form-select @error('tribe_ethnicity') is-invalid @enderror"
+                                                                                    wire:model="tribe_ethnicity">
+                                                                                    <option value="" selected>
+                                                                                    </option>
+                                                                                    <option value="Hausa">Hausa
+                                                                                    </option>
+                                                                                    <option value="Yoruba">Yoruba
+                                                                                    </option>
+                                                                                    <option value="Igbo">Igbo
+                                                                                    </option>
+                                                                                    <option value="Ijaw">Ijaw
+                                                                                    </option>
+                                                                                    <option value="Kanuri">Kanuri
+                                                                                    </option>
+                                                                                    <option value="Ibibio">Ibibio
+                                                                                    </option>
+                                                                                    <option value="Tiv">Tiv</option>
+                                                                                    <option value="Nupe">Nupe
+                                                                                    </option>
+                                                                                    <option value="Itsekiri">Itsekiri
+                                                                                    </option>
+                                                                                    <option value="Urhobo">Urhobo
+                                                                                    </option>
+                                                                                    <option value="Gwari">Gwari
+                                                                                    </option>
+                                                                                    <option value="Idoma">Idoma
+                                                                                    </option>
+                                                                                    <option value="Edo">Edo</option>
+                                                                                    <option value="Efik">Efik
+                                                                                    </option>
+                                                                                    <option value="Other">Other
+                                                                                    </option>
+                                                                                </select>
+                                                                                <label>Tribe/Ethnicity *</label>
+                                                                                @error('tribe_ethnicity')
+                                                                                    <div class="invalid-feedback">
+                                                                                        {{ $message }}
+                                                                                    </div>
+                                                                                @enderror
+                                                                            </div>
+
 
                                                                             <div class="form-floating mb-2 col-md-4">
                                                                                 <select
@@ -667,6 +711,15 @@
                                                                                                 class="text-muted">Country</small>
                                                                                             <div class="fs-5">
                                                                                                 {{ $this->getCountryName($country_id) }}
+                                                                                            </div>
+                                                                                        </div>
+
+                                                                                        <div
+                                                                                            class="py-2 px-3 me-2 mt-2">
+                                                                                            <small
+                                                                                                class="text-muted">Tribe/Ethnicity</small>
+                                                                                            <div class="fs-5">
+                                                                                                {{ $tribe_ethnicity }}
                                                                                             </div>
                                                                                         </div>
                                                                                         <div

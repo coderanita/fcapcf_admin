@@ -17,17 +17,19 @@ return new class extends Migration
             $table->string('last_name');
             $table->string('profile_photo_path');
 
-            $table->string('gender');
-            $table->string('phone_number');
-            $table->string('country_code');
-            $table->string('email');
-            $table->date('date_of_birth');
-            $table->string('marital_status');
+            $table->string('gender')->nullable();
+            $table->string('phone_number')->nullable();
+            $table->string('country_code')->nullable();
+            $table->string('email')->nullable();
+            $table->date('date_of_birth')->nullable();
+            $table->string('marital_status')->nullable();
             $table->unsignedBigInteger('nationality_id')->nullable();
-            $table->string('disability_status');
+            $table->string('disability_status')->nullable();
             $table->string('type_of_disability')->nullable();
-            $table->unsignedBigInteger('language_id');
+            $table->unsignedBigInteger('language_id')->nullable();
             $table->unsignedBigInteger('country_id')->nullable();
+
+            $table->string('tribe_ethnicity')->nullable();
             $table->timestamps();
         });
     }

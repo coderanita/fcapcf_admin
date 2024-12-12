@@ -43,6 +43,7 @@ class Create extends Component
     // Assistance
     public $type_of_assistance, $previous_assistance, $health_status, $skills_or_training, $geographical_location, $ethnicity_tribe, $religion, $referring_organization;
 
+    public $tribe_ethnicity;
 
     protected $messages = [
         'required' => 'This field is required.',
@@ -152,6 +153,7 @@ class Create extends Component
             'disability_status' => $this->disability_status,
             'type_of_disability' => $this->type_of_disability,
             'language_id' => $this->language_id,
+            'tribe_ethnicity' => $this->tribe_ethnicity,
         ]);
 
         $this->beneficiary_id = $beneficiary->id;
