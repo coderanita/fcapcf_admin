@@ -7,6 +7,7 @@ use App\Livewire\Administrator\Announcements\View;
 use App\Livewire\Administrator\AuditLogs\Index;
 use App\Livewire\Administrator\Beneficiaries\Create;
 use App\Livewire\Administrator\Beneficiaries\Edit;
+use App\Livewire\Administrator\Beneficiaries\Index as BeneficiariesIndex;
 use App\Livewire\Administrator\Cities\Index as CitiesIndex;
 use App\Livewire\Administrator\Countries\Manage as CountriesManage;
 use App\Livewire\Administrator\Dashboard;
@@ -54,7 +55,7 @@ Route::middleware([
   Route::view('/roles', '_administrator.roles.index')->name('roles');
   Route::view('/roles/{roleName}/show', '_administrator.users.index')->name('roles.show');
 
-  Route::view('/beneficiaries', '_administrator.beneficiaries.index')->name('beneficiaries');
+  Route::get('/beneficiaries', BeneficiariesIndex::class)->name('beneficiaries');
   Route::get('/beneficiaries/create', Create::class)->name('beneficiaries.create');
   Route::get('/beneficiaries/edit/{beneficiaryId}', Edit::class)->name('beneficiaries.edit');
 

@@ -1,4 +1,5 @@
-<div>
+<x-app-layout title="Beneficiaries" sub_title="Beneficiaries List">
+
     <x-breadcrumb title="Beneficiaries" sub_title="Beneficiaries List">
         <x-slot name="page_action">
             <div class="page-action">
@@ -98,4 +99,5 @@
         </script>
     @endpush
 
-</div>
+
+</x-app-layout>
