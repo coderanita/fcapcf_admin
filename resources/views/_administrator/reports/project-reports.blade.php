@@ -190,6 +190,12 @@
                                                         aria-label="Project: activate to sort column descending">
                                                         Project
                                                     </th>
+                                                    <th class="sorting sorting_asc" tabindex="0"
+                                                        aria-controls="DataTables_Table_0" rowspan="1"
+                                                        colspan="1" style="width: 344px" aria-sort="ascending"
+                                                        aria-label="Project: activate to sort column descending">
+                                                        Country
+                                                    </th>
                                                     <th class="sorting" tabindex="0"
                                                         aria-controls="DataTables_Table_0" rowspan="1"
                                                         colspan="1" style="width: 105px"
@@ -245,6 +251,9 @@
                                                     <tr class="odd">
                                                         <td class="dtr-control sorting_1" tabindex="0">
                                                             <span>{{ $project->project_name }}</span>
+                                                        </td>
+                                                        <td class="dtr-control sorting_1" tabindex="0">
+                                                            <span>{{ $project->country->name }}</span>
                                                         </td>
                                                         <td>N{{ formatMoney($project->project_cost) }}</td>
                                                         <td></td>

@@ -13,12 +13,12 @@ class RegionSeeder extends Seeder
      */
     public function run(): void
     {
-        Region::create([
-            'name' => "West Africa",
-        ]);
+        // Region::create([
+        //     'name' => "West Africa",
+        // ]);
 
-        Region::create([
-            'name' => "South America",
-        ]);
+        // Region::create([
+        //     'name' => "South America",
+        // ]);
     }
 }
