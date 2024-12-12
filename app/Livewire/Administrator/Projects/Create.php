@@ -58,11 +58,31 @@ class Create extends Component
     public $states = [];
     public $cities = [];
 
+    public $startDate;
+    public $endDate;
+
+    protected $listeners = ['updateDateRange'];
+
+    public function updateDateRange($start, $end)
+    {
+        $this->startDate = $start;
+        $this->endDate = $end;
+
+        $this->dispatch(
+            're-render-update-projects',
+            startDate: $this->startDate,
+            endDate: $this->endDate
+        );
+    }
+
     public function mount($title = null, $sub_title = null, $details = false)
     {
         $this->title = $title ?? '';
         $this->sub_title = $sub_title ?? 'FCAPCF Projects';
         $this->details = $details ?? '';
+
+        $this->startDate = now()->format('Y-m-d');
+        $this->endDate = now()->format('Y-m-d');
     }
 
     protected $messages = [
@@ -90,7 +110,7 @@ class Create extends Component
                 'projectTarget' => 'required',
                 'projectStatus' => 'required',
             ], [
-                
+
                 'selectedCountry.required' => 'Please select a country.',
                 'selectedState.required' => 'Please select a state.',
                 'selectedCity.required' => 'Please select a city.',

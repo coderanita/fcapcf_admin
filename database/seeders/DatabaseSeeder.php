@@ -2,10 +2,12 @@
 
 namespace Database\Seeders;
 
+use App\Models\City;
 use App\Models\Permission;
 use App\Models\Profile;
 use App\Models\ProjectStatus;
 use App\Models\Role;
+use App\Models\State;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -25,8 +27,8 @@ class DatabaseSeeder extends Seeder
       RelationshipSeeder::class,
       RegionSeeder::class,
       CountrySeeder::class,
-      StateSeeder::class,
-      CitySeeder::class,
+      // StateSeeder::class,
+      // CitySeeder::class,
       ProjectStatusSeeder::class
     ]);
 
@@ -103,5 +105,25 @@ class DatabaseSeeder extends Seeder
     // }
 
 
+    $jsonFilePath = base_path('database/data/StatesAndLGAsInNigeria.json'); // Adjust path if needed
+    $data = json_decode(file_get_contents($jsonFilePath), true);
+
+    foreach ($data as $stateData) {
+      $stateInfo = $stateData['state'];
+
+      // Insert the state
+      $state = \App\Models\State::create([
+        'name' => $stateInfo['name'],
+        'country_id' => 160, // Adjust `country_id` as necessary
+      ]);
+
+      // Insert the cities for this state
+      foreach ($stateInfo['locals'] as $local) {
+        \App\Models\City::create([
+          'state_id' => $state->id,
+          'name' => $local['name'],
+        ]);
+      }
+    }
   }
 }
