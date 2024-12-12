@@ -1,5 +1,6 @@
 <?php
 
+use App\Exports\AuditLogExport;
 use App\Http\Controllers\Administrator\StaffController;
 use App\Livewire\Administrator\Announcements\Edit as AnnouncementEdit;
 use App\Livewire\Administrator\Announcements\Create as AnnouncementsCreate;
@@ -34,6 +35,7 @@ use App\Livewire\Administrator\Users\ShowUser;
 use App\Models\Permission;
 use App\Models\Support;
 use App\Models\User;
+use Maatwebsite\Excel\Facades\Excel;
 
 Route::middleware([
   'auth',
@@ -92,4 +94,9 @@ Route::middleware([
   Route::get('/project-reports', ProjectReports::class)->name('report.projects');
   Route::get('/user-reports', UserReports::class)->name('report.users');
   Route::get('/beneficiary-reports', BeneficiaryReports::class)->name('report.beneficiaries');
+
+  Route::get('/download-audit-logs', function () {
+    $currentDate = now()->format('Y-m-d'); // Format the current date
+    return Excel::download(new AuditLogExport, 'audit-logs' . $currentDate . '.xlsx');
+  })->name('download.audit-logs');
 });
