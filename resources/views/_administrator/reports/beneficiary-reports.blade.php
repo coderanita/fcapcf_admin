@@ -243,6 +243,12 @@
                                                         colspan="1" style="width: 88px;"
                                                         aria-label="region: activate to sort column ascending">Contact
                                                     </th>
+                                                    <th class="sorting sorting_asc" tabindex="0"
+                                                        aria-controls="DataTables_Table_0" rowspan="1"
+                                                        colspan="1" style="width: 344px" aria-sort="ascending"
+                                                        aria-label="Project: activate to sort column descending">
+                                                        Country
+                                                    </th>
                                                     <th class="sorting" tabindex="0"
                                                         aria-controls="DataTables_Table_0" rowspan="1"
                                                         colspan="1" style="width: 40px"
@@ -300,6 +306,7 @@
                                                         <td>{{ $beneficiary->country_code }}{{ $beneficiary->phone_number }}
                                                             <br>
                                                         </td>
+                                                        <td>{{ $beneficiary->country->name ?? '' }}</td>
                                                         <td> {{ $beneficiary->disability_status === 'no' ? 'N/A' : $beneficiary->type_of_disability }}
                                                         </td>
                                                         <td>{{ $beneficiary->socialEconomic->education_level }} <br>
