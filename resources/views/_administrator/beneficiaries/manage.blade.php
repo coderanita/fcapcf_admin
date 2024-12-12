@@ -1,4 +1,24 @@
 <div>
+
+    <div class="row align-items-center">
+        <div class="col-sm-12 col-md-6 d-flex align-items-center">
+            {{-- <label class="me-2 mb-0">Show</label>
+            <select class=" form-select-sm">
+                <option value="10">10</option>
+                <option value="25">25</option>
+                <option value="50">50</option>
+                <option value="100">100</option>
+            </select>
+            <span class="ms-2">entries</span> --}}
+        </div>
+        <div class="col-sm-12 col-md-6 d-flex justify-content-end">
+            <div class="d-flex align-items-center">
+                <label class="me-2 mb-0">Search:</label>
+                <input type="search" class="form-control form-control-sm" wire:model.live="search">
+            </div>
+        </div>
+    </div>
+
     <table class="myDataTable table table-hover mb-0">
         <thead>
             <tr>
@@ -46,26 +66,5 @@
 
 <script src="{{ asset('js/theme.js') }}"></script>
 <!-- Plugin Js -->
-<script src="{{ asset('js/bundle/dataTables.bundle.js') }}"></script>
-<!-- Jquery Page Js -->
-@if (count($beneficiaries) > 0)
-    <script>
-        $('.myDataTable').addClass('nowrap').dataTable({
-            responsive: true,
-            searching: true,
-            paging: true,
-            ordering: true,
-            info: false,
-        });
-        $('#myDataTable_no_filter').addClass('nowrap').dataTable({
-            responsive: true,
-            searching: false,
-            paging: true,
-            ordering: false,
-            info: false,
-        });
-        $('a[data-bs-toggle="tab"]').on('shown.bs.tab', function(e) {
-            $($.fn.dataTable.tables(true)).DataTable().columns.adjust().responsive.recalc();
-        });
-    </script>
-@endif
+@push('scripts')
+@endpush

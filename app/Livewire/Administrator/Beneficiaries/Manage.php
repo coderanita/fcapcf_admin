@@ -16,6 +16,8 @@ class Manage extends Component
     public $startDate = '2024-01-01';
     public $endDate = '2025-01-01';
 
+    public $search = '';
+
     #[On('re-render-update-beneficiaries')]
     public function updateUserTable($startDate, $endDate)
     {
@@ -52,7 +54,21 @@ class Manage extends Component
         $this->authorize('viewany', Beneficiary::class);
 
         $beneficiaries = Beneficiary::with('emergencyContact', 'assistance', 'socialEconomic')
-            ->whereBetween('created_at', [$this->startDate, $this->endDate])->get();
+            ->whereBetween('created_at', [$this->startDate, $this->endDate]);
+
+        if ($this->search) {
+            $beneficiaries->where(function ($query) {
+                $query->where('first_name', 'like', '%' . $this->search . '%')
+                    ->orWhere('last_name', 'like', '%' . $this->search . '%')
+                    ->orWhere('country_code', 'like', '%' . $this->search . '%')
+                    ->orWhere('phone_number', 'like', '%' . $this->search . '%')
+                    ->orWhere('marital_status', 'like', '%' . $this->search . '%');
+            });
+        }
+
+        // Fetch the filtered results
+        $beneficiaries = $beneficiaries->get();
+
 
         return view('_administrator.beneficiaries.manage', [
             'beneficiaries' => $beneficiaries,
