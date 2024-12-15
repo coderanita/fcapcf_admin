@@ -212,121 +212,8 @@
                         </div>
                     </div>
 
-                    <div class="col-xxl-5 col-xl-5 col-lg-5 col-md-6 col-sm-6">
-                        <div class="card">
-                            <div class="card-header">
-                                <h6 class="card-title mb-0">Recently Registered</h6>
-                                <div class="dropdown morphing scale-left">
-                                    <a href="#" class="card-fullscreen" data-bs-toggle="tooltip"
-                                        title="Card Full-Screen"><i class="icon-size-fullscreen"></i></a>
-                                </div>
-                            </div>
-                            <div class="card-body">
 
-                                <div class="table-responsive">
-                                    <table class="table table-sm table-nowrap mb-0">
-                                        <tbody>
-
-                                            @foreach ($users as $user)
-                                                <tr>
-                                                    <td>{{ $user->fname }} {{ $user->lname }}</td>
-                                                    <td>{{ $user->email ?? 'Not Added' }}</td>
-                                                    <td>{{ dateToWord($user->created_at) }}</td>
-                                                </tr>
-                                            @endforeach
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xxl-7 col-xl-12 col-lg-12 col-md-7">
-                        <div class="card">
-                            <div class="card-header">
-                                <h6 class="card-title m-0">Reports overview</h6>
-                                <div class="dropdown morphing scale-left">
-                                    <a href="#" class="card-fullscreen" data-bs-toggle="tooltip"
-                                        title="Card Full-Screen"><i class="icon-size-fullscreen"></i></a>
-                                    <a href="#" class="more-icon dropdown-toggle" data-bs-toggle="dropdown"
-                                        aria-expanded="false"><i class="fa fa-ellipsis-h"></i></a>
-                                    <ul class="dropdown-menu shadow border-0 p-2">
-                                        <li><a class="dropdown-item" href="#">File Info</a></li>
-                                        <li><a class="dropdown-item" href="#">Copy to</a></li>
-                                        <li><a class="dropdown-item" href="#">Move to</a></li>
-                                        <li><a class="dropdown-item" href="#">Rename</a></li>
-                                        <li><a class="dropdown-item" href="#">Block</a></li>
-                                        <li><a class="dropdown-item" href="#">Delete</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="card-body">
-                                <h3>&#x20A6; {{ formatMoney($totalProjectCost) }}</h3>
-                                <!-- Progress -->
-                                {{-- <div class="progress rounded-pill mb-2" style="height: 5px;">
-                                    <div class="progress-bar chart-color1" role="progressbar" style="width: 15%"
-                                        aria-valuenow="15" aria-valuemin="0" aria-valuemax="100"></div>
-                                    <div class="progress-bar chart-color2" role="progressbar" style="width: 30%"
-                                        aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"></div>
-                                    <div class="progress-bar chart-color3" role="progressbar" style="width: 20%"
-                                        aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                                <div class="d-flex justify-content-between mb-4">
-                                    <span>0%</span>
-                                    <span>100%</span>
-                                </div> --}}
-                                <!-- End Progress -->
-                                <div class="table-responsive">
-                                    <table class="table table-sm table-nowrap mb-0">
-                                        <tbody>
-
-                                            @foreach ($projects as $project)
-                                                @php
-                                                    $badge = '';
-                                                    if ($project->projectStatus->name == 'Completed') {
-                                                        $badge = 'success';
-                                                    } elseif ($project->projectStatus->name == 'Pending') {
-                                                        $badge = 'secondary';
-                                                    } elseif ($project->projectStatus->name == 'Suspended') {
-                                                        $badge = 'danger';
-                                                    } elseif ($project->projectStatus->name == 'In-Progress') {
-                                                        $badge = 'info';
-                                                    }
-                                                @endphp
-
-                                                <tr>
-                                                    <td><i
-                                                            class="fa fa-circle me-2 chart-text-color1"></i>{{ $project->project_name }}
-                                                    </td>
-                                                    <td>&#x20A6;{{ $project->project_cost }}</td>
-                                                    <td><span
-                                                            class="badge bg-{{ $badge }}">{{ $project->projectStatus->name }}</span>
-                                                    </td>
-                                                </tr>
-                                            @endforeach
-
-
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div> <!-- .row end -->
-            </div>
-        </div>
-        <!-- Start:: footer link and more -->
-        <div class="page-footer bg-card mt-4">
-            <div class="container-fluid">
-                <footer class="d-flex flex-wrap justify-content-between align-items-center py-2">
-                    <p class="col-md-5 mb-0 text-muted">© 2024 <a href="javascript:void(0)">First Child & Prisoner
-                            Care
-                            Foundation</a>. <span class="fa fa-heart text-danger"></span> </p>
-                    <ul class="nav col-md-7 justify-content-end">
-                        <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">About</a></li>
-                        <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Support</a></li>
-                        <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Purchase</a></li>
-                    </ul>
-                </footer>
             </div>
         </div>
     </div>
@@ -1069,3 +956,168 @@
     </div>
     <!-- Modal: Setting -->
 @endPush
+
+@push('scripts')
+    <!-- project js file url -->
+    <!-- Jquery Page Js -->
+    <script src="{{ asset('js/theme.js') }}"></script>
+    <!-- Plugin Js -->
+    <script src="{{ asset('js/bundle/apexcharts.bundle.js') }}"></script>
+    <script src="{{ asset('js/bundle/dataTables.bundle.js') }}"></script>
+    <!-- Jquery Page Js -->
+    <script>
+        // AVIO Revenue
+        var options = {
+            chart: {
+                height: 260,
+                type: 'line',
+                toolbar: {
+                    show: false,
+                },
+            },
+            colors: ['var(--chart-color1)', 'var(--chart-color5)'],
+            series: [{
+                name: 'Donations',
+                type: 'line',
+                data: [440, 505, 414, 671, 227, 413, 201, 352, 752, 320, 257, 160]
+            }, {
+                name: 'Support Given',
+                type: 'line',
+                data: [23, 42, 35, 27, 43, 22, 17, 31, 22, 22, 12, 16]
+            }],
+            stroke: {
+                width: [2, 2]
+            },
+            labels: ['01 Jan 2001', '02 Jan 2001', '03 Jan 2001', '04 Jan 2001', '05 Jan 2001', '06 Jan 2001',
+                '07 Jan 2001', '08 Jan 2001', '09 Jan 2001', '10 Jan 2001', '11 Jan 2001', '12 Jan 2001'
+            ],
+            xaxis: {
+                type: 'datetime'
+            },
+            yaxis: [{
+                title: {
+                    text: 'Donations',
+                },
+            }, {
+                opposite: true,
+                title: {
+                    text: 'Support Given'
+                }
+            }]
+        }
+        var chart = new ApexCharts(document.querySelector("#apex-AudienceOverview"), options);
+        chart.render();
+        // Sales by Category
+        var options = {
+            chart: {
+                height: 280,
+                type: 'donut',
+            },
+            dataLabels: {
+                enabled: false,
+            },
+            legend: {
+                position: 'bottom',
+                horizontalAlign: 'center',
+                show: true,
+            },
+            colors: ['var(--chart-color1)', 'var(--chart-color2)'],
+            series: [65, 35],
+        }
+        var chart = new ApexCharts(document.querySelector("#apex-SalesbyCategory"), options);
+        chart.render();
+        // Uses of Energy
+        $(document).ready(function() {
+            var options = {
+                chart: {
+                    height: 335,
+                    type: 'heatmap',
+                    toolbar: {
+                        show: false,
+                    },
+                },
+                dataLabels: {
+                    enabled: false
+                },
+                grid: {
+                    padding: {
+                        right: 0
+                    }
+                },
+                colors: ["#ffc122"],
+                series: [{
+                    name: 'Kitchen',
+                    data: generateHeatmapData(8, {
+                        min: 0,
+                        max: 90
+                    })
+                }, {
+                    name: 'Apple Tv',
+                    data: generateHeatmapData(8, {
+                        min: 0,
+                        max: 90
+                    })
+                }, {
+                    name: 'Sound Ststem',
+                    data: generateHeatmapData(8, {
+                        min: 0,
+                        max: 90
+                    })
+                }, {
+                    name: 'Air Conditioner',
+                    data: generateHeatmapData(8, {
+                        min: 0,
+                        max: 90
+                    })
+                }, {
+                    name: 'Fridge',
+                    data: generateHeatmapData(8, {
+                        min: 0,
+                        max: 90
+                    })
+                }, {
+                    name: 'Washing Machine',
+                    data: generateHeatmapData(8, {
+                        min: 0,
+                        max: 90
+                    })
+                }, {
+                    name: 'Bath Room',
+                    data: generateHeatmapData(8, {
+                        min: 0,
+                        max: 90
+                    })
+                }, {
+                    name: 'Garden',
+                    data: generateHeatmapData(8, {
+                        min: 0,
+                        max: 90
+                    })
+                }, {
+                    name: 'Store Room',
+                    data: generateHeatmapData(8, {
+                        min: 0,
+                        max: 90
+                    })
+                }],
+            }
+            var chart = new ApexCharts(document.querySelector("#apex-UsesofEnergy"), options);
+
+            function generateHeatmapData(count, yrange) {
+                var i = 0;
+                var series = [];
+                while (i < count) {
+                    var x = 'D' + (i + 1).toString();
+                    var y = Math.floor(Math.random() * (yrange.max - yrange.min + 1)) + yrange.min;
+                    series.push({
+                        x: x,
+                        y: y
+                    });
+                    i++;
+                }
+                return series;
+            }
+            chart.render();
+        });
+    </script>
+@endpush
