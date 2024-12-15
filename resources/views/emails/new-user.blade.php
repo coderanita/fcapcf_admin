@@ -31,7 +31,7 @@
                                     <br><br>
 
                                     Web URL: {{ env('APP_URL') }}<br>
-                                    @if ($data['role_id'] == 4 || $data['role_id'] == 3)
+                                    @if ($data['role_id'] == 4 || $data['role_id'] == 3 || $data['role_id'] == 2)
                                         App URL:
                                         https://drive.google.com/drive/folders/11ykSPXTAfgwaCF-zrP0SGg7C4DDVDS8D?usp=sharing<br>
                                     @endif
