@@ -127,6 +127,18 @@
                                         </div>
                                     </div>
 
+                                    <div class="owl-item active" style="width: 251.4px; margin-right: 10px">
+                                        <div class="item card bg-body">
+                                            <div class="card-body">
+                                                <div class="avatar lg rounded-circle no-thumbnail mb-3 fs-5">
+                                                    PC
+                                                </div>
+                                                <small class="text-muted">Project Countries</small>
+                                                <h4>{{ $totalCountries }}</h4>
+                                            </div>
+                                        </div>
+                                    </div>
+
                                 </div>
                             </div>
                         </div>

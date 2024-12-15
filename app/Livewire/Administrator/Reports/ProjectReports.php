@@ -62,12 +62,16 @@ class ProjectReports extends Component
         $incompleteProjects = $totalProjects - $completedProjects;
         $totalProjectCost = Project::sum('project_cost');
 
+        $totalCountries = Project::distinct('country_id')->count('country_id');
+
         return view('_administrator.reports.project-reports', [
             'projects' => $projects,
             'totalProjects' => $totalProjects,
             'completedProjects' => $completedProjects,
             'incompleteProjects' => $incompleteProjects,
             'totalProjectCost' => $totalProjectCost,
+
+            'totalCountries' => $totalCountries,
         ]);
     }
 }
