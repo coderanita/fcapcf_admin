@@ -485,7 +485,7 @@
 
                             @if (Laravel\Jetstream\Jetstream::managesProfilePhotos())
                                 <img class="avatar lg img-thumbnail rounded-circle shadow"
-                                    src="{{ auth()->user()->profile_photo_url }}"
+                                    src="{{ 'https://console.fcapcf.org/storage/app/public/' . auth()->user()->profile_photo_url }}"
                                     alt="{{ auth()->user()->fullName() }}">
                             @else
                                 <span class="text-start ms-xl-2">
