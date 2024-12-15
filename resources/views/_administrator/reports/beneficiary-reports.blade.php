@@ -37,7 +37,7 @@
                                             wire:click.prevent="sortBy('country_id')">By Country</a></li>
                                     <li>
                                         <a class="dropdown-item" href="#"
-                                            wire:click.prevent="sortBy('created_at')">By Registration Dtae</a>
+                                            wire:click.prevent="sortBy('created_at')">By Registration Date</a>
                                     </li>
                                 </ul>
                             </div>
