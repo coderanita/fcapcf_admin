@@ -25,6 +25,28 @@ class CreateRole extends Component
   {
     $this->openModal();
   }
+
+  public function updatedAccessLevel($value)
+  {
+    $role = Role::where('access_level', $value)->first();
+
+    if ($role) {
+      $existingPermissions = DB::table('permission_role')
+        ->where('role_id', $role->id)
+        ->pluck('permission_id')
+        ->toArray();
+
+      // Update the permission array with existing permissions
+      $this->permission = array_fill_keys(
+        Permission::whereIn('id', $existingPermissions)->pluck('code')->toArray(),
+        true
+      );
+    } else {
+      $this->permission = [];
+    }
+  }
+
+
   public function save()
   {
     $this->authorize('create', Role::class);
@@ -43,7 +65,7 @@ class CreateRole extends Component
       ]);
 
       $role->permissions()->sync($permissions_ids);
-   
+
       $this->dispatch(
         'alert',
         type: "success",
@@ -52,7 +74,6 @@ class CreateRole extends Component
       $this->closeModal();
 
       return redirect()->to(route('administrator.roles'));
-
     } catch (\Throwable $th) {
 
       $this->dispatch(
@@ -73,8 +94,6 @@ class CreateRole extends Component
       'name' => ['required', 'string',  'max:255', 'unique:roles,name'],
       'access_level' => ['required', 'string', 'in:' . implode(',', getAccessLevels())],
       'desc' => ['required', 'string'],
-      'permission' => ['required', 'array'],
-      'permission.*' => ['exists:permissions,code']
 
     ];
   }

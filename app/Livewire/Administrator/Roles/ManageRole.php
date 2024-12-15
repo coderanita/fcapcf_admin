@@ -106,9 +106,6 @@ class ManageRole extends Component
         type: "danger",
         msg: "Sorry we can't delete this {$role->name} because there are some users linked to it."
       );
-
-
-
     } else {
       $role->delete();
       $this->dispatch(
