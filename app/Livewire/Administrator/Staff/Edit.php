@@ -235,7 +235,7 @@ class Edit extends Component
 
         $profilePic = $this->savedImage;
         if ($this->profile_photo_path) {
-            $profilePic = $this->profile_photo_path->store('beneficiaries/profile_photos', 'public');
+            $profilePic = $this->profile_photo_path->store('staff/profile_photos', 'public');
         }
 
         // $this->authorize('update', $this->user);
