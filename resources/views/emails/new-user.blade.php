@@ -22,7 +22,7 @@
 
                                     <br><br>
 
-                                    Congratulations, you have been successfully selected.
+                                    Congratulations! You have been successfully enrolled as part of our team.
 
                                     <br><br>
 
