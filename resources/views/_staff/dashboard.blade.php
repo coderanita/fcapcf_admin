@@ -17,7 +17,8 @@
                             <li class="breadcrumb-item active" aria-current="page">A sneak Peek</li>
                         </ol>
                         <div class="d-flex justify-content-between align-items-center">
-                            <h1 class="h2 mb-md-0 text-white fw-light">{{ auth()->user()->fname }} {{ auth()->user()->lname }} - {{ auth()->user()->role->name }}</h1>
+                            <h1 class="h2 mb-md-0 text-white fw-light">{{ auth()->user()->fname }}
+                                {{ auth()->user()->lname }} - {{ auth()->user()->role->name }}</h1>
                             <div class="page-action">
                                 <a href="projects.html">
                                     {{-- <button class="btn d-none d-sm-inline-flex bg-secondary rounded-pill"
@@ -215,7 +216,7 @@
                     <div class="col-xxl-5 col-xl-5 col-lg-5 col-md-6 col-sm-6">
                         <div class="card">
                             <div class="card-header">
-                                <h6 class="card-title mb-0">Recently Registered</h6>
+                                <h6 class="card-title mb-0">Recently Registered Beneficiaries</h6>
                                 <div class="dropdown morphing scale-left">
                                     <a href="#" class="card-fullscreen" data-bs-toggle="tooltip"
                                         title="Card Full-Screen"><i class="icon-size-fullscreen"></i></a>
@@ -227,9 +228,9 @@
                                     <table class="table table-sm table-nowrap mb-0">
                                         <tbody>
 
-                                            @foreach ($users as $user)
+                                            @foreach ($beneficiaries as $user)
                                                 <tr>
-                                                    <td>{{ $user->fname }} {{ $user->lname }}</td>
+                                                    <td>{{ $user->first_name }} {{ $user->last_name }}</td>
                                                     <td>{{ $user->email ?? 'Not Added' }}</td>
                                                     <td>{{ dateToWord($user->created_at) }}</td>
                                                 </tr>
