@@ -19,8 +19,8 @@ class UserObserver
      */
     public function updated(User $user): void
     {
-        $user->profile_pic = $user->profile_photo_path;
-        $user->save();
+        // $user->profile_pic = $user->profile_photo_path;
+        // $user->save();
     }
 
     /**
