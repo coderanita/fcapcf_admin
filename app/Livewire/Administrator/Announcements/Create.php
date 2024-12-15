@@ -25,6 +25,22 @@ class Create extends Component
         'time' => 'required',
     ];
 
+    public $sortField = 'created_at'; // Default sort field
+    public $sortDirection = 'asc'; // Default sort direction
+
+    // Function to handle the sorting
+    public function sortBy($field)
+    {
+        if ($this->sortField === $field) {
+            $this->sortDirection = $this->sortDirection === 'asc' ? 'desc' : 'asc';
+        } else {
+            $this->sortField = $field;
+            $this->sortDirection = 'asc';
+        }
+
+        $this->dispatch('re-render-announcement-sort', $this->sortField);
+    }
+
 
     public function closeModal()
     {
@@ -32,7 +48,7 @@ class Create extends Component
 
         $this->reset();
     }
-    
+
     public function save()
     {
         $this->validate();
