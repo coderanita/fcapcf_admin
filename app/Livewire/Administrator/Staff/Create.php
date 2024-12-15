@@ -192,6 +192,7 @@ class Create extends Component
             'password' => Hash::make($password),
             'role_id' => $this->selectedRole,
             'profile_photo_path' => $savedImage,
+            'profile_pic' => $savedImage,
         ]);
 
         Profile::create([

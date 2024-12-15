@@ -484,8 +484,9 @@
                             role="button" data-bs-toggle="dropdown">
 
                             @if (Laravel\Jetstream\Jetstream::managesProfilePhotos())
+                                {{-- {{ Auth::user()->profile_pic }} --}}
                                 <img class="avatar lg img-thumbnail rounded-circle shadow"
-                                    src="{{ 'https://console.fcapcf.org/storage/app/public/' . auth()->user()->profile_photo_url }}"
+                                    src="{{ 'https://console.fcapcf.org/storage/app/public/' . Auth::user()->profile_pic }}"
                                     alt="{{ auth()->user()->fullName() }}">
                             @else
                                 <span class="text-start ms-xl-2">

@@ -249,6 +249,7 @@ class Edit extends Component
             'role_id' => $this->selectedRole,
 
             'profile_photo_path' => $profilePic,
+            'profile_pic' => $profilePic,
         ]);
 
         info($this->marital_status);

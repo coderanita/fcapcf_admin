@@ -23,6 +23,7 @@ return new class extends Migration
             $table->string('profile_photo_path', 2048)->nullable();
             $table->boolean('active')->default(1);
             $table->boolean('is_approved')->default(1);
+            $table->longText('profile_pic')->nullable();
 
             $table->timestamps();
         });
