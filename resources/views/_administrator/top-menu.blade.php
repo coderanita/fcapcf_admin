@@ -589,8 +589,9 @@
                             role="button" data-bs-toggle="dropdown">
 
                             @if (Laravel\Jetstream\Jetstream::managesProfilePhotos())
+                                {{-- {{ Auth::user()->profile_pic }} --}}
                                 <img class="avatar lg img-thumbnail rounded-circle shadow"
-                                    src="{{ auth()->user()->profile_photo_url }}"
+                                    src="{{ env('APP_IMAGE_PATH') . Auth::user()->profile_pic }}"
                                     alt="{{ auth()->user()->fullName() }}">
                             @else
                                 <span class="text-start ms-xl-2">
@@ -599,8 +600,6 @@
                                         class="d-block ms-1 fs-12 user-name-sub-text">{{ strtoupper(auth()->user()->role->name) }}</span>
                                 </span>
                             @endif
-
-
 
                         </a>
                         <div class="dropdown-menu border-0 rounded-4 shadow p-0">

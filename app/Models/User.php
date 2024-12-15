@@ -3,6 +3,9 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+
+use App\Observers\UserObserver;
+use Illuminate\Database\Eloquent\Attributes\ObservedBy;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -15,6 +18,7 @@ use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Builder;
 
+#[ObservedBy([UserObserver::class])]
 class User extends Authenticatable
 {
   use HasApiTokens;
@@ -36,7 +40,8 @@ class User extends Authenticatable
     'active',
     'is_approved',
     'role_id',
-    'profile_photo_path'
+    'profile_photo_path',
+    'profile_pic'
   ];
 
   /**
