@@ -117,7 +117,7 @@
         document.addEventListener('DOMContentLoaded', function() {
             var start = moment().subtract(1, 'month').startOf('month');
             // Set default end as today's date
-            var end = moment();
+            var end = moment().add(1, 'days');
 
 
             function cb(start, end) {
