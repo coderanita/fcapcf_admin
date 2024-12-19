@@ -17,7 +17,8 @@
                             <li class="breadcrumb-item active" aria-current="page">A sneak Peek</li>
                         </ol>
                         <div class="d-flex justify-content-between align-items-center">
-                            <h1 class="h2 mb-md-0 text-white fw-light">{{ auth()->user()->role->name }}</h1>
+                            <h1 class="h2 mb-md-0 text-white fw-light">{{ auth()->user()->fname }}
+                                {{ auth()->user()->lname }} - {{ auth()->user()->role->name }}</h1>
                             {{-- <div class="page-action">
                                 <a href="projects.html">
                                     <button class="btn d-none d-sm-inline-flex bg-secondary rounded-pill"
