@@ -605,7 +605,7 @@
                         <div class="dropdown-menu border-0 rounded-4 shadow p-0">
                             <div class="card w240 overflow-hidden">
                                 <div class="card-body">
-                                    <h6 class="card-title mb-0">{{ auth()->user()->fname }}</h6>
+                                    {{-- <h6 class="card-title mb-0">{{ auth()->user()->fname }}</h6> --}}
                                     <p class="text-muted">{{ auth()->user()->email }}</p>
 
                                     <form method="POST" action="{{ route('logout') }}" x-data>
