@@ -17,7 +17,8 @@
                             <li class="breadcrumb-item active" aria-current="page">A sneak Peek</li>
                         </ol>
                         <div class="d-flex justify-content-between align-items-center">
-                            <h1 class="h2 mb-md-0 text-white fw-light">{{ auth()->user()->role->name }}</h1>
+                            <h1 class="h2 mb-md-0 text-white fw-light">{{ auth()->user()->fname }}
+                                {{ auth()->user()->lname }} - {{ auth()->user()->role->name }}</h1>
                             <div class="page-action">
                                 <a href="{{ route('administrator.projects') }}">
                                     <button class="btn d-none d-sm-inline-flex bg-secondary rounded-pill"
@@ -351,7 +352,7 @@
                             <div class="card bg-body mb-2">
                                 <div class="card-body">
                                     <h6 class="card-title mb-1">Project Type</h6>
-                                   
+
                                     <!-- Custome redio input -->
                                     <div class="c_radio d-flex flex-md-wrap">
                                         <label class="m-1 w-100" for="Personal">
