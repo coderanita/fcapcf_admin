@@ -1285,7 +1285,8 @@
                                                                 $currentStep == 6)
                                                             <button
                                                                 class="btn bg-secondary text-light next text-uppercase"
-                                                                wire:click.prevent="increaseStep()">
+                                                                wire:click.prevent="increaseStep()"
+                                                                wire:loading.attr="disabled">
                                                                 Next
                                                             </button>
                                                         @endif
