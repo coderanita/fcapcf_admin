@@ -294,7 +294,7 @@ class Create extends Component
             'languages' => $this->languages,
             'beneficiaries' => $this->beneficiaries,
             'countries' => $this->countries,
-            'roles' => Role::all(),
+            'roles' => Role::whereIn('id', [1, 2, 3, 4])->get(),
         ]);
     }
 }
