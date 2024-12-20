@@ -172,7 +172,8 @@
                                 <div class="tab-pane fade" id="pd_files" role="tabpanel">
                                     <div class="d-flex justify-content-between p-3 bg-card rounded-4 mb-3">
                                         <h6 class="card-title mb-0"><a class="me-2 fa fa-arrow-circle-left"
-                                            href="{{ route('administrator.projects') }}" title="back"></a> Project Files
+                                                href="{{ route('administrator.projects') }}" title="back"></a>
+                                            Project Files
                                             ({{ count(json_decode($project->files, true)) }})</h6>
                                         <button class="btn btn-sm d-block d-lg-none btn-primary project-list-toggle"
                                             type="button"><i class="fa fa-bars"></i></button>
@@ -237,7 +238,8 @@
                                     <div class="card">
                                         <div class="card-header">
                                             <h6 class="card-title mb-0"><a class="me-2 fa fa-arrow-circle-left"
-                                                href="{{ route('administrator.projects') }}" title="back"></a> {{ $project->project_name }}</h6>
+                                                    href="{{ route('administrator.projects') }}" title="back"></a>
+                                                {{ $project->project_name }}</h6>
                                             <button
                                                 class="btn btn-sm d-block d-lg-none btn-primary project-list-toggle"
                                                 type="button"><i class="fa fa-bars"></i></button>
@@ -478,3 +480,6 @@
         </div>
     </div>
 </div>
+@push('scripts')
+    <script src="{{ asset('js/theme.js') }}"></script>
+@endpush
