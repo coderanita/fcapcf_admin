@@ -4,7 +4,7 @@
         @if ($details)
             <x-slot name="ol_breadcrumbs">
                 <ol class="breadcrumb mb-2">
-                    <li class="breadcrumb-item"><a href="app-project.html">Project</a></li>
+                    <li class="breadcrumb-item"><a href="{{route('administrator.projects')}}">Project</a></li>
                     <li class="breadcrumb-item active" aria-current="page">Detail</li>
                 </ol>
             </x-slot>
