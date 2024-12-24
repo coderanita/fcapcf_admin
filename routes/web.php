@@ -52,11 +52,16 @@ Route::middleware(['auth', 'verified'])->group(function () {
 // Route::get('/payroll/', EmployeePayroll::class)->name('payroll');
 // });
 
-Route::get('/foo', function () {
-  Artisan::call('storage:link');
+Route::get('/storage-link', function () {
+  try {
+    Artisan::call('storage:link');
+    return 'The storage link has been created successfully.';
+  } catch (\Exception $e) {
+    return 'Error: ' . $e->getMessage();
+  }
 });
 
-Route::get('/link', function () {        
+Route::get('/link', function () {
   $target = '/var/www/fastuser/data/www/console.fcapcf.org/storage/app/public';
   $shortcut = '/var/www/fastuser/data/www/console.fcapcf.org/public/storage';
   symlink($target, $shortcut);
