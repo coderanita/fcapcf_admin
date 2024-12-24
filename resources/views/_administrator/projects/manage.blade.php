@@ -112,7 +112,7 @@
                                                             @foreach ($project->invited_members as $member)
                                                                 <a href="#" title=""><img
                                                                         class="avatar sm rounded-circle"
-                                                                        src="{{ $member->profile_photo_path ? $member->profile_photo_path : asset('img/xs/avatar4.jpg.png') }}"
+                                                                        src="{{ $member->profile_photo_path ? 'https://console.fcapcf.org/storage/app/public/' . $member->profile_photo_path : asset('img/xs/avatar4.jpg.png') }}"
                                                                         data-bs-toggle="tooltip" data-bs-placement="top"
                                                                         title="{{ $member->fname }} {{ $member->lname }}"
                                                                         alt="friend">
