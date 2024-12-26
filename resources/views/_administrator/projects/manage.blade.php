@@ -95,7 +95,7 @@
                                                         <ul class="list-inline d-flex my-4">
                                                             <li
                                                                 class="list-inline-item card py-2 px-xxl-3 px-xl-2 px-3">
-                                                                <h6 class="mb-0">7</h6>
+                                                                <h6 class="mb-0">0</h6>
                                                                 <small
                                                                     class="text-uppercase text-muted">Beneficiaries</small>
                                                             </li>
@@ -119,12 +119,12 @@
                                                                 </a>
                                                             @endforeach
                                                         </div>
-                                                        <label class="small d-flex justify-content-between">95% <span
+                                                        <label class="small d-flex justify-content-between">0% <span
                                                                 class="text-custom">Done</span></label>
                                                         <div class="progress mt-1" style="height: 3px;">
                                                             <div class="progress-bar bg-success" role="progressbar"
-                                                                aria-valuenow="95" aria-valuemin="0" aria-valuemax="100"
-                                                                style="width: 95%;"></div>
+                                                                aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"
+                                                                style="width: 0%;"></div>
                                                         </div>
                                                     </div>
                                                     <div class="card-footer py-3">
