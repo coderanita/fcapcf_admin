@@ -119,13 +119,13 @@
                                                                 </a>
                                                             @endforeach
                                                         </div>
-                                                        {{-- <label class="small d-flex justify-content-between">95% <span
+                                                        <label class="small d-flex justify-content-between">95% <span
                                                                 class="text-custom">Done</span></label>
                                                         <div class="progress mt-1" style="height: 3px;">
                                                             <div class="progress-bar bg-success" role="progressbar"
                                                                 aria-valuenow="95" aria-valuemin="0" aria-valuemax="100"
                                                                 style="width: 95%;"></div>
-                                                        </div> --}}
+                                                        </div>
                                                     </div>
                                                     <div class="card-footer py-3">
                                                         <span>Date
