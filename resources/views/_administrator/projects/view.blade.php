@@ -221,7 +221,8 @@
                                                                 fill="#CAD1D8" />
                                                         </svg>
                                                         <h6 class="mt-4 mb-1"><a
-                                                                href="{{ 'https://console.fcapcf.org/storage/app/public/' . $file['path'] }}">{{ $file['name'] }}</a>
+                                                                href="{{ 'https://console.fcapcf.org/storage/app/public/' . $file['path'] }}"
+                                                                target="_blank">{{ $file['name'] }}</a>
                                                         </h6>
                                                         <span
                                                             class="text-muted">{{ \Carbon\Carbon::parse($file['created_at'])->diffForHumans() }}
