@@ -126,7 +126,8 @@
                                                     <div
                                                         class="card-body d-flex align-items-start flex-column flex-md-row">
                                                         <img class="avatar lg rounded-circle img-thumbnail ms-auto me-auto"
-                                                            src="assets/img/xs/avatar1.jpg.png" alt="">
+                                                            src="{{ $invitedMember->profile_photo_path ? 'https://console.fcapcf.org/storage/app/public/' . $invitedMember->profile_photo_path : asset('img/xs/avatar4.jpg.png') }}"
+                                                            alt="">
                                                         <div
                                                             class="media-body ms-md-2 ms-lg-3 ms-xl-4 text-md-start text-center w-100 mt-4 mt-md-0">
                                                             <div class="row g-0 align-items-center">
