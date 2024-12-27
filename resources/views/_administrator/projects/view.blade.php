@@ -220,7 +220,9 @@
                                                                 d="M48.4375 52.3125H11.625V54.25H48.4375C49.5031 54.25 50.375 53.3781 50.375 52.3125V50.375C50.375 51.4406 49.5031 52.3125 48.4375 52.3125Z"
                                                                 fill="#CAD1D8" />
                                                         </svg>
-                                                        <h6 class="mt-4 mb-1">{{ $file['name'] }}</h6>
+                                                        <h6 class="mt-4 mb-1"><a
+                                                                href="{{ 'https://console.fcapcf.org/storage/app/public/' . $file['path'] }}">{{ $file['name'] }}</a>
+                                                        </h6>
                                                         <span
                                                             class="text-muted">{{ \Carbon\Carbon::parse($file['created_at'])->diffForHumans() }}
                                                             <small>{{ $file['size'] }} MB</small></span>
