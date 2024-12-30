@@ -71,6 +71,7 @@ class Edit extends Component
 
         $this->middle_name = $user->profile->personal_mname ?? '';
         $this->gender = $user->profile->personal_gender ?? '';
+        $this->countryCode = $user->profile->country_code ?? '';
         $this->phone_number = $user->profile->personal_phone ?? '';
         $this->date_of_birth = $user->profile->personal_birth_date ?? '';
         $this->marital_status = $user->profile->personal_marital_status ?? '';
