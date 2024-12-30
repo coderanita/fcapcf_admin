@@ -327,54 +327,54 @@
 
                 <!-- Start:: document &  resources link-->
                 <div class="dropdown menu-resources">
-                  <a href="dashboard.html#" class="btn btn-link dropdown-toggle after-none" data-bs-toggle="dropdown">
-                      <svg class="mx-1" xmlns="http://www.w3.org/2000/svg" width="18" fill="currentColor"
-                          viewBox="0 0 16 16">
-                          <path class="fill-secondary"
-                              d="M5 10.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5zm0-2a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm0-2a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm0-2a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z">
-                          </path>
-                          <path class="fill-muted"
-                              d="M3 0h10a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-1h1v1a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v1H1V2a2 2 0 0 1 2-2z">
-                          </path>
-                          <path class="fill-muted"
-                              d="M1 5v-.5a.5.5 0 0 1 1 0V5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0V8h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0v.5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1z">
-                          </path>
-                      </svg>
-                      <span>Messaging</span>
-                  </a>
-                  <div class="dropdown-menu mega-dropdown p-4 shadow">
-                      <div class="row g-3">
-                          <div class="col-lg-7">
-                              <ul class="list-unstyled mb-0 animation_delay">
-                                  <li>
-                                      <a href="{{ route('volunteer.announcements') }}"
-                                          class="d-flex align-items-center py-2 rounded">
-                                          <div class="avatar rounded no-thumbnail bg-light">
-                                              <svg xmlns="http://www.w3.org/2000/svg" width="18"
-                                                  fill="currentColor" viewBox="0 0 16 16">
-                                                  <path class="fill-secondary"
-                                                      d="M10.854 8.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 0 1 .708-.708L7.5 10.793l2.646-2.647a.5.5 0 0 1 .708 0z">
-                                                  </path>
-                                                  <path
-                                                      d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM2 2a1 1 0 0 0-1 1v11a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1H2z">
-                                                  </path>
-                                                  <path class="fill-secondary"
-                                                      d="M2.5 4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5H3a.5.5 0 0 1-.5-.5V4z">
-                                                  </path>
-                                              </svg>
-                                          </div>
-                                          <div class="flex-fill ms-3 text-truncate">
-                                              <h6 class="mb-0">Announcements</h6>
-                                              <small class="text-muted">Create and manage announcements</small>
-                                          </div>
-                                      </a>
-                                  </li>
-                              </ul>
-                          </div>
+                    <a href="dashboard.html#" class="btn btn-link dropdown-toggle after-none" data-bs-toggle="dropdown">
+                        <svg class="mx-1" xmlns="http://www.w3.org/2000/svg" width="18" fill="currentColor"
+                            viewBox="0 0 16 16">
+                            <path class="fill-secondary"
+                                d="M5 10.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5zm0-2a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm0-2a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm0-2a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z">
+                            </path>
+                            <path class="fill-muted"
+                                d="M3 0h10a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-1h1v1a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v1H1V2a2 2 0 0 1 2-2z">
+                            </path>
+                            <path class="fill-muted"
+                                d="M1 5v-.5a.5.5 0 0 1 1 0V5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0V8h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0v.5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1z">
+                            </path>
+                        </svg>
+                        <span>Messaging</span>
+                    </a>
+                    <div class="dropdown-menu mega-dropdown p-4 shadow">
+                        <div class="row g-3">
+                            <div class="col-lg-7">
+                                <ul class="list-unstyled mb-0 animation_delay">
+                                    <li>
+                                        <a href="{{ route('volunteer.announcements') }}"
+                                            class="d-flex align-items-center py-2 rounded">
+                                            <div class="avatar rounded no-thumbnail bg-light">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="18"
+                                                    fill="currentColor" viewBox="0 0 16 16">
+                                                    <path class="fill-secondary"
+                                                        d="M10.854 8.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 0 1 .708-.708L7.5 10.793l2.646-2.647a.5.5 0 0 1 .708 0z">
+                                                    </path>
+                                                    <path
+                                                        d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM2 2a1 1 0 0 0-1 1v11a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1H2z">
+                                                    </path>
+                                                    <path class="fill-secondary"
+                                                        d="M2.5 4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5H3a.5.5 0 0 1-.5-.5V4z">
+                                                    </path>
+                                                </svg>
+                                            </div>
+                                            <div class="flex-fill ms-3 text-truncate">
+                                                <h6 class="mb-0">Announcements</h6>
+                                                <small class="text-muted">Create and manage announcements</small>
+                                            </div>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
 
-                      </div>
-                  </div>
-              </div>
+                        </div>
+                    </div>
+                </div>
 
                 <!-- Start:: document &  resources link-->
                 <div class="dropdown menu-resources">
@@ -478,12 +478,13 @@
                 </li> --}}
                 <li>
                     <div class="dropdown morphing scale-left user-profile mx-lg-3 mx-2">
-                        <a class="nav-link dropdown-toggle rounded-circle after-none p-0" href="#" role="button"
-                            data-bs-toggle="dropdown">
+                        <a class="nav-link dropdown-toggle rounded-circle after-none p-0" href="#"
+                            role="button" data-bs-toggle="dropdown">
 
                             @if (Laravel\Jetstream\Jetstream::managesProfilePhotos())
+                                {{-- {{ Auth::user()->profile_pic }} --}}
                                 <img class="avatar lg img-thumbnail rounded-circle shadow"
-                                    src="{{ auth()->user()->profile_photo_url }}"
+                                    src="{{ 'https://console.fcapcf.org/storage/app/public/' . Auth::user()->profile_pic }}"
                                     alt="{{ auth()->user()->fullName() }}">
                             @else
                                 <span class="text-start ms-xl-2">
