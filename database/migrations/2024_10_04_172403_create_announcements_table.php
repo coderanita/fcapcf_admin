@@ -18,6 +18,8 @@ return new class extends Migration
             $table->text('description');
             $table->date('date');
             $table->time('time');
+            $table->integer('is_read')->default(0);
+            $table->json('user_id')->nullable();
             $table->timestamps();
         });
     }

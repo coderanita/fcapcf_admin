@@ -17,6 +17,8 @@ return new class extends Migration
             $table->string('subject');
             $table->text('message');
             $table->integer('status')->default(1)->comment('0 = Failed, 1 = Sent, 2 = Draft');
+            $table->integer('is_read')->default(0);
+            $table->json('user_id')->nullable();
             $table->timestamps();
         });
     }

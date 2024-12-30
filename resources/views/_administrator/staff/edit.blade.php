@@ -265,14 +265,14 @@
                                                                                 wire:model="nationality_id">
                                                                                 <option value="" selected>
                                                                                 </option>
-                                                                                @foreach ($nationalities as $nationality)
+                                                                                @foreach ($countries as $country)
                                                                                     <option
-                                                                                        value="{{ $nationality->id }}">
-                                                                                        {{ $nationality->name }}
+                                                                                        value="{{ $country->id }}">
+                                                                                        {{ $country->name }}
                                                                                     </option>
                                                                                 @endforeach
                                                                             </select>
-                                                                            <label>Nationality *</label>
+                                                                            <label>Country *</label>
                                                                             @error('nationality_id')
                                                                                 <div class="invalid-feedback">
                                                                                     {{ $message }}</div>
